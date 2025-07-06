@@ -23,6 +23,10 @@ The project follows a 4-phase migration approach:
 - **Content Focus**: Technical blog about open source hardware, software development, and tech projects
 - **Remove Broken Features**: Twitter integration and Google Picasa integration
 
+## Important: Working Directory
+
+**CRITICAL**: Always check the current working directory before running any commands. Use `pwd` to verify you are in the correct location before executing any bash commands, file operations, or git commands.
+
 ## Development Commands
 
 ### Jekyll Development
