@@ -1,0 +1,684 @@
+# BARTHELME for WordPress
+# Copyright (C) 2006-2008 PlainTXT.org
+# This file is part of BARTHELME.
+# BARTHELME is free software: you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation, either version 3 of
+# the License, or (at your option) any later version.
+msgid ""
+msgstr ""
+"Project-Id-Version: 4.6.1\n"
+"Report-Msgid-Bugs-To: http://barthelme.googlecode.com/\n"
+"POT-Creation-Date: 2008-07-18 23:57-0500\n"
+"PO-Revision-Date: 2008-07-29 23:06+0000\n"
+"Last-Translator: PlainTXT.org <s@plaintxt.org>\n"
+"Language-Team: PlainTXT.org <s@plaintxt.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: 404.php:7
+msgid "Not Found"
+msgstr ""
+
+#: 404.php:9
+msgid "Apologies, but we were unable to find what you were looking for. Perhaps the search box will help."
+msgstr ""
+
+#: 404.php:14
+#: functions.php:261
+#: functions.php:395
+#: functions.php:397
+#: search.php:51
+#: sidebar.php:50
+msgid "Search"
+msgstr ""
+
+#: archive.php:8
+msgid "<span class=\"meta-sep\">{</span> Daily Archives <span class=\"meta-sep\">}</span>"
+msgstr ""
+
+#: archive.php:8
+msgid "l, F Y"
+msgstr ""
+
+#: archive.php:10
+msgid "<span class=\"meta-sep\">{</span> Monthly Archives <span class=\"meta-sep\">}</span>"
+msgstr ""
+
+#: archive.php:10
+msgid "F Y"
+msgstr ""
+
+#: archive.php:12
+msgid "<span class=\"meta-sep\">{</span> Yearly Archives <span class=\"meta-sep\">}</span>"
+msgstr ""
+
+#: archive.php:12
+msgid "Y"
+msgstr ""
+
+#: archive.php:14
+msgid "<span class=\"meta-sep\">{</span> Author Archives <span class=\"meta-sep\">}</span>"
+msgstr ""
+
+#: archive.php:17
+msgid "<span class=\"meta-sep\">{</span> Category Archives <span class=\"meta-sep\">}</span>"
+msgstr ""
+
+#: archive.php:20
+msgid "<span class=\"meta-sep\">{</span> Tag Archives <span class=\"meta-sep\">}</span>"
+msgstr ""
+
+#: archive.php:23
+msgid "<span class=\"meta-sep\">{</span> Blog Archives <span class=\"meta-sep\">}</span>"
+msgstr ""
+
+#: archive.php:23
+#, php-format
+msgid "%1$s Archives"
+msgstr ""
+
+#: archive.php:31
+#: index.php:11
+#: search.php:15
+#: sitemap.php:31
+#, php-format
+msgid "Permalink to %s"
+msgstr ""
+
+#: archive.php:33
+#: attachment.php:15
+#: image.php:15
+#: index.php:13
+#: search.php:17
+#: single.php:12
+msgid "Continue reading &rsaquo;"
+msgstr ""
+
+#: archive.php:35
+#: index.php:17
+#: search.php:19
+msgid "<span class=\"tag-links\">Tagged "
+msgstr ""
+
+#: archive.php:35
+#, php-format
+msgid "<span class=\"tag-links\">Also tagged %s</span>"
+msgstr ""
+
+#: archive.php:41
+#: attachment.php:9
+#: image.php:9
+#: index.php:23
+#: search.php:25
+#: single.php:9
+#, php-format
+msgid "%1$s"
+msgstr ""
+
+#: archive.php:44
+#: index.php:26
+#: search.php:27
+msgid "Comments (0)"
+msgstr ""
+
+#: archive.php:44
+#: index.php:26
+#: search.php:27
+msgid "Comments (1)"
+msgstr ""
+
+#: archive.php:44
+#: index.php:26
+#: search.php:27
+msgid "Comments (%)"
+msgstr ""
+
+#: archive.php:45
+#: attachment.php:39
+#: comments.php:43
+#: comments.php:75
+#: image.php:43
+#: index.php:28
+#: search.php:28
+msgid "Edit"
+msgstr ""
+
+#: archive.php:52
+#: index.php:35
+#: search.php:35
+msgid "&laquo; Older posts"
+msgstr ""
+
+#: archive.php:53
+#: index.php:36
+#: search.php:36
+msgid "Newer posts &raquo;"
+msgstr ""
+
+#: archives.php:15
+#: links.php:15
+#: page.php:10
+#: sitemap.php:14
+#, php-format
+msgid "<div class=\"author-meta\">By %1$s</div>"
+msgstr ""
+
+#: archives.php:21
+msgid "Archives by Category"
+msgstr ""
+
+#: archives.php:27
+msgid "Archives by Month"
+msgstr ""
+
+#: archives.php:33
+#: sitemap.php:49
+msgid "Archives by Tag"
+msgstr ""
+
+#: archives.php:37
+#: attachment.php:17
+#: image.php:17
+#: links.php:23
+#: page.php:16
+#: single.php:16
+#: sitemap.php:56
+msgid "Edit this entry."
+msgstr ""
+
+#: attachment.php:21
+#: image.php:25
+#, php-format
+msgid "<span class=\"entry-published\">Posted by %1$s on <abbr class=\"published\" title=\"%2$sT%3$s\">%4$s at %5$s</abbr>.</span> <span class=\"entry-rsslink\">Follow any responses to this post with its <a href=\"%6$s\" title=\"Comments RSS to %7$s\" rel=\"alternate\" type=\"application/rss+xml\">comments RSS</a> feed.</span>"
+msgstr ""
+
+#: attachment.php:31
+#: image.php:35
+#: single.php:33
+#, php-format
+msgid "You can <a href=\"#respond\" title=\"Post a comment\">post a comment</a> or <a href=\"%s\" rel=\"trackback\" title=\"Trackback URL for your post\">trackback</a> from your blog."
+msgstr ""
+
+#: attachment.php:33
+#: image.php:37
+#: single.php:35
+#, php-format
+msgid "Comments are closed, but you can <a href=\"%s\" rel=\"trackback\" title=\"Trackback URL for your post\">trackback</a> from your blog."
+msgstr ""
+
+#: attachment.php:35
+#: image.php:39
+#: single.php:37
+msgid "You can <a href=\"#respond\" title=\"Post a comment\">post a comment</a>, but trackbacks are closed."
+msgstr ""
+
+#: attachment.php:37
+#: image.php:41
+#: single.php:39
+msgid "Both comments and trackbacks are currently closed."
+msgstr ""
+
+#: comments.php:11
+msgid "This post is protected. Enter the password to view any comments."
+msgstr ""
+
+#: comments.php:28
+#, php-format
+msgid "<span class=\"comment-count\"><span class=\"meta-sep\">{</span> %d <span class=\"meta-sep\">}</span></span> Comments"
+msgstr ""
+
+#: comments.php:36
+#: comments.php:68
+#, php-format
+msgid "<abbr class=\"comment-published\" title=\"%1$s\">%2$s at %3$s</abbr></span>"
+msgstr ""
+
+#: comments.php:42
+msgid "Permalink"
+msgstr ""
+
+#: comments.php:45
+#: comments.php:77
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: comments.php:60
+#, php-format
+msgid "<span class=\"comment-count\"><span class=\"meta-sep\">{</span> %d <span class=\"meta-sep\">}</span></span> Trackbacks"
+msgstr ""
+
+#: comments.php:91
+msgid "Post a Comment"
+msgstr ""
+
+#: comments.php:93
+#, php-format
+msgid "You must be <a href=\"%s\" title=\"Log in\">logged in</a> to post a comment."
+msgstr ""
+
+#: comments.php:103
+#, php-format
+msgid "Logged in as <a href=\"%1$s\" title=\"View your profile\" class=\"fn\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
+msgstr ""
+
+#: comments.php:110
+msgid "Your email is <em>never</em> published nor shared."
+msgstr ""
+
+#: comments.php:110
+msgid "Required fields are marked <span class=\"req-field\">*</span>"
+msgstr ""
+
+#: comments.php:112
+msgid "Name"
+msgstr ""
+
+#: comments.php:112
+#: comments.php:115
+msgid " <span class=\"req-field\">*</span>"
+msgstr ""
+
+#: comments.php:115
+msgid "Email"
+msgstr ""
+
+#: comments.php:118
+msgid "Website"
+msgstr ""
+
+#: comments.php:123
+msgid "Comment"
+msgstr ""
+
+#: comments.php:125
+msgid "Submit comment"
+msgstr ""
+
+#: footer.php:5
+msgid "Thanks, <a href=\"http://wordpress.org/\" title=\"WordPress\" rel=\"generator\">WordPress</a>"
+msgstr ""
+
+#: footer.php:7
+msgid "Barthelme theme for WordPress"
+msgstr ""
+
+#: footer.php:7
+msgid "theme by"
+msgstr ""
+
+#: footer.php:9
+msgid "Standards Compliant"
+msgstr ""
+
+#: footer.php:9
+msgid "Valid CSS"
+msgstr ""
+
+#: footer.php:11
+msgid "RSS"
+msgstr ""
+
+#: footer.php:11
+msgid "RSS 2.0 Feed"
+msgstr ""
+
+#: footer.php:11
+msgid "Posts"
+msgstr ""
+
+#: footer.php:11
+msgid "Comments"
+msgstr ""
+
+#: functions.php:5
+#: functions.php:318
+#: sidebar.php:7
+msgid "Home"
+msgstr ""
+
+#: functions.php:262
+msgid "Find"
+msgstr ""
+
+#: functions.php:290
+#: functions.php:340
+#: functions.php:373
+msgid "Title:"
+msgstr ""
+
+#: functions.php:291
+msgid "Button Text:"
+msgstr ""
+
+#: functions.php:300
+#: functions.php:404
+#: functions.php:406
+#: sidebar.php:37
+msgid "Meta"
+msgstr ""
+
+#: functions.php:339
+msgid "Adds a link to the home page on every page <em>except</em> the home."
+msgstr ""
+
+#: functions.php:349
+#: functions.php:421
+#: functions.php:422
+msgid "RSS Links"
+msgstr ""
+
+#: functions.php:354
+msgid "Posts RSS feed"
+msgstr ""
+
+#: functions.php:354
+#: sidebar.php:31
+msgid "All posts"
+msgstr ""
+
+#: functions.php:355
+msgid "Comments RSS feed"
+msgstr ""
+
+#: functions.php:355
+#: sidebar.php:32
+msgid "All comments"
+msgstr ""
+
+#: functions.php:393
+msgid "A search form for your blog (Barthelme)"
+msgstr ""
+
+#: functions.php:402
+msgid "Log in/out and administration links (Barthelme)"
+msgstr ""
+
+#: functions.php:411
+msgid "Link to the front page when elsewhere (Barthelme)"
+msgstr ""
+
+#: functions.php:413
+#: functions.php:414
+msgid "Home Link"
+msgstr ""
+
+#: functions.php:419
+msgid "RSS links for both posts and comments (Barthelme)"
+msgstr ""
+
+#: functions.php:459
+#: functions.php:501
+msgid "Barthelme Theme Options"
+msgstr ""
+
+#: functions.php:459
+msgid "Theme Options"
+msgstr ""
+
+#: functions.php:497
+#, php-format
+msgid "Barthelme theme options saved. <a href=\"%s\">View site.</a>"
+msgstr ""
+
+#: functions.php:498
+msgid "Barthelme theme options reset."
+msgstr ""
+
+#: functions.php:502
+#, php-format
+msgid "%1$s<p>Thanks for selecting the <a href=\"http://www.plaintxt.org/themes/barthelme/\" title=\"Barthelme theme for WordPress\">Barthelme</a> theme by <span class=\"vcard\"><a class=\"url fn n\" href=\"http://plaintxt.org/\" title=\"plaintxt.org\" rel=\"me designer\">PlainTXT.org</a></span>. Please read the included <a href=\"%2$s\" title=\"Open the readme.html\" rel=\"enclosure\" id=\"readme\">documentation</a> for more information about the Barthelme and its advanced features. <strong>If you find this theme useful, please consider <label for=\"paypal\">donating</label>.</strong> You must click on <i><u>S</u>ave Options</i> to save any changes. You can also discard your changes and reload the default settings by clicking on <i><u>R</u>eset</i>.</p>"
+msgstr ""
+
+#: functions.php:506
+msgid "Typography"
+msgstr ""
+
+#: functions.php:509
+msgid "Base font size"
+msgstr ""
+
+#: functions.php:512
+msgid "The base font size globally affects the size of text throughout your blog. This can be in any unit (e.g., px, pt, em), but I suggest using a percentage (%). Default is <span>75%</span>."
+msgstr ""
+
+#: functions.php:516
+msgid "Base font family"
+msgstr ""
+
+#: functions.php:527
+#, php-format
+msgid "The base font family sets the font for everything except content headings. The selection is limited to %1$s fonts, as they will display correctly. Default is <span class=\"arial\">Arial</span>."
+msgstr ""
+
+#: functions.php:531
+msgid "Heading font family"
+msgstr ""
+
+#: functions.php:542
+#, php-format
+msgid "The heading font family sets the font for all content headings and miscellanea. The selection is limited to %1$s fonts, as they will display correctly. Default is <span class=\"georgia\">Georgia</span>. "
+msgstr ""
+
+#: functions.php:546
+msgid "Layout"
+msgstr ""
+
+#: functions.php:549
+msgid "Layout width"
+msgstr ""
+
+#: functions.php:552
+msgid "The layout width determines the normal width of the entire layout. This can be in any unit (e.g., px, pt, em), but I suggest \"auto\". Default is <span>auto</span>."
+msgstr ""
+
+#: functions.php:553
+msgid "<em>Note: If you use 100%, the width will be ever-so-larger than the browser window. If you want to play, I suggest playing with ems. But really, auto is the best option.</em>"
+msgstr ""
+
+#: functions.php:557
+msgid "Post text alignment"
+msgstr ""
+
+#: functions.php:560
+msgid "Centered"
+msgstr ""
+
+#: functions.php:561
+msgid "Justified"
+msgstr ""
+
+#: functions.php:562
+msgid "Left"
+msgstr ""
+
+#: functions.php:563
+msgid "Right"
+msgstr ""
+
+#: functions.php:565
+msgid "Choose one of the options for the alignment of the post entry text. Default is <span>left</span>."
+msgstr ""
+
+#: functions.php:569
+msgid "Content"
+msgstr ""
+
+#: functions.php:572
+msgid "Author link"
+msgstr ""
+
+#: functions.php:575
+msgid "Displayed"
+msgstr ""
+
+#: functions.php:576
+msgid "Hidden"
+msgstr ""
+
+#: functions.php:578
+msgid "The author's name and link to his/her corresponding archives page can be displayed or hidden. The \"hidden\" setting disables the link in an author's name in single post footers (and in pages &mdash; see the <a href=\"#readme\">documentation</a> for info). Default is <span>displayed</span>."
+msgstr ""
+
+#: functions.php:582
+msgid "Avatar size"
+msgstr ""
+
+#: functions.php:585
+msgid "Sets the avatar size in pixels, if avatars are enabled. Default is <span>32</span>."
+msgstr ""
+
+#: functions.php:589
+msgid "Header colors"
+msgstr ""
+
+#: functions.php:590
+msgid "You must enter the full, six-digit <a href=\"http://www.w3schools.com/html/html_colors.asp\" title=\"HTML Colors at W3 Schools\">hexidecimal color value</a> without the \"#\" symbol for each color value. Otherwise, things won't work."
+msgstr ""
+
+#: functions.php:593
+msgid "Upper gradient color"
+msgstr ""
+
+#: functions.php:596
+msgid "Sets the upper color for the banner gradient. Default is <span>8999B0</span>."
+msgstr ""
+
+#: functions.php:600
+msgid "Lower gradient color"
+msgstr ""
+
+#: functions.php:603
+msgid "Sets the lower color for the banner gradient. Default is <span>BBC8D9</span>."
+msgstr ""
+
+#: functions.php:607
+msgid "Header font color"
+msgstr ""
+
+#: functions.php:610
+msgid "Sets the font color for the blog title and description. Default is <span>FEFEFE</span>."
+msgstr ""
+
+#: functions.php:615
+msgid "Save Options"
+msgstr ""
+
+#: functions.php:620
+#: functions.php:625
+msgid "Reset Options"
+msgstr ""
+
+#: functions.php:621
+msgid "Resetting deletes all stored Barthelme options from your database. After resetting, default options are loaded but are not stored until you click <i>Save Options</i>. A reset does not affect the actual theme files in any way. If you are uninstalling Barthelme, please reset before removing the theme files to clear your databse."
+msgstr ""
+
+#: functions.php:625
+msgid "Click OK to reset. Any changes to these theme options will be lost!"
+msgstr ""
+
+#: header.php:4
+msgid "Page not found"
+msgstr ""
+
+#: header.php:4
+msgid "Blog archives"
+msgstr ""
+
+#: header.php:4
+msgid "Search results"
+msgstr ""
+
+#: header.php:8
+msgid "RSS feed"
+msgstr ""
+
+#: header.php:9
+msgid "comments RSS feed"
+msgstr ""
+
+#: header.php:25
+msgid "Skip to content"
+msgstr ""
+
+#: index.php:15
+#: page.php:14
+#: single.php:14
+#: sitemap.php:54
+msgid "Pages: "
+msgstr ""
+
+#: index.php:27
+#, php-format
+msgid "<a href=\"%1$s\" title=\"Permalink to %2$s\">Permalink</a>"
+msgstr ""
+
+#: search.php:8
+#: search.php:41
+#, php-format
+msgid "&#8220;%1$s&#8221;"
+msgstr ""
+
+#: search.php:8
+#: search.php:41
+msgid "Search Results"
+msgstr ""
+
+#: search.php:44
+msgid "Nothing Found"
+msgstr ""
+
+#: search.php:46
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr ""
+
+#: sidebar.php:11
+msgid "Pages"
+msgstr ""
+
+#: sidebar.php:14
+msgid "Categories"
+msgstr ""
+
+#: sidebar.php:22
+msgid "Tags"
+msgstr ""
+
+#: sidebar.php:29
+msgid "RSS Feeds"
+msgstr ""
+
+#: sidebar.php:46
+msgid "Blog Search"
+msgstr ""
+
+#: single.php:21
+#, php-format
+msgid "<span class=\"entry-published\">Posted by %1$s on <abbr class=\"published\" title=\"%2$sT%3$s\">%4$s at %5$s</abbr>.</span> <span class=\"cat-links\">Filed under %6$s.</span> %7$s <span class=\"entry-rsslink\">Follow any responses to this post with its <a href=\"%8$s\" title=\"Comments RSS to %9$s\" rel=\"alternate\" type=\"application/rss+xml\">comments RSS</a> feed.</span>"
+msgstr ""
+
+#: single.php:47
+msgid "&laquo; %link"
+msgstr ""
+
+#: single.php:48
+msgid "%link &raquo;"
+msgstr ""
+
+#: sitemap.php:20
+msgid "All Pages"
+msgstr ""
+
+#: sitemap.php:26
+msgid "All Posts"
+msgstr ""
+
+#: sitemap.php:37
+msgid "All Monthly Archives"
+msgstr ""
+
+#: sitemap.php:43
+msgid "All Category Archives"
+msgstr ""
+
