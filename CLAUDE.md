@@ -70,12 +70,28 @@ wp export --dir=exports/
 
 ## Migration Checklist
 
-Reference `MIGRATION_PLAN.md` for the complete 25-task checklist organized by priority. Key high-priority tasks include:
+Reference `MIGRATION_PLAN.md` for the comprehensive migration plan with:
+- **4 phases** with detailed sub-tasks and testing requirements
+- **60+ specific action items** broken down from 25 main tasks
+- **10-14 week timeline** with critical path identification
+- **Quality assurance framework** with acceptance criteria
+- **Resource lists** for tools, testing, and development environment
+
+Key high-priority tasks include:
 - Jekyll site initialization and configuration
 - WordPress content export and conversion
-- Theme recreation and responsive design
-- Comment system migration
-- Testing and quality assurance
+- Theme recreation using files in `theme_analysis/barthelme/`
+- Comment system migration and implementation
+- Comprehensive testing and quality assurance
+
+## Task Management Approach
+
+When working on migration tasks:
+1. **Check current todo list** for active tasks
+2. **Reference MIGRATION_PLAN.md** for detailed sub-tasks and testing requirements
+3. **Follow acceptance criteria** before marking tasks complete
+4. **Update todo status** frequently to track progress
+5. **Document issues** and solutions in project files
 
 ## SEO and URL Considerations
 
