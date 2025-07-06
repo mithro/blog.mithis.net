@@ -27,6 +27,51 @@ The project follows a 4-phase migration approach:
 
 **CRITICAL**: Always check the current working directory before running any commands. Use `pwd` to verify you are in the correct location before executing any bash commands, file operations, or git commands.
 
+## Recommended Tools for Migration Project
+
+### Essential Development Tools
+```bash
+# Install Ruby version manager
+curl -sSL https://get.rvm.io | bash
+
+# Install Jekyll dependencies
+gem install bundler jekyll
+
+# WordPress content export
+gem install wordpress-to-jekyll-exporter
+
+# Image optimization
+brew install imageoptim-cli  # macOS
+# or apt-get install imagemagick  # Linux
+
+# Link checking
+npm install -g broken-link-checker
+
+# HTML/CSS validation
+npm install -g html-validate
+```
+
+### Migration-Specific Tools
+- **wordpress-to-jekyll-exporter**: WordPress plugin for content export
+- **Jekyll Import**: Ruby gem for importing from various sources
+- **Pandoc**: Universal document converter for complex content
+- **ImageMagick**: Batch image processing and optimization
+- **wget**: Download entire WordPress media library
+- **ripgrep (rg)**: Fast text search for content analysis
+
+### Testing and Validation Tools
+- **Lighthouse CLI**: Performance and accessibility auditing
+- **Pa11y**: Command-line accessibility testing
+- **HTMLProofer**: Jekyll plugin for link/image validation
+- **W3C Validator**: HTML/CSS validation service
+- **SEO testing tools**: screaming-frog-seo-spider (for URL mapping)
+
+### Development Environment Helpers
+- **Live Server**: Real-time preview during development
+- **Browser Developer Tools**: Essential for theme recreation
+- **Git hooks**: Automated testing before commits
+- **GitHub CLI (gh)**: Streamlined repository management
+
 ## Development Commands
 
 ### Jekyll Development
@@ -49,8 +94,41 @@ JEKYLL_ENV=production bundle exec jekyll build
 # Export WordPress content (when WordPress access available)
 wp export --dir=exports/
 
-# Convert WordPress to Jekyll (using wordpress-to-jekyll-exporter or custom scripts)
-# Scripts should be placed in _scripts/ directory
+# Alternative: Use wordpress-to-jekyll-exporter plugin
+# Install plugin in WordPress admin, then export
+
+# Download WordPress media library
+wget -r -np -k -E -p https://blog.mithis.net/wp-content/uploads/
+
+# Convert WordPress export to Jekyll
+bundle exec jekyll import wordpress --source exports/wordpress.xml
+
+# Convert complex content with Pandoc
+pandoc input.html -o output.md
+
+# Batch process images
+imageoptim **/*.{jpg,jpeg,png}
+
+# Check for broken links
+blc http://localhost:4000 --recursive
+```
+
+### Theme Development Helper Commands
+```bash
+# Extract CSS from live WordPress site
+curl -s https://blog.mithis.net | grep -o 'href="[^"]*\.css[^"]*"' | sed 's/href="//;s/"//' | xargs -I {} curl -s {} > extracted-styles.css
+
+# Compare theme files
+diff -u theme_analysis/barthelme/style.css assets/css/main.scss
+
+# Validate HTML output
+html-validate _site/**/*.html
+
+# Test responsive design
+lighthouse http://localhost:4000 --view
+
+# Check accessibility
+pa11y http://localhost:4000
 ```
 
 ## Technical Stack
@@ -89,9 +167,18 @@ Key high-priority tasks include:
 When working on migration tasks:
 1. **Check current todo list** for active tasks
 2. **Reference MIGRATION_PLAN.md** for detailed sub-tasks and testing requirements
-3. **Follow acceptance criteria** before marking tasks complete
-4. **Update todo status** frequently to track progress
-5. **Document issues** and solutions in project files
+3. **Use recommended tools** listed above for efficient development
+4. **Follow acceptance criteria** before marking tasks complete
+5. **Update todo status** frequently to track progress
+6. **Document issues** and solutions in project files
+
+### Productivity Tips
+- **Use ripgrep (rg)** instead of grep for faster searching
+- **Install HTMLProofer** gem for automated link checking during builds
+- **Set up live reload** for instant preview during theme development
+- **Use browser dev tools** extensively for CSS extraction and debugging
+- **Run validation tools** frequently to catch issues early
+- **Batch process images** with ImageMagick for consistent optimization
 
 ## SEO and URL Considerations
 
