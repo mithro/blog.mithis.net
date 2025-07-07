@@ -34,7 +34,11 @@
       "Bash(~/.local/share/gem/ruby/3.3.0/bin/jekyll serve:*)",
       "Bash(curl:*)",
       "Bash(kill:*)",
-      "Bash(./test_migration.sh:*)"
+      "Bash(./test_migration.sh:*)",
+      "Bash(gem list:*)",
+      "Bash(gem:*)",
+      "Bash(ruby:*)",
+      "Bash(/home/tim/.local/share/gem/ruby/3.3.0/bin/jekyll build)"
     ],
     "deny": []
   }
