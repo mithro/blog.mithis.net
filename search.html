@@ -1,0 +1,182 @@
+---
+layout: default
+title: "Search"
+permalink: /search.html
+---
+
+<div class="hentry">
+    <h2 class="page-title">Search</h2>
+    
+    <div class="entry-content">
+        <form id="search-form">
+            <div>
+                <input id="search-input" name="q" type="text" placeholder="Search posts..." size="30" />
+                <input type="submit" value="Search" />
+            </div>
+        </form>
+        
+        <div id="search-results">
+            <p>Enter a search term above to find posts.</p>
+        </div>
+        
+        <div class="navigation">
+            <div class="nav-previous">
+                <a href="{{ '/' | relative_url }}">&laquo; Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    let searchData = [];
+    let searchInput = document.getElementById('search-input');
+    let searchResults = document.getElementById('search-results');
+    let searchForm = document.getElementById('search-form');
+    
+    // Load search data
+    fetch('/search.json')
+        .then(response => response.json())
+        .then(data => {
+            searchData = data;
+            
+            // Check for URL parameter and perform search
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q');
+            if (query) {
+                searchInput.value = query;
+                performSearch(query);
+            }
+        })
+        .catch(error => {
+            console.error('Error loading search data:', error);
+            searchResults.innerHTML = '<p>Error loading search data.</p>';
+        });
+    
+    // Handle form submission
+    searchForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const query = searchInput.value.trim();
+        if (query) {
+            performSearch(query);
+            // Update URL without reload
+            const newUrl = window.location.pathname + '?q=' + encodeURIComponent(query);
+            window.history.pushState({}, '', newUrl);
+        }
+    });
+    
+    // Perform search
+    function performSearch(query) {
+        if (!query || query.length < 2) {
+            searchResults.innerHTML = '<p>Please enter at least 2 characters to search.</p>';
+            return;
+        }
+        
+        const results = searchData.filter(post => {
+            const searchableText = (
+                post.title + ' ' + 
+                post.excerpt + ' ' + 
+                post.content + ' ' + 
+                post.categories.join(' ')
+            ).toLowerCase();
+            
+            return searchableText.includes(query.toLowerCase());
+        });
+        
+        displayResults(results, query);
+    }
+    
+    // Display search results
+    function displayResults(results, query) {
+        if (results.length === 0) {
+            searchResults.innerHTML = `<p>No posts found for "${query}".</p>`;
+            return;
+        }
+        
+        let html = `<p>Found ${results.length} post${results.length === 1 ? '' : 's'} for "${query}":</p>`;
+        
+        results.forEach(post => {
+            // Highlight search terms in title and excerpt
+            const highlightedTitle = highlightText(post.title, query);
+            const highlightedExcerpt = highlightText(post.excerpt, query);
+            
+            html += `
+                <div class="search-result" style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
+                    <h3 style="margin: 0 0 5px 0;">
+                        <a href="${post.url}" style="text-decoration: none;">${highlightedTitle}</a>
+                    </h3>
+                    <p style="margin: 5px 0; color: #666; font-size: 0.9em;">${post.date}</p>
+                    <p style="margin: 5px 0; line-height: 1.4;">${highlightedExcerpt}</p>
+                    ${post.categories.length > 0 ? `<p style="margin: 5px 0; font-size: 0.85em; color: #888;">Categories: ${post.categories.join(', ')}</p>` : ''}
+                </div>
+            `;
+        });
+        
+        searchResults.innerHTML = html;
+    }
+    
+    // Highlight search terms
+    function highlightText(text, query) {
+        if (!text || !query) return text;
+        
+        const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+        return text.replace(regex, '<mark style="background: #ffff88; padding: 1px 2px;">$1</mark>');
+    }
+    
+    // Escape special regex characters
+    function escapeRegex(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+})();
+</script>
+
+<style>
+#search-form {
+    margin-bottom: 20px;
+}
+
+#search-input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+
+#search-form input[type="submit"] {
+    padding: 8px 16px;
+    background: #bbc8d9;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#search-form input[type="submit"]:hover {
+    background: #a5b3c6;
+}
+
+.search-result h3 a:hover {
+    color: #2f4e6f;
+    text-decoration: underline;
+}
+
+/* Responsive search */
+@media (max-width: 768px) {
+    #search-input {
+        width: 100%;
+        margin-bottom: 8px;
+        margin-right: 0;
+    }
+    
+    #search-form input[type="submit"] {
+        width: 100%;
+    }
+    
+    #search-form div {
+        display: flex;
+        flex-direction: column;
+    }
+}
+</style>
