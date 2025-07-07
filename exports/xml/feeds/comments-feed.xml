@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments for Mithro rants about stuff</title>
+	<atom:link href="https://blog.mithis.net/comments/feed" rel="self" type="application/rss+xml" />
+	<link>https://blog.mithis.net</link>
+	<description></description>
+	<lastBuildDate>Sat, 24 May 2014 14:49:28 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.5.1</generator>
+	<item>
+		<title>Comment on Compiling for Windows using Cygwin on Linux&#8230;. by Ikem</title>
+		<link>https://blog.mithis.net/archives/tp/95-xcompiling-cygwin-on-linux-for-windows#comment-7628</link>
+		<dc:creator><![CDATA[Ikem]]></dc:creator>
+		<pubDate>Sat, 24 May 2014 14:49:28 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.mithis.net/?p=95#comment-7628</guid>
+		<description><![CDATA[The download link is broken.
+
+I found this alternative one: 
+
+http://www.thousandparsec.net/~tim/crosstool-cygwin-gcc336.tar.bz2]]></description>
+		<content:encoded><![CDATA[<p>The download link is broken.</p>
+<p>I found this alternative one: </p>
+<p><a href="http://www.thousandparsec.net/~tim/crosstool-cygwin-gcc336.tar.bz2" rel="nofollow">http://www.thousandparsec.net/~tim/crosstool-cygwin-gcc336.tar.bz2</a></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Network Manager &#8211; Autostart VPN by Mahavir</title>
+		<link>https://blog.mithis.net/archives/ideas/51-nm-autovpn#comment-7284</link>
+		<dc:creator><![CDATA[Mahavir]]></dc:creator>
+		<pubDate>Tue, 06 Dec 2011 21:16:11 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.mithis.net/archives/ideas/51-nm-autovpn#comment-7284</guid>
+		<description><![CDATA[For stock installation of Ubuntu 10.04 (Lucid Lynx) users, Network Manager version 0.8.0, so nmcli is not available and since there may be others like me who like to stick to the LTS, here is a solution.
+
+Visit http://cgit.freedesktop.org/NetworkManager/NetworkManager/tree/examples/python?h=NM_0_8 and download list-connections.py.  Mark it as executable and run it to find the UUID of your VPN connection.
+
+Also, download vpn.py from the same link. This script is written to connect to VPN over wifi only. So, if you want to connect to VPN over your wireless network then simply execute the script.
+
+However, for wired a minor modification in vpn.py is required .  Below is the patch for the same.
+
+*** vpn.py	2011-12-07 02:38:06.205855632 +0530
+--- vpn1.py	2011-12-07 02:39:49.861855276 +0530
+***************
+*** 86,92 ****
+      return None
+  
+  
+! def get_wifi_device_path():
+      bus = dbus.SystemBus()
+      proxy = bus.get_object(&#039;org.freedesktop.NetworkManager&#039;, &#039;/org/freedesktop/NetworkManager&#039;)
+      iface = dbus.Interface(proxy, dbus_interface=&#039;org.freedesktop.NetworkManager&#039;)
+--- 86,92 ----
+      return None
+  
+  
+! def get_device_path(reqDevType):
+      bus = dbus.SystemBus()
+      proxy = bus.get_object(&#039;org.freedesktop.NetworkManager&#039;, &#039;/org/freedesktop/NetworkManager&#039;)
+      iface = dbus.Interface(proxy, dbus_interface=&#039;org.freedesktop.NetworkManager&#039;)
+***************
+*** 95,101 ****
+          proxy = bus.get_object(&#039;org.freedesktop.NetworkManager&#039;, d)
+          iface = dbus.Interface(proxy, dbus_interface=&#039;org.freedesktop.DBus.Properties&#039;)
+          devtype = iface.Get(&#039;org.freedesktop.NetworkManager.Device&#039;, &#039;DeviceType&#039;)
+!         if devtype == 2:
+              return d
+      return None
+  
+--- 95,101 ----
+          proxy = bus.get_object(&#039;org.freedesktop.NetworkManager&#039;, d)
+          iface = dbus.Interface(proxy, dbus_interface=&#039;org.freedesktop.DBus.Properties&#039;)
+          devtype = iface.Get(&#039;org.freedesktop.NetworkManager.Device&#039;, &#039;DeviceType&#039;)
+!         if devtype == reqDevType:
+              return d
+      return None
+  
+***************
+*** 135,143 ****
+      print &quot;couldn&#039;t find the connection&quot;
+      sys.exit(1)
+  
+! device_path = get_wifi_device_path()
+  if not device_path:
+!     print &quot;no wifi device found&quot;
+      sys.exit(1)
+  
+  # Is it already activated?
+--- 135,143 ----
+      print &quot;couldn&#039;t find the connection&quot;
+      sys.exit(1)
+  
+! device_path = get_device_path(1) #Pass 2 for wifi
+  if not device_path:
+!     print &quot;no wired device found&quot;
+      sys.exit(1)
+  
+  # Is it already activated?]]></description>
+		<content:encoded><![CDATA[<p>For stock installation of Ubuntu 10.04 (Lucid Lynx) users, Network Manager version 0.8.0, so nmcli is not available and since there may be others like me who like to stick to the LTS, here is a solution.</p>
+<p>Visit <a href="http://cgit.freedesktop.org/NetworkManager/NetworkManager/tree/examples/python?h=NM_0_8" rel="nofollow">http://cgit.freedesktop.org/NetworkManager/NetworkManager/tree/examples/python?h=NM_0_8</a> and download list-connections.py.  Mark it as executable and run it to find the UUID of your VPN connection.</p>
+<p>Also, download vpn.py from the same link. This script is written to connect to VPN over wifi only. So, if you want to connect to VPN over your wireless network then simply execute the script.</p>
+<p>However, for wired a minor modification in vpn.py is required .  Below is the patch for the same.</p>
+<p>*** vpn.py	2011-12-07 02:38:06.205855632 +0530<br />
+&#8212; vpn1.py	2011-12-07 02:39:49.861855276 +0530<br />
+***************<br />
+*** 86,92 ****<br />
+      return None</p>
+<p>! def get_wifi_device_path():<br />
+      bus = dbus.SystemBus()<br />
+      proxy = bus.get_object(&#8216;org.freedesktop.NetworkManager&#8217;, &#8216;/org/freedesktop/NetworkManager&#8217;)<br />
+      iface = dbus.Interface(proxy, dbus_interface=&#8217;org.freedesktop.NetworkManager&#8217;)<br />
+&#8212; 86,92 &#8212;-<br />
+      return None</p>
+<p>! def get_device_path(reqDevType):<br />
+      bus = dbus.SystemBus()<br />
+      proxy = bus.get_object(&#8216;org.freedesktop.NetworkManager&#8217;, &#8216;/org/freedesktop/NetworkManager&#8217;)<br />
+      iface = dbus.Interface(proxy, dbus_interface=&#8217;org.freedesktop.NetworkManager&#8217;)<br />
+***************<br />
+*** 95,101 ****<br />
+          proxy = bus.get_object(&#8216;org.freedesktop.NetworkManager&#8217;, d)<br />
+          iface = dbus.Interface(proxy, dbus_interface=&#8217;org.freedesktop.DBus.Properties&#8217;)<br />
+          devtype = iface.Get(&#8216;org.freedesktop.NetworkManager.Device&#8217;, &#8216;DeviceType&#8217;)<br />
+!         if devtype == 2:<br />
+              return d<br />
+      return None</p>
+<p>&#8212; 95,101 &#8212;-<br />
+          proxy = bus.get_object(&#8216;org.freedesktop.NetworkManager&#8217;, d)<br />
+          iface = dbus.Interface(proxy, dbus_interface=&#8217;org.freedesktop.DBus.Properties&#8217;)<br />
+          devtype = iface.Get(&#8216;org.freedesktop.NetworkManager.Device&#8217;, &#8216;DeviceType&#8217;)<br />
+!         if devtype == reqDevType:<br />
+              return d<br />
+      return None</p>
+<p>***************<br />
+*** 135,143 ****<br />
+      print &#8220;couldn&#8217;t find the connection&#8221;<br />
+      sys.exit(1)</p>
+<p>! device_path = get_wifi_device_path()<br />
+  if not device_path:<br />
+!     print &#8220;no wifi device found&#8221;<br />
+      sys.exit(1)</p>
+<p>  # Is it already activated?<br />
+&#8212; 135,143 &#8212;-<br />
+      print &#8220;couldn&#8217;t find the connection&#8221;<br />
+      sys.exit(1)</p>
+<p>! device_path = get_device_path(1) #Pass 2 for wifi<br />
+  if not device_path:<br />
+!     print &#8220;no wired device found&#8221;<br />
+      sys.exit(1)</p>
+<p>  # Is it already activated?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Starhunter, Firefly&#8217;s little known older cousin. by Amanda</title>
+		<link>https://blog.mithis.net/archives/sci-fi/102-starhunter-fireflys-little-known-older-cousin#comment-7258</link>
+		<dc:creator><![CDATA[Amanda]]></dc:creator>
+		<pubDate>Sat, 09 Jul 2011 07:20:56 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.mithis.net/archives/sci-fi/102-starhunter-fireflys-little-known-older-cousin#comment-7258</guid>
+		<description><![CDATA[Joss as the creators of Starhunter were probably inspired by Blake&#039;s 7]]></description>
+		<content:encoded><![CDATA[<p>Joss as the creators of Starhunter were probably inspired by Blake&#8217;s 7</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Network Manager &#8211; Autostart VPN by Dorian Scholz</title>
+		<link>https://blog.mithis.net/archives/ideas/51-nm-autovpn#comment-7248</link>
+		<dc:creator><![CDATA[Dorian Scholz]]></dc:creator>
+		<pubDate>Wed, 11 May 2011 09:21:29 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.mithis.net/archives/ideas/51-nm-autovpn#comment-7248</guid>
+		<description><![CDATA[Since this page has a high google rank for this topic, here is a more elegant solution possible from NetworkManager 0.8.1 on:
+
+There is now a command line tool nmcli which can interact with the nm-applet and NM directly.
+So connecting to a VPN is as easy as this:
+
+nmcli con up id NAME_OF_THE_VPN]]></description>
+		<content:encoded><![CDATA[<p>Since this page has a high google rank for this topic, here is a more elegant solution possible from NetworkManager 0.8.1 on:</p>
+<p>There is now a command line tool nmcli which can interact with the nm-applet and NM directly.<br />
+So connecting to a VPN is as easy as this:</p>
+<p>nmcli con up id NAME_OF_THE_VPN</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Cool Python, Swaping two variables by Anel</title>
+		<link>https://blog.mithis.net/archives/ideas/64-python-swap-var#comment-7246</link>
+		<dc:creator><![CDATA[Anel]]></dc:creator>
+		<pubDate>Mon, 11 Oct 2010 17:26:30 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.mithis.net/archives/ideas/64-python-swap-var#comment-7246</guid>
+		<description><![CDATA[Haha, nice joke, guys...))]]></description>
+		<content:encoded><![CDATA[<p>Haha, nice joke, guys&#8230;))</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Reading cookies from most Firefox versions&#8230; by mithro</title>
+		<link>https://blog.mithis.net/archives/python/94-reading-cookies-firefox#comment-7245</link>
+		<dc:creator><![CDATA[mithro]]></dc:creator>
+		<pubDate>Mon, 23 Aug 2010 05:49:46 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.mithis.net/?p=94#comment-7245</guid>
+		<description><![CDATA[I&#039;ve updated the code once more, it might work now. As I said I can&#039;t actually test this code as I don&#039;t have a windows computer.]]></description>
+		<content:encoded><![CDATA[<p>I&#8217;ve updated the code once more, it might work now. As I said I can&#8217;t actually test this code as I don&#8217;t have a windows computer.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Reading cookies from most Firefox versions&#8230; by Will</title>
+		<link>https://blog.mithis.net/archives/python/94-reading-cookies-firefox#comment-7244</link>
+		<dc:creator><![CDATA[Will]]></dc:creator>
+		<pubDate>Sun, 22 Aug 2010 19:17:01 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.mithis.net/?p=94#comment-7244</guid>
+		<description><![CDATA[sorry about the previous comment, I went the the site listed in the script:
+
+http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/473846
+
+I see that it uses on line 68:
+
+        ret = _winreg.QueryValueEx(key, name)
+    except WindowsError:
+        return None
+    else:
+        key.Close()
+        if ret[1] == _winreg.REG_EXPAND_SZ:
+            return expandvars(ret[0])
+        else:
+            return ret[0]
+
+which your code closely mirrors :
+
+        result = _winreg.QueryValueEx(key, &#039;AppData&#039;)
+    except WindowsError:
+        return None
+    else:
+        key.Close()
+        if ret[1] == _winreg.REG_EXPAND_SZ:
+            result = win32api.ExpandEnvironmentStrings(ret[0])
+        else:
+            result = ret[0]
+
+
+It&#039;s just that you put result = as opposed to ret = on that first line and then used ret further on.]]></description>
+		<content:encoded><![CDATA[<p>sorry about the previous comment, I went the the site listed in the script:</p>
+<p><a href="http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/473846" rel="nofollow">http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/473846</a></p>
+<p>I see that it uses on line 68:</p>
+<p>        ret = _winreg.QueryValueEx(key, name)<br />
+    except WindowsError:<br />
+        return None<br />
+    else:<br />
+        key.Close()<br />
+        if ret[1] == _winreg.REG_EXPAND_SZ:<br />
+            return expandvars(ret[0])<br />
+        else:<br />
+            return ret[0]</p>
+<p>which your code closely mirrors :</p>
+<p>        result = _winreg.QueryValueEx(key, &#8216;AppData&#8217;)<br />
+    except WindowsError:<br />
+        return None<br />
+    else:<br />
+        key.Close()<br />
+        if ret[1] == _winreg.REG_EXPAND_SZ:<br />
+            result = win32api.ExpandEnvironmentStrings(ret[0])<br />
+        else:<br />
+            result = ret[0]</p>
+<p>It&#8217;s just that you put result = as opposed to ret = on that first line and then used ret further on.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Reading cookies from most Firefox versions&#8230; by Will</title>
+		<link>https://blog.mithis.net/archives/python/94-reading-cookies-firefox#comment-7243</link>
+		<dc:creator><![CDATA[Will]]></dc:creator>
+		<pubDate>Sun, 22 Aug 2010 19:09:19 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.mithis.net/?p=94#comment-7243</guid>
+		<description><![CDATA[I have the same error as Chris
+
+NameError: global name &#039;ret&#039; is not defined
+
+I am currently using the copy of firefox_finder.py and firefox3_repack.py from your repo.]]></description>
+		<content:encoded><![CDATA[<p>I have the same error as Chris</p>
+<p>NameError: global name &#8216;ret&#8217; is not defined</p>
+<p>I am currently using the copy of firefox_finder.py and firefox3_repack.py from your repo.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Reading cookies from most Firefox versions&#8230; by thegreatgrateful</title>
+		<link>https://blog.mithis.net/archives/python/94-reading-cookies-firefox#comment-7241</link>
+		<dc:creator><![CDATA[thegreatgrateful]]></dc:creator>
+		<pubDate>Tue, 08 Jun 2010 23:20:35 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.mithis.net/?p=94#comment-7241</guid>
+		<description><![CDATA[thanks man!]]></description>
+		<content:encoded><![CDATA[<p>thanks man!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>Comment on Tech Talk at Google &#8211; Gaming for Freedom by Mithro rants about stuff : OSDC &#38; orbital death, better late then never&#8230;</title>
+		<link>https://blog.mithis.net/archives/games/82-techtalk-gamingforfreedom#comment-7236</link>
+		<dc:creator><![CDATA[Mithro rants about stuff : OSDC &#38; orbital death, better late then never&#8230;]]></dc:creator>
+		<pubDate>Sat, 16 Jan 2010 09:32:50 +0000</pubDate>
+		<guid isPermaLink="false">http://blog.mithis.net/archives/games/82-techtalk-gamingforfreedom#comment-7236</guid>
+		<description><![CDATA[[...] at the conference I had to produce a paper. This paper puts into writing a lot of what I have been talking about. I wasn&#8217;t going to post it, but after getting a email out of the blue about the topic, [...]]]></description>
+		<content:encoded><![CDATA[<p>[&#8230;] at the conference I had to produce a paper. This paper puts into writing a lot of what I have been talking about. I wasn&#8217;t going to post it, but after getting a email out of the blue about the topic, [&#8230;]</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>
