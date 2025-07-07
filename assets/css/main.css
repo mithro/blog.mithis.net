@@ -346,5 +346,182 @@ input#searchsubmit {
     text-decoration: underline;
 }
 
+/* Responsive Design */
+/* Mobile-first responsive breakpoints */
+
+/* Small tablets and large phones (768px and down) */
+@media (max-width: 768px) {
+    /* Reset fixed-width layouts */
+    body div#wrapper {
+        margin: 0;
+    }
+    
+    body div#container {
+        float: none;
+        margin: 0;
+        width: 100%;
+    }
+    
+    body div#content {
+        margin: 0;
+        padding: 0 1em;
+    }
+    
+    body.single div#container,
+    body.page div#container {
+        margin: 0;
+    }
+    
+    body.single div#content,
+    body.page div#content {
+        margin: 0;
+        padding: 0 1em;
+    }
+    
+    /* Stack sidebar below content */
+    body div.sidebar {
+        float: none;
+        width: 100%;
+        margin-top: 2em;
+        padding: 0 1em;
+    }
+    
+    /* Responsive header */
+    body div#header {
+        margin: 1em 0;
+        padding: 1em;
+        text-align: center;
+    }
+    
+    div#header h1#blog-title {
+        font-size: 1.8em;
+    }
+    
+    div#header div#blog-description {
+        font-size: 1em;
+    }
+    
+    /* Home page responsive layout */
+    body.home div#content div.entry-meta,
+    body.archive div#content div.entry-meta {
+        float: none;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 1em;
+    }
+    
+    body.home div#content div.post-container,
+    body.archive div#content div.post-container {
+        float: none;
+        margin: 0;
+        width: 100%;
+    }
+    
+    body.home div#content div.post-content,
+    body.archive div#content div.post-content {
+        margin: 0;
+    }
+    
+    /* Navigation responsive */
+    body div.navigation div {
+        width: 100%;
+        margin-bottom: 1em;
+    }
+    
+    body div.navigation div.nav-next,
+    body div.navigation div.nav-previous {
+        float: none;
+        text-align: center;
+    }
+    
+    /* Footer responsive */
+    body div#footer {
+        padding: 1em;
+        width: auto;
+        text-align: center;
+    }
+    
+    /* Form elements responsive */
+    input#s {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+/* Very small phones (480px and down) */
+@media (max-width: 480px) {
+    div#header h1#blog-title {
+        font-size: 1.5em;
+    }
+    
+    div#header div#blog-description {
+        font-size: 0.9em;
+    }
+    
+    body div#header {
+        padding: 0.8em;
+    }
+    
+    div#content,
+    body.single div#content,
+    body.page div#content {
+        padding: 0 0.8em;
+    }
+    
+    body div.sidebar {
+        padding: 0 0.8em;
+    }
+    
+    /* Footer breaks on separate lines */
+    body div#footer span.meta-sep {
+        display: none;
+    }
+    
+    body div#footer span {
+        display: block;
+        margin-bottom: 0.5em;
+    }
+}
+
+/* Print styles */
+@media print {
+    body div.sidebar,
+    body div#footer,
+    body div.navigation {
+        display: none;
+    }
+    
+    body div#wrapper,
+    body div#container,
+    body div#content {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        float: none;
+    }
+    
+    body div#header {
+        background: none;
+        color: #000;
+        margin: 0;
+        padding: 1em 0;
+    }
+    
+    div#header h1#blog-title,
+    div#header h1#blog-title a,
+    div#header div#blog-description {
+        color: #000;
+    }
+}
+
+/* High-DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Ensure images scale properly on retina displays */
+    div.entry-content img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
 /* Syntax highlighting styles */
 {% include syntax-highlighting.css %}
