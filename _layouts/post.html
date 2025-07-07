@@ -50,12 +50,17 @@ layout: default
             </div>
         </div><!-- .post -->
         
-        {% if site.comments_enabled %}
-        <!-- Comments section will be added later -->
-        <div id="comments">
-            <!-- Comment system placeholder -->
-        </div>
+        <!-- Comments section -->
+        {% assign post_slug = page.wordpress_url | split: '/' | last %}
+        {% if post_slug == blank %}
+            {% assign post_slug = page.path | split: '/' | last | remove: '.md' | remove: '.markdown' %}
+            {% assign date_parts = post_slug | split: '-' %}
+            {% if date_parts.size > 3 %}
+                {% assign post_slug = date_parts | slice: 3, date_parts.size | join: '-' %}
+            {% endif %}
         {% endif %}
+        
+        {% include comments.html post_slug=post_slug %}
         
         <div id="nav-below" class="navigation">
             <div class="nav-previous">

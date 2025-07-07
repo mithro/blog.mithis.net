@@ -1,0 +1,92 @@
+[
+  {
+    "id": "7628",
+    "post_slug": "95-xcompiling-cygwin-on-linux-for-windows",
+    "author": "Ikem",
+    "date": "2014-05-24T14:49:28+00:00",
+    "content": "<p>The download link is broken.</p> <p>I found this alternative one: </p> <p><a href=\"http://www.thousandparsec.net/~tim/crosstool-cygwin-gcc336.tar.bz2\" rel=\"nofollow\">http://www.thousandparsec.net/~tim/crosstool-cygwin-gcc336.tar.bz2</a></p>",
+    "url": "https://blog.mithis.net/archives/tp/95-xcompiling-cygwin-on-linux-for-windows#comment-7628",
+    "post_url": "https://blog.mithis.net/archives/tp/95-xcompiling-cygwin-on-linux-for-windows"
+  },
+  {
+    "id": "7284",
+    "post_slug": "51-nm-autovpn",
+    "author": "Mahavir",
+    "date": "2011-12-06T21:16:11+00:00",
+    "content": "<p>For stock installation of Ubuntu 10.04 (Lucid Lynx) users, Network Manager version 0.8.0, so nmcli is not available and since there may be others like me who like to stick to the LTS, here is a solution.</p> <p>Visit <a href=\"http://cgit.freedesktop.org/NetworkManager/NetworkManager/tree/examples/python?h=NM_0_8\" rel=\"nofollow\">http://cgit.freedesktop.org/NetworkManager/NetworkManager/tree/examples/python?h=NM_0_8</a> and download list-connections.py. Mark it as executable and run it to find the UUID of your VPN connection.</p> <p>Also, download vpn.py from the same link. This script is written to connect to VPN over wifi only. So, if you want to connect to VPN over your wireless network then simply execute the script.</p> <p>However, for wired a minor modification in vpn.py is required . Below is the patch for the same.</p> <p>*** vpn.py 2011-12-07 02:38:06.205855632 +0530<br /> &#8212; vpn1.py 2011-12-07 02:39:49.861855276 +0530<br /> ***************<br /> *** 86,92 ****<br /> return None</p> <p>! def get_wifi_device_path():<br /> bus = dbus.SystemBus()<br /> proxy = bus.get_object(&#8216;org.freedesktop.NetworkManager&#8217;, &#8216;/org/freedesktop/NetworkManager&#8217;)<br /> iface = dbus.Interface(proxy, dbus_interface=&#8217;org.freedesktop.NetworkManager&#8217;)<br /> &#8212; 86,92 &#8212;-<br /> return None</p> <p>! def get_device_path(reqDevType):<br /> bus = dbus.SystemBus()<br /> proxy = bus.get_object(&#8216;org.freedesktop.NetworkManager&#8217;, &#8216;/org/freedesktop/NetworkManager&#8217;)<br /> iface = dbus.Interface(proxy, dbus_interface=&#8217;org.freedesktop.NetworkManager&#8217;)<br /> ***************<br /> *** 95,101 ****<br /> proxy = bus.get_object(&#8216;org.freedesktop.NetworkManager&#8217;, d)<br /> iface = dbus.Interface(proxy, dbus_interface=&#8217;org.freedesktop.DBus.Properties&#8217;)<br /> devtype = iface.Get(&#8216;org.freedesktop.NetworkManager.Device&#8217;, &#8216;DeviceType&#8217;)<br /> ! if devtype == 2:<br /> return d<br /> return None</p> <p>&#8212; 95,101 &#8212;-<br /> proxy = bus.get_object(&#8216;org.freedesktop.NetworkManager&#8217;, d)<br /> iface = dbus.Interface(proxy, dbus_interface=&#8217;org.freedesktop.DBus.Properties&#8217;)<br /> devtype = iface.Get(&#8216;org.freedesktop.NetworkManager.Device&#8217;, &#8216;DeviceType&#8217;)<br /> ! if devtype == reqDevType:<br /> return d<br /> return None</p> <p>***************<br /> *** 135,143 ****<br /> print &#8220;couldn&#8217;t find the connection&#8221;<br /> sys.exit(1)</p> <p>! device_path = get_wifi_device_path()<br /> if not device_path:<br /> ! print &#8220;no wifi device found&#8221;<br /> sys.exit(1)</p> <p> # Is it already activated?<br /> &#8212; 135,143 &#8212;-<br /> print &#8220;couldn&#8217;t find the connection&#8221;<br /> sys.exit(1)</p> <p>! device_path = get_device_path(1) #Pass 2 for wifi<br /> if not device_path:<br /> ! print &#8220;no wired device found&#8221;<br /> sys.exit(1)</p> <p> # Is it already activated?</p>",
+    "url": "https://blog.mithis.net/archives/ideas/51-nm-autovpn#comment-7284",
+    "post_url": "https://blog.mithis.net/archives/ideas/51-nm-autovpn"
+  },
+  {
+    "id": "7258",
+    "post_slug": "102-starhunter-fireflys-little-known-older-cousin",
+    "author": "Amanda",
+    "date": "2011-07-09T07:20:56+00:00",
+    "content": "<p>Joss as the creators of Starhunter were probably inspired by Blake&#8217;s 7</p>",
+    "url": "https://blog.mithis.net/archives/sci-fi/102-starhunter-fireflys-little-known-older-cousin#comment-7258",
+    "post_url": "https://blog.mithis.net/archives/sci-fi/102-starhunter-fireflys-little-known-older-cousin"
+  },
+  {
+    "id": "7248",
+    "post_slug": "51-nm-autovpn",
+    "author": "Dorian Scholz",
+    "date": "2011-05-11T09:21:29+00:00",
+    "content": "<p>Since this page has a high google rank for this topic, here is a more elegant solution possible from NetworkManager 0.8.1 on:</p> <p>There is now a command line tool nmcli which can interact with the nm-applet and NM directly.<br /> So connecting to a VPN is as easy as this:</p> <p>nmcli con up id NAME_OF_THE_VPN</p>",
+    "url": "https://blog.mithis.net/archives/ideas/51-nm-autovpn#comment-7248",
+    "post_url": "https://blog.mithis.net/archives/ideas/51-nm-autovpn"
+  },
+  {
+    "id": "7246",
+    "post_slug": "64-python-swap-var",
+    "author": "Anel",
+    "date": "2010-10-11T17:26:30+00:00",
+    "content": "<p>Haha, nice joke, guys&#8230;))</p>",
+    "url": "https://blog.mithis.net/archives/ideas/64-python-swap-var#comment-7246",
+    "post_url": "https://blog.mithis.net/archives/ideas/64-python-swap-var"
+  },
+  {
+    "id": "7245",
+    "post_slug": "94-reading-cookies-firefox",
+    "author": "mithro",
+    "date": "2010-08-23T05:49:46+00:00",
+    "content": "<p>I&#8217;ve updated the code once more, it might work now. As I said I can&#8217;t actually test this code as I don&#8217;t have a windows computer.</p>",
+    "url": "https://blog.mithis.net/archives/python/94-reading-cookies-firefox#comment-7245",
+    "post_url": "https://blog.mithis.net/archives/python/94-reading-cookies-firefox"
+  },
+  {
+    "id": "7244",
+    "post_slug": "94-reading-cookies-firefox",
+    "author": "Will",
+    "date": "2010-08-22T19:17:01+00:00",
+    "content": "<p>sorry about the previous comment, I went the the site listed in the script:</p> <p><a href=\"http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/473846\" rel=\"nofollow\">http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/473846</a></p> <p>I see that it uses on line 68:</p> <p> ret = _winreg.QueryValueEx(key, name)<br /> except WindowsError:<br /> return None<br /> else:<br /> key.Close()<br /> if ret[1] == _winreg.REG_EXPAND_SZ:<br /> return expandvars(ret[0])<br /> else:<br /> return ret[0]</p> <p>which your code closely mirrors :</p> <p> result = _winreg.QueryValueEx(key, &#8216;AppData&#8217;)<br /> except WindowsError:<br /> return None<br /> else:<br /> key.Close()<br /> if ret[1] == _winreg.REG_EXPAND_SZ:<br /> result = win32api.ExpandEnvironmentStrings(ret[0])<br /> else:<br /> result = ret[0]</p> <p>It&#8217;s just that you put result = as opposed to ret = on that first line and then used ret further on.</p>",
+    "url": "https://blog.mithis.net/archives/python/94-reading-cookies-firefox#comment-7244",
+    "post_url": "https://blog.mithis.net/archives/python/94-reading-cookies-firefox"
+  },
+  {
+    "id": "7243",
+    "post_slug": "94-reading-cookies-firefox",
+    "author": "Will",
+    "date": "2010-08-22T19:09:19+00:00",
+    "content": "<p>I have the same error as Chris</p> <p>NameError: global name &#8216;ret&#8217; is not defined</p> <p>I am currently using the copy of firefox_finder.py and firefox3_repack.py from your repo.</p>",
+    "url": "https://blog.mithis.net/archives/python/94-reading-cookies-firefox#comment-7243",
+    "post_url": "https://blog.mithis.net/archives/python/94-reading-cookies-firefox"
+  },
+  {
+    "id": "7241",
+    "post_slug": "94-reading-cookies-firefox",
+    "author": "thegreatgrateful",
+    "date": "2010-06-08T23:20:35+00:00",
+    "content": "<p>thanks man!</p>",
+    "url": "https://blog.mithis.net/archives/python/94-reading-cookies-firefox#comment-7241",
+    "post_url": "https://blog.mithis.net/archives/python/94-reading-cookies-firefox"
+  },
+  {
+    "id": "7236",
+    "post_slug": "82-techtalk-gamingforfreedom",
+    "author": "Mithro rants about stuff : OSDC & orbital death, better late then never…",
+    "date": "2010-01-16T09:32:50+00:00",
+    "content": "<p>[&#8230;] at the conference I had to produce a paper. This paper puts into writing a lot of what I have been talking about. I wasn&#8217;t going to post it, but after getting a email out of the blue about the topic, [&#8230;]</p>",
+    "url": "https://blog.mithis.net/archives/games/82-techtalk-gamingforfreedom#comment-7236",
+    "post_url": "https://blog.mithis.net/archives/games/82-techtalk-gamingforfreedom"
+  }
+]

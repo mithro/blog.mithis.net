@@ -1,0 +1,27 @@
+{% comment %}
+Extract post slug from WordPress URL or filename
+This handles the mapping between Jekyll post filenames and WordPress post slugs
+{% endcomment %}
+
+{% if page.wordpress_url %}
+    {% assign url_parts = page.wordpress_url | split: '/' %}
+    {% assign post_slug = url_parts.last %}
+{% else %}
+    {% assign filename = page.path | split: '/' | last %}
+    {% assign post_slug = filename | remove: '.md' | remove: '.markdown' %}
+    {% assign date_parts = post_slug | split: '-' %}
+    {% if date_parts.size > 3 %}
+        {% assign post_slug = date_parts | slice: 3, date_parts.size | join: '-' %}
+    {% endif %}
+{% endif %}
+
+{% comment %}Extract just the numeric part and title from WordPress URLs{% endcomment %}
+{% if post_slug contains '-' %}
+    {% assign slug_parts = post_slug | split: '-' %}
+    {% assign first_part = slug_parts.first %}
+    {% if first_part contains 'archives' or first_part contains 'category' %}
+        {% assign post_slug = slug_parts | slice: 1, slug_parts.size | join: '-' %}
+    {% endif %}
+{% endif %}
+
+{{ post_slug }}

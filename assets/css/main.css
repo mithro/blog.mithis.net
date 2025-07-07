@@ -281,3 +281,67 @@ input#searchsubmit {
 .clearer {
     clear: both;
 }
+
+/* Comments styles */
+.comments-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #ddd;
+}
+
+.comments-section h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.comment {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-left: 3px solid #bbc8d9;
+}
+
+.comment-header {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-author {
+    color: #333;
+    font-weight: bold;
+}
+
+.comment-date {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.comment-content {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.comment-content p {
+    margin-bottom: 10px;
+}
+
+.comment-content p:last-child {
+    margin-bottom: 0;
+}
+
+.comment-link {
+    font-size: 0.85em;
+}
+
+.comment-link a {
+    color: #666;
+    text-decoration: none;
+}
+
+.comment-link a:hover {
+    color: #0066cc;
+    text-decoration: underline;
+}

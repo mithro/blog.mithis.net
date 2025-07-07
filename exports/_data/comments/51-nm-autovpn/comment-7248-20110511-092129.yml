@@ -1,0 +1,8 @@
+date: 2011-05-11 09:21:29 +0000
+id: '7248'
+message: <p>Since this page has a high google rank for this topic, here is a more
+  elegant solution possible from NetworkManager 0.8.1 on:</p> <p>There is now a command
+  line tool nmcli which can interact with the nm-applet and NM directly.<br /> So
+  connecting to a VPN is as easy as this:</p> <p>nmcli con up id NAME_OF_THE_VPN</p>
+name: Dorian Scholz
+wordpress_url: https://blog.mithis.net/archives/ideas/51-nm-autovpn#comment-7248

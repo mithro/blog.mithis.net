@@ -1,0 +1,14 @@
+date: 2010-08-22 19:17:01 +0000
+id: '7244'
+message: <p>sorry about the previous comment, I went the the site listed in the script:</p>
+  <p><a href="http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/473846" rel="nofollow">http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/473846</a></p>
+  <p>I see that it uses on line 68:</p> <p> ret = _winreg.QueryValueEx(key, name)<br
+  /> except WindowsError:<br /> return None<br /> else:<br /> key.Close()<br /> if
+  ret[1] == _winreg.REG_EXPAND_SZ:<br /> return expandvars(ret[0])<br /> else:<br
+  /> return ret[0]</p> <p>which your code closely mirrors :</p> <p> result = _winreg.QueryValueEx(key,
+  &#8216;AppData&#8217;)<br /> except WindowsError:<br /> return None<br /> else:<br
+  /> key.Close()<br /> if ret[1] == _winreg.REG_EXPAND_SZ:<br /> result = win32api.ExpandEnvironmentStrings(ret[0])<br
+  /> else:<br /> result = ret[0]</p> <p>It&#8217;s just that you put result = as opposed
+  to ret = on that first line and then used ret further on.</p>
+name: Will
+wordpress_url: https://blog.mithis.net/archives/python/94-reading-cookies-firefox#comment-7244
