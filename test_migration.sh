@@ -18,10 +18,10 @@ echo "2. Testing content migration..."
 POST_COUNT=$(find _site -name "*.html" -path "*201*" | wc -l)
 echo "   📄 Generated $POST_COUNT post pages"
 
-if [ "$POST_COUNT" -ge 10 ]; then
-    echo "   ✅ Post count matches expected (10+ posts)"
+if [ "$POST_COUNT" -ge 18 ]; then
+    echo "   ✅ Post count matches expected (18+ posts from comprehensive extraction)"
 else
-    echo "   ❌ Post count below expected"
+    echo "   ❌ Post count below expected (got $POST_COUNT, expected 18+)"
 fi
 
 # Test 3: Theme verification

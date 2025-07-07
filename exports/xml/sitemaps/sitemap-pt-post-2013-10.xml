@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://blog.mithis.net/wp-content/plugins/google-sitemap-generator/sitemap.xsl"?><!-- sitemap-generator-url="http://www.arnebrachhold.de" sitemap-generator-version="4.0.8" -->
+<!-- generated-on="July 7, 2025 6:38 am" -->
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">	<url>
+		<loc>https://blog.mithis.net/archives/ubuntu/1833-connecting-to-a-fritzbox-under-linux-using-vpnc</loc>
+		<lastmod>2013-10-06T13:05:02+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+</urlset><!-- Request ID: ac90123309f6c99b16aa492c46a1275a; Queries for sitemap: 8; Total queries: 27; Seconds: 0.02; Memory for sitemap: 2.78515625MB; Total memory: 14.25390625MB -->

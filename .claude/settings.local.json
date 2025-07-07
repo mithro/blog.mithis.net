@@ -29,7 +29,12 @@
       "Bash(python3:*)",
       "Bash(./scripts/download_rss.sh:*)",
       "Bash(grep:*)",
-      "Bash(pkill:*)"
+      "Bash(pkill:*)",
+      "Bash(~/.local/share/gem/ruby/3.3.0/bin/jekyll build:*)",
+      "Bash(~/.local/share/gem/ruby/3.3.0/bin/jekyll serve:*)",
+      "Bash(curl:*)",
+      "Bash(kill:*)",
+      "Bash(./test_migration.sh:*)"
     ],
     "deny": []
   }

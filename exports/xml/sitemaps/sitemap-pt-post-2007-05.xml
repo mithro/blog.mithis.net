@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://blog.mithis.net/wp-content/plugins/google-sitemap-generator/sitemap.xsl"?><!-- sitemap-generator-url="http://www.arnebrachhold.de" sitemap-generator-version="4.0.8" -->
+<!-- generated-on="July 7, 2025 6:38 am" -->
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">	<url>
+		<loc>https://blog.mithis.net/archives/uni/41-cfxs-all-done</loc>
+		<lastmod>2007-05-19T06:56:06+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/pcb/40-almost-there</loc>
+		<lastmod>2007-05-09T12:09:04+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+</urlset><!-- Request ID: 1b2c86a7e6670a9b589c90ec7a0e4eba; Queries for sitemap: 11; Total queries: 30; Seconds: 0.02; Memory for sitemap: 2.78515625MB; Total memory: 14.25390625MB -->

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://blog.mithis.net/wp-content/plugins/google-sitemap-generator/sitemap.xsl"?><!-- sitemap-generator-url="http://www.arnebrachhold.de" sitemap-generator-version="4.0.8" -->
+<!-- generated-on="July 7, 2025 6:38 am" -->
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">	<url>
+		<loc>https://blog.mithis.net/archives/uncategorized/28-liferea-bug</loc>
+		<lastmod>2007-04-22T07:19:41+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/tp/27-summer-of-code-woo</loc>
+		<lastmod>2007-04-25T15:08:49+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/highlights/26-i-want-a-cool-desktop</loc>
+		<lastmod>2007-03-11T05:45:06+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/pcb/23-eagle2geda-symbol-converter</loc>
+		<lastmod>2007-04-22T04:19:31+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/ideas/21-eagle-for-pcb</loc>
+		<lastmod>2007-03-24T14:08:53+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/ideas/20-graphical-programming</loc>
+		<lastmod>2007-03-01T11:59:21+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+</urlset><!-- Request ID: a75b12f85936b7b482114c5d561c2ae6; Queries for sitemap: 22; Total queries: 41; Seconds: 0.03; Memory for sitemap: 2.78515625MB; Total memory: 14.25390625MB -->
