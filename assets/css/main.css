@@ -345,3 +345,6 @@ input#searchsubmit {
     color: #0066cc;
     text-decoration: underline;
 }
+
+/* Syntax highlighting styles */
+{% include syntax-highlighting.css %}
