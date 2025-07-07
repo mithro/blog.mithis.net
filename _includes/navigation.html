@@ -1,0 +1,17 @@
+<div id="globalnav">
+    <ul id="menu">
+        {% unless page.url == '/' %}
+        <li class="page_item_home home-link">
+            <a href="{{ '/' | relative_url }}" title="{{ site.title | escape }}" rel="home">Home</a>
+        </li>
+        {% endunless %}
+        {% assign pages_list = site.pages | sort: 'order' %}
+        {% for page in pages_list %}
+            {% if page.title and page.navigation != false %}
+            <li class="page_item">
+                <a href="{{ page.url | relative_url }}">{{ page.title | escape }}</a>
+            </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>

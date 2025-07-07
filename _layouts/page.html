@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<div id="container">
+    <div id="content" class="hfeed">
+        
+        <div id="page-{{ page.slug }}" class="hentry page">
+            <h2 class="page-title">{{ page.title | escape }}</h2>
+            
+            <div class="entry-content">
+                {{ content }}
+            </div>
+        </div><!-- .page -->
+        
+        {% include sidebar.html %}
+        
+    </div>
+</div>

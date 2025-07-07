@@ -1,0 +1,283 @@
+---
+---
+
+/* Barthelme Jekyll Theme - Based on original WordPress theme by PlainTXT.org */
+
+/* Basic Styles */
+body {
+    background: #fff;
+    color: #222;
+    line-height: 150%;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container Layout */
+body div#wrapper {
+    margin: 0 8em 0 0;
+}
+
+body div#container {
+    float: right;
+    margin: 0 0 5em -16em;
+    width: 100%;
+}
+
+body div#content {
+    margin: 0 0 0 16em;
+}
+
+body.single div#container,
+body.page div#container {
+    margin: 0 0 6em -20em;
+}
+
+body.single div#content,
+body.page div#content {
+    margin: 0 0 0 20em;
+}
+
+/* Header */
+body div#header {
+    margin: 3em -2em 3em 0;
+    padding: 1.2em 0 1.2em 3em;
+    cursor: pointer;
+    background: #bbc8d9;
+}
+
+div#header h1#blog-title {
+    font-size: 2.2em;
+    font-weight: 400;
+    line-height: 133%;
+    margin: 0;
+    color: #fefefe;
+}
+
+div#header h1#blog-title a {
+    color: #fefefe;
+    outline: none;
+    text-decoration: none;
+}
+
+div#header div#blog-description {
+    font-size: 1.3em;
+    margin: 0.1em 0;
+    color: #fefefe;
+}
+
+/* Navigation */
+div#globalnav {
+    display: none; /* Will be styled later */
+}
+
+/* Sidebar */
+body div.sidebar {
+    float: left;
+    overflow: hidden;
+    width: 15em;
+}
+
+div.sidebar a,
+div.sidebar a:link,
+div.sidebar a:visited {
+    color: #888;
+    text-decoration: none;
+}
+
+div.sidebar a:hover {
+    color: #2f4e6f;
+    text-decoration: underline;
+}
+
+/* Content Styling */
+div#content .entry-title {
+    line-height: 150%;
+    margin: 0;
+}
+
+div#content .entry-title a,
+div#content .page-title a {
+    text-decoration: none;
+}
+
+div#content a:visited {
+    color: #7f89a6;
+}
+
+/* Post Meta */
+body.single div.entry-date,
+body.single div.entry-meta {
+    color: #888;
+    font-size: 1em;
+    line-height: 150%;
+    text-align: center;
+}
+
+body.single .entry-date {
+    word-spacing: 0.5em;
+}
+
+body.single div.entry-meta {
+    border-bottom: 1px solid #888;
+    border-top: 1px solid #888;
+    line-height: 175%;
+    margin: 2em 0;
+    padding: 0.5em 0.2em;
+}
+
+/* Post Titles */
+body.single div.hentry h2.entry-title,
+body.page div.hentry h2.entry-title {
+    font-size: 1.7em;
+    font-weight: 400;
+    text-align: center;
+}
+
+div#content .page-title {
+    font-size: 1.7em;
+    margin: 0;
+    text-align: center;
+}
+
+/* Content Formatting */
+div.entry-content p {
+    margin: 1em 0;
+}
+
+div.entry-content blockquote {
+    border-left: 1em solid #cfd5dd;
+    color: #444;
+    font-size: 0.9em;
+    line-height: 150%;
+    padding: 0 0 0 0.7em;
+}
+
+div.entry-content code,
+div.entry-content pre {
+    font: 1em/150% "courier new", courier, monospace;
+}
+
+/* Images */
+body img {
+    border: none;
+}
+
+div.entry-content img {
+    overflow: hidden;
+    max-width: 99%;
+}
+
+div.entry-content .alignleft,
+img.alignleft {
+    float: left;
+    margin: 0.5em 1em 0.5em 0;
+}
+
+div.entry-content .alignright,
+img.alignright {
+    float: right;
+    margin: 0.5em 0 0.5em 1em;
+}
+
+div.entry-content .center,
+div.entry-content .aligncenter,
+img.aligncenter {
+    display: block;
+    margin: 0.5em auto;
+    text-align: center;
+}
+
+/* Navigation */
+body div.navigation {
+    clear: both;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    margin: 3em 0;
+}
+
+body div.navigation div {
+    width: 45%;
+}
+
+body div.navigation div.nav-next {
+    float: right;
+    text-align: left;
+}
+
+body div.navigation div.nav-previous {
+    float: left;
+    text-align: right;
+}
+
+/* Footer */
+body div#footer {
+    clear: both;
+    color: #888;
+    font-size: 0.9em;
+    padding: 0 0 1.5em 3%;
+    width: 90%;
+}
+
+div#footer a,
+div#footer a:link,
+div#footer a:visited {
+    color: #888;
+    text-decoration: underline;
+}
+
+div#footer a:hover {
+    color: #2f4e6f;
+    text-decoration: none;
+}
+
+div#footer span.meta-sep {
+    margin: 0 0.5em;
+}
+
+/* Accessibility */
+body div.access {
+    display: none;
+}
+
+/* Home Page Specific */
+body.home div#content div.entry-meta,
+body.archive div#content div.entry-meta {
+    float: left;
+    overflow: hidden;
+    text-align: right;
+    width: 10em;
+}
+
+body.home div#content div.post-container,
+body.archive div#content div.post-container {
+    float: right;
+    margin: 0 0 4em -11.5em;
+    width: 100%;
+}
+
+body.home div#content div.post-content,
+body.archive div#content div.post-content {
+    clear: both;
+    margin: 0 0 0 11.5em;
+}
+
+body.home div#content div.entry-meta abbr.published,
+body.archive div#content div.entry-meta abbr.published {
+    color: #444;
+    font-size: 1.1em;
+    word-spacing: 0.2em;
+}
+
+/* Form Elements */
+input#s,
+input#searchsubmit {
+    cursor: pointer;
+}
+
+/* Clean up */
+.clearer {
+    clear: both;
+}

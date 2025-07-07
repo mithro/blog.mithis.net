@@ -1,0 +1,76 @@
+---
+layout: default
+---
+
+<div id="container">
+    <div id="content" class="hfeed">
+        
+        <div id="post-{{ page.slug }}" class="hentry single">
+            <div class="entry-date">
+                <span class="meta-sep">{</span> 
+                <abbr class="published" title="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y %m %d' }}</abbr> 
+                <span class="meta-sep">}</span>
+            </div>
+            
+            <h2 class="entry-title">{{ page.title | escape }}</h2>
+            
+            <div class="entry-content">
+                {{ content }}
+            </div>
+            
+            <div class="entry-meta">
+                <span class="entry-published">
+                    Posted by {{ site.title | escape }} on 
+                    <abbr class="published" title="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%A, %B %d, %Y,' }}</abbr> 
+                    at {{ page.date | date: '%H:%M' }}.
+                </span>
+                
+                {% if page.categories.size > 0 %}
+                <span class="cat-links">
+                    Filed under 
+                    {% for category in page.categories %}
+                        <a href="{{ '/category/' | append: category | relative_url }}">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+                    {% endfor %}.
+                </span>
+                {% endif %}
+                
+                {% if page.tags.size > 0 %}
+                <span class="tag-links">
+                    Tagged 
+                    {% for tag in page.tags %}
+                        <a href="{{ '/tag/' | append: tag | relative_url }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+                    {% endfor %}.
+                </span>
+                {% endif %}
+                
+                <span class="entry-rsslink">
+                    Follow any responses to this post with the 
+                    <a href="{{ '/feed.xml' | relative_url }}" title="Comments RSS" rel="alternate" type="application/rss+xml">RSS feed</a>.
+                </span>
+            </div>
+        </div><!-- .post -->
+        
+        {% if site.comments_enabled %}
+        <!-- Comments section will be added later -->
+        <div id="comments">
+            <!-- Comment system placeholder -->
+        </div>
+        {% endif %}
+        
+        <div id="nav-below" class="navigation">
+            <div class="nav-previous">
+                {% if page.previous.url %}
+                <a href="{{ page.previous.url | relative_url }}">&laquo; {{ page.previous.title | escape }}</a>
+                {% endif %}
+            </div>
+            <div class="nav-next">
+                {% if page.next.url %}
+                <a href="{{ page.next.url | relative_url }}">{{ page.next.title | escape }} &raquo;</a>
+                {% endif %}
+            </div>
+        </div>
+        
+        {% include sidebar.html %}
+        
+    </div>
+</div>
