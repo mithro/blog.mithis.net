@@ -1,0 +1,52 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>{{ site.url }}{{ site.baseurl }}/</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Pages -->
+  {% for page in site.pages %}
+    {% unless page.url contains 'feed' or page.url contains 'sitemap' %}
+    <url>
+      <loc>{{ page.url | prepend: site.baseurl | prepend: site.url }}</loc>
+      {% if page.date %}
+        <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
+      {% else %}
+        <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+      {% endif %}
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+    </url>
+    {% endunless %}
+  {% endfor %}
+  
+  <!-- Posts -->
+  {% for post in site.posts %}
+    <url>
+      <loc>{{ post.url | prepend: site.baseurl | prepend: site.url }}</loc>
+      <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+      <changefreq>never</changefreq>
+      <priority>0.9</priority>
+    </url>
+  {% endfor %}
+  
+  <!-- Categories -->
+  {% assign categories = site.posts | map: 'categories' | join: ',' | split: ',' | uniq %}
+  {% for category in categories %}
+    {% if category != '' %}
+    <url>
+      <loc>{{ site.url }}{{ site.baseurl }}/category/{{ category | slugify }}/</loc>
+      <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.6</priority>
+    </url>
+    {% endif %}
+  {% endfor %}
+</urlset>

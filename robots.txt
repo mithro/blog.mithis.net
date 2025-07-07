@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: {{ site.url }}/sitemap.xml
+Sitemap: {{ site.url }}/feed.xml
+
+# Disallow admin-style paths that don't exist but might be crawled
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/
+Disallow: /admin/
+
+# Allow all public content
+Allow: /category/
+Allow: /tag/
+Allow: /about/
+Allow: /search/

@@ -1,0 +1,30 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Comments for {{ site.title | xml_escape }}</title>
+    <description>Latest comments on {{ site.title | xml_escape }}</description>
+    <link>{{ site.url }}{{ site.baseurl }}/</link>
+    <atom:link href="{{ "/comments/feed.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml"/>
+    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    <generator>Jekyll v{{ jekyll.version }}</generator>
+    <language>en-US</language>
+    
+    {% comment %}
+    This would typically show recent comments, but since we're using static comments
+    from the WordPress migration, we'll show a message about the new comment system.
+    {% endcomment %}
+    
+    <item>
+      <title>Comments now preserved from WordPress migration</title>
+      <description>Comments from the original WordPress blog have been migrated and preserved as static files. New commenting may be available via modern solutions like Utterances or Disqus.</description>
+      <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
+      <link>{{ site.url }}{{ site.baseurl }}/about/#comments</link>
+      <guid isPermaLink="false">comments-migration-notice</guid>
+      <dc:creator>{{ site.title | xml_escape }}</dc:creator>
+    </item>
+  </channel>
+</rss>

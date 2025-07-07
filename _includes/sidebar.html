@@ -55,6 +55,15 @@
             <h3>RSS Feeds</h3>
             <ul>
                 <li><a href="{{ '/feed.xml' | relative_url }}" title="{{ site.title | escape }} RSS Feed" rel="alternate" type="application/rss+xml">All posts</a></li>
+                <li><a href="{{ '/comments/feed.xml' | relative_url }}" title="Comments RSS Feed" rel="alternate" type="application/rss+xml">Comments</a></li>
+                {% if site.categories.size > 0 %}
+                {% assign major_categories = "Timvideos Us,Hardware,Useful Bits" | split: "," %}
+                {% for cat_name in major_categories %}
+                    {% if site.categories[cat_name] %}
+                    <li><a href="{{ '/category/' | append: cat_name | slugify | append: '/feed.xml' | relative_url }}" title="{{ cat_name }} RSS Feed" rel="alternate" type="application/rss+xml">{{ cat_name }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% endif %}
             </ul>
         </li>
         
