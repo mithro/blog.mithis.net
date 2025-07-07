@@ -27,6 +27,34 @@ The project follows a 4-phase migration approach:
 
 **CRITICAL**: Always check the current working directory before running any commands. Use `pwd` to verify you are in the correct location before executing any bash commands, file operations, or git commands.
 
+## Git Workflow Guidelines
+
+**CRITICAL**: Commit often with small, focused changes:
+
+- **Commit frequently**: After completing each logical unit of work (fixing one issue, adding one feature, completing one sub-task)
+- **Keep commits small**: Each commit should represent a single, atomic change that can be easily understood and reverted if needed
+- **Write clear commit messages**: 
+  - Use imperative mood ("Add feature" not "Added feature")
+  - First line: brief summary (50 chars or less)
+  - Include context about what changed and why
+  - Reference task IDs or issue numbers when applicable
+- **Stage changes thoughtfully**: Use `git add` to stage only related changes together
+- **Review before committing**: Use `git diff --staged` to review what you're about to commit
+
+### Example Good Commits:
+```
+Add Jekyll site structure and basic _config.yml
+Convert Barthelme header.php to Jekyll include
+Fix responsive navigation for mobile devices
+Update migration plan with Phase 1 detailed sub-tasks
+```
+
+### Avoid:
+- Large commits with multiple unrelated changes
+- Vague commit messages like "fix stuff" or "update files"
+- Committing work-in-progress or broken code
+- Including multiple features or fixes in one commit
+
 ## Recommended Tools for Migration Project
 
 ### Essential Development Tools
@@ -179,6 +207,9 @@ When working on migration tasks:
 - **Use browser dev tools** extensively for CSS extraction and debugging
 - **Run validation tools** frequently to catch issues early
 - **Batch process images** with ImageMagick for consistent optimization
+- **Commit early and often** - don't wait until large features are complete
+- **Use `git status`** frequently to track changes and ensure nothing is missed
+- **Review staged changes** with `git diff --staged` before each commit
 
 ## SEO and URL Considerations
 
