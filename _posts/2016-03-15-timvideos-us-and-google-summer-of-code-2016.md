@@ -1,12 +1,17 @@
 ---
-layout: "post"
-title: "TimVideos.us and Google Summer of Code 2016!"
-date: "2016-03-15 17:32:13 +1000"
+author: mithro
 categories:
-  - Summer Of Code
-author: "mithro"
-excerpt: "This is a cross post from the HDMI2USB website. TimVideos.us and Google Summer of Code 2016! The TimVideos.us project is happy to announce that it has been selected to participate..."
-wordpress_url: "https://blog.mithis.net/archives/summer-of-code/2169-timvideos-us-and-google-summer-of-code-2016"
+- Summer Of Code
+date: 2016-03-15 17:32:13 +1000
+excerpt: This is a cross post from the HDMI2USB website. TimVideos.us and Google Summer
+  of Code 2016! The TimVideos.us project is happy to announce that it has been selected
+  to participate...
+layout: post
+permalink: /archives/summer-of-code/2169-timvideos-us-and-google-summer-of-code-2016
+title: TimVideos.us and Google Summer of Code 2016!
+wordpress_category: summer-of-code
+wordpress_id: 2169
+wordpress_url: https://blog.mithis.net/archives/summer-of-code/2169-timvideos-us-and-google-summer-of-code-2016
 ---
 
 <div class="entry-content">

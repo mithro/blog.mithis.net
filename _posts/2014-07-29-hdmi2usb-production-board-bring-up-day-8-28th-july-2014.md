@@ -1,12 +1,17 @@
 ---
-layout: "post"
-title: "HDMI2USB – Production Board Bring Up – Day 8 (28th July 2014)"
-date: "2014-07-29 00:13:02 +1000"
+author: mithro
 categories:
-  - Timvideos Us
-author: "mithro"
-excerpt: "Updated the HDMI2USB variant spreadsheet with new Numato board pin out. Successfully generated a HDMI2USB firmware for Numato board with new pin information. That fixes the constraint issue! Successfully generated..."
-wordpress_url: "https://blog.mithis.net/archives/timvideos-us/2009-hdmi2usb-production-board-bring-up-day-8-28th-july-2014"
+- Timvideos Us
+date: 2014-07-29 00:13:02 +1000
+excerpt: Updated the HDMI2USB variant spreadsheet with new Numato board pin out. Successfully
+  generated a HDMI2USB firmware for Numato board with new pin information. That fixes
+  the constraint issue! Successfully generated...
+layout: post
+permalink: /archives/timvideos-us/2009-hdmi2usb-production-board-bring-up-day-8-28th-july-2014
+title: HDMI2USB – Production Board Bring Up – Day 8 (28th July 2014)
+wordpress_category: timvideos-us
+wordpress_id: 2009
+wordpress_url: https://blog.mithis.net/archives/timvideos-us/2009-hdmi2usb-production-board-bring-up-day-8-28th-july-2014
 ---
 
 <div class="entry-content">

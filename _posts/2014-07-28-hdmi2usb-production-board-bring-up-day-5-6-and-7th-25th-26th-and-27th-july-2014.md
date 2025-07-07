@@ -1,12 +1,18 @@
 ---
-layout: "post"
-title: "HDMI2USB – Production Board Bring Up – Day 5, 6 and 7 (25th, 26th and 27th July 2014)"
-date: "2014-07-28 23:39:31 +1000"
+author: mithro
 categories:
-  - Timvideos Us
-author: "mithro"
-excerpt: "25th July 2014 Setup xob‘s hacked up colormake in our build system. Nice colorized output now! Fought more with ERROR:Place - Constraint Resolved NO placeable site for hdmiMatri_Comp/dvi_rx1/ioclk_buf issue Watched..."
-wordpress_url: "https://blog.mithis.net/archives/timvideos-us/2003-hdmi2usb-production-board-bring-up-day-5-6-and-7th-25th-26th-and-27th-july-2014"
+- Timvideos Us
+date: 2014-07-28 23:39:31 +1000
+excerpt: 25th July 2014 Setup xob‘s hacked up colormake in our build system. Nice
+  colorized output now! Fought more with ERROR:Place - Constraint Resolved NO placeable
+  site for hdmiMatri_Comp/dvi_rx1/ioclk_buf issue Watched...
+layout: post
+permalink: /archives/timvideos-us/2003-hdmi2usb-production-board-bring-up-day-5-6-and-7th-25th-26th-and-27th-july-2014
+title: HDMI2USB – Production Board Bring Up – Day 5, 6 and 7 (25th, 26th and 27th
+  July 2014)
+wordpress_category: timvideos-us
+wordpress_id: 2003
+wordpress_url: https://blog.mithis.net/archives/timvideos-us/2003-hdmi2usb-production-board-bring-up-day-5-6-and-7th-25th-26th-and-27th-july-2014
 ---
 
 <div class="entry-content">

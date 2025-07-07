@@ -1,12 +1,17 @@
 ---
-layout: "post"
-title: "TimVideos.us 2016 New Year’s Resolutions"
-date: "2016-01-15 01:00:58 +1000"
+author: mithro
 categories:
-  - Lca
-author: "mithro"
-excerpt: "This is a cross post from the HDMI2USB website about my plans for 2016 and the TimVideos project. Last year was an exciting time for my personal projects! TimVideos.us 2016..."
-wordpress_url: "https://blog.mithis.net/archives/lca/2167-timvideos-us-2016-new-years-resolutions"
+- Lca
+date: 2016-01-15 01:00:58 +1000
+excerpt: This is a cross post from the HDMI2USB website about my plans for 2016 and
+  the TimVideos project. Last year was an exciting time for my personal projects!
+  TimVideos.us 2016...
+layout: post
+permalink: /archives/lca/2167-timvideos-us-2016-new-years-resolutions
+title: TimVideos.us 2016 New Year’s Resolutions
+wordpress_category: lca
+wordpress_id: 2167
+wordpress_url: https://blog.mithis.net/archives/lca/2167-timvideos-us-2016-new-years-resolutions
 ---
 
 <div class="entry-content">

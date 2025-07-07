@@ -1,12 +1,17 @@
 ---
-layout: "post"
-title: "HDMI2USB – Production Board Bring Up – Day 1 (21st July 2014)"
-date: "2014-07-22 11:16:49 +1000"
+author: mithro
 categories:
-  - Timvideos Us
-author: "mithro"
-excerpt: "Wrote snippets for the last 3 days. slidelint work Further updated some slidelint site documentation. Committed the slidelint nginx configuration. Got set up in Joel and Rusty’s coworking space. Explained..."
-wordpress_url: "https://blog.mithis.net/archives/timvideos-us/1985-hdmi2usb-production-board-bring-up-day-1-21st-july-2014"
+- Timvideos Us
+date: 2014-07-22 11:16:49 +1000
+excerpt: Wrote snippets for the last 3 days. slidelint work Further updated some slidelint
+  site documentation. Committed the slidelint nginx configuration. Got set up in Joel
+  and Rusty’s coworking space. Explained...
+layout: post
+permalink: /archives/timvideos-us/1985-hdmi2usb-production-board-bring-up-day-1-21st-july-2014
+title: HDMI2USB – Production Board Bring Up – Day 1 (21st July 2014)
+wordpress_category: timvideos-us
+wordpress_id: 1985
+wordpress_url: https://blog.mithis.net/archives/timvideos-us/1985-hdmi2usb-production-board-bring-up-day-1-21st-july-2014
 ---
 
 <div class="entry-content">

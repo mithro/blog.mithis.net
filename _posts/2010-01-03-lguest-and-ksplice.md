@@ -1,12 +1,17 @@
 ---
-layout: "post"
-title: "Can haz kernel patches?"
-date: "2010-01-03 13:05:37 +1000"
+author: mithro
 categories:
-  - Lca
-author: "mithro"
-excerpt: "As it’s only a couple of weeks till another Linux.conf.au is underway, I thought I better post this draft from the last one! This year LCA is in Wellington, New..."
-wordpress_url: "https://blog.mithis.net/archives/lca/96-lguest-and-ksplice"
+- Lca
+date: 2010-01-03 13:05:37 +1000
+excerpt: As it’s only a couple of weeks till another Linux.conf.au is underway, I
+  thought I better post this draft from the last one! This year LCA is in Wellington,
+  New...
+layout: post
+permalink: /archives/lca/96-lguest-and-ksplice
+title: Can haz kernel patches?
+wordpress_category: lca
+wordpress_id: 96
+wordpress_url: https://blog.mithis.net/archives/lca/96-lguest-and-ksplice
 ---
 
 <div class="entry-content">

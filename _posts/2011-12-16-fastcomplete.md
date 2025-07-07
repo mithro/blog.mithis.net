@@ -1,12 +1,17 @@
 ---
-layout: "post"
-title: "FastComplete, making bash completion fast on remote file systems"
-date: "2011-12-16 14:05:46 +1000"
+author: mithro
 categories:
-  - Useful Bits
-author: "mithro"
-excerpt: "Here at Google we have quite a few remote file systems which contain various tools we use in our day-to-day work. As typing sucks we generally want the tools in..."
-wordpress_url: "https://blog.mithis.net/archives/useful-bits/407-fastcomplete"
+- Useful Bits
+date: 2011-12-16 14:05:46 +1000
+excerpt: Here at Google we have quite a few remote file systems which contain various
+  tools we use in our day-to-day work. As typing sucks we generally want the tools
+  in...
+layout: post
+permalink: /archives/useful-bits/407-fastcomplete
+title: FastComplete, making bash completion fast on remote file systems
+wordpress_category: useful-bits
+wordpress_id: 407
+wordpress_url: https://blog.mithis.net/archives/useful-bits/407-fastcomplete
 ---
 
 <div class="entry-content">

@@ -1,12 +1,17 @@
 ---
-layout: "post"
-title: "First V2 “HDMI2USB Production Board” constructed!"
-date: "2015-07-05 14:47:57 +1000"
+author: mithro
 categories:
-  - Timvideos Us
-author: "mithro"
-excerpt: "For the last year and a half, I have been working with Numato Labs to create a “HDMI2USB Production Board” for our HDMI2USB firmware that was originally developed on the..."
-wordpress_url: "https://blog.mithis.net/archives/timvideos-us/2045-first-v2-hdmi2usb-production-board-constructed"
+- Timvideos Us
+date: 2015-07-05 14:47:57 +1000
+excerpt: For the last year and a half, I have been working with Numato Labs to create
+  a “HDMI2USB Production Board” for our HDMI2USB firmware that was originally developed
+  on the...
+layout: post
+permalink: /archives/timvideos-us/2045-first-v2-hdmi2usb-production-board-constructed
+title: First V2 “HDMI2USB Production Board” constructed!
+wordpress_category: timvideos-us
+wordpress_id: 2045
+wordpress_url: https://blog.mithis.net/archives/timvideos-us/2045-first-v2-hdmi2usb-production-board-constructed
 ---
 
 <div class="entry-content">

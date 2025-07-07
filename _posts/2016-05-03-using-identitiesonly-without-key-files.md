@@ -1,12 +1,17 @@
 ---
-layout: "post"
-title: "Using “IdentitiesOnly” without key files"
-date: "2016-05-03 12:26:52 +1000"
+author: mithro
 categories:
-  - Useful Bits
-author: "mithro"
-excerpt: "If you want to restrict the keys that ssh tries when connecting to a server, you need to use the IdentityFile and IdentitiesOnly configuration options in your ssh_config. However, a..."
-wordpress_url: "https://blog.mithis.net/archives/useful-bits/2172-using-identitiesonly-without-key-files"
+- Useful Bits
+date: 2016-05-03 12:26:52 +1000
+excerpt: If you want to restrict the keys that ssh tries when connecting to a server,
+  you need to use the IdentityFile and IdentitiesOnly configuration options in your
+  ssh_config. However, a...
+layout: post
+permalink: /archives/useful-bits/2172-using-identitiesonly-without-key-files
+title: Using “IdentitiesOnly” without key files
+wordpress_category: useful-bits
+wordpress_id: 2172
+wordpress_url: https://blog.mithis.net/archives/useful-bits/2172-using-identitiesonly-without-key-files
 ---
 
 <div class="entry-content">

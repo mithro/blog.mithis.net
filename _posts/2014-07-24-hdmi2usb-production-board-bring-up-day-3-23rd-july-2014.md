@@ -1,12 +1,17 @@
 ---
-layout: "post"
-title: "HDMI2USB – Production Board Bring Up – Day 3 (23rd July 2014)"
-date: "2014-07-24 01:54:52 +1000"
+author: mithro
 categories:
-  - Timvideos Us
-author: "mithro"
-excerpt: "Looked into if Travis CI has IPv6 connectivity. It appears so! Investigated git server side hooks as a method to run CI on build.timvideos.tv Travis-CI does a git push to..."
-wordpress_url: "https://blog.mithis.net/archives/timvideos-us/1993-hdmi2usb-production-board-bring-up-day-3-23rd-july-2014"
+- Timvideos Us
+date: 2014-07-24 01:54:52 +1000
+excerpt: Looked into if Travis CI has IPv6 connectivity. It appears so! Investigated
+  git server side hooks as a method to run CI on build.timvideos.tv Travis-CI does
+  a git push to...
+layout: post
+permalink: /archives/timvideos-us/1993-hdmi2usb-production-board-bring-up-day-3-23rd-july-2014
+title: HDMI2USB – Production Board Bring Up – Day 3 (23rd July 2014)
+wordpress_category: timvideos-us
+wordpress_id: 1993
+wordpress_url: https://blog.mithis.net/archives/timvideos-us/1993-hdmi2usb-production-board-bring-up-day-3-23rd-july-2014
 ---
 
 <div class="entry-content">

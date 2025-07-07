@@ -1,12 +1,17 @@
 ---
-layout: "post"
-title: "Connecting to a Fritz!Box under Linux using vpnc"
-date: "2013-10-06 23:44:04 +1000"
+author: mithro
 categories:
-  - Ubuntu
-author: "mithro"
-excerpt: "I have two Fritz!Box 7390 (one at my place and one at my parents primary residence) and one Fritz!Box 7270 devices (the house they are building). They are pretty reasonable..."
-wordpress_url: "https://blog.mithis.net/archives/ubuntu/1833-connecting-to-a-fritzbox-under-linux-using-vpnc"
+- Ubuntu
+date: 2013-10-06 23:44:04 +1000
+excerpt: I have two Fritz!Box 7390 (one at my place and one at my parents primary
+  residence) and one Fritz!Box 7270 devices (the house they are building). They are
+  pretty reasonable...
+layout: post
+permalink: /archives/ubuntu/1833-connecting-to-a-fritzbox-under-linux-using-vpnc
+title: Connecting to a Fritz!Box under Linux using vpnc
+wordpress_category: ubuntu
+wordpress_id: 1833
+wordpress_url: https://blog.mithis.net/archives/ubuntu/1833-connecting-to-a-fritzbox-under-linux-using-vpnc
 ---
 
 <div class="entry-content">

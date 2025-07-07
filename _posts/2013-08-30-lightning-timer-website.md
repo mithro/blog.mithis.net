@@ -1,12 +1,17 @@
 ---
-layout: "post"
-title: "Lightning Timer website"
-date: "2013-08-30 19:04:10 +1000"
+author: mithro
 categories:
-  - Useful Bits
-author: "mithro"
-excerpt: "When doing lightning talks it is very useful to have a timer so that people don’t over time. There use to be a very simple website called lightningtimer.net but it..."
-wordpress_url: "https://blog.mithis.net/archives/useful-bits/1823-lightning-timer-website"
+- Useful Bits
+date: 2013-08-30 19:04:10 +1000
+excerpt: When doing lightning talks it is very useful to have a timer so that people
+  don’t over time. There use to be a very simple website called lightningtimer.net
+  but it...
+layout: post
+permalink: /archives/useful-bits/1823-lightning-timer-website
+title: Lightning Timer website
+wordpress_category: useful-bits
+wordpress_id: 1823
+wordpress_url: https://blog.mithis.net/archives/useful-bits/1823-lightning-timer-website
 ---
 
 <div class="entry-content">

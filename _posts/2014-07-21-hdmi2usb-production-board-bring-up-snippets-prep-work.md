@@ -1,12 +1,16 @@
 ---
-layout: "post"
-title: "HDMI2USB – Production Board Bring Up – Snippets – Prep Work"
-date: "2014-07-21 12:47:13 +1000"
+author: mithro
 categories:
-  - Timvideos Us
-author: "mithro"
-excerpt: "Two weeks ago I decided that I was going to take a week of work and spend it full time working on bringing up the HDMI2USB Production board that I’m..."
-wordpress_url: "https://blog.mithis.net/archives/timvideos-us/1980-hdmi2usb-production-board-bring-up-snippets-prep-work"
+- Timvideos Us
+date: 2014-07-21 12:47:13 +1000
+excerpt: Two weeks ago I decided that I was going to take a week of work and spend
+  it full time working on bringing up the HDMI2USB Production board that I’m...
+layout: post
+permalink: /archives/timvideos-us/1980-hdmi2usb-production-board-bring-up-snippets-prep-work
+title: HDMI2USB – Production Board Bring Up – Snippets – Prep Work
+wordpress_category: timvideos-us
+wordpress_id: 1980
+wordpress_url: https://blog.mithis.net/archives/timvideos-us/1980-hdmi2usb-production-board-bring-up-snippets-prep-work
 ---
 
 <div class="entry-content">

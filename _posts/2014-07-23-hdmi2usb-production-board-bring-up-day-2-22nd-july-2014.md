@@ -1,12 +1,17 @@
 ---
-layout: "post"
-title: "HDMI2USB – Production Board Bring Up – Day 2 (22nd July 2014)"
-date: "2014-07-23 01:32:55 +1000"
+author: mithro
 categories:
-  - Timvideos Us
-author: "mithro"
-excerpt: "Non-HDMI2USB related stuff Answered a bunch of work emails. Read and answered bunch of PyCon AU related emails. Fix DLV records for a bunch of domains. Helped aps-sids with flumotion..."
-wordpress_url: "https://blog.mithis.net/archives/timvideos-us/1988-hdmi2usb-production-board-bring-up-day-2-22nd-july-2014"
+- Timvideos Us
+date: 2014-07-23 01:32:55 +1000
+excerpt: Non-HDMI2USB related stuff Answered a bunch of work emails. Read and answered
+  bunch of PyCon AU related emails. Fix DLV records for a bunch of domains. Helped
+  aps-sids with flumotion...
+layout: post
+permalink: /archives/timvideos-us/1988-hdmi2usb-production-board-bring-up-day-2-22nd-july-2014
+title: HDMI2USB – Production Board Bring Up – Day 2 (22nd July 2014)
+wordpress_category: timvideos-us
+wordpress_id: 1988
+wordpress_url: https://blog.mithis.net/archives/timvideos-us/1988-hdmi2usb-production-board-bring-up-day-2-22nd-july-2014
 ---
 
 <div class="entry-content">

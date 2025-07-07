@@ -1,12 +1,17 @@
 ---
-layout: "post"
-title: "nMigen – a new improved Migen developed by whitequark!"
-date: "2020-05-02 10:12:03 +1000"
+author: mithro
 categories:
-  - Hardware
-author: "mithro"
-excerpt: "As people may know, I’m a big supporter of the Migen and associated LiteX ecosystem. As of today if you are starting a new project today, I would instead recommend..."
-wordpress_url: "https://blog.mithis.net/archives/hardware/2186-nmigen-new-improved-by-whitequark"
+- Hardware
+date: 2020-05-02 10:12:03 +1000
+excerpt: As people may know, I’m a big supporter of the Migen and associated LiteX
+  ecosystem. As of today if you are starting a new project today, I would instead
+  recommend...
+layout: post
+permalink: /archives/hardware/2186-nmigen-new-improved-by-whitequark
+title: nMigen – a new improved Migen developed by whitequark!
+wordpress_category: hardware
+wordpress_id: 2186
+wordpress_url: https://blog.mithis.net/archives/hardware/2186-nmigen-new-improved-by-whitequark
 ---
 
 <div class="entry-content">

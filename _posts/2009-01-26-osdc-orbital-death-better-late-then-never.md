@@ -1,12 +1,16 @@
 ---
-layout: "post"
-title: "OSDC & orbital death, better late then never…"
-date: "2009-01-26 14:43:32 +1000"
+author: mithro
 categories:
-  - Games
-author: "mithro"
-excerpt: "So last year at the end of November I spoke at OSDC. I had been meaning to blog about the conference but never gotten around to doing so. The conference..."
-wordpress_url: "https://blog.mithis.net/archives/games/99-osdc-orbital-death-better-late-then-never"
+- Games
+date: 2009-01-26 14:43:32 +1000
+excerpt: So last year at the end of November I spoke at OSDC. I had been meaning to
+  blog about the conference but never gotten around to doing so. The conference...
+layout: post
+permalink: /archives/games/99-osdc-orbital-death-better-late-then-never
+title: OSDC & orbital death, better late then never…
+wordpress_category: games
+wordpress_id: 99
+wordpress_url: https://blog.mithis.net/archives/games/99-osdc-orbital-death-better-late-then-never
 ---
 
 <div class="entry-content">

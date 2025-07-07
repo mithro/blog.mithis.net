@@ -1,12 +1,17 @@
 ---
-layout: "post"
-title: "Programmer art, it’s deadly!"
-date: "2009-01-28 18:33:02 +1000"
+author: mithro
 categories:
-  - Gaming Miniconf
-author: "mithro"
-excerpt: "So one of the other things I worked on at Linux.conf.au was a project Joel Stanley started, “Open Velociraptor Per Child, the Game!”. The game comes out of the Open..."
-wordpress_url: "https://blog.mithis.net/archives/gaming-miniconf/97-programmer-art-its-deadly"
+- Gaming Miniconf
+date: 2009-01-28 18:33:02 +1000
+excerpt: So one of the other things I worked on at Linux.conf.au was a project Joel
+  Stanley started, “Open Velociraptor Per Child, the Game!”. The game comes out of
+  the Open...
+layout: post
+permalink: /archives/gaming-miniconf/97-programmer-art-its-deadly
+title: Programmer art, it’s deadly!
+wordpress_category: gaming-miniconf
+wordpress_id: 97
+wordpress_url: https://blog.mithis.net/archives/gaming-miniconf/97-programmer-art-its-deadly
 ---
 
 <div class="entry-content">

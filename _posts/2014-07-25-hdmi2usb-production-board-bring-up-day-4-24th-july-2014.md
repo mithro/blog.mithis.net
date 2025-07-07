@@ -1,12 +1,17 @@
 ---
-layout: "post"
-title: "HDMI2USB – Production Board Bring Up – Day 4 (24th July 2014)"
-date: "2014-07-25 12:18:12 +1000"
+author: mithro
 categories:
-  - Timvideos Us
-author: "mithro"
-excerpt: "Generally slow progress today, but some success. Able to successfully load libFPGALink firmware onto Cypress chip and programmed the FPGA using it. Yay! Wrote a test firmware based on http://hamsterworks.co.nz/mediawiki/index.php/DVI-D_Serdes..."
-wordpress_url: "https://blog.mithis.net/archives/timvideos-us/1995-hdmi2usb-production-board-bring-up-day-4-24th-july-2014"
+- Timvideos Us
+date: 2014-07-25 12:18:12 +1000
+excerpt: Generally slow progress today, but some success. Able to successfully load
+  libFPGALink firmware onto Cypress chip and programmed the FPGA using it. Yay! Wrote
+  a test firmware based on http://hamsterworks.co.nz/mediawiki/index.php/DVI-D_Serdes...
+layout: post
+permalink: /archives/timvideos-us/1995-hdmi2usb-production-board-bring-up-day-4-24th-july-2014
+title: HDMI2USB – Production Board Bring Up – Day 4 (24th July 2014)
+wordpress_category: timvideos-us
+wordpress_id: 1995
+wordpress_url: https://blog.mithis.net/archives/timvideos-us/1995-hdmi2usb-production-board-bring-up-day-4-24th-july-2014
 ---
 
 <div class="entry-content">
