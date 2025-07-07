@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:blog.mithis.net)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "WebFetch(domain:www.plaintxt.org)",
+      "WebFetch(domain:wordpress.org)",
+      "WebFetch(domain:web.archive.org)",
+      "Bash(unzip:*)",
+      "Bash(mkdir:*)",
+      "Bash(chmod:*)",
+      "Bash(ruby --version)",
+      "Bash(gem --version)",
+      "Bash(gem install:*)",
+      "Bash(export PATH=\"$PATH:/home/tim/.local/share/gem/ruby/3.3.0/bin\")",
+      "Bash(/home/tim/.local/share/gem/ruby/3.3.0/bin/jekyll --version)",
+      "Bash(bundler install:*)",
+      "Bash(bundle:*)",
+      "Bash(/home/tim/.local/share/gem/ruby/3.1.0/bin/bundle install)",
+      "Bash(/home/tim/.local/share/gem/ruby/3.1.0/bin/bundle config set --local path 'vendor/bundle')",
+      "Bash(rm:*)",
+      "Bash(jekyll new:*)",
+      "Bash(jekyll build --trace)",
+      "Bash(jekyll build)",
+      "Bash(cp:*)",
+      "Bash(python3:*)",
+      "Bash(./scripts/download_rss.sh:*)",
+      "Bash(grep:*)",
+      "Bash(pkill:*)"
+    ],
+    "deny": []
+  }
+}

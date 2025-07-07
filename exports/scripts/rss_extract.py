@@ -49,10 +49,9 @@ class WordPressRSSExtractor:
         
         if hasattr(entry, 'tags'):
             for tag in entry.tags:
-                if tag.scheme:
-                    categories.append(tag.term)
-                else:
-                    tags.append(tag.term)
+                # In WordPress RSS, all categories come as tags
+                # We'll treat them all as categories for now
+                categories.append(tag.term)
         
         # Clean content
         content = self.clean_html_content(entry.content[0].value if entry.content else entry.summary)
@@ -149,7 +148,10 @@ class WordPressRSSExtractor:
                 f.write('---\n')
                 for key, value in front_matter.items():
                     if isinstance(value, list):
-                        f.write(f'{key}: {value}\n')
+                        if value:  # Only write non-empty lists
+                            f.write(f'{key}:\n')
+                            for item in value:
+                                f.write(f'  - {item}\n')
                     else:
                         f.write(f'{key}: "{value}"\n')
                 f.write('---\n\n')
@@ -196,7 +198,7 @@ class WordPressRSSExtractor:
         return self.posts
 
 if __name__ == "__main__":
-    extractor = WordPressRSSExtractor("https://blog.mithis.net", "exports")
+    extractor = WordPressRSSExtractor("https://blog.mithis.net", ".")
     posts = extractor.run_extraction()
     
     print("\nExtraction Summary:")
