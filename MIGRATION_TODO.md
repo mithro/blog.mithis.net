@@ -1,36 +1,36 @@
 # WordPress to Jekyll Migration TODO List
 
-Generated: 2025-07-07 18:42:21
+Generated: 2025-07-08 01:09:17
 
 ## Summary
 
 **Total Posts Found**: 76
-**Posts Migrated**: 37
-**Posts Pending**: 39
-**Migration Progress**: 37/76 (48.7%)
+**Posts Migrated**: 57
+**Posts Pending**: 19
+**Migration Progress**: 57/76 (75.0%)
 
 ## Category Breakdown
 
 | Category | Total | Migrated | Pending | Progress |
 |----------|-------|----------|---------|----------|
-| diary | 1 | 0 | 1 | 0.0% |
+| diary | 1 | 1 | 0 | 100.0% |
 | games | 2 | 2 | 0 | 100.0% |
 | gaming-miniconf | 1 | 1 | 0 | 100.0% |
 | google | 3 | 1 | 2 | 33.3% |
 | hardware | 1 | 1 | 0 | 100.0% |
-| highlights | 1 | 0 | 1 | 0.0% |
-| ideas | 9 | 2 | 7 | 22.2% |
-| lca | 10 | 8 | 2 | 80.0% |
-| pcb | 2 | 0 | 2 | 0.0% |
+| highlights | 1 | 1 | 0 | 100.0% |
+| ideas | 9 | 5 | 4 | 55.6% |
+| lca | 10 | 10 | 0 | 100.0% |
+| pcb | 2 | 1 | 1 | 50.0% |
 | python | 3 | 1 | 2 | 33.3% |
-| rcs-darcs | 1 | 0 | 1 | 0.0% |
+| rcs-darcs | 1 | 1 | 0 | 100.0% |
 | sci-fi | 1 | 0 | 1 | 0.0% |
 | summer-of-code | 1 | 1 | 0 | 100.0% |
 | timvideos-us | 8 | 8 | 0 | 100.0% |
-| tp | 15 | 6 | 9 | 40.0% |
+| tp | 15 | 12 | 3 | 80.0% |
 | ubuntu | 2 | 1 | 1 | 50.0% |
-| uncategorized | 10 | 2 | 8 | 20.0% |
-| uni | 2 | 0 | 2 | 0.0% |
+| uncategorized | 10 | 6 | 4 | 60.0% |
+| uni | 2 | 1 | 1 | 50.0% |
 | useful-bits | 3 | 3 | 0 | 100.0% |
 
 ## Detailed Post Status
@@ -41,23 +41,23 @@ Generated: 2025-07-07 18:42:21
 
 ### Posts by ID (Chronological Order)
 
-**❌ Post 3** (`uncategorized`)
+**✅ Post 3** (`uncategorized`)
 - **URL**: https://blog.mithis.net/archives/uncategorized/3-resume
 - **Date**: 2007-02-19
-- **File**: `MISSING: 3-resume.md`
-- **Status**: Pending
+- **File**: `2007-02-18-resume.md`
+- **Status**: Migrated
 
-**❌ Post 5** (`ideas`)
+**✅ Post 5** (`ideas`)
 - **URL**: https://blog.mithis.net/archives/ideas/5-swap-nice
 - **Date**: 2007-02-19
-- **File**: `MISSING: 5-swap-nice.md`
-- **Status**: Pending
+- **File**: `2007-02-18-swap-nice.md`
+- **Status**: Migrated
 
-**❌ Post 6** (`ideas`)
+**✅ Post 6** (`ideas`)
 - **URL**: https://blog.mithis.net/archives/ideas/6-gnome-improvements
 - **Date**: 2007-02-19
-- **File**: `MISSING: 6-gnome-improvements.md`
-- **Status**: Pending
+- **File**: `2007-01-03-gnome-improvements.md`
+- **Status**: Migrated
 
 **✅ Post 7** (`ideas`)
 - **URL**: https://blog.mithis.net/archives/ideas/7-nm-vpn
@@ -65,29 +65,29 @@ Generated: 2025-07-07 18:42:21
 - **File**: `2007-08-17-nm-vpn.md`
 - **Status**: Migrated
 
-**❌ Post 8** (`lca`)
+**✅ Post 8** (`lca`)
 - **URL**: https://blog.mithis.net/archives/lca/8-lca-proposal-suggestions
 - **Date**: 2007-02-23
-- **File**: `MISSING: 8-lca-proposal-suggestions.md`
-- **Status**: Pending
+- **File**: `2006-11-19-lca-proposal-suggestions.md`
+- **Status**: Migrated
 
-**❌ Post 10** (`tp`)
+**✅ Post 10** (`tp`)
 - **URL**: https://blog.mithis.net/archives/tp/10-compiling-tpserver-cpp-under-windows
 - **Date**: 2007-02-20
-- **File**: `MISSING: 10-compiling-tpserver-cpp-under-windows.md`
-- **Status**: Pending
+- **File**: `2007-02-20-compiling-tpserver-cpp-under-windows.md`
+- **Status**: Migrated
 
-**❌ Post 12** (`tp`)
+**✅ Post 12** (`tp`)
 - **URL**: https://blog.mithis.net/archives/tp/12-compiling-tpserver-cpp-under-windows-part-2
 - **Date**: 2007-02-21
-- **File**: `MISSING: 12-compiling-tpserver-cpp-under-windows-part-2.md`
-- **Status**: Pending
+- **File**: `2007-02-20-compiling-tpserver-cpp-under-windows-part-2.md`
+- **Status**: Migrated
 
-**❌ Post 13** (`tp`)
+**✅ Post 13** (`tp`)
 - **URL**: https://blog.mithis.net/archives/tp/13-compiling-tpserver-cpp-under-windows-part-3
 - **Date**: 2007-02-21
-- **File**: `MISSING: 13-compiling-tpserver-cpp-under-windows-part-3.md`
-- **Status**: Pending
+- **File**: `2007-02-21-compiling-tpserver-cpp-under-windows-part-3.md`
+- **Status**: Migrated
 
 **❌ Post 15** (`tp`)
 - **URL**: https://blog.mithis.net/archives/tp/15-tp-protocol-overview
@@ -95,23 +95,23 @@ Generated: 2025-07-07 18:42:21
 - **File**: `MISSING: 15-tp-protocol-overview.md`
 - **Status**: Pending
 
-**❌ Post 16** (`tp`)
+**✅ Post 16** (`tp`)
 - **URL**: https://blog.mithis.net/archives/tp/16-tailor-darcs2svn-tp
 - **Date**: 2007-02-25
-- **File**: `MISSING: 16-tailor-darcs2svn-tp.md`
-- **Status**: Pending
+- **File**: `2007-02-25-tailor-darcs2svn-tp.md`
+- **Status**: Migrated
 
-**❌ Post 19** (`rcs-darcs`)
+**✅ Post 19** (`rcs-darcs`)
 - **URL**: https://blog.mithis.net/archives/rcs/darcs/19-darcs-almost-perfect
 - **Date**: 2007-02-26
-- **File**: `MISSING: 19-darcs-almost-perfect.md`
-- **Status**: Pending
+- **File**: `2007-02-26-darcs-almost-perfect.md`
+- **Status**: Migrated
 
-**❌ Post 20** (`ideas`)
+**✅ Post 20** (`ideas`)
 - **URL**: https://blog.mithis.net/archives/ideas/20-graphical-programming
 - **Date**: 2007-03-01
-- **File**: `MISSING: 20-graphical-programming.md`
-- **Status**: Pending
+- **File**: `2007-03-01-graphical-programming.md`
+- **Status**: Migrated
 
 **❌ Post 21** (`ideas`)
 - **URL**: https://blog.mithis.net/archives/ideas/21-eagle-for-pcb
@@ -125,29 +125,29 @@ Generated: 2025-07-07 18:42:21
 - **File**: `MISSING: 23-eagle2geda-symbol-converter.md`
 - **Status**: Pending
 
-**❌ Post 26** (`highlights`)
+**✅ Post 26** (`highlights`)
 - **URL**: https://blog.mithis.net/archives/highlights/26-i-want-a-cool-desktop
 - **Date**: 2007-03-11
-- **File**: `MISSING: 26-i-want-a-cool-desktop.md`
-- **Status**: Pending
+- **File**: `2007-03-11-i-want-a-cool-desktop.md`
+- **Status**: Migrated
 
-**❌ Post 27** (`tp`)
+**✅ Post 27** (`tp`)
 - **URL**: https://blog.mithis.net/archives/tp/27-summer-of-code-woo
 - **Date**: 2007-04-25
-- **File**: `MISSING: 27-summer-of-code-woo.md`
-- **Status**: Pending
+- **File**: `2007-03-21-summer-of-code-woo.md`
+- **Status**: Migrated
 
-**❌ Post 28** (`uncategorized`)
+**✅ Post 28** (`uncategorized`)
 - **URL**: https://blog.mithis.net/archives/uncategorized/28-liferea-bug
 - **Date**: 2007-04-22
-- **File**: `MISSING: 28-liferea-bug.md`
-- **Status**: Pending
+- **File**: `2007-03-24-liferea-bug.md`
+- **Status**: Migrated
 
-**❌ Post 34** (`uncategorized`)
+**✅ Post 34** (`uncategorized`)
 - **URL**: https://blog.mithis.net/archives/uncategorized/34-doh-pictures-gone
 - **Date**: 2007-04-14
-- **File**: `MISSING: 34-doh-pictures-gone.md`
-- **Status**: Pending
+- **File**: `2007-04-14-doh-pictures-gone.md`
+- **Status**: Migrated
 
 **❌ Post 35** (`tp`)
 - **URL**: https://blog.mithis.net/archives/tp/35-using-tailor-to-go-to-git
@@ -155,17 +155,17 @@ Generated: 2025-07-07 18:42:21
 - **File**: `MISSING: 35-using-tailor-to-go-to-git.md`
 - **Status**: Pending
 
-**❌ Post 38** (`diary`)
+**✅ Post 38** (`diary`)
 - **URL**: https://blog.mithis.net/archives/diary/38-tv-idiots
 - **Date**: 2007-04-25
-- **File**: `MISSING: 38-tv-idiots.md`
-- **Status**: Pending
+- **File**: `2007-04-25-tv-idiots.md`
+- **Status**: Migrated
 
-**❌ Post 40** (`pcb`)
+**✅ Post 40** (`pcb`)
 - **URL**: https://blog.mithis.net/archives/pcb/40-almost-there
 - **Date**: 2007-05-09
-- **File**: `MISSING: 40-almost-there.md`
-- **Status**: Pending
+- **File**: `2007-05-09-almost-there.md`
+- **Status**: Migrated
 
 **❌ Post 41** (`uni`)
 - **URL**: https://blog.mithis.net/archives/uni/41-cfxs-all-done
@@ -173,29 +173,29 @@ Generated: 2025-07-07 18:42:21
 - **File**: `MISSING: 41-cfxs-all-done.md`
 - **Status**: Pending
 
-**❌ Post 44** (`uni`)
+**✅ Post 44** (`uni`)
 - **URL**: https://blog.mithis.net/archives/uni/44-freeatlast
 - **Date**: 2007-07-19
-- **File**: `MISSING: 44-freeatlast.md`
-- **Status**: Pending
+- **File**: `2007-07-19-freeatlast.md`
+- **Status**: Migrated
 
-**❌ Post 45** (`tp`)
+**✅ Post 45** (`tp`)
 - **URL**: https://blog.mithis.net/archives/tp/45-schemepy
 - **Date**: 2007-07-22
-- **File**: `MISSING: 45-schemepy.md`
-- **Status**: Pending
+- **File**: `2007-07-23-schemepy.md`
+- **Status**: Migrated
 
-**❌ Post 46** (`lca`)
+**✅ Post 46** (`lca`)
 - **URL**: https://blog.mithis.net/archives/lca/46-freeplay
 - **Date**: 2008-02-18
-- **File**: `MISSING: 46-freeplay.md`
-- **Status**: Pending
+- **File**: `2007-08-15-freeplay.md`
+- **Status**: Migrated
 
-**❌ Post 48** (`uncategorized`)
+**✅ Post 48** (`uncategorized`)
 - **URL**: https://blog.mithis.net/archives/uncategorized/48-resume
 - **Date**: 2007-08-16
-- **File**: `MISSING: 48-resume.md`
-- **Status**: Pending
+- **File**: `2007-08-17-resume.md`
+- **Status**: Migrated
 
 **✅ Post 49** (`uncategorized`)
 - **URL**: https://blog.mithis.net/archives/uncategorized/49-soc-end

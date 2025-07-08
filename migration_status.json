@@ -1,10 +1,10 @@
 {
-  "generated": "2025-07-07T18:42:21.187745",
+  "generated": "2025-07-08T01:09:17.285574",
   "summary": {
     "total_posts": 76,
-    "migrated": 37,
-    "pending": 39,
-    "progress_percent": 48.68421052631579
+    "migrated": 57,
+    "pending": 19,
+    "progress_percent": 75.0
   },
   "categories": {
     "hardware": {
@@ -24,8 +24,8 @@
     },
     "lca": {
       "total": 10,
-      "migrated": 8,
-      "pending": 2
+      "migrated": 10,
+      "pending": 0
     },
     "timvideos-us": {
       "total": 8,
@@ -44,8 +44,8 @@
     },
     "tp": {
       "total": 15,
-      "migrated": 6,
-      "pending": 9
+      "migrated": 12,
+      "pending": 3
     },
     "games": {
       "total": 2,
@@ -59,8 +59,8 @@
     },
     "uncategorized": {
       "total": 10,
-      "migrated": 2,
-      "pending": 8
+      "migrated": 6,
+      "pending": 4
     },
     "google": {
       "total": 3,
@@ -69,33 +69,33 @@
     },
     "ideas": {
       "total": 9,
-      "migrated": 2,
-      "pending": 7
+      "migrated": 5,
+      "pending": 4
     },
     "uni": {
       "total": 2,
-      "migrated": 0,
-      "pending": 2
+      "migrated": 1,
+      "pending": 1
     },
     "pcb": {
       "total": 2,
-      "migrated": 0,
-      "pending": 2
+      "migrated": 1,
+      "pending": 1
     },
     "diary": {
       "total": 1,
-      "migrated": 0,
-      "pending": 1
+      "migrated": 1,
+      "pending": 0
     },
     "highlights": {
       "total": 1,
-      "migrated": 0,
-      "pending": 1
+      "migrated": 1,
+      "pending": 0
     },
     "rcs-darcs": {
       "total": 1,
-      "migrated": 0,
-      "pending": 1
+      "migrated": 1,
+      "pending": 0
     },
     "sci-fi": {
       "total": 1,
@@ -110,8 +110,8 @@
       "id": 3,
       "slug": "resume",
       "lastmod": "2007-02-19T14:52:00+00:00",
-      "status": "pending",
-      "file": "MISSING: 3-resume.md"
+      "status": "migrated",
+      "file": "2007-02-18-resume.md"
     },
     {
       "url": "https://blog.mithis.net/archives/ideas/5-swap-nice",
@@ -119,8 +119,8 @@
       "id": 5,
       "slug": "swap-nice",
       "lastmod": "2007-02-19T14:55:34+00:00",
-      "status": "pending",
-      "file": "MISSING: 5-swap-nice.md"
+      "status": "migrated",
+      "file": "2007-02-18-swap-nice.md"
     },
     {
       "url": "https://blog.mithis.net/archives/ideas/6-gnome-improvements",
@@ -128,8 +128,8 @@
       "id": 6,
       "slug": "gnome-improvements",
       "lastmod": "2007-02-19T14:54:59+00:00",
-      "status": "pending",
-      "file": "MISSING: 6-gnome-improvements.md"
+      "status": "migrated",
+      "file": "2007-01-03-gnome-improvements.md"
     },
     {
       "url": "https://blog.mithis.net/archives/ideas/7-nm-vpn",
@@ -146,8 +146,8 @@
       "id": 8,
       "slug": "lca-proposal-suggestions",
       "lastmod": "2007-02-23T01:46:25+00:00",
-      "status": "pending",
-      "file": "MISSING: 8-lca-proposal-suggestions.md"
+      "status": "migrated",
+      "file": "2006-11-19-lca-proposal-suggestions.md"
     },
     {
       "url": "https://blog.mithis.net/archives/tp/10-compiling-tpserver-cpp-under-windows",
@@ -155,8 +155,8 @@
       "id": 10,
       "slug": "compiling-tpserver-cpp-under-windows",
       "lastmod": "2007-02-20T08:35:11+00:00",
-      "status": "pending",
-      "file": "MISSING: 10-compiling-tpserver-cpp-under-windows.md"
+      "status": "migrated",
+      "file": "2007-02-20-compiling-tpserver-cpp-under-windows.md"
     },
     {
       "url": "https://blog.mithis.net/archives/tp/12-compiling-tpserver-cpp-under-windows-part-2",
@@ -164,8 +164,8 @@
       "id": 12,
       "slug": "compiling-tpserver-cpp-under-windows-part-2",
       "lastmod": "2007-02-21T11:02:15+00:00",
-      "status": "pending",
-      "file": "MISSING: 12-compiling-tpserver-cpp-under-windows-part-2.md"
+      "status": "migrated",
+      "file": "2007-02-20-compiling-tpserver-cpp-under-windows-part-2.md"
     },
     {
       "url": "https://blog.mithis.net/archives/tp/13-compiling-tpserver-cpp-under-windows-part-3",
@@ -173,8 +173,8 @@
       "id": 13,
       "slug": "compiling-tpserver-cpp-under-windows-part-3",
       "lastmod": "2007-02-21T13:51:44+00:00",
-      "status": "pending",
-      "file": "MISSING: 13-compiling-tpserver-cpp-under-windows-part-3.md"
+      "status": "migrated",
+      "file": "2007-02-21-compiling-tpserver-cpp-under-windows-part-3.md"
     },
     {
       "url": "https://blog.mithis.net/archives/tp/15-tp-protocol-overview",
@@ -191,8 +191,8 @@
       "id": 16,
       "slug": "tailor-darcs2svn-tp",
       "lastmod": "2007-02-25T15:56:44+00:00",
-      "status": "pending",
-      "file": "MISSING: 16-tailor-darcs2svn-tp.md"
+      "status": "migrated",
+      "file": "2007-02-25-tailor-darcs2svn-tp.md"
     },
     {
       "url": "https://blog.mithis.net/archives/rcs/darcs/19-darcs-almost-perfect",
@@ -200,8 +200,8 @@
       "id": 19,
       "slug": "darcs-almost-perfect",
       "lastmod": "2007-02-26T05:08:04+00:00",
-      "status": "pending",
-      "file": "MISSING: 19-darcs-almost-perfect.md"
+      "status": "migrated",
+      "file": "2007-02-26-darcs-almost-perfect.md"
     },
     {
       "url": "https://blog.mithis.net/archives/ideas/20-graphical-programming",
@@ -209,8 +209,8 @@
       "id": 20,
       "slug": "graphical-programming",
       "lastmod": "2007-03-01T11:59:21+00:00",
-      "status": "pending",
-      "file": "MISSING: 20-graphical-programming.md"
+      "status": "migrated",
+      "file": "2007-03-01-graphical-programming.md"
     },
     {
       "url": "https://blog.mithis.net/archives/ideas/21-eagle-for-pcb",
@@ -236,8 +236,8 @@
       "id": 26,
       "slug": "i-want-a-cool-desktop",
       "lastmod": "2007-03-11T05:45:06+00:00",
-      "status": "pending",
-      "file": "MISSING: 26-i-want-a-cool-desktop.md"
+      "status": "migrated",
+      "file": "2007-03-11-i-want-a-cool-desktop.md"
     },
     {
       "url": "https://blog.mithis.net/archives/tp/27-summer-of-code-woo",
@@ -245,8 +245,8 @@
       "id": 27,
       "slug": "summer-of-code-woo",
       "lastmod": "2007-04-25T15:08:49+00:00",
-      "status": "pending",
-      "file": "MISSING: 27-summer-of-code-woo.md"
+      "status": "migrated",
+      "file": "2007-03-21-summer-of-code-woo.md"
     },
     {
       "url": "https://blog.mithis.net/archives/uncategorized/28-liferea-bug",
@@ -254,8 +254,8 @@
       "id": 28,
       "slug": "liferea-bug",
       "lastmod": "2007-04-22T07:19:41+00:00",
-      "status": "pending",
-      "file": "MISSING: 28-liferea-bug.md"
+      "status": "migrated",
+      "file": "2007-03-24-liferea-bug.md"
     },
     {
       "url": "https://blog.mithis.net/archives/uncategorized/34-doh-pictures-gone",
@@ -263,8 +263,8 @@
       "id": 34,
       "slug": "doh-pictures-gone",
       "lastmod": "2007-04-14T05:48:54+00:00",
-      "status": "pending",
-      "file": "MISSING: 34-doh-pictures-gone.md"
+      "status": "migrated",
+      "file": "2007-04-14-doh-pictures-gone.md"
     },
     {
       "url": "https://blog.mithis.net/archives/tp/35-using-tailor-to-go-to-git",
@@ -281,8 +281,8 @@
       "id": 38,
       "slug": "tv-idiots",
       "lastmod": "2007-04-25T12:06:44+00:00",
-      "status": "pending",
-      "file": "MISSING: 38-tv-idiots.md"
+      "status": "migrated",
+      "file": "2007-04-25-tv-idiots.md"
     },
     {
       "url": "https://blog.mithis.net/archives/pcb/40-almost-there",
@@ -290,8 +290,8 @@
       "id": 40,
       "slug": "almost-there",
       "lastmod": "2007-05-09T12:09:04+00:00",
-      "status": "pending",
-      "file": "MISSING: 40-almost-there.md"
+      "status": "migrated",
+      "file": "2007-05-09-almost-there.md"
     },
     {
       "url": "https://blog.mithis.net/archives/uni/41-cfxs-all-done",
@@ -308,8 +308,8 @@
       "id": 44,
       "slug": "freeatlast",
       "lastmod": "2007-07-19T06:31:53+00:00",
-      "status": "pending",
-      "file": "MISSING: 44-freeatlast.md"
+      "status": "migrated",
+      "file": "2007-07-19-freeatlast.md"
     },
     {
       "url": "https://blog.mithis.net/archives/tp/45-schemepy",
@@ -317,8 +317,8 @@
       "id": 45,
       "slug": "schemepy",
       "lastmod": "2007-07-22T17:44:28+00:00",
-      "status": "pending",
-      "file": "MISSING: 45-schemepy.md"
+      "status": "migrated",
+      "file": "2007-07-23-schemepy.md"
     },
     {
       "url": "https://blog.mithis.net/archives/lca/46-freeplay",
@@ -326,8 +326,8 @@
       "id": 46,
       "slug": "freeplay",
       "lastmod": "2008-02-18T01:02:32+00:00",
-      "status": "pending",
-      "file": "MISSING: 46-freeplay.md"
+      "status": "migrated",
+      "file": "2007-08-15-freeplay.md"
     },
     {
       "url": "https://blog.mithis.net/archives/uncategorized/48-resume",
@@ -335,8 +335,8 @@
       "id": 48,
       "slug": "resume",
       "lastmod": "2007-08-16T22:59:45+00:00",
-      "status": "pending",
-      "file": "MISSING: 48-resume.md"
+      "status": "migrated",
+      "file": "2007-08-17-resume.md"
     },
     {
       "url": "https://blog.mithis.net/archives/uncategorized/49-soc-end",

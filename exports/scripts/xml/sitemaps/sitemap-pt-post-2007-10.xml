@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://blog.mithis.net/wp-content/plugins/google-sitemap-generator/sitemap.xsl"?><!-- sitemap-generator-url="http://www.arnebrachhold.de" sitemap-generator-version="4.0.8" -->
+<!-- generated-on="July 8, 2025 6:43 am" -->
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">	<url>
+		<loc>https://blog.mithis.net/archives/lca/62-gaming-miniconf-cfp</loc>
+		<lastmod>2008-02-18T01:02:20+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/lca/61-lca08-rego</loc>
+		<lastmod>2008-02-18T01:02:05+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/tp/60-gsoc-results</loc>
+		<lastmod>2007-10-22T07:47:12+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/tp/59-mentor-summit</loc>
+		<lastmod>2007-10-06T18:05:27+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+</urlset><!-- Request ID: 3305e0790a324f1525fe3f51d6520a0a; Queries for sitemap: 15; Total queries: 34; Seconds: 0.02; Memory for sitemap: 2.78515625MB; Total memory: 14.25390625MB -->
