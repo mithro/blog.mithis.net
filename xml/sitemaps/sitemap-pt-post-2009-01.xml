@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://blog.mithis.net/wp-content/plugins/google-sitemap-generator/sitemap.xsl"?><!-- sitemap-generator-url="http://www.arnebrachhold.de" sitemap-generator-version="4.0.8" -->
+<!-- generated-on="July 8, 2025 1:37 am" -->
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">	<url>
+		<loc>https://blog.mithis.net/archives/gaming-miniconf/97-programmer-art-its-deadly</loc>
+		<lastmod>2009-01-28T09:03:02+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/tp/95-xcompiling-cygwin-on-linux-for-windows</loc>
+		<lastmod>2009-01-27T08:15:57+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/games/99-osdc-orbital-death-better-late-then-never</loc>
+		<lastmod>2009-01-26T05:46:31+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/python/94-reading-cookies-firefox</loc>
+		<lastmod>2009-05-19T04:06:25+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/uncategorized/92-power-scripts-in-intrepid</loc>
+		<lastmod>2009-01-19T05:54:48+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/python/91-utf-8-in-python</loc>
+		<lastmod>2009-01-19T05:55:50+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/python/90-firefox3-cookies-in-python</loc>
+		<lastmod>2009-01-19T05:56:53+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+</urlset><!-- Request ID: d76b14d00916859263b26199381191ff; Queries for sitemap: 24; Total queries: 43; Seconds: 0.03; Memory for sitemap: 2.78515625MB; Total memory: 14.25390625MB -->

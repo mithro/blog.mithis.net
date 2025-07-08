@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://blog.mithis.net/wp-content/plugins/google-sitemap-generator/sitemap.xsl"?><!-- sitemap-generator-url="http://www.arnebrachhold.de" sitemap-generator-version="4.0.8" -->
+<!-- generated-on="July 8, 2025 1:38 am" -->
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">	<url>
+		<loc>https://blog.mithis.net/archives/rcs/darcs/19-darcs-almost-perfect</loc>
+		<lastmod>2007-02-26T05:08:04+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/tp/16-tailor-darcs2svn-tp</loc>
+		<lastmod>2007-02-25T15:56:44+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/tp/15-tp-protocol-overview</loc>
+		<lastmod>2007-02-25T14:43:23+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/tp/13-compiling-tpserver-cpp-under-windows-part-3</loc>
+		<lastmod>2007-02-21T13:51:44+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/tp/12-compiling-tpserver-cpp-under-windows-part-2</loc>
+		<lastmod>2007-02-21T11:02:15+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/tp/10-compiling-tpserver-cpp-under-windows</loc>
+		<lastmod>2007-02-20T08:35:11+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/ideas/5-swap-nice</loc>
+		<lastmod>2007-02-19T14:55:34+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+	<url>
+		<loc>https://blog.mithis.net/archives/uncategorized/3-resume</loc>
+		<lastmod>2007-02-19T14:52:00+00:00</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.1</priority>
+	</url>
+</urlset><!-- Request ID: f446d158abc75805a91a7f5668648365; Queries for sitemap: 27; Total queries: 46; Seconds: 0.03; Memory for sitemap: 2.78515625MB; Total memory: 14.25390625MB -->
