@@ -31,7 +31,7 @@
         <select id="categories-dropdown" onchange="if(this.value) window.location.href=this.value">
             <option value="">Select Category</option>
             {% for category in site.categories %}
-                <option value="{{ '/archives/category/' | append: category.first | slugify | relative_url }}">{{ category.first | replace: '-', ' ' | title }} ({{ category.last | size }})</option>
+                <option value="{{ '/category/' | append: category.first | slugify | relative_url }}">{{ category.first | replace: '-', ' ' | title }} ({{ category.last | size }})</option>
             {% endfor %}
         </select>
     </div>

@@ -28,7 +28,7 @@ Thousand Parsec is an open source framework for turn-based strategy games. The p
 
 ## Related Blog Posts
 
-{% assign related_posts = site.posts | where: "categories", "Tp" %}
+{% assign related_posts = site.posts | where: "categories", "tp" %}
 {% for post in related_posts limit: 10 %}
 - [{{ post.title }}]({{ post.url }}) - {{ post.date | date: "%Y-%m-%d" }}
 {% endfor %}

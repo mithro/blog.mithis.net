@@ -28,7 +28,7 @@ The HDMI2USB project develops affordable hardware options to record and stream H
 
 ## Related Blog Posts
 
-{% assign related_posts = site.posts | where: "categories", "Timvideos Us" %}
+{% assign related_posts = site.posts | where: "categories", "timvideos-us" %}
 {% for post in related_posts limit: 10 %}
 - [{{ post.title }}]({{ post.url }}) - {{ post.date | date: "%Y-%m-%d" }}
 {% endfor %}

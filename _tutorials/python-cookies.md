@@ -22,7 +22,7 @@ Firefox stores cookies in a SQLite database file. We can access this directly us
 
 ## Related Blog Posts
 
-{% assign related_posts = site.posts | where: "categories", "Python" %}
+{% assign related_posts = site.posts | where: "categories", "python" %}
 {% for post in related_posts %}
 - [{{ post.title }}]({{ post.url }}) - {{ post.date | date: "%Y-%m-%d" }}
 {% endfor %}
