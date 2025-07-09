@@ -21,7 +21,7 @@ comments:
 ---
 
 <div >
-<div ><img alt="Tulip - The ship from Starhunter"  height="219" src="/assets/images/wp-content/uploads/2009/05/screenshot.png" title="Tulip - The ship from Starhunter" width="300"/></div>
+<div ><img alt="Tulip - The ship from Starhunter"  height="219" src="/assets/images/wp-content/uploads/2009/05/screenshot.png" | relative_url }}" title="Tulip - The ship from Starhunter" width="300"/></div>
 <p>I have recently been watching and really enjoying a little known series called <a href="http://en.wikipedia.org/wiki/Starhunter">Starhunter</a>. At first I thought it was an enjoyable rip off of <a href="http://en.wikipedia.org/wiki/Firefly_(TV_series)">Firefly</a>, so i was surprised to find out that it was made first.</p>
 <p>It has so many of the same elements, the quirky ship mechanic, the captain who doesn’t play by the rules with a darker background, raiders, etc. I have no doubt that <a href="http://www.imdb.com/name/nm0923736/">Joss Whedon</a> stole many the ideas for Firefly from this series and in the process improving on them in many ways. Sadly, like Firefly this series was canceled way before it reached a wide audience.</p>
 <p>You can watch the “second season” (Starhunter 2300), which is closer to a spin off  rather then a second season (most of the characters have changed), on <a href="http://www.youtube.com/show?p=I9idlNtiYTs">Youtube</a>. I would highly recommend people who enjoyed Firefly check it out. Since its free, what have you got to loose?</p>
