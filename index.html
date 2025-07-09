@@ -18,13 +18,7 @@ layout: default
             </h2>
             
             <div class="entry-content">
-                {% if post.excerpt %}
-                    {{ post.excerpt }}
-                    <p><a href="{{ post.url | relative_url }}" class="more-link">Read more...</a></p>
-                {% else %}
-                    {{ post.content | truncatewords: 100 }}
-                    <p><a href="{{ post.url | relative_url }}" class="more-link">Read more...</a></p>
-                {% endif %}
+                {{ post.content }}
             </div>
             
             <div class="entry-meta">

@@ -42,7 +42,8 @@
       "Bash(jq length:*)",
       "Bash(jq:*)",
       "Bash(touch:*)",
-      "Bash(jekyll serve:*)"
+      "Bash(jekyll serve:*)",
+      "WebFetch(domain:localhost)"
     ],
     "deny": []
   }

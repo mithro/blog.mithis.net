@@ -66,6 +66,33 @@ div#header div#blog-description {
     color: #fefefe;
 }
 
+/* Header Navigation - Simple Contact Link */
+div#header div#header-nav {
+    margin-top: 0.5em;
+    font-size: 0.9em;
+}
+
+div#header div#header-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+div#header div#header-nav li {
+    display: inline;
+    margin-right: 1em;
+}
+
+div#header div#header-nav a {
+    color: #fefefe;
+    text-decoration: none;
+}
+
+div#header div#header-nav a:hover {
+    color: #ddd;
+    text-decoration: underline;
+}
+
 /* Navigation */
 div#globalnav {
     margin: 0 -2em 3em 0;
