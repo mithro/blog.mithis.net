@@ -13,6 +13,22 @@ body {
     padding: 0;
 }
 
+/* Links */
+a {
+    color: #546188;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #7f89a6;
+}
+
+a:hover,
+a:active {
+    color: #000;
+    text-decoration: underline;
+}
+
 /* Container Layout */
 body div#wrapper {
     margin: 0 8em 0 0;
@@ -93,6 +109,35 @@ div#header div#header-nav a:hover {
     text-decoration: underline;
 }
 
+/* Homepage Photo Gallery Section */
+.homepage-photos {
+    margin: 0 0 2em 0;
+    padding: 1em;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.photo-thumbnails {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+.photo-thumbnails p {
+    margin: 0;
+    padding: 0.5em;
+}
+
+.photo-thumbnails a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.photo-thumbnails a:hover {
+    text-decoration: underline;
+}
+
 /* Navigation */
 div#globalnav {
     margin: 0 -2em 3em 0;
@@ -121,6 +166,43 @@ div#globalnav ul#menu li a {
 div#globalnav ul#menu li a:hover {
     color: #000;
     background: #ddd;
+}
+
+/* Posts */
+.entry-title {
+    font-size: 1.7em;
+    font-weight: 400;
+    text-align: center;
+    margin: 0.5em 0;
+}
+
+.entry-title a {
+    color: #546188;
+    text-decoration: none;
+}
+
+.entry-title a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.entry-date {
+    color: #444;
+    font-size: 1.1em;
+    word-spacing: 0.2em;
+    text-align: center;
+    margin: 1em 0;
+}
+
+.entry-meta {
+    color: #666;
+    font-size: 0.9em;
+    text-align: center;
+    margin: 1em 0;
+}
+
+.entry-content {
+    margin: 1.5em 0;
 }
 
 /* Sidebar */

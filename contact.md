@@ -9,15 +9,15 @@ permalink: /contact/
 If you'd like to get in touch with me, here are the best ways to reach me:
 
 ## Email
-- **Primary**: tim@mithis.net
-- **Work**: Please use the primary email address
+- **Primary**: blog@mithis.com
+- **Personal**: tim@mithis.net
+
+## Phone
+- **Mobile**: +61 421 968 221
 
 ## Social Media
 - **Twitter**: [@mithro](https://twitter.com/mithro)
 - **GitHub**: [mithro](https://github.com/mithro)
-
-## Professional Networks
-- **LinkedIn**: [Tim Ansell](https://www.linkedin.com/in/tansell)
 
 ## Projects and Code
 - **GitHub**: [github.com/mithro](https://github.com/mithro)
@@ -28,6 +28,8 @@ If you'd like to get in touch with me, here are the best ways to reach me:
 - **YouTube**: [My Videos](http://www.youtube.com/mithro)
 
 ---
+
+Feel free to leave a comment on any of my blog posts as well - I read them all and try to respond promptly.
 
 This blog focuses on open source hardware, software development, and technical projects. I particularly enjoy working on:
 

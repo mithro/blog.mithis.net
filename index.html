@@ -5,6 +5,13 @@ layout: default
 <div id="container">
     <div id="content" class="hfeed">
         
+        <!-- Photo Gallery Section -->
+        <div id="photo-gallery-section" class="homepage-photos">
+            <div class="photo-thumbnails">
+                <p><em>Photo gallery integration has been removed during migration. Personal photos were previously displayed here from Picasa. View current projects and photos on <a href="https://github.com/mithro">GitHub</a>.</em></p>
+            </div>
+        </div>
+        
         {% for post in paginator.posts %}
         <div id="post-{{ post.slug }}" class="hentry">
             <div class="entry-date">
