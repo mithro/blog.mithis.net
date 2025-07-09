@@ -2,38 +2,46 @@
 layout: default
 ---
 
-<div class="hentry">
-    <h2 class="page-title">{{ page.title }}</h2>
-    
-    {% if content != "" %}
-    <div class="entry-content">
-        {{ content }}
-    </div>
-    {% endif %}
-    
-    <div class="entry-content">
-        {% assign category_posts = site.posts | where: "categories", page.category %}
-        {% if category_posts.size > 0 %}
-            <p>{{ category_posts.size }} {% if category_posts.size == 1 %}post{% else %}posts{% endif %} in this category:</p>
+<div id="container">
+    <div id="content" class="hfeed">
+        
+        <div class="hentry">
+            <h2 class="page-title">{{ page.title }}</h2>
+            
+            {% if content != "" %}
+            <div class="entry-content">
+                {{ content }}
+            </div>
+            {% endif %}
+            
+            <div class="entry-content">
+                {% assign category_posts = site.posts | where: "categories", page.category %}
+                {% if category_posts.size > 0 %}
+            
+            <p>{{ category_posts.size }} post{% if category_posts.size > 1 %}s{% endif %} in this category:</p>
             
             {% for post in category_posts %}
             <div class="post-container">
                 <div class="entry-meta">
                     <abbr class="published" title="{{ post.date | date_to_xmlschema }}">
-                        {{ post.date | date: "%d %b %Y" }}
+                        {{ post.date | date: '%d %b %Y' }}
                     </abbr>
                 </div>
                 <div class="post-content">
                     <h3 class="entry-title">
-                        <a href="{{ post.url | relative_url }}" rel="bookmark" title="Permanent Link to {{ post.title | xml_escape }}">
-                            {{ post.title }}
+                        <a href="{{ post.url | relative_url }}" rel="bookmark" title="Permanent Link to {{ post.title | escape }}">
+                            {{ post.title | escape }}
                         </a>
                     </h3>
-                    {% if post.excerpt %}
+                    
                     <div class="entry-excerpt">
-                        {{ post.excerpt }}
+                        {% if post.excerpt %}
+                            {{ post.excerpt | strip_html | truncatewords: 30 }}...
+                        {% else %}
+                            {{ post.content | strip_html | truncatewords: 30 }}...
+                        {% endif %}
                     </div>
-                    {% endif %}
+                    
                 </div>
                 <div class="clearer"></div>
             </div>
@@ -44,8 +52,14 @@ layout: default
         
         <div class="navigation">
             <div class="nav-previous">
-                <a href="{{ '/' | relative_url }}">&laquo; Back to Home</a>
+                <a href="/">&laquo; Back to Home</a>
             </div>
         </div>
+            </div>
+        </div>
+        
     </div>
+    
+    {% include sidebar.html %}
+    
 </div>
