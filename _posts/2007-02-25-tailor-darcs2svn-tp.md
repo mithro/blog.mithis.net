@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Tp
+- tp
 date: 2007-02-25T15:01:22+1000
 excerpt: 'To try and get our activity rating up on SourceForge I’m in the progress
   of trying to mirror our darcs repositories in SourceForge’s SVN repositories.

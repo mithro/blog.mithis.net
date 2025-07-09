@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Timvideos Us
+- timvideos-us
 date: 2014-07-23 01:32:55 +1000
 excerpt: Non-HDMI2USB related stuff Answered a bunch of work emails. Read and answered
   bunch of PyCon AU related emails. Fix DLV records for a bunch of domains. Helped

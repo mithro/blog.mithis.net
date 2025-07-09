@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Uncategorized
+- uncategorized
 date: '2008-07-08T17:38:00+10:00'
 excerpt: '
 

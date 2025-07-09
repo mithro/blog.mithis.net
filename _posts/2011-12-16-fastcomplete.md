@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Useful Bits
+- useful-bits
 date: 2011-12-16 14:05:46 +1000
 excerpt: Here at Google we have quite a few remote file systems which contain various
   tools we use in our day-to-day work. As typing sucks we generally want the tools

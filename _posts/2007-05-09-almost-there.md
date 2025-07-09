@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Pcb
+- pcb
 date: 2007-05-09T21:28:16+1000
 excerpt: Well, I’ve almost finished my Honours project, less then a week left until
   it’s done. I have been working on this project officially for almost a year now,

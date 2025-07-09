@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Uni
+- uni
 date: 2007-07-19T16:01:53+1000
 excerpt: 'I have been meaning to post here for quite a while but have been busy doing
   nothing.

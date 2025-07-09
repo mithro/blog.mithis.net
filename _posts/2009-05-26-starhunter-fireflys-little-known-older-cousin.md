@@ -2,7 +2,7 @@
 
 author: mithro
 categories:
-- Sci Fi
+- sci-fi
 date: 2009-05-26T00:05:06+1100
 excerpt: Recovered from Wayback Machine archive
 layout: post

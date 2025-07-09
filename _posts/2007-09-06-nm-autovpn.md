@@ -2,7 +2,7 @@
 
 author: mithro
 categories:
-- Ideas
+- ideas
 date: 2007-09-06T12:39:48+1100
 excerpt: Recovered from Wayback Machine archive
 layout: post

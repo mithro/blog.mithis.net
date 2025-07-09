@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Highlights
+- highlights
 date: 2007-03-11T05:42:05+1000
 excerpt: 'I upgraded my laptop to Feisty this weekend to see if there was anything
   good. One thing I have been hoping for is to get Beryl running on this laptop.

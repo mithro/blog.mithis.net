@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Timvideos Us
+- timvideos-us
 date: 2014-07-24 01:54:52 +1000
 excerpt: Looked into if Travis CI has IPv6 connectivity. It appears so! Investigated
   git server side hooks as a method to run CI on build.timvideos.tv Travis-CI does

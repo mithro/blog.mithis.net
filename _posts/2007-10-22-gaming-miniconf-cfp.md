@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Lca
+- lca
 date: '2007-10-22T17:44:05+10:00'
 excerpt: Just in case you missed this, the Gaming Miniconf has opened it’s call for
   participation. We are not just after presenters either! This will be the second

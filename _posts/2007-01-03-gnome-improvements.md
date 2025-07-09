@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Ideas
+- ideas
 date: 2007-01-03T12:59:53+1000
 excerpt: 'Here are a bunch of things which I would love to see added to gnome to make
   it much easier for me to use.

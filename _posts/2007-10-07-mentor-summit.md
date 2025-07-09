@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Tp
+- tp
 date: '2007-10-07T03:27:50+10:00'
 excerpt: Well, I am currently sitting in the famous Googleplex. I’m attending the
   Google Summer of Code Mentor Summit that Google paid to fly me out for, which is

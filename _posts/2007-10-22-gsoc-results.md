@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Tp
+- tp
 date: '2007-10-22T17:03:04+10:00'
 excerpt: If you read my blog but not the Thousand Parsec news feed, you might have
   missed my wrap up of our Summer of Code. You can find the complete post...

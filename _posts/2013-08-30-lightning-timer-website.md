@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Useful Bits
+- useful-bits
 date: 2013-08-30 19:04:10 +1000
 excerpt: When doing lightning talks it is very useful to have a timer so that people
   don’t over time. There use to be a very simple website called lightningtimer.net

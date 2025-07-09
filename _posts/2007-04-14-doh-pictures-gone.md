@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Uncategorized
+- uncategorized
 date: 2007-04-14T05:48:54+1000
 excerpt: The server I run my blog on got hacked. In a hurry to make a backup of everything
   before taking the site down I forgot to copy across all the pictures in my blog.

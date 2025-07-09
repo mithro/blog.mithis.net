@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Tp
+- tp
 date: 2007-02-21T12:13:06+1000
 excerpt: 'Well here is a binary, I have tested under Windows 2000 and Windows XP.
   It should also run under Windows Vista too, but I don’t have a copy of it to test

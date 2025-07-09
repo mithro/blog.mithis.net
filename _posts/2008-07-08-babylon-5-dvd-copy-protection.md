@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Uncategorized
+- uncategorized
 date: 2008-07-08T14:43:04+1000
 excerpt: Recovered from Wayback Machine archive
 layout: post

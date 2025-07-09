@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Lca
+- lca
 date: '2008-03-06T22:44:25+10:00'
 excerpt: At Linux.conf.au 2008 the AV team did a great job of recording the main conference
   and almost all the talks can be downloaded from the main website. They where however,...

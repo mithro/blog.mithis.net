@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Hardware
+- hardware
 date: 2020-05-02 10:12:03 +1000
 excerpt: As people may know, I’m a big supporter of the Migen and associated LiteX
   ecosystem. As of today if you are starting a new project today, I would instead

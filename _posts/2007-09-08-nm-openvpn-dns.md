@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Ideas
+- ideas
 date: 2007-09-08T15:31:41+0000
 excerpt: Recovered from Wayback Machine archive
 layout: post

@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Uni
+- uni
 date: 2007-05-19T16:26:06-0400
 excerpt: Recovered from Wayback Machine archive
 layout: post

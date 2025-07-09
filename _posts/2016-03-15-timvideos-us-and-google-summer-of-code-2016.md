@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Summer Of Code
+- summer-of-code
 date: 2016-03-15 17:32:13 +1000
 excerpt: This is a cross post from the HDMI2USB website. TimVideos.us and Google Summer
   of Code 2016! The TimVideos.us project is happy to announce that it has been selected

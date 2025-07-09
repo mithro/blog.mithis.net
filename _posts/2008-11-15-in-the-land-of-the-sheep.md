@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Tp
+- tp
 date: '2008-11-15T16:27:27+10:00'
 excerpt: I wrote this post while in New Zealand but never posted it, now I’m at Linux.conf.au
   I have time to finish it up. Well its been a long time since...

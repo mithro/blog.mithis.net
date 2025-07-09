@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Lca
+- lca
 date: 2006-11-19T11:25:58+1000
 excerpt: Firstly, every LCA (linux.conf.au) I have been to has been really brilliant.
   I’ve been to 6 other conferences and LCA is my definite favourite. I think that

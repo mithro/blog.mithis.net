@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Ideas
+- ideas
 date: 2007-03-01T11:59:16+1000
 excerpt: I spent today at a “conference” called NI Days, which was really just a day
   long pitch by National Instruments about their LabView software. It was however

@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Gaming Miniconf
+- gaming-miniconf
 date: 2009-01-28 18:33:02 +1000
 excerpt: So one of the other things I worked on at Linux.conf.au was a project Joel
   Stanley started, “Open Velociraptor Per Child, the Game!”. The game comes out of

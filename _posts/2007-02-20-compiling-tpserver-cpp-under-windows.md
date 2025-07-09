@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Tp
+- tp
 date: 2007-02-20T07:39:04+1000
 excerpt: I had hoped that compiling tpserver-cpp under windows would be easy. Turns
   out I was very, very wrong. I am even going the easy route of using Cygwin to handle

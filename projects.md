@@ -11,7 +11,7 @@ This page showcases various open source projects I've worked on over the years, 
 <div class="projects-grid">
   {% for project in site.projects %}
     <div class="project-card">
-      <h3><a href="{{ project.url }}">{{ project.title }}</a></h3>
+      <h3><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
       <p class="project-description">{{ project.description }}</p>
       
       <div class="project-meta">

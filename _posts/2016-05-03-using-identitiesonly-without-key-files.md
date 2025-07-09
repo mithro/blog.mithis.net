@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Useful Bits
+- useful-bits
 date: 2016-05-03 12:26:52 +1000
 excerpt: If you want to restrict the keys that ssh tries when connecting to a server,
   you need to use the IdentityFile and IdentitiesOnly configuration options in your

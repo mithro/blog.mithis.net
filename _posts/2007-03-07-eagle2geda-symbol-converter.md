@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Pcb
+- pcb
 date: 2007-03-07T14:09:50-0500
 excerpt: Recovered from Wayback Machine archive
 layout: post

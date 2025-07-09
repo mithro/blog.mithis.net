@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Uncategorized
+- uncategorized
 date: 2007-03-24T13:57:07+1000
 excerpt: "\nToday the RSS feed reader I use called Liferea displayed something very\
   \ strange. I’ve included a screenshot for you all to see.Yay for numbers wrapping\

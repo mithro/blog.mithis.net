@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Rcs Darcs
+- rcs-darcs
 date: 2007-02-26T05:07:56+1000
 excerpt: Darcs is a really cool SCM system. We use it for Thousand Parsec and I really
   like all the way it works. However there are some very annoying bugs which keep

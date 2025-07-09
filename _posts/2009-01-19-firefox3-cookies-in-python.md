@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Python
+- python
 date: 2009-01-19T12:58:28+1000
 excerpt: Recovered from Wayback Machine archive
 layout: post

@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Timvideos Us
+- timvideos-us
 date: 2014-07-29 00:13:02 +1000
 excerpt: Updated the HDMI2USB variant spreadsheet with new Numato board pin out. Successfully
   generated a HDMI2USB firmware for Numato board with new pin information. That fixes

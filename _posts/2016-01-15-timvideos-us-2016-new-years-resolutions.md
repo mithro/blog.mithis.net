@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Lca
+- lca
 date: 2016-01-15 01:00:58 +1000
 excerpt: This is a cross post from the HDMI2USB website about my plans for 2016 and
   the TimVideos project. Last year was an exciting time for my personal projects!

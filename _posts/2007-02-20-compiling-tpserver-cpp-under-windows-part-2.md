@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Tp
+- tp
 date: 2007-02-20T12:18:11+1000
 excerpt: "\nWell it’s finally done. I managed to get tpserver-cpp to compile under\
   \ Windows. I just need to fix a few things and then I’ll upload “unsupported” binaries.\n\

@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Google
+- google
 date: '2008-02-04T14:41:09+10:00'
 excerpt: I live in Adelaide and have been playing around with Google maps recently.
   I have no sense of direction which makes Google quite useful for getting to places.

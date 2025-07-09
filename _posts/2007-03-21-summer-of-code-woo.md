@@ -1,7 +1,7 @@
 ---
 author: mithro
 categories:
-- Tp
+- tp
 date: 2007-03-21T23:36:31+1000
 excerpt: 'As everyone should know by now, Thousand Parsec got accepted as a Google
   Summer of Code.
