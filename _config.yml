@@ -46,6 +46,10 @@ google_analytics: UA-XXXXXXXX-X  # Replace with actual tracking ID
 # Pagination
 paginate: 10
 
+# Feed configuration
+feed:
+  path: "/feed/"
+
 # Collections
 collections:
   projects:
