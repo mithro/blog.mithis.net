@@ -68,7 +68,32 @@ div#header div#blog-description {
 
 /* Navigation */
 div#globalnav {
-    display: none; /* Will be styled later */
+    margin: 0 -2em 3em 0;
+    padding: 0.5em 0 0.5em 3em;
+    background: #e8e8e8;
+    border-bottom: 1px solid #ccc;
+}
+
+div#globalnav ul#menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+div#globalnav ul#menu li {
+    display: inline;
+    margin-right: 1em;
+}
+
+div#globalnav ul#menu li a {
+    color: #666;
+    text-decoration: none;
+    padding: 0.25em 0.5em;
+}
+
+div#globalnav ul#menu li a:hover {
+    color: #000;
+    background: #ddd;
 }
 
 /* Sidebar */
@@ -88,6 +113,99 @@ div.sidebar a:visited {
 div.sidebar a:hover {
     color: #2f4e6f;
     text-decoration: underline;
+}
+
+/* Sidebar Widget Styling */
+#sidebar {
+    float: left;
+    width: 15em;
+    padding: 0 1em 0 0;
+    overflow: hidden;
+}
+
+.sidebar-widget {
+    margin-bottom: 2em;
+    padding: 1em;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+}
+
+.sidebar-widget h3 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    font-size: 1.2em;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5em;
+}
+
+.sidebar-widget ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-widget li {
+    margin-bottom: 0.5em;
+    padding: 0.25em 0;
+    border-bottom: 1px dotted #ccc;
+}
+
+.sidebar-widget li:last-child {
+    border-bottom: none;
+}
+
+.sidebar-widget a {
+    text-decoration: none;
+    color: #666;
+}
+
+.sidebar-widget a:hover {
+    color: #000;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+#categories-dropdown {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.tag-cloud {
+    line-height: 1.8;
+}
+
+.tag-link {
+    display: inline-block;
+    margin-right: 0.5em;
+    margin-bottom: 0.25em;
+    padding: 0.25em 0.5em;
+    background: #e0e0e0;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #666;
+    font-size: 0.8em;
+}
+
+.tag-link:hover {
+    background: #d0d0d0;
+    color: #000;
+}
+
+.post-date {
+    display: block;
+    font-size: 0.8em;
+    color: #999;
+    margin-top: 0.25em;
 }
 
 /* Content Styling */

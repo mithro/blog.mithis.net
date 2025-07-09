@@ -1,10 +1,10 @@
 {
-  "generated": "2025-07-08T01:09:17.285574",
+  "generated": "2025-07-08T20:10:42.697677",
   "summary": {
     "total_posts": 76,
-    "migrated": 57,
-    "pending": 19,
-    "progress_percent": 75.0
+    "migrated": 72,
+    "pending": 4,
+    "progress_percent": 94.73684210526315
   },
   "categories": {
     "hardware": {
@@ -44,8 +44,8 @@
     },
     "tp": {
       "total": 15,
-      "migrated": 12,
-      "pending": 3
+      "migrated": 13,
+      "pending": 2
     },
     "games": {
       "total": 2,
@@ -54,33 +54,33 @@
     },
     "python": {
       "total": 3,
-      "migrated": 1,
-      "pending": 2
+      "migrated": 3,
+      "pending": 0
     },
     "uncategorized": {
       "total": 10,
-      "migrated": 6,
-      "pending": 4
+      "migrated": 9,
+      "pending": 1
     },
     "google": {
       "total": 3,
-      "migrated": 1,
-      "pending": 2
+      "migrated": 3,
+      "pending": 0
     },
     "ideas": {
       "total": 9,
-      "migrated": 5,
-      "pending": 4
+      "migrated": 9,
+      "pending": 0
     },
     "uni": {
       "total": 2,
-      "migrated": 1,
-      "pending": 1
+      "migrated": 2,
+      "pending": 0
     },
     "pcb": {
       "total": 2,
-      "migrated": 1,
-      "pending": 1
+      "migrated": 2,
+      "pending": 0
     },
     "diary": {
       "total": 1,
@@ -99,8 +99,8 @@
     },
     "sci-fi": {
       "total": 1,
-      "migrated": 0,
-      "pending": 1
+      "migrated": 1,
+      "pending": 0
     }
   },
   "posts": [
@@ -218,8 +218,8 @@
       "id": 21,
       "slug": "eagle-for-pcb",
       "lastmod": "2007-03-24T14:08:53+00:00",
-      "status": "pending",
-      "file": "MISSING: 21-eagle-for-pcb.md"
+      "status": "migrated",
+      "file": "2007-03-07-eagle-for-pcb.md"
     },
     {
       "url": "https://blog.mithis.net/archives/pcb/23-eagle2geda-symbol-converter",
@@ -227,8 +227,8 @@
       "id": 23,
       "slug": "eagle2geda-symbol-converter",
       "lastmod": "2007-04-22T04:19:31+00:00",
-      "status": "pending",
-      "file": "MISSING: 23-eagle2geda-symbol-converter.md"
+      "status": "migrated",
+      "file": "2007-03-07-eagle2geda-symbol-converter.md"
     },
     {
       "url": "https://blog.mithis.net/archives/highlights/26-i-want-a-cool-desktop",
@@ -299,8 +299,8 @@
       "id": 41,
       "slug": "cfxs-all-done",
       "lastmod": "2007-05-19T06:56:06+00:00",
-      "status": "pending",
-      "file": "MISSING: 41-cfxs-all-done.md"
+      "status": "migrated",
+      "file": "2007-05-19-cfxs-all-done.md"
     },
     {
       "url": "https://blog.mithis.net/archives/uni/44-freeatlast",
@@ -362,8 +362,8 @@
       "id": 51,
       "slug": "nm-autovpn",
       "lastmod": "2011-05-12T04:12:09+00:00",
-      "status": "pending",
-      "file": "MISSING: 51-nm-autovpn.md"
+      "status": "migrated",
+      "file": "2007-09-06-nm-autovpn.md"
     },
     {
       "url": "https://blog.mithis.net/archives/ideas/54-nm-openvpn-dns",
@@ -371,8 +371,8 @@
       "id": 54,
       "slug": "nm-openvpn-dns",
       "lastmod": "2007-10-16T00:41:30+00:00",
-      "status": "pending",
-      "file": "MISSING: 54-nm-openvpn-dns.md"
+      "status": "migrated",
+      "file": "2007-09-08-nm-openvpn-dns.md"
     },
     {
       "url": "https://blog.mithis.net/archives/tp/59-mentor-summit",
@@ -416,8 +416,8 @@
       "id": 64,
       "slug": "python-swap-var",
       "lastmod": "2007-11-10T15:08:35+00:00",
-      "status": "pending",
-      "file": "MISSING: 64-python-swap-var.md"
+      "status": "migrated",
+      "file": "2007-11-11-python-swap-var.md"
     },
     {
       "url": "https://blog.mithis.net/archives/lca/65-itwire",
@@ -497,8 +497,8 @@
       "id": 77,
       "slug": "epiphany2firefox",
       "lastmod": "2008-07-08T05:36:31+00:00",
-      "status": "pending",
-      "file": "MISSING: 77-epiphany2firefox.md"
+      "status": "migrated",
+      "file": "2008-04-10-epiphany2firefox.md"
     },
     {
       "url": "https://blog.mithis.net/archives/google/79-going-to-sydney",
@@ -506,8 +506,8 @@
       "id": 79,
       "slug": "going-to-sydney",
       "lastmod": "2008-07-08T05:38:00+00:00",
-      "status": "pending",
-      "file": "MISSING: 79-going-to-sydney.md"
+      "status": "migrated",
+      "file": "2008-04-27-going-to-sydney.md"
     },
     {
       "url": "https://blog.mithis.net/archives/uncategorized/80-rocks",
@@ -515,8 +515,8 @@
       "id": 80,
       "slug": "rocks",
       "lastmod": "2008-04-27T13:35:53+00:00",
-      "status": "pending",
-      "file": "MISSING: 80-rocks.md"
+      "status": "migrated",
+      "file": "2008-04-27-rocks.md"
     },
     {
       "url": "https://blog.mithis.net/archives/google/81-noogler-week-1",
@@ -524,8 +524,8 @@
       "id": 81,
       "slug": "noogler-week-1",
       "lastmod": "2008-07-08T05:32:50+00:00",
-      "status": "pending",
-      "file": "MISSING: 81-noogler-week-1.md"
+      "status": "migrated",
+      "file": "2008-05-27-noogler-week-1.md"
     },
     {
       "url": "https://blog.mithis.net/archives/games/82-techtalk-gamingforfreedom",
@@ -551,8 +551,8 @@
       "id": 87,
       "slug": "babylon-5-dvd-copy-protection",
       "lastmod": "2008-07-08T05:15:27+00:00",
-      "status": "pending",
-      "file": "MISSING: 87-babylon-5-dvd-copy-protection.md"
+      "status": "migrated",
+      "file": "2008-07-08-babylon-5-dvd-copy-protection.md"
     },
     {
       "url": "https://blog.mithis.net/archives/uncategorized/88-leslie-tshirts-response",
@@ -569,8 +569,8 @@
       "id": 90,
       "slug": "firefox3-cookies-in-python",
       "lastmod": "2009-01-19T05:56:53+00:00",
-      "status": "pending",
-      "file": "MISSING: 90-firefox3-cookies-in-python.md"
+      "status": "migrated",
+      "file": "2009-01-19-firefox3-cookies-in-python.md"
     },
     {
       "url": "https://blog.mithis.net/archives/python/91-utf-8-in-python",
@@ -605,8 +605,8 @@
       "id": 94,
       "slug": "reading-cookies-firefox",
       "lastmod": "2009-05-19T04:06:25+00:00",
-      "status": "pending",
-      "file": "MISSING: 94-reading-cookies-firefox.md"
+      "status": "migrated",
+      "file": "2009-01-20-reading-cookies-firefox.md"
     },
     {
       "url": "https://blog.mithis.net/archives/tp/95-xcompiling-cygwin-on-linux-for-windows",
@@ -614,8 +614,8 @@
       "id": 95,
       "slug": "xcompiling-cygwin-on-linux-for-windows",
       "lastmod": "2009-01-27T08:15:57+00:00",
-      "status": "pending",
-      "file": "MISSING: 95-xcompiling-cygwin-on-linux-for-windows.md"
+      "status": "migrated",
+      "file": "2009-01-27-xcompiling-cygwin-on-linux-for-windows.md"
     },
     {
       "url": "https://blog.mithis.net/archives/lca/96-lguest-and-ksplice",
@@ -650,8 +650,8 @@
       "id": 102,
       "slug": "starhunter-fireflys-little-known-older-cousin",
       "lastmod": "2009-05-26T00:00:00+00:00",
-      "status": "pending",
-      "file": "MISSING: 102-starhunter-fireflys-little-known-older-cousin.md"
+      "status": "migrated",
+      "file": "2009-05-26-starhunter-fireflys-little-known-older-cousin.md"
     },
     {
       "url": "https://blog.mithis.net/archives/useful-bits/407-fastcomplete",

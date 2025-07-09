@@ -1,0 +1,23 @@
+#! /bin/sh
+
+echo $@ >> /tmp/network-ifaces
+
+IFACE=$1
+STATUS=$2
+
+case "$STATUS" in 
+	up)
+		ESSID="`iwconfig $IFACE 2>&1 | grep ESSID | sed -e's/.*ESSID:"\(.*\)"/\1/' -e's/ //g'`"
+
+		case "$ESSID" in
+			'astc-design.net')
+				# Start ASTC's vpn...
+				echo "Starting 'ASTC' VPN"
+				nm-startvpn 'ASTC'
+				;;
+		esac
+
+		;;
+esac
+
+exit 0

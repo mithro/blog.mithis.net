@@ -40,7 +40,9 @@
       "Bash(ruby:*)",
       "Bash(/home/tim/.local/share/gem/ruby/3.3.0/bin/jekyll build)",
       "Bash(jq length:*)",
-      "Bash(jq:*)"
+      "Bash(jq:*)",
+      "Bash(touch:*)",
+      "Bash(jekyll serve:*)"
     ],
     "deny": []
   }

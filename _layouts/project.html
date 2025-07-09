@@ -1,0 +1,109 @@
+---
+layout: default
+---
+
+<article class="project">
+  <header class="project-header">
+    <h1 class="project-title">{{ page.title }}</h1>
+    <p class="project-description">{{ page.description }}</p>
+    
+    <div class="project-meta">
+      <span class="project-category">{{ page.category | capitalize }}</span>
+      {% if page.status %}
+        <span class="project-status status-{{ page.status }}">{{ page.status | capitalize }}</span>
+      {% endif %}
+      {% if page.github %}
+        <a href="{{ page.github }}" class="project-github">GitHub</a>
+      {% endif %}
+      {% if page.website %}
+        <a href="{{ page.website }}" class="project-website">Website</a>
+      {% endif %}
+    </div>
+    
+    {% if page.tags %}
+      <div class="project-tags">
+        {% for tag in page.tags %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </header>
+
+  <div class="project-content">
+    {{ content }}
+  </div>
+</article>
+
+<style>
+.project-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.project-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.project-description {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.project-meta {
+  margin-bottom: 1rem;
+}
+
+.project-meta span,
+.project-meta a {
+  display: inline-block;
+  margin-right: 1rem;
+  padding: 0.25rem 0.5rem;
+  background: #f0f0f0;
+  border-radius: 3px;
+  text-decoration: none;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.project-meta a:hover {
+  background: #e0e0e0;
+}
+
+.status-active {
+  background: #d4edda !important;
+  color: #155724 !important;
+}
+
+.status-inactive {
+  background: #f8d7da !important;
+  color: #721c24 !important;
+}
+
+.status-completed {
+  background: #cce5ff !important;
+  color: #004085 !important;
+}
+
+.project-tags {
+  margin-top: 1rem;
+}
+
+.tag {
+  display: inline-block;
+  background: #007bff;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+}
+
+.project-content {
+  line-height: 1.6;
+}
+</style>

@@ -1,0 +1,39 @@
+#! /usr/bin/python
+
+from dbus.mainloop.glib import DBusGMainLoop
+
+DBusGMainLoop(set_as_default=True)
+
+import dbus
+b = dbus.SystemBus()
+
+NM_SERVICE="org.freedesktop.NetworkManager"
+NM_PATH="/org/freedesktop/NetworkManager"
+
+NM_VPN_SERVICE ="org.freedesktop.NetworkManager.VPNConnections"
+NM_VPN_PATH    ="/org/freedesktop/NetworkManager/VPNConnections"
+
+nm = b.get_object(NM_SERVICE, NM_VPN_PATH, True)
+
+interface = dbus.Interface(nm, NM_VPN_SERVICE)
+
+import sys
+
+if len(sys.argv) == 2:
+	name = sys.argv[1]
+else:
+	print "startvpn <vpnname>"
+	sys.exit()
+
+print "Starting '%s' VPN" % name
+print interface.getVPNConnections()
+print interface.getVPNConnectionProperties(name)
+
+#b.call_async(NM_SERVICE, NM_PATH, NM_VPN_SERVICE, 'activateVPNConnection', dbus.Signature('sas'), [name, []], None, None)
+
+def callback(*args):
+	pass
+
+print interface.activateVPNConnection(name, dbus.Array([], 's'), reply_handler=callback, error_handler=callback)
+
+sys.exit()

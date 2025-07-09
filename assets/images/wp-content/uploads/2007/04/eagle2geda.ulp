@@ -1,0 +1,175 @@
+/*
+LIBRARY
+	GRID
+	LAYER
+	DEVICESET
+		DEVICE
+		GATE
+	PACKAGE
+		PAD
+		SMD
+		CIRCLE
+		HOLE
+		RECTANGLE
+		TEXT
+		WIRE
+		POLYGON
+			WIRE
+	SYMBOL
+		PIN
+		CIRCLE
+		RECTANGLE
+		TEXT
+		WIRE
+		POLYGON
+			WIRE
+
+
+circles() 
+rectangles() 
+pins() 
+polygons() 
+texts() 
+wires() 
+*/
+
+int e2gu(int x) {
+	return x/100;
+}
+
+int e2g(int x) {
+	return 8000+e2gu(x);
+}
+
+
+/*
+ * How the converter works,
+ *
+ * Library
+ *  - Output the PCB footprint for each "package" in the library.
+ *  - Output a new symbol for each "device" in the library.
+ *
+ * Eagle uses a origin in the center and posative or negative values.
+ * gEDA uses a origin and only positive numbers.
+ *   To convert between the two we first need to find the smallest number,
+ *   the - of this value is then added to all corrdinates.
+ *
+ *   Values also need to be divided by 100
+ *
+ * To convert a sch/brd pair the following thing occurs
+ *  - Find all components and output them
+ *  - Convert the sch (referencing the components)
+ *    - 
+ *  - Convert the brd (referencing the components)
+ */ 
+
+library(L) {
+
+/*
+	L.devices(D) {
+		printf("Dev: %s\n", D.name);
+	}
+	L.devicesets(D) {
+		printf("DevSet: %s\n", D.name);
+	} */
+
+	L.packages(P) {
+	output(S.name + ".pcb", "w") {
+
+		P.contacts(C) {
+			if (C.pad)
+				// Pad(0 30 0 -30 12 30 42 "CH0" "1" 0x00000100)
+
+				printf("\tPad: %s, (%d %d)\n", C.name, C.pad.x, C.pad.y);
+			else if (C.smd)
+				printf("\tSmd: %s, (%d %d)\n", C.name, C.smd.x, C.smd.y);
+		  }
+	}}
+
+
+	L.symbols(S) {
+	// printf("Sym: %s\n", S.name); 
+	output(S.name + ".sym", "w") {
+		printf("v 20031231 1\n");
+
+/*
+		S.rectangles(R) {
+			printf("	Rectangle: (%d %d), (%d %d)\n", R.x1, R.y1, R.x2, R.y2);
+		}
+		S.circles(C) {
+			printf("	Circle: (%d %d), r=%d, w=%d\n", C.x, C.y, C.radius, C.width);
+		}
+*/
+
+		S.wires(W) {
+			printf("L %d %d %d %d 3 0 0 0 -1 -1\n", e2g(W.x1), e2g(W.y1), e2g(W.x2), e2g(W.y2));
+		}
+
+		S.texts(T) {
+			// T x y color size visibility show_name_value angle alignment num_lines
+			     // T 300 0 9 8 1 0 0 0 1
+			printf("T %d %d 9 8 1 0 %.0f 0 1\n", e2g(T.x), e2g(T.y), T.angle);
+			printf("%s\n", T.value);
+		}
+
+		int pincount = 0;
+		S.pins(P) {
+			int X, Y;
+
+			P.wires(W) {
+					printf("P %d %d %d %d 1 0 0\n", e2g(W.x1), e2g(W.y1), e2g(W.x2), e2g(W.y2));
+
+					X = e2g(W.x1-W.x2);
+					Y = e2g(W.y1-W.y2);
+			}
+			P.circles(C) {
+				// V x y radius color width capstyle dashtype dashlength dashspace filltype fillwidth angle1 pitch1 angle2 pitch2
+				     // V 250 500 50 6 0 0 0 -1 -1 0 -1 -1 -1 -1 -1
+				printf("V %d %d %d %d 0 0 0 -1 -1 0 -1 -1 -1 -1 -1\n", e2g(C.x), e2g(C.y), e2gu(C.radius), e2gu(C.width));
+			}
+
+			printf("{\n");
+			      //T %d %d 9 8 0 1 0 0 1
+			printf("T %d %d 9 8 0 1 0 0 1\n", e2g(P.x), e2g(P.y));
+			printf("pinlabel=%s\n", P.name);
+
+			// Print out the type of the pin
+			string type = "";
+			if (P.direction == PIN_DIRECTION_NC)	// not connected
+				type = "nc";
+			if (P.direction == PIN_DIRECTION_IN)	// input
+				type = "in";
+			if (P.direction == PIN_DIRECTION_OUT)	// output (totem-pole)
+				type = "out";
+			if (P.direction == PIN_DIRECTION_IO)	// in/output (bidirectional)
+				type = "io";
+			if (P.direction == PIN_DIRECTION_OC)	// open collector
+				type = "oc";
+			if (P.direction == PIN_DIRECTION_PWR)	// power input pin
+				type = "pwr";
+			if (P.direction == PIN_DIRECTION_PAS)	// passive
+				type = "pas";
+			if (P.direction == PIN_DIRECTION_HIZ)	// high impedance output
+				type = "tri";
+			if (P.direction == PIN_DIRECTION_SUP)	// supply pin
+				type = "pwr";
+			// T x y color size visibility show_name_value angle alignment num_lines
+						//T %d %d 5 8 0 1 0 2 1
+			printf("T %d %d 5 8 0 1 0 2 1\n", e2g(P.x), e2g(P.y));
+			printf("pintype=%s\n", type);
+
+			// These are needed for some reason...
+			printf("T %d %d 5 8 1 1 0 0 1\n", e2g(P.x), e2g(P.y));
+			printf("pinnumber=%d\n", pincount);
+			printf("T %d %d 5 8 0 1 0 0 1\n", e2g(P.x), e2g(P.y));
+			printf("pinseq=%d\n", pincount);
+			pincount++;
+
+			P.texts(T) {
+				printf("T %d %d 9 8 1 0 %.0f 0 1\n", e2g(T.x), e2g(T.y), T.angle);
+				printf("%s\n", T.value);
+			}
+			printf("}\n");
+		}}
+	}
+}

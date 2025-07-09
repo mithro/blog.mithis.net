@@ -1,0 +1,99 @@
+---
+layout: default
+---
+
+<article class="tutorial">
+  <header class="tutorial-header">
+    <h1 class="tutorial-title">{{ page.title }}</h1>
+    <p class="tutorial-description">{{ page.description }}</p>
+    
+    <div class="tutorial-meta">
+      <span class="tutorial-category">{{ page.category | capitalize }}</span>
+      {% if page.difficulty %}
+        <span class="tutorial-difficulty difficulty-{{ page.difficulty }}">{{ page.difficulty | capitalize }}</span>
+      {% endif %}
+      {% if page.last_updated %}
+        <span class="tutorial-updated">Updated: {{ page.last_updated | date: "%Y-%m-%d" }}</span>
+      {% endif %}
+    </div>
+    
+    {% if page.tags %}
+      <div class="tutorial-tags">
+        {% for tag in page.tags %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </header>
+
+  <div class="tutorial-content">
+    {{ content }}
+  </div>
+</article>
+
+<style>
+.tutorial-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.tutorial-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.tutorial-description {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.tutorial-meta {
+  margin-bottom: 1rem;
+}
+
+.tutorial-meta span {
+  display: inline-block;
+  margin-right: 1rem;
+  padding: 0.25rem 0.5rem;
+  background: #f0f0f0;
+  border-radius: 3px;
+  font-size: 0.9rem;
+}
+
+.difficulty-beginner {
+  background: #d4edda !important;
+  color: #155724 !important;
+}
+
+.difficulty-intermediate {
+  background: #fff3cd !important;
+  color: #856404 !important;
+}
+
+.difficulty-advanced {
+  background: #f8d7da !important;
+  color: #721c24 !important;
+}
+
+.tutorial-tags {
+  margin-top: 1rem;
+}
+
+.tag {
+  display: inline-block;
+  background: #28a745;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+}
+
+.tutorial-content {
+  line-height: 1.6;
+}
+</style>

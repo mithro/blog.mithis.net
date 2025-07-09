@@ -1,25 +1,123 @@
 ---
+layout: default
 permalink: /404.html
-layout: page
 ---
 
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
+<div class="error-page">
+  <h1>404 - Page Not Found</h1>
+  
+  <p>The page you're looking for doesn't exist. This might be because:</p>
+  
+  <ul>
+    <li>The URL was mistyped</li>
+    <li>The page has been moved or deleted</li>
+    <li>You followed a broken link</li>
+  </ul>
+  
+  <div class="error-actions">
+    <a href="{{ site.baseurl }}/" class="button">Go to Home Page</a>
+    <a href="{{ site.baseurl }}/archives/" class="button">Browse Archives</a>
+  </div>
+  
+  <div class="search-suggestion">
+    <p>Try searching for what you're looking for:</p>
+    <div class="search-box">
+      <input type="text" id="search-404" placeholder="Search posts...">
+      <div id="search-results-404"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+.error-page {
+  text-align: center;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.error-page h1 {
+  color: #d32f2f;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.error-page p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.error-page ul {
+  text-align: left;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.error-page li {
+  margin-bottom: 0.5rem;
+}
+
+.error-actions {
+  margin-bottom: 3rem;
+}
+
+.error-actions .button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  margin: 0 0.5rem;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.error-actions .button:hover {
+  background-color: #0056b3;
+}
+
+.search-suggestion {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.search-box {
+  max-width: 400px;
+  margin: 1rem auto;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+#search-results-404 {
+  margin-top: 1rem;
+  text-align: left;
+}
 </style>
 
-<div class="container">
-  <h1>404</h1>
-
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('search-404');
+  const searchResults = document.getElementById('search-results-404');
+  
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      const query = this.value.toLowerCase();
+      
+      if (query.length < 2) {
+        searchResults.innerHTML = '';
+        return;
+      }
+      
+      searchResults.innerHTML = '<p>Search functionality is available on the <a href="/">main site</a>.</p>';
+    });
+  }
+});
+</script>

@@ -1,13 +1,13 @@
 # WordPress to Jekyll Migration TODO List
 
-Generated: 2025-07-08 01:09:17
+Generated: 2025-07-08 20:10:42
 
 ## Summary
 
 **Total Posts Found**: 76
-**Posts Migrated**: 57
-**Posts Pending**: 19
-**Migration Progress**: 57/76 (75.0%)
+**Posts Migrated**: 72
+**Posts Pending**: 4
+**Migration Progress**: 72/76 (94.7%)
 
 ## Category Breakdown
 
@@ -16,21 +16,21 @@ Generated: 2025-07-08 01:09:17
 | diary | 1 | 1 | 0 | 100.0% |
 | games | 2 | 2 | 0 | 100.0% |
 | gaming-miniconf | 1 | 1 | 0 | 100.0% |
-| google | 3 | 1 | 2 | 33.3% |
+| google | 3 | 3 | 0 | 100.0% |
 | hardware | 1 | 1 | 0 | 100.0% |
 | highlights | 1 | 1 | 0 | 100.0% |
-| ideas | 9 | 5 | 4 | 55.6% |
+| ideas | 9 | 9 | 0 | 100.0% |
 | lca | 10 | 10 | 0 | 100.0% |
-| pcb | 2 | 1 | 1 | 50.0% |
-| python | 3 | 1 | 2 | 33.3% |
+| pcb | 2 | 2 | 0 | 100.0% |
+| python | 3 | 3 | 0 | 100.0% |
 | rcs-darcs | 1 | 1 | 0 | 100.0% |
-| sci-fi | 1 | 0 | 1 | 0.0% |
+| sci-fi | 1 | 1 | 0 | 100.0% |
 | summer-of-code | 1 | 1 | 0 | 100.0% |
 | timvideos-us | 8 | 8 | 0 | 100.0% |
-| tp | 15 | 12 | 3 | 80.0% |
+| tp | 15 | 13 | 2 | 86.7% |
 | ubuntu | 2 | 1 | 1 | 50.0% |
-| uncategorized | 10 | 6 | 4 | 60.0% |
-| uni | 2 | 1 | 1 | 50.0% |
+| uncategorized | 10 | 9 | 1 | 90.0% |
+| uni | 2 | 2 | 0 | 100.0% |
 | useful-bits | 3 | 3 | 0 | 100.0% |
 
 ## Detailed Post Status
@@ -113,17 +113,17 @@ Generated: 2025-07-08 01:09:17
 - **File**: `2007-03-01-graphical-programming.md`
 - **Status**: Migrated
 
-**❌ Post 21** (`ideas`)
+**✅ Post 21** (`ideas`)
 - **URL**: https://blog.mithis.net/archives/ideas/21-eagle-for-pcb
 - **Date**: 2007-03-24
-- **File**: `MISSING: 21-eagle-for-pcb.md`
-- **Status**: Pending
+- **File**: `2007-03-07-eagle-for-pcb.md`
+- **Status**: Migrated
 
-**❌ Post 23** (`pcb`)
+**✅ Post 23** (`pcb`)
 - **URL**: https://blog.mithis.net/archives/pcb/23-eagle2geda-symbol-converter
 - **Date**: 2007-04-22
-- **File**: `MISSING: 23-eagle2geda-symbol-converter.md`
-- **Status**: Pending
+- **File**: `2007-03-07-eagle2geda-symbol-converter.md`
+- **Status**: Migrated
 
 **✅ Post 26** (`highlights`)
 - **URL**: https://blog.mithis.net/archives/highlights/26-i-want-a-cool-desktop
@@ -167,11 +167,11 @@ Generated: 2025-07-08 01:09:17
 - **File**: `2007-05-09-almost-there.md`
 - **Status**: Migrated
 
-**❌ Post 41** (`uni`)
+**✅ Post 41** (`uni`)
 - **URL**: https://blog.mithis.net/archives/uni/41-cfxs-all-done
 - **Date**: 2007-05-19
-- **File**: `MISSING: 41-cfxs-all-done.md`
-- **Status**: Pending
+- **File**: `2007-05-19-cfxs-all-done.md`
+- **Status**: Migrated
 
 **✅ Post 44** (`uni`)
 - **URL**: https://blog.mithis.net/archives/uni/44-freeatlast
@@ -209,17 +209,17 @@ Generated: 2025-07-08 01:09:17
 - **File**: `2007-08-23-freeplay-debrief.md`
 - **Status**: Migrated
 
-**❌ Post 51** (`ideas`)
+**✅ Post 51** (`ideas`)
 - **URL**: https://blog.mithis.net/archives/ideas/51-nm-autovpn
 - **Date**: 2011-05-12
-- **File**: `MISSING: 51-nm-autovpn.md`
-- **Status**: Pending
+- **File**: `2007-09-06-nm-autovpn.md`
+- **Status**: Migrated
 
-**❌ Post 54** (`ideas`)
+**✅ Post 54** (`ideas`)
 - **URL**: https://blog.mithis.net/archives/ideas/54-nm-openvpn-dns
 - **Date**: 2007-10-16
-- **File**: `MISSING: 54-nm-openvpn-dns.md`
-- **Status**: Pending
+- **File**: `2007-09-08-nm-openvpn-dns.md`
+- **Status**: Migrated
 
 **✅ Post 59** (`tp`)
 - **URL**: https://blog.mithis.net/archives/tp/59-mentor-summit
@@ -245,11 +245,11 @@ Generated: 2025-07-08 01:09:17
 - **File**: `2007-10-22-gaming-miniconf-cfp.md`
 - **Status**: Migrated
 
-**❌ Post 64** (`ideas`)
+**✅ Post 64** (`ideas`)
 - **URL**: https://blog.mithis.net/archives/ideas/64-python-swap-var
 - **Date**: 2007-11-10
-- **File**: `MISSING: 64-python-swap-var.md`
-- **Status**: Pending
+- **File**: `2007-11-11-python-swap-var.md`
+- **Status**: Migrated
 
 **✅ Post 65** (`lca`)
 - **URL**: https://blog.mithis.net/archives/lca/65-itwire
@@ -299,29 +299,29 @@ Generated: 2025-07-08 01:09:17
 - **File**: `2008-03-18-gsoc2008.md`
 - **Status**: Migrated
 
-**❌ Post 77** (`uncategorized`)
+**✅ Post 77** (`uncategorized`)
 - **URL**: https://blog.mithis.net/archives/uncategorized/77-epiphany2firefox
 - **Date**: 2008-07-08
-- **File**: `MISSING: 77-epiphany2firefox.md`
-- **Status**: Pending
+- **File**: `2008-04-10-epiphany2firefox.md`
+- **Status**: Migrated
 
-**❌ Post 79** (`google`)
+**✅ Post 79** (`google`)
 - **URL**: https://blog.mithis.net/archives/google/79-going-to-sydney
 - **Date**: 2008-07-08
-- **File**: `MISSING: 79-going-to-sydney.md`
-- **Status**: Pending
+- **File**: `2008-04-27-going-to-sydney.md`
+- **Status**: Migrated
 
-**❌ Post 80** (`uncategorized`)
+**✅ Post 80** (`uncategorized`)
 - **URL**: https://blog.mithis.net/archives/uncategorized/80-rocks
 - **Date**: 2008-04-27
-- **File**: `MISSING: 80-rocks.md`
-- **Status**: Pending
+- **File**: `2008-04-27-rocks.md`
+- **Status**: Migrated
 
-**❌ Post 81** (`google`)
+**✅ Post 81** (`google`)
 - **URL**: https://blog.mithis.net/archives/google/81-noogler-week-1
 - **Date**: 2008-07-08
-- **File**: `MISSING: 81-noogler-week-1.md`
-- **Status**: Pending
+- **File**: `2008-05-27-noogler-week-1.md`
+- **Status**: Migrated
 
 **✅ Post 82** (`games`)
 - **URL**: https://blog.mithis.net/archives/games/82-techtalk-gamingforfreedom
@@ -335,11 +335,11 @@ Generated: 2025-07-08 01:09:17
 - **File**: `MISSING: 84-my-three-weeks-on-a-mac.md`
 - **Status**: Pending
 
-**❌ Post 87** (`uncategorized`)
+**✅ Post 87** (`uncategorized`)
 - **URL**: https://blog.mithis.net/archives/uncategorized/87-babylon-5-dvd-copy-protection
 - **Date**: 2008-07-08
-- **File**: `MISSING: 87-babylon-5-dvd-copy-protection.md`
-- **Status**: Pending
+- **File**: `2008-07-08-babylon-5-dvd-copy-protection.md`
+- **Status**: Migrated
 
 **✅ Post 88** (`uncategorized`)
 - **URL**: https://blog.mithis.net/archives/uncategorized/88-leslie-tshirts-response
@@ -347,11 +347,11 @@ Generated: 2025-07-08 01:09:17
 - **File**: `2008-07-08-leslie-tshirts-response.md`
 - **Status**: Migrated
 
-**❌ Post 90** (`python`)
+**✅ Post 90** (`python`)
 - **URL**: https://blog.mithis.net/archives/python/90-firefox3-cookies-in-python
 - **Date**: 2009-01-19
-- **File**: `MISSING: 90-firefox3-cookies-in-python.md`
-- **Status**: Pending
+- **File**: `2009-01-19-firefox3-cookies-in-python.md`
+- **Status**: Migrated
 
 **✅ Post 91** (`python`)
 - **URL**: https://blog.mithis.net/archives/python/91-utf-8-in-python
@@ -371,17 +371,17 @@ Generated: 2025-07-08 01:09:17
 - **File**: `2008-11-15-in-the-land-of-the-sheep.md`
 - **Status**: Migrated
 
-**❌ Post 94** (`python`)
+**✅ Post 94** (`python`)
 - **URL**: https://blog.mithis.net/archives/python/94-reading-cookies-firefox
 - **Date**: 2009-05-19
-- **File**: `MISSING: 94-reading-cookies-firefox.md`
-- **Status**: Pending
+- **File**: `2009-01-20-reading-cookies-firefox.md`
+- **Status**: Migrated
 
-**❌ Post 95** (`tp`)
+**✅ Post 95** (`tp`)
 - **URL**: https://blog.mithis.net/archives/tp/95-xcompiling-cygwin-on-linux-for-windows
 - **Date**: 2009-01-27
-- **File**: `MISSING: 95-xcompiling-cygwin-on-linux-for-windows.md`
-- **Status**: Pending
+- **File**: `2009-01-27-xcompiling-cygwin-on-linux-for-windows.md`
+- **Status**: Migrated
 
 **✅ Post 96** (`lca`)
 - **URL**: https://blog.mithis.net/archives/lca/96-lguest-and-ksplice
@@ -401,11 +401,11 @@ Generated: 2025-07-08 01:09:17
 - **File**: `2009-01-26-osdc-orbital-death-better-late-then-never.md`
 - **Status**: Migrated
 
-**❌ Post 102** (`sci-fi`)
+**✅ Post 102** (`sci-fi`)
 - **URL**: https://blog.mithis.net/archives/sci-fi/102-starhunter-fireflys-little-known-older-cousin
 - **Date**: 2009-05-26
-- **File**: `MISSING: 102-starhunter-fireflys-little-known-older-cousin.md`
-- **Status**: Pending
+- **File**: `2009-05-26-starhunter-fireflys-little-known-older-cousin.md`
+- **Status**: Migrated
 
 **✅ Post 407** (`useful-bits`)
 - **URL**: https://blog.mithis.net/archives/useful-bits/407-fastcomplete

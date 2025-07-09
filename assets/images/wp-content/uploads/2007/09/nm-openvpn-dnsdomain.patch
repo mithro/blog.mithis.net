@@ -1,0 +1,85 @@
+diff -ru network-manager-openvpn-0.3.2svn2342-orig/src/nm-openvpn-service.c network-manager-openvpn-0.3.2svn2342/src/nm-openvpn-service.c
+--- network-manager-openvpn-0.3.2svn2342-orig/src/nm-openvpn-service.c	2007-09-08 15:03:42.000000000 +0930
++++ network-manager-openvpn-0.3.2svn2342/src/nm-openvpn-service.c	2007-09-08 15:11:44.000000000 +0930
+@@ -1266,6 +1266,7 @@
+   guint32 *		ip4_nbns;
+   guint32		ip4_nbns_len;
+   guint32		mss;
++  char *		ip4_dnsdomain;
+   gboolean		success = FALSE;
+   char *                empty = "";
+ 
+@@ -1288,6 +1289,7 @@
+ 			    DBUS_TYPE_UINT32, &ip4_netmask,
+ 			    DBUS_TYPE_ARRAY, DBUS_TYPE_UINT32, &ip4_dns, &ip4_dns_len,
+ 			    DBUS_TYPE_ARRAY, DBUS_TYPE_UINT32, &ip4_nbns, &ip4_nbns_len,
++			    DBUS_TYPE_STRING, &ip4_dnsdomain,
+ 			    DBUS_TYPE_INVALID))
+     {
+       DBusMessage	*signal;
+@@ -1310,7 +1312,7 @@
+ 				DBUS_TYPE_ARRAY, DBUS_TYPE_UINT32, &ip4_dns, ip4_dns_len,
+ 				DBUS_TYPE_ARRAY, DBUS_TYPE_UINT32, &ip4_nbns, ip4_nbns_len,
+ 				DBUS_TYPE_UINT32, &mss,
+-				DBUS_TYPE_STRING, &empty,
++				DBUS_TYPE_STRING, &ip4_dnsdomain,
+ 				DBUS_TYPE_STRING, &empty,
+ 				DBUS_TYPE_INVALID);
+ 
+diff -ru network-manager-openvpn-0.3.2svn2342-orig/src/nm-openvpn-service-openvpn-helper.c network-manager-openvpn-0.3.2svn2342/src/nm-openvpn-service-openvpn-helper.c
+--- network-manager-openvpn-0.3.2svn2342-orig/src/nm-openvpn-service-openvpn-helper.c	2007-02-28 21:27:49.000000000 +1030
++++ network-manager-openvpn-0.3.2svn2342/src/nm-openvpn-service-openvpn-helper.c	2007-09-08 15:11:56.000000000 +0930
+@@ -202,7 +202,8 @@
+ 		  const char *str_ip4_ptpaddr,
+ 		  const char *str_ip4_netmask,
+ 		  const GPtrArray *gpa_ip4_dns,
+-		  const GPtrArray *gpa_ip4_nbns
++		  const GPtrArray *gpa_ip4_nbns,
++		  const char *str_ip4_dnsdomain
+ 		  )
+ {
+   DBusMessage *	message;
+@@ -257,6 +258,7 @@
+ 			    DBUS_TYPE_UINT32, &uint_ip4_netmask,
+ 			    DBUS_TYPE_ARRAY, DBUS_TYPE_UINT32, &uint_ip4_dns, uint_ip4_dns_len,
+ 			    DBUS_TYPE_ARRAY, DBUS_TYPE_UINT32, &uint_ip4_nbns, uint_ip4_nbns_len,
++			    DBUS_TYPE_STRING, &str_ip4_dnsdomain,
+ 			    DBUS_TYPE_INVALID);
+   if (dbus_connection_send (con, message, NULL))
+     success = TRUE;
+@@ -310,6 +312,7 @@
+   char            *ip4_netmask = NULL;
+   GPtrArray       *ip4_dns = NULL;
+   GPtrArray       *ip4_nbns = NULL;
++  char            *ip4_dnsdomain = NULL;
+   
+   char           **split = NULL;
+   char           **item;
+@@ -347,7 +350,8 @@
+   
+   ip4_dns     = g_ptr_array_new();
+   ip4_nbns    = g_ptr_array_new();
+-  
++  ip4_dnsdomain = NULL;
++
+   while (1) {
+     sprintf(envname, "foreign_option_%i", i++);
+     tmp = getenv( envname );
+@@ -368,6 +372,8 @@
+ 	  if (strcmp( split[1], "DNS") == 0) {
+ 	    // DNS, push it!
+ 	    g_ptr_array_add( ip4_dns, (gpointer) split[2] );
++	  } else if (strcmp( split[1], "DOMAIN") == 0) {
++	    ip4_dnsdomain = split[2];
+ 	  } else if (strcmp( split[1], "WINS") == 0) {
+ 	    // WINS, push it!
+ 	    g_ptr_array_add( ip4_nbns, (gpointer) split[2] );		  
+@@ -410,7 +416,7 @@
+ 
+   if (!send_config_info (con, vpn_gateway, tundev,
+ 			 ip4_address, ip4_ptp, ip4_netmask,
+-			 ip4_dns, ip4_nbns)) {
++			 ip4_dns, ip4_nbns, ip4_dnsdomain)) {
+     exit_code = 1;
+   }
+   

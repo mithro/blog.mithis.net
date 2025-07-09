@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Tim Ansell's Blog
+title: Mithro rants about stuff
 email: tim@mithis.net
 description: >- # this means to ignore newlines until "baseurl:"
   Technical blog about open source hardware, software development, and tech projects.
@@ -29,9 +29,10 @@ github_username: mithro
 
 # Build settings
 # theme: minima  # Removed for now - will use custom Barthelme theme
-# plugins:
-#   - jekyll-feed
-#   - jekyll-sitemap
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate
 
 # Permalink structure - individual permalinks set in each post front matter
 # permalink: /:year/:month/:title/  # Disabled - using WordPress-compatible permalinks
@@ -39,8 +40,23 @@ github_username: mithro
 # Timezone
 timezone: America/Los_Angeles
 
+# Google Analytics
+google_analytics: UA-XXXXXXXX-X  # Replace with actual tracking ID
+
 # Pagination
 paginate: 10
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:name/
+  tutorials:
+    output: true
+    permalink: /:collection/:name/
+  hardware:
+    output: true
+    permalink: /:collection/:name/
 
 # Markdown processor
 markdown: kramdown

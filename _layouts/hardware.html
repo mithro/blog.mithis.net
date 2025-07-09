@@ -1,0 +1,107 @@
+---
+layout: default
+---
+
+<article class="hardware">
+  <header class="hardware-header">
+    <h1 class="hardware-title">{{ page.title }}</h1>
+    <p class="hardware-description">{{ page.description }}</p>
+    
+    <div class="hardware-meta">
+      <span class="hardware-category">{{ page.category | capitalize }}</span>
+      {% if page.status %}
+        <span class="hardware-status status-{{ page.status }}">{{ page.status | capitalize }}</span>
+      {% endif %}
+      {% if page.price_target %}
+        <span class="hardware-price">{{ page.price_target }}</span>
+      {% endif %}
+      {% if page.channels %}
+        <span class="hardware-channels">{{ page.channels }} channels</span>
+      {% endif %}
+    </div>
+    
+    {% if page.tags %}
+      <div class="hardware-tags">
+        {% for tag in page.tags %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </header>
+
+  <div class="hardware-content">
+    {{ content }}
+  </div>
+</article>
+
+<style>
+.hardware-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.hardware-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.hardware-description {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.hardware-meta {
+  margin-bottom: 1rem;
+}
+
+.hardware-meta span {
+  display: inline-block;
+  margin-right: 1rem;
+  padding: 0.25rem 0.5rem;
+  background: #f0f0f0;
+  border-radius: 3px;
+  font-size: 0.9rem;
+}
+
+.status-active {
+  background: #d4edda !important;
+  color: #155724 !important;
+}
+
+.status-inactive {
+  background: #f8d7da !important;
+  color: #721c24 !important;
+}
+
+.status-completed {
+  background: #cce5ff !important;
+  color: #004085 !important;
+}
+
+.hardware-price {
+  background: #28a745 !important;
+  color: white !important;
+}
+
+.hardware-tags {
+  margin-top: 1rem;
+}
+
+.tag {
+  display: inline-block;
+  background: #6c757d;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+}
+
+.hardware-content {
+  line-height: 1.6;
+}
+</style>
