@@ -23,8 +23,8 @@ email: tim@mithis.net
 description: >- # this means to ignore newlines until "baseurl:"
   Technical blog about open source hardware, software development, and tech projects.
   Documenting work on HDMI2USB, TimVideos.us, and various hardware/software initiatives.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://blog.mithis.net" # the base hostname & protocol for your site
+baseurl: "/blog.mithis.net" # the subpath of your site, e.g. /blog
+url: "https://mithro.github.io" # the base hostname & protocol for your site
 github_username: mithro
 
 # Build settings
