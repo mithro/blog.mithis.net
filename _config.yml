@@ -48,7 +48,7 @@ paginate: 10
 
 # Feed configuration
 feed:
-  path: "/feed/"
+  path: "/feed/index.xml"
 
 # Collections
 collections:
