@@ -134,7 +134,7 @@ case "$reason" in
     $IPROUTE link set dev "$TUNDEV" down
     ;;
   *)
-    echo "unknown reason '$reason'. Maybe vpnc-script is out of date" 1&gt;&amp;2
+    echo "unknown reason '$reason'. Maybe vpnc-script is out of date" 1>&amp;2
     exit 1
     ;;
 esac
@@ -143,7 +143,7 @@ exit 0
 <blockquote>
 <h2>Fritz!Box encrypted VPN configuration files</h2>
 <p>Fritz!Boxes will <span style="color: #ff0000;">only accept VPN configurations which are encrypted</span>. Otherwise when try to import the file you will get the cryptic "Error: Import of the VPN settings failed." as seen below;<br/>
-<img alt="Error: Import of the VPN settings failed." class="alignnone size-full wp-image-1835" height="265" sizes="(max-width: 745px) 100vw, 745px" src="/assets/images/wp-content/uploads/2013/10/VPN-error.png" | relative_url }}" srcset="/assets/images/wp-content/uploads/2013/10/VPN-error.png 745w, https://blog.mithis.net/wp-content/uploads/2013/10/VPN-error-300x106.png 300w" width="745"/></p>
+<img alt="Error: Import of the VPN settings failed." class="alignnone size-full wp-image-1835" height="265" sizes="(max-width: 745px) 100vw, 745px" src="{{ "/assets/images/wp-content/uploads/2013/10/VPN-error.png" | relative_url }}" srcset="/assets/images/wp-content/uploads/2013/10/VPN-error.png 745w, https://blog.mithis.net/wp-content/uploads/2013/10/VPN-error-300x106.png 300w" width="745"/></p>
 <p>To create an encrypted file you must use the FRITZ!Box VPN Connection tool. Then when exporting, select "Save VPN settings in a file under" option, check the "Encrypt VPN settings" check box (the file type should change to .eff), and enter your chosen password twice.</p>
-<p><img alt="Export VPN settings" class="alignnone size-full wp-image-1836" height="306" sizes="(max-width: 442px) 100vw, 442px" src="/assets/images/wp-content/uploads/2013/10/VPN-encrypt.png" | relative_url }}" srcset="/assets/images/wp-content/uploads/2013/10/VPN-encrypt.png 442w, https://blog.mithis.net/wp-content/uploads/2013/10/VPN-encrypt-300x207.png 300w" width="442"/></p></blockquote>
+<p><img alt="Export VPN settings" class="alignnone size-full wp-image-1836" height="306" sizes="(max-width: 442px) 100vw, 442px" src="{{ "/assets/images/wp-content/uploads/2013/10/VPN-encrypt.png" | relative_url }}" srcset="/assets/images/wp-content/uploads/2013/10/VPN-encrypt.png 442w, https://blog.mithis.net/wp-content/uploads/2013/10/VPN-encrypt-300x207.png 300w" width="442"/></p></blockquote>
 </p></div>
