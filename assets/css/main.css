@@ -8,6 +8,8 @@ body {
     background: #fff;
     color: #222;
     line-height: 150%;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 100%;
     margin: 0;
     padding: 0;
 }
@@ -161,6 +163,21 @@ div#globalnav ul#menu li a {
 div#globalnav ul#menu li a:hover {
     color: #000;
     background: #ddd;
+}
+
+/* Headers and specific elements use Georgia serif font to match original */
+div#content h2,
+div#content h3,
+div#content h4,
+div#content h5,
+div#content h6,
+.entry-title,
+.entry-date,
+.entry-meta,
+blockquote,
+.comment-meta,
+input#s {
+    font-family: georgia, times, serif;
 }
 
 /* Posts */
