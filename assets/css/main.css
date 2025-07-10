@@ -891,3 +891,81 @@ input#searchsubmit {
     font-size: 0.9em;
 }
 
+
+/* Header photo gallery to match original WordPress site */
+#header-photos {
+    margin: 10px 0;
+    padding: 0;
+}
+
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.photo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+    max-width: 150px;
+}
+
+.photo-item img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.photo-meta {
+    font-size: 0.7em;
+    color: #666;
+    text-align: center;
+    margin-top: 5px;
+    line-height: 1.2;
+}
+
+.photo-meta a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.photo-meta a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive layout for photo gallery */
+@media (max-width: 768px) {
+    .photo-gallery {
+        justify-content: center;
+    }
+    
+    .photo-item {
+        max-width: 120px;
+    }
+    
+    .photo-item img {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+/* Update header layout */
+#header {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#blog-title {
+    margin-bottom: 15px;
+}
+
+#header-nav {
+    margin-top: 15px;
+}
+

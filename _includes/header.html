@@ -1,15 +1,73 @@
-<div id="header" onclick="location.href='{{ '/' | relative_url }}';">
-    <!-- Photo banner to match original WordPress site -->
-    <div id="header-photos">
-        <div class="header-photo-note">
-            <em>Note: Photo gallery integration has been removed during migration. Original site featured rotating photos from Picasa.</em>
-        </div>
-    </div>
-    
+<div id="header">
     <h1 id="blog-title">
         <a href="{{ '/' | relative_url }}" title="{{ site.title | escape }}">{{ site.title | escape }}</a>
     </h1>
-    <div id="blog-description">{{ site.description | escape }}</div>
+    
+    <!-- Photo gallery header to match original WordPress site -->
+    <div id="header-photos">
+        <div class="photo-gallery">
+            <div class="photo-item">
+                <a href="https://lh3.ggpht.com/-NzTriXDN_mk/Sw046XUA2iI/AAAAAAAAI2E/vfzXgS_XE3E/pict0045.jpg?imgmax=800">
+                    <img src="https://lh3.ggpht.com/-NzTriXDN_mk/Sw046XUA2iI/AAAAAAAAI2E/vfzXgS_XE3E/pict0045.jpg?imgmax=64&crop=1" alt="Photo">
+                </a>
+                <div class="photo-meta">
+                    <a href="https://picasaweb.google.com/116784438228731043690/20060129#5408041302883359266">View at Picasa</a><br>
+                    28-Jan-2006 16:39, KONICA MINOLTA DiMAGE E500, 5.6, 5.4mm, 0.005 sec, ISO 200
+                </div>
+            </div>
+            
+            <div class="photo-item">
+                <a href="https://lh4.ggpht.com/-qtJozqTOhis/Tsi0Kl-dzZI/AAAAAAAA1i8/pBOoqPzymK8/IMG_0001.JPG?imgmax=800">
+                    <img src="https://lh4.ggpht.com/-qtJozqTOhis/Tsi0Kl-dzZI/AAAAAAAA1i8/pBOoqPzymK8/IMG_0001.JPG?imgmax=64&crop=1" alt="Photo">
+                </a>
+                <div class="photo-meta">
+                    <a href="https://picasaweb.google.com/116784438228731043690/201111170JurongBirdPark#5676985424386313618">View at Picasa</a><br>
+                    17-Nov-2011 16:18, Canon Canon PowerShot SX230 HS, 3.1, 5.0mm, 0.05 sec, ISO 400
+                </div>
+            </div>
+            
+            <div class="photo-item">
+                <a href="https://lh4.ggpht.com/-IP27oS5yutw/TpE2EWc9RVI/AAAAAAAApqM/gd06I4yXtsY/IMG_0953.JPG?imgmax=800">
+                    <img src="https://lh4.ggpht.com/-IP27oS5yutw/TpE2EWc9RVI/AAAAAAAApqM/gd06I4yXtsY/IMG_0953.JPG?imgmax=64&crop=1" alt="Photo">
+                </a>
+                <div class="photo-meta">
+                    <a href="https://picasaweb.google.com/116784438228731043690/20111008GuggenheimCentralParkEmpireStateBuilding#5661365654955836754">View at Picasa</a><br>
+                    08-Oct-2011 19:27, Canon Canon PowerShot SX230 HS, 5.9, 70.0mm, 0.5 sec, ISO 400
+                </div>
+            </div>
+            
+            <div class="photo-item">
+                <a href="https://lh6.ggpht.com/--te-LphBABQ/TsjesAvR1cI/AAAAAAAA7yQ/bGTlebUKoQw/IMG_6481.JPG?imgmax=800">
+                    <img src="https://lh6.ggpht.com/--te-LphBABQ/TsjesAvR1cI/AAAAAAAA7yQ/bGTlebUKoQw/IMG_6481.JPG?imgmax=64&crop=1" alt="Photo">
+                </a>
+                <div class="photo-meta">
+                    <a href="https://picasaweb.google.com/116784438228731043690/201111161NightSafari#5677032177994421698">View at Picasa</a><br>
+                    16-Nov-2011 23:37, Canon Canon PowerShot SX230 HS, 5.0, 34.328mm, 0.067 sec, ISO 6400
+                </div>
+            </div>
+            
+            <div class="photo-item">
+                <a href="https://lh3.ggpht.com/-a0gk0L9-KHM/Tsjks4s7n1I/AAAAAAAA8pc/J35vMeTjWiQ/IMG_7483.JPG?imgmax=800">
+                    <img src="https://lh3.ggpht.com/-a0gk0L9-KHM/Tsjks4s7n1I/AAAAAAAA8pc/J35vMeTjWiQ/IMG_7483.JPG?imgmax=64&crop=1" alt="Photo">
+                </a>
+                <div class="photo-meta">
+                    <a href="https://picasaweb.google.com/116784438228731043690/201111162NightSafari#5677038790086729554">View at Picasa</a><br>
+                    16-Nov-2011 23:41, Canon Canon PowerShot SX230 HS, 3.5, 6.106mm, 0.067 sec, ISO 6400
+                </div>
+            </div>
+            
+            <div class="photo-item">
+                <a href="https://lh3.ggpht.com/-e4GjJKzxIEo/Sw1a3TAQ9AI/AAAAAAAALCk/Wf0NC8Q1R54/pict0122.jpg?imgmax=800">
+                    <img src="https://lh3.ggpht.com/-e4GjJKzxIEo/Sw1a3TAQ9AI/AAAAAAAALCk/Wf0NC8Q1R54/pict0122.jpg?imgmax=64&crop=1" alt="Photo">
+                </a>
+                <div class="photo-meta">
+                    <a href="https://picasaweb.google.com/116784438228731043690/20060204#5408078633582523394">View at Picasa</a><br>
+                    04-Feb-2006 15:12, KONICA MINOLTA DiMAGE E500, 2.8, 5.4mm, 0.002 sec, ISO 50
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div id="header-nav">
         <ul>
             <li><a href="{{ '/contact/' | relative_url }}">Contact Me</a></li>
