@@ -68,6 +68,8 @@ highlighter: rouge
 kramdown:
   input: GFM
   syntax_highlighter: rouge
+  parse_block_html: true
+  parse_span_html: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
