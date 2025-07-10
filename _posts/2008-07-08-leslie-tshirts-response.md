@@ -15,5 +15,4 @@ wordpress_category: uncategorized
 wordpress_id: 88
 wordpress_url: https://blog.mithis.net/archives/uncategorized/88-leslie-tshirts-response
 ---
-
-<div ><p><a href="http://www.hawthornlandings.org/2008/07/maybe-i-will-try-this-twitter-thing.html">they</a> can fall to bits from too much love!</p></div>
+[they](http://www.hawthornlandings.org/2008/07/maybe-i-will-try-this-twitter-thing.html) can fall to bits from too much love!

@@ -13,9 +13,6 @@ wordpress_category: uncategorized
 wordpress_id: 28
 wordpress_url: https://blog.mithis.net/archives/uncategorized/28-liferea-bug
 ---
-
-<div >
-<p>Today the RSS feed reader I use called <a href="http://liferea.sourceforge.net/">Liferea</a> displayed something very strange. I’ve included a screenshot for you all to see.Yay for numbers wrapping around! </p>
-<p><a href="https://blog.mithis.net/wp-content/uploads/2007/03/liferea.png" title="Liferea Bug"><br/>
-<img alt="Liferea Bug"  src="https://blog.mithis.net/wp-content/uploads/2007/03/liferea.png"/></a></p>
-</div>
+Today the RSS feed reader I use called [Liferea](http://liferea.sourceforge.net/) displayed something very strange. I’ve included a screenshot for you all to see.Yay for numbers wrapping around! 
+[
+<img alt="Liferea Bug"  src="https://blog.mithis.net/wp-content/uploads/2007/03/liferea.png"/>](https://blog.mithis.net/wp-content/uploads/2007/03/liferea.png)

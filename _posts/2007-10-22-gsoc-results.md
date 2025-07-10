@@ -12,5 +12,8 @@ wordpress_category: tp
 wordpress_id: 60
 wordpress_url: https://blog.mithis.net/archives/tp/60-gsoc-results
 ---
-
-<div ><p>If you read my blog but not the <a href="http://www.thousandparsec.net/">Thousand Parsec</a><a href="http://www.thousandparsec.net/tp/rss.php">news feed</a>, you might have missed my wrap up of our <a href="http://code.google.com/soc/">Summer of Code</a>. You can find the complete post <a href="http://www.thousandparsec.net/tp/news.php/2007-10-20-1302">here</a>, some highlights include;</p><blockquote><p> According to <a href="http://www.ohloh.net/">Oholo</a>, over the summer the students made a total of <strong>371</strong> commits to our public repository, changing a total of <strong>39,050</strong> lines of code.</p></blockquote><p>and</p><blockquote><p> Participating in the <a href="http://www.google.com/soc">Summer of Code</a> has meant that students from around the world have started trying to figure out how to make Thousand Parsec part of their course work. One such student is  <a href="http://www.ohloh.net/projects/3679/contributors/46709"> Nathan Partlan aka greywhind</a> who is doing a full year internship with Thousand Parsec.</p></blockquote><p>You should check it out.</p></div>
+If you read my blog but not the [Thousand Parsec](http://www.thousandparsec.net/)[news feed](http://www.thousandparsec.net/tp/rss.php), you might have missed my wrap up of our [Summer of Code](http://code.google.com/soc/). You can find the complete post [here](http://www.thousandparsec.net/tp/news.php/2007-10-20-1302), some highlights include;
+>  According to [Oholo](http://www.ohloh.net/), over the summer the students made a total of **371** commits to our public repository, changing a total of **39,050** lines of code.
+and
+>  Participating in the [Summer of Code](http://www.google.com/soc) has meant that students from around the world have started trying to figure out how to make Thousand Parsec part of their course work. One such student is  [ Nathan Partlan aka greywhind](http://www.ohloh.net/projects/3679/contributors/46709) who is doing a full year internship with Thousand Parsec.
+You should check it out.

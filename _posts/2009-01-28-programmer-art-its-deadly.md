@@ -13,10 +13,7 @@ wordpress_category: gaming-miniconf
 wordpress_id: 97
 wordpress_url: https://blog.mithis.net/archives/gaming-miniconf/97-programmer-art-its-deadly
 ---
-
-<div class="entry-content">
-<p>So one of the other things I worked on at <a href="http://linux.conf.au/">Linux.conf.au</a> was a project <a href="http://shenki.net">Joel Stanley</a> started, “Open Velociraptor Per Child, the Game!”.</p>
-<p>The game comes out of the <a href="http://velociraptorz.org/">Open Velociraptor Per Child</a> project’s ideas. The OVPC project aims to give every child in the world their very own Velociraptor. The game simulates what would happen if this project was ever to achieve it’s wonderful but lofty goal.</p>
-<p>My main contribution was adding support for (<i>very bad</i>) collision detection, scoring and difficult levels. However, what I spent most of my time was spent making bad programmer art, that of the particularly gruesome child death animation. I like to think it was this artwork that meant we won top spot at the <a href="http://games.sericyb.com.au/">Gaming Miniconf</a> competition, beating the “Shave Bdale” game.</p>
-<p>You can download the game from the <a href="http://git.sugarlabs.org/projects/one-velociraptor-per-child">git repository</a>. Have fun!</p>
-</div>
+So one of the other things I worked on at [Linux.conf.au](http://linux.conf.au/) was a project [Joel Stanley](http://shenki.net) started, “Open Velociraptor Per Child, the Game!”.
+The game comes out of the [Open Velociraptor Per Child](http://velociraptorz.org/) project’s ideas. The OVPC project aims to give every child in the world their very own Velociraptor. The game simulates what would happen if this project was ever to achieve it’s wonderful but lofty goal.
+My main contribution was adding support for (*very bad*) collision detection, scoring and difficult levels. However, what I spent most of my time was spent making bad programmer art, that of the particularly gruesome child death animation. I like to think it was this artwork that meant we won top spot at the [Gaming Miniconf](http://games.sericyb.com.au/) competition, beating the “Shave Bdale” game.
+You can download the game from the [git repository](http://git.sugarlabs.org/projects/one-velociraptor-per-child). Have fun!
