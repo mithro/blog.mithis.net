@@ -24,7 +24,7 @@
     {% endif %}
 </head>
 
-<body class="{% if page.layout %}{{ page.layout }}{% endif %} {% if page.categories %}{% for category in page.categories %}category-{{ category }} {% endfor %}{% endif %}">
+<body class="wordpress y{{ 'now' | date: '%Y' }} m{{ 'now' | date: '%m' }} d{{ 'now' | date: '%d' }} h{{ 'now' | date: '%H' }} {% if page.layout %}{{ page.layout }}{% endif %}">
 
 <div id="wrapper">
     
