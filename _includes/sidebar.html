@@ -1,108 +1,110 @@
-<div id="sidebar">
+<div id="primary" class="sidebar">
+    <ul>
+        
+        <!-- Twitter Feed Widget -->
+        <li class="widget">
+            <h3 class="widgettitle">Follow Me on Twitter</h3>
+            <div class="twitter-feed">
+                <p><em>Note: Twitter integration has been removed during migration. Follow <a href="https://twitter.com/mithro">@mithro</a> on Twitter.</em></p>
+            </div>
+        </li>
+        
+        <!-- Photo Gallery Widget -->
+        <li class="widget">
+            <h3 class="widgettitle">Photos</h3>
+            <div class="photo-gallery">
+                <p><em>Note: Photo gallery integration has been removed during migration. View photos at <a href="https://github.com/mithro">GitHub</a>.</em></p>
+            </div>
+        </li>
+        
+        <!-- Search Widget -->
+        <li class="widget">
+            <h3 class="widgettitle">Search</h3>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search posts...">
+                <div id="search-results"></div>
+            </div>
+        </li>
+        
+        <!-- Categories Widget -->
+        <li class="widget">
+            <h3 class="widgettitle">Categories</h3>
+            <select id="categories-dropdown" onchange="if(this.value) window.location.href=this.value">
+                <option value="">Select Category</option>
+                {% for category in site.categories %}
+                    <option value="{{ '/category/' | append: category.first | slugify | relative_url }}">{{ category.first | replace: '-', ' ' | title }} ({{ category.last | size }})</option>
+                {% endfor %}
+            </select>
+        </li>
+        
+        <!-- Personal Links Widget -->
+        <li class="widget">
+            <h3 class="widgettitle">Personal Links</h3>
+            <ul>
+                <li><a href="{{ '/contact/' | relative_url }}">Contact Me</a></li>
+                <li><a href="{{ '/projects/' | relative_url }}">My Projects</a></li>
+                <li><a href="{{ '/tutorials/' | relative_url }}">My Tutorials</a></li>
+                <li><a href="https://github.com/mithro">My GitHub</a></li>
+            </ul>
+        </li>
+        
+        <!-- RSS Feeds Widget -->
+        <li class="widget">
+            <h3 class="widgettitle">RSS Feeds</h3>
+            <ul>
+                <li><a href="{{ '/feed/' | relative_url }}">All posts RSS</a></li>
+                <li><a href="{{ '/feed/' | relative_url }}">All comments RSS</a></li>
+            </ul>
+        </li>
+        
+        <!-- Tags Cloud Widget -->
+        <li class="widget">
+            <h3 class="widgettitle">Tags</h3>
+            <div class="tag-cloud">
+                {% assign tags = site.tags | sort %}
+                {% for tag in tags %}
+                    <a href="{{ '/archives/tag/' | append: tag.first | slugify | relative_url }}" 
+                       class="tag-link" 
+                       style="font-size: {{ tag.last.size | times: 0.8 | plus: 0.8 }}em;">
+                        {{ tag.first }}
+                    </a>
+                {% endfor %}
+            </div>
+        </li>
+        
+        <!-- Recent Posts Widget -->
+        <li class="widget">
+            <h3 class="widgettitle">Recent Posts</h3>
+            <ul>
+                {% for post in site.posts limit: 10 %}
+                    <li>
+                        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                        <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+        
+        <!-- Other Cool People Widget -->
+        <li class="widget">
+            <h3 class="widgettitle">Other Cool People</h3>
+            <ul>
+                <li><a href="https://www.david-rowe.com/">David Rowe</a></li>
+                <li><a href="https://www.kernel.org/pub/linux/kernel/people/rusty/">Rusty Russell</a></li>
+                <li><a href="https://www.phoronix.com/">Phoronix</a></li>
+                <li><a href="https://lwn.net/">LWN.net</a></li>
+                <li><a href="https://hackaday.com/">Hackaday</a></li>
+            </ul>
+        </li>
+        
+        <!-- Meta Widget -->
+        <li class="widget">
+            <h3 class="widgettitle">Meta</h3>
+            <ul>
+                <li><a href="{{ '/archives/' | relative_url }}">All Archives</a></li>
+                <li><a href="{{ '/sitemap.xml' | relative_url }}">Site Map</a></li>
+            </ul>
+        </li>
+    </ul>
     
-    <!-- Twitter Feed Widget -->
-    <div class="sidebar-widget">
-        <h3>Follow Me on Twitter</h3>
-        <div class="twitter-feed">
-            <p><em>Note: Twitter integration has been removed during migration. Follow <a href="https://twitter.com/mithro">@mithro</a> on Twitter.</em></p>
-        </div>
-    </div>
-    
-    <!-- Photo Gallery Widget -->
-    <div class="sidebar-widget">
-        <h3>Photos</h3>
-        <div class="photo-gallery">
-            <p><em>Note: Photo gallery integration has been removed during migration. View photos at <a href="https://github.com/mithro">GitHub</a>.</em></p>
-        </div>
-    </div>
-    
-    <!-- Search Widget -->
-    <div class="sidebar-widget">
-        <h3>Search</h3>
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Search posts...">
-            <div id="search-results"></div>
-        </div>
-    </div>
-    
-    <!-- Categories Widget -->
-    <div class="sidebar-widget">
-        <h3>Categories</h3>
-        <select id="categories-dropdown" onchange="if(this.value) window.location.href=this.value">
-            <option value="">Select Category</option>
-            {% for category in site.categories %}
-                <option value="{{ '/category/' | append: category.first | slugify | relative_url }}">{{ category.first | replace: '-', ' ' | title }} ({{ category.last | size }})</option>
-            {% endfor %}
-        </select>
-    </div>
-    
-    <!-- Personal Links Widget -->
-    <div class="sidebar-widget">
-        <h3>Personal Links</h3>
-        <ul>
-            <li><a href="{{ '/contact/' | relative_url }}">Contact Me</a></li>
-            <li><a href="{{ '/projects/' | relative_url }}">My Projects</a></li>
-            <li><a href="{{ '/tutorials/' | relative_url }}">My Tutorials</a></li>
-            <li><a href="https://github.com/mithro">My GitHub</a></li>
-        </ul>
-    </div>
-    
-    <!-- RSS Feeds Widget -->
-    <div class="sidebar-widget">
-        <h3>RSS Feeds</h3>
-        <ul>
-            <li><a href="{{ '/feed/' | relative_url }}">All posts RSS</a></li>
-            <li><a href="{{ '/feed/' | relative_url }}">All comments RSS</a></li>
-        </ul>
-    </div>
-    
-    <!-- Tags Cloud Widget -->
-    <div class="sidebar-widget">
-        <h3>Tags</h3>
-        <div class="tag-cloud">
-            {% assign tags = site.tags | sort %}
-            {% for tag in tags %}
-                <a href="{{ '/archives/tag/' | append: tag.first | slugify | relative_url }}" 
-                   class="tag-link" 
-                   style="font-size: {{ tag.last.size | times: 0.8 | plus: 0.8 }}em;">
-                    {{ tag.first }}
-                </a>
-            {% endfor %}
-        </div>
-    </div>
-    
-    <!-- Recent Posts Widget -->
-    <div class="sidebar-widget">
-        <h3>Recent Posts</h3>
-        <ul>
-            {% for post in site.posts limit: 10 %}
-                <li>
-                    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                    <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-    
-    <!-- Other Cool People Widget -->
-    <div class="sidebar-widget">
-        <h3>Other Cool People</h3>
-        <ul>
-            <li><a href="https://www.david-rowe.com/">David Rowe</a></li>
-            <li><a href="https://www.kernel.org/pub/linux/kernel/people/rusty/">Rusty Russell</a></li>
-            <li><a href="https://www.phoronix.com/">Phoronix</a></li>
-            <li><a href="https://lwn.net/">LWN.net</a></li>
-            <li><a href="https://hackaday.com/">Hackaday</a></li>
-        </ul>
-    </div>
-    
-    <!-- Meta Widget -->
-    <div class="sidebar-widget">
-        <h3>Meta</h3>
-        <ul>
-            <li><a href="{{ '/archives/' | relative_url }}">All Archives</a></li>
-            <li><a href="{{ '/sitemap.xml' | relative_url }}">Site Map</a></li>
-        </ul>
-    </div>
-    
-</div><!-- #sidebar -->
+</div><!-- #primary .sidebar -->
