@@ -31,8 +31,8 @@ ERROR:Place - Constraint Resolved NO placeable site for hdmiMatri_Comp/dvi_rx1/i
 - [aps-sids](http://aps-sids.github.io/) foolishly pointed out a bug in the title of the streaming system, so I [taught him](http://logs.timvideos.us/%23timvideos/%23timvideos.2014-07-26.log.html#t2014-07-26T16:15:22) about how we actually flumotion for an event.
 ##  27th July 2014
 - Did a lot of spreadsheet hacking on the production board pin planning spreadsheet;
-<li>Added half bank / BUFIO2 regions.
+- Added half bank / BUFIO2 regions.
 - Added dedicated clock pin information.
-</li>
+
 - Started work on reshuffling the pins to fix the timing issue.
 - Helped aps-sids get [Flumotion working on the latest Twisted release](https://github.com/timvideos/flumotion/tree/modern-twisted-fix). Turned out that [someone else](http://lists.fluendo.com/pipermail/flumotion-devel/2014-January/000698.html) had already done most of the work and only a couple very small fixes where needed. [aps-sids reported](http://logs.timvideos.us/%23timvideos/%23timvideos.2014-07-28.log.html#t2014-07-28T05:43:23) that he was now able to run flumotion on Ubuntu Trusty!

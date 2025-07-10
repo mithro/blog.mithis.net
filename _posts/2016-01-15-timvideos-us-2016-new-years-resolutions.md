@@ -24,10 +24,10 @@ In 2015, I decided to focus the [TimVideos project](https://code.timvideos.us/) 
 - Starting and completing a [rewrite of the HDMI2USB firmware](https://github.com/timvideos/HDMI2USB-misoc-firmware) based on the [Migen and MiSoC system developed by M-Labs](http://m-labs.hk/gateware.html).
 - Launching a [successful crowdfunding campaign](http://crowdsupply.com/numato-lab/opsis) for [Numato Opsis](https://github.com/timvideos/HDMI2USB-numato-opsis-hardware), our first open hardware for the HDMI2USB firmware.
 - Having the HDMI2USB firmware on Atlys boards used in production by multiple people!
-<li>Carl Karsten from [NextDayVideo](http://nextdayvideo.com/) in the US for both PyCon ZA and Nodevember.
+- Carl Karsten from [NextDayVideo](http://nextdayvideo.com/) in the US for both PyCon ZA and Nodevember.
 - The [DebConf Video team](https://wiki.debconf.org/wiki/Videoteam) for their [MiniDebConf in November](https://wiki.debian.org/DebianEvents/gb/2015/MiniDebConfCambridge#Video).
 - [Myself for recording](https://www.youtube.com/user/mithro) my own talks on the HDMI2USB project at user groups here in Sydney!
-</li>
+
 With the success of this focus in 2015, the [TimVideos project](https://code.timvideos.us/) is going to continue to focus on the[HDMI2USB project](https://hdmi2usb.tv/) for 2016 (and I’ll go into more detailed goals shortly).
 The [TimVideos project](https://code.timvideos.us/) has also been mildly successful in collaborating with other open source groups doing things related to video recording and production. In 2016, I hope we can strengthen these bonds and forge new ones. Some specific goals around this include;
 - Getting the TimVideos project to join [Software Freedom Conservancy](https://sfconservancy.org/) (or similar organisation).
@@ -41,18 +41,18 @@ HDMI2USB **firmware** goals;
 - Refactor the HDMI core to allow support a wider range of interfaces, better debugging and addition of more features. A document about the refactor has been [started here](https://docs.google.com/a/mithis.com/document/d/1L8lz7u2uj6MrzSQv4b1Vk6Rmic26okyRklOju5IWLYA/edit?usp=drive_web).
 - Add support for the [high-speed GTP transceivers](https://hdmi2usb.tv/timvideos/hdmi2usb/2016/01/11/new-year-roadmap/) and [Mike “Hamster” Field](http://hamsterworks.co.nz/mediawiki/index.php/FPGA_Projects) [open source DisplayPort core](https://github.com/hamsternz/FPGA_DisplayPort).
 - Get Ethernet support working (on both the Atlys and Opsis boards). The two major Ethernet features are;
-<li>Ethernet supports identical capture and control feature set to the USB port.
+- Ethernet supports identical capture and control feature set to the USB port.
 - Allowing HDMI2USB boards to act has “HDMI over Ethernet extenders”.
-</li>
+
 - [Support for more hardware](https://hdmi2usb.tv/potential-boards/);
-<li>miniSpartan6+
+- miniSpartan6+
 - Digilent Nexys Video
 - New HDMI2USB designed hardware!
-</li>
+
 - Stretch Goals (1)
-<li>Add support for [hardware based mixing](https://docs.google.com/document/d/1ZjM1Brrks0lg1CJp2Rt1BH8-MhJamrKUeCUB4s4nzoA/edit).
+- Add support for [hardware based mixing](https://docs.google.com/document/d/1ZjM1Brrks0lg1CJp2Rt1BH8-MhJamrKUeCUB4s4nzoA/edit).
 - Have either a RTOS or Linux running on the FPGA softcore.
-</li>
+
 HDMI2USB **hardware** goals;
 - (By end of year) Development of a low cost PCI-Express capture card.
 - (By middle 2017) Development of an Opsis V2 based around either an high end Artix-7 or a low end Kintex-7 FPGA.

@@ -22,9 +22,9 @@ Using the FRITZ!Box VPN Connection tool to create a configuration that is compat
 - On the “Select Device” screen, select “iPhone, iPod touch or iPad” option
 - On the “Enter the user’s email address” screen, despite the admin tool calling this field the user email, just enter a username. I recommend **not** having any special characters like @ or . in it.
 - On the “Enter IP address of the User” screen, be careful about what IP address you use (the default should be okay).
-<li>Don’t use the same IP address that the computer uses when connected via wireless/wired. While it seems like a good idea, as the computer would have the same IP address even when remote, it **does not work** and will mean the device is unable to access the internet when connected to wireless/wired.
+- Don’t use the same IP address that the computer uses when connected via wireless/wired. While it seems like a good idea, as the computer would have the same IP address even when remote, it **does not work** and will mean the device is unable to access the internet when connected to wireless/wired.
 - The “Send all data over the VPN tunnel” option on this page does not seem to affect vpnc, it will always route all your data over the vpn connection. See later for how to fix this problem.
-</li>
+
 - On the “Key for the connection” screen enter a password. Copy down the shared secret key, you’ll want it when creating the vpnc config. I recommend also keeping the default shared secret key it generates unless your super paranoid about entropy.
 You can check that you have done this correctly in two ways;
 - The vpnadmin.cfg will have the `iphone=1` and `xauth_key="your password"` options. See below for a partial example;

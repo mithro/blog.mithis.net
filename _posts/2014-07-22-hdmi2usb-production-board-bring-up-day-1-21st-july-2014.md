@@ -15,9 +15,9 @@ wordpress_url: https://blog.mithis.net/archives/timvideos-us/1985-hdmi2usb-produ
 ---
 - Wrote snippets for the last 3 days.
 - slidelint work
-<li>Further updated some slidelint site documentation.
+- Further updated some slidelint site documentation.
 - Committed the [slidelint nginx configuration](https://github.com/enkidulan/slidelint_site/pull/4).
-</li>
+
 - Got set up in Joel and Rusty’s coworking space.
 - Explained to Ajit the idea of routing the debug output to multiple locations. Added a diagram to the [Debug Design document](https://docs.google.com/document/d/19XB1AOZMp5Tr-nKEmX8CSuChd6O11wmKfwKc1nsk4OA/edit).
 - Fixed command line processing in [hdl-pretty](https://github.com/mithro/hdl-pretty) code. Started down the path of auto-generating help from the customize stuff and then realised I had more important things to do.

@@ -15,10 +15,10 @@ wordpress_url: https://blog.mithis.net/archives/timvideos-us/1980-hdmi2usb-produ
 Two weeks ago I decided that I was going to take a week of work and spend it full time working on bringing up the HDMI2USB Production board that I’m working on creating with Numato. Since I’m making all our GSoC students do daily snippets, I thought it would be good for me to do snippets too! Will be good to look back on the week and see what I ended up actually doing.
 The following snippets are for the preparation work I did before the week;
 - Spent a whole bunch of time cleaning up and organising the [GitHub issues](https://github.com/timvideos/HDMI2USB/issues), including;
-<li>Creating a bunch of tasks and [milestone](https://github.com/timvideos/HDMI2USB/issues?milestone=1&state=open) to track the bring up work,
+- Creating a bunch of tasks and [milestone](https://github.com/timvideos/HDMI2USB/issues?milestone=1&state=open) to track the bring up work,
 - Writing some [documentation on how we use labels](https://github.com/timvideos/HDMI2USB/blob/master/CONTRIBUTING.md) in the GitHub issue tracker,
 - Organising [issues related to GSoC2014](https://github.com/timvideos/HDMI2USB/issues?milestone=2). Found a bunch of pull requests from the start of GSoC that hadn’t been merged and looked at merging them.
-</li>
+
 - [Created a spreadsheet](https://docs.google.com/spreadsheets/d/10vNcsOAxnuiwc5diespjIepMySxhR0iVZfYxouq4p-E/edit#gid=0) which compares the production board to the Atlys prototyping board and will be used for tracking all HDMI2USB variants into the future.
 - [Created a document proposing a future directory structure for HDMI2USB firmware to allow multiple boards, interfaces and other features.](https://docs.google.com/document/d/1-oq0WZnooKVja8QQSS2u60MwGc0YNB3TprSNDk-SNVU/edit?usp=drive_web)
 - Organised with [Rohit](http://dreamsxtrinsic.blogspot.com.au/) to get a [VGA capture board](https://github.com/rohit91/HDMI2USB-vmodvga) during this time.
@@ -39,7 +39,7 @@ The following snippets are for the preparation work I did before the week;
 - Rewrote the setup documentation (and ported it to Markdown).
 - Set up a nginx frontend.
 - Attempted to get [circus-web](https://github.com/mozilla-services/circus-web) interface working.
-<li>Turns out it doesn’t work under Python 3 as torandio2 is unmaintained.
+- Turns out it doesn’t work under Python 3 as torandio2 is unmaintained.
 - Ported circus-web to sockjs-torando.
 - Found the tests don’t work.
-</li>
+
