@@ -31,9 +31,24 @@
             <h3 class="widgettitle">Categories</h3>
             <select id="categories-dropdown" onchange="if(this.value) window.location.href=this.value">
                 <option value="">Select Category</option>
-                {% for category in site.categories %}
-                    <option value="{{ '/category/' | append: category.first | slugify | relative_url }}">{{ category.first | replace: '-', ' ' | title }} ({{ category.last | size }})</option>
-                {% endfor %}
+                <option value="{{ '/category/diary/' | relative_url }}">Diary (2)</option>
+                <option value="{{ '/category/games/' | relative_url }}">Games (3)</option>
+                <option value="{{ '/category/gaming-miniconf/' | relative_url }}">Gaming Miniconf (7)</option>
+                <option value="{{ '/category/google/' | relative_url }}">Google (7)</option>
+                <option value="{{ '/category/hardware/' | relative_url }}">Hardware (3)</option>
+                <option value="{{ '/category/highlights/' | relative_url }}">Highlights (2)</option>
+                <option value="{{ '/category/ideas/' | relative_url }}">Ideas (9)</option>
+                <option value="{{ '/category/lca/' | relative_url }}">linux.conf.au (12)</option>
+                <option value="{{ '/category/pcb/' | relative_url }}">PCB (5)</option>
+                <option value="{{ '/category/python/' | relative_url }}">Python (6)</option>
+                <option value="{{ '/category/rcs-darcs/' | relative_url }}">RCS (3)</option>
+                <option value="{{ '/category/sci-fi/' | relative_url }}">Sci Fi (1)</option>
+                <option value="{{ '/category/summer-of-code/' | relative_url }}">Summer of Code (8)</option>
+                <option value="{{ '/category/timvideos-us/' | relative_url }}">TimVideos.us (10)</option>
+                <option value="{{ '/category/ubuntu/' | relative_url }}">Ubuntu (3)</option>
+                <option value="{{ '/category/uncategorized/' | relative_url }}">Uncategorized (10)</option>
+                <option value="{{ '/category/uni/' | relative_url }}">Uni (5)</option>
+                <option value="{{ '/category/useful-bits/' | relative_url }}">Useful Bits (4)</option>
             </select>
         </li>
         
@@ -42,18 +57,19 @@
             <h3 class="widgettitle">Personal Links</h3>
             <ul>
                 <li><a href="{{ '/contact/' | relative_url }}">Contact Me</a></li>
-                <li><a href="{{ '/projects/' | relative_url }}">My Projects</a></li>
-                <li><a href="{{ '/tutorials/' | relative_url }}">My Tutorials</a></li>
-                <li><a href="https://github.com/mithro">My GitHub</a></li>
+                <li><a href="https://launchpad.net/~mithro/+archive/ppa" title="My Ubuntu packages.">My Packages</a></li>
+                <li><a href="https://picasaweb.google.com/mithro" title="Pictures I have taken of things.">My Photos</a></li>
+                <li><a href="http://blog.mithis.net/cgi-bin/gitweb.cgi" title="Useful code snippets and other juicy tidbits.">My Useful Bits</a></li>
+                <li><a href="https://www.youtube.com/mithro" title="My Youtube Videos – Talks, Social and otherwise.">My Videos</a></li>
             </ul>
         </li>
         
         <!-- RSS Feeds Widget -->
         <li class="widget">
-            <h3 class="widgettitle">RSS Feeds</h3>
+            <h3 class="widgettitle">RSS</h3>
             <ul>
-                <li><a href="{{ '/feed/' | relative_url }}">All posts RSS</a></li>
-                <li><a href="{{ '/feed/' | relative_url }}">All comments RSS</a></li>
+                <li><a href="{{ '/feed/' | relative_url }}" title="Mithro rants about stuff RSS 2.0 Feed">All posts</a></li>
+                <li><a href="{{ '/comments/feed/' | relative_url }}" title="Mithro rants about stuff Comments RSS 2.0 Feed">All comments</a></li>
             </ul>
         </li>
         
@@ -61,14 +77,22 @@
         <li class="widget">
             <h3 class="widgettitle">Tags</h3>
             <div class="tag-cloud">
-                {% assign tags = site.tags | sort %}
-                {% for tag in tags %}
-                    <a href="{{ '/archives/tag/' | append: tag.first | slugify | relative_url }}" 
-                       class="tag-link" 
-                       style="font-size: {{ tag.last.size | times: 0.8 | plus: 0.8 }}em;">
-                        {{ tag.first }}
-                    </a>
-                {% endfor %}
+                <a href="{{ '/archives/tag/code' | relative_url }}" title="1 topic">code</a>
+                <a href="{{ '/archives/tag/cookies' | relative_url }}" title="2 topics">cookies</a>
+                <a href="{{ '/archives/tag/cross-compile' | relative_url }}" title="1 topic">cross compile</a>
+                <a href="{{ '/archives/tag/cross-compiling' | relative_url }}" title="1 topic">cross compiling</a>
+                <a href="{{ '/archives/tag/cygwin' | relative_url }}" title="1 topic">cygwin</a>
+                <a href="{{ '/archives/tag/firefly' | relative_url }}" title="1 topic">firefly</a>
+                <a href="{{ '/archives/tag/firefox' | relative_url }}" title="3 topics">firefox</a>
+                <a href="{{ '/archives/tag/foss' | relative_url }}" title="2 topics">foss</a>
+                <a href="{{ '/archives/tag/freedom' | relative_url }}" title="1 topic">freedom</a>
+                <a href="{{ '/archives/tag/games' | relative_url }}" title="3 topics">Games</a>
+                <a href="{{ '/archives/tag/gaming' | relative_url }}" title="1 topic">gaming</a>
+                <a href="{{ '/archives/tag/google' | relative_url }}" title="4 topics">Google</a>
+                <a href="{{ '/archives/tag/gsoc' | relative_url }}" title="2 topics">gsoc</a>
+                <a href="{{ '/archives/tag/python' | relative_url }}" title="2 topics">Python</a>
+                <a href="{{ '/archives/tag/sydney' | relative_url }}" title="2 topics">Sydney</a>
+                <a href="{{ '/archives/tag/ubuntu' | relative_url }}" title="2 topics">Ubuntu</a>
             </div>
         </li>
         
@@ -89,11 +113,10 @@
         <li class="widget">
             <h3 class="widgettitle">Other Cool People</h3>
             <ul>
-                <li><a href="https://www.david-rowe.com/">David Rowe's Blog</a></li>
-                <li><a href="https://www.kernel.org/pub/linux/kernel/people/rusty/">Rusty Russell</a></li>
-                <li><a href="https://www.phoronix.com/">Phoronix</a></li>
-                <li><a href="https://lwn.net/">LWN.net</a></li>
-                <li><a href="https://hackaday.com/">Hackaday</a></li>
+                <li><a href="https://www.rowetel.com/blog/" title="A guy who is involved with some cool open source hardware!">David Rowe's Blog</a></li>
+                <li><a href="http://jms.id.au/" title="Joel Stanley is my local OLPC guru.">Joel Stanley's Blog</a></li>
+                <li><a href="http://katharos.id.au/blog/" title="Friend from work who does cool python.">Katie Bell's Blog</a></li>
+                <li><a href="http://ozlabs.org/~rusty/" title="The famous Rusty Russel's intresting blog.">Rusty's Blog</a></li>
             </ul>
         </li>
         
@@ -101,8 +124,7 @@
         <li class="widget">
             <h3 class="widgettitle">Meta</h3>
             <ul>
-                <li><a href="{{ '/archives/' | relative_url }}">All Archives</a></li>
-                <li><a href="{{ '/sitemap.xml' | relative_url }}">Site Map</a></li>
+                <li><a href="https://blog.mithis.net/wp-login.php?redirect_to=%2F">Log in</a></li>
             </ul>
         </li>
     </ul>

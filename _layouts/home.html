@@ -29,7 +29,7 @@ layout: default
             </div>
             <div class="entry-meta">
                 <span class="entry-date"><abbr class="published" title="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y %m %d' }}</abbr></span>
-                <span class="entry-author author vcard"><a class="url fn" href="{{ '/archives/author/mithro' | relative_url }}" title="View all posts by mithro">mithro</a></span>{% if post.categories.size > 0 %}<span class="entry-category">{% for category in post.categories %}<a href="{{ '/archives/category/' | append: category | relative_url }}" rel="category tag">{{ category | capitalize }}</a>{% unless forloop.last %}<br/>{% endunless %}{% endfor %}</span>{% endif %}
+                <span class="entry-author author vcard"><a class="url fn" href="{{ '/archives/author/mithro' | relative_url }}" title="View all posts by mithro">mithro</a></span>{% if post.categories.size > 0 %}<span class="entry-category">{% for category in post.categories %}<a href="{{ '/archives/category/' | append: category | slugify | relative_url }}" rel="category tag">{{ category | replace: '-', ' ' | title }}</a>{% unless forloop.last %} {% endunless %}{% endfor %}</span>{% endif %}
                 <span class="entry-comments"><a href="{{ post.url | relative_url }}#respond">Comments (0)</a></span>
                 <span class="entry-permalink"><a href="{{ post.url | relative_url }}" title="Permalink to {{ post.title | escape }}">Permalink</a></span>
             </div>
