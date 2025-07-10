@@ -7,7 +7,8 @@ layout: default
         
         {% assign posts = paginator.posts | default: site.posts %}
         {% for post in posts limit: 10 %}
-        <div id="post-{% if post.wordpress_id %}{{ post.wordpress_id }}{% else %}{{ post.slug }}{% endif %}" class="hentry p{% increment post_counter %} post publish author-mithro {% for category in post.categories %}category-{{ category | slugify }} {% endfor %}y{{ post.date | date: '%Y' }} m{{ post.date | date: '%m' }} d{{ post.date | date: '%d' }} h{{ post.date | date: '%H' }}{% cycle '', ' alt' %}">
+        {% assign post_number = forloop.index %}
+        <div id="post-{% if post.wordpress_id %}{{ post.wordpress_id }}{% else %}{{ post.slug }}{% endif %}" class="hentry p{{ post_number }} post publish author-mithro {% for category in post.categories %}category-{{ category | slugify }} {% endfor %}y{{ post.date | date: '%Y' }} m{{ post.date | date: '%m' }} d{{ post.date | date: '%d' }} h{{ post.date | date: '%H' }}{% cycle '', ' alt' %}">
             <div class="post-container">
                 <div class="post-content">
                     <h2 class="entry-title">
@@ -27,25 +28,10 @@ layout: default
                 </div>
             </div>
             <div class="entry-meta">
-                <span class="entry-date">
-                    <abbr class="published" title="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y %m %d' }}</abbr>
-                </span>
-                <span class="entry-author author vcard">
-                    <a class="url fn" href="{{ '/archives/author/mithro' | relative_url }}" title="View all posts by mithro">mithro</a>
-                </span>
-                {% if post.categories.size > 0 %}
-                <span class="entry-category">
-                    {% for category in post.categories %}
-                        <a href="{{ '/category/' | append: category | relative_url }}" rel="category tag">{{ category | capitalize }}</a>{% unless forloop.last %}<br/>{% endunless %}
-                    {% endfor %}
-                </span>
-                {% endif %}
-                <span class="entry-comments">
-                    <a href="{{ post.url | relative_url }}#respond">Comments (0)</a>
-                </span>
-                <span class="entry-permalink">
-                    <a href="{{ post.url | relative_url }}" title="Permalink to {{ post.title | escape }}">Permalink</a>
-                </span>
+                <span class="entry-date"><abbr class="published" title="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y %m %d' }}</abbr></span>
+                <span class="entry-author author vcard"><a class="url fn" href="{{ '/archives/author/mithro' | relative_url }}" title="View all posts by mithro">mithro</a></span>{% if post.categories.size > 0 %}<span class="entry-category">{% for category in post.categories %}<a href="{{ '/archives/category/' | append: category | relative_url }}" rel="category tag">{{ category | capitalize }}</a>{% unless forloop.last %}<br/>{% endunless %}{% endfor %}</span>{% endif %}
+                <span class="entry-comments"><a href="{{ post.url | relative_url }}#respond">Comments (0)</a></span>
+                <span class="entry-permalink"><a href="{{ post.url | relative_url }}" title="Permalink to {{ post.title | escape }}">Permalink</a></span>
             </div>
         </div>
         {% endfor %}
