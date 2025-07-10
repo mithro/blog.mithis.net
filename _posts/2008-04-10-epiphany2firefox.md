@@ -30,4 +30,4 @@ I’m still looking for an extension which makes the Firefox 3.0 URL bar sane. I
 - Single line per URL with the title on the right.
 - Support for “smart bookmarks” as the last option. These let you search for the current term at Google or Wikipedia without prefixing it with a stupid keyword or something.
 Here is what my Firefox looks like currently. As you can see I have significantly customized the toolbar to remove all that excesses.
-[<img alt="Screenshot of my Firefox" src="http://web.archive.org/web/20110311214257im_//assets/images/wp-content/uploads/2008/04/myfirefox.png" | relative_url }}"/>]({{ )
+[<img alt="Screenshot of my Firefox" src="http://web.archive.org/web/20110311214257im_//assets/images/wp-content/uploads/2008/04/myfirefox.png" | relative_url }}"/>
