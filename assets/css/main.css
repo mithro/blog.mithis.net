@@ -31,33 +31,32 @@ a:active {
 
 /* Container Layout */
 body div#wrapper {
-    margin: 0 8em 0 0;
+    margin: 0 2em 0 0;
 }
 
 body div#container {
-    float: right;
+    float: left;
     margin: 0 0 5em -16em;
     width: 100%;
 }
 
 body div#content {
-    margin: 0 0 0 16em;
+    margin: 0 0 0 17em;
 }
 
 body.single div#container,
 body.page div#container {
-    margin: 0 0 6em -20em;
+    margin: 0 0 0 -16em;
 }
 
 body.single div#content,
 body.page div#content {
-    margin: 0 0 0 20em;
+    margin: 0 0 0 17em;
 }
 
 /* Header */
 body div#header {
-    margin: 3em -2em 3em 0;
-    padding: 1.2em 0 1.2em 3em;
+    margin: 0 -2em 3em 0;
     cursor: pointer;
     background: #bbc8d9;
 }
@@ -205,7 +204,7 @@ body.search div#content div.entry-meta {
     float: left;
     overflow: hidden;
     text-align: right;
-    width: 10em;
+    width: 7.5em;
 }
 
 body.home div#content div.entry-meta span.entry-date,
@@ -233,7 +232,7 @@ body.home div#content div.post-container,
 body.archive div#content div.post-container,
 body.search div#content div.post-container {
     float: right;
-    margin: 0 0 4em -11.5em;
+    margin: 0 0 4em -8.5em;
     width: 100%;
 }
 
@@ -241,7 +240,7 @@ body.home div#content div.post-content,
 body.archive div#content div.post-content,
 body.search div#content div.post-content {
     clear: both;
-    margin: 0 0 0 11.5em;
+    margin: 0 0 0 8.5em;
 }
 
 .entry-content {
@@ -250,9 +249,9 @@ body.search div#content div.post-content {
 
 /* Sidebar */
 body div.sidebar {
-    float: left;
+    float: right;
     overflow: hidden;
-    width: 15em;
+    width: 16em;
 }
 
 div.sidebar a,
@@ -599,20 +598,20 @@ body.archive div#content div.entry-meta {
     float: left;
     overflow: hidden;
     text-align: right;
-    width: 10em;
+    width: 7.5em;
 }
 
 body.home div#content div.post-container,
 body.archive div#content div.post-container {
     float: right;
-    margin: 0 0 4em -11.5em;
+    margin: 0 0 4em -8.5em;
     width: 100%;
 }
 
 body.home div#content div.post-content,
 body.archive div#content div.post-content {
     clear: both;
-    margin: 0 0 0 11.5em;
+    margin: 0 0 0 8.5em;
 }
 
 body.home div#content div.entry-meta abbr.published,
