@@ -1,4 +1,11 @@
 <div id="header" onclick="location.href='{{ '/' | relative_url }}';">
+    <!-- Photo banner to match original WordPress site -->
+    <div id="header-photos">
+        <div class="header-photo-note">
+            <em>Note: Photo gallery integration has been removed during migration. Original site featured rotating photos from Picasa.</em>
+        </div>
+    </div>
+    
     <h1 id="blog-title">
         <a href="{{ '/' | relative_url }}" title="{{ site.title | escape }}">{{ site.title | escape }}</a>
     </h1>

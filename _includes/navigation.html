@@ -5,9 +5,37 @@
             <a href="{{ '/' | relative_url }}" title="{{ site.title | escape }}" rel="home">Home</a>
         </li>
         {% endunless %}
+        
+        <!-- Main navigation items matching WordPress site -->
+        <li class="page_item"><a href="{{ '/archives/' | relative_url }}">Archives</a></li>
+        <li class="page_item"><a href="{{ '/contact/' | relative_url }}">Contact Me</a></li>
+        <li class="page_item"><a href="{{ '/category/diary/' | relative_url }}">Diary</a></li>
+        <li class="page_item"><a href="{{ '/category/games/' | relative_url }}">Games</a></li>
+        <li class="page_item"><a href="{{ '/category/gaming-miniconf/' | relative_url }}">Gaming Miniconf</a></li>
+        <li class="page_item"><a href="{{ '/category/google/' | relative_url }}">Google</a></li>
+        <li class="page_item"><a href="{{ '/category/hardware/' | relative_url }}">Hardware</a></li>
+        <li class="page_item"><a href="{{ '/category/highlights/' | relative_url }}">Highlights</a></li>
+        <li class="page_item"><a href="{{ '/category/ideas/' | relative_url }}">Ideas</a></li>
+        <li class="page_item"><a href="{{ '/category/lca/' | relative_url }}">LCA</a></li>
+        <li class="page_item"><a href="{{ '/category/pcb/' | relative_url }}">PCB</a></li>
+        <li class="page_item"><a href="{{ '/projects/' | relative_url }}">Projects</a></li>
+        <li class="page_item"><a href="{{ '/category/python/' | relative_url }}">Python</a></li>
+        <li class="page_item"><a href="{{ '/category/rcs-darcs/' | relative_url }}">RCS / Darcs</a></li>
+        <li class="page_item"><a href="{{ '/category/sci-fi/' | relative_url }}">Sci-Fi</a></li>
+        <li class="page_item"><a href="{{ '/search.html' | relative_url }}">Search</a></li>
+        <li class="page_item"><a href="{{ '/category/summer-of-code/' | relative_url }}">Summer of Code</a></li>
+        <li class="page_item"><a href="{{ '/category/timvideos-us/' | relative_url }}">TimVideos.us</a></li>
+        <li class="page_item"><a href="{{ '/category/tp/' | relative_url }}">TP</a></li>
+        <li class="page_item"><a href="{{ '/tutorials/' | relative_url }}">Tutorials</a></li>
+        <li class="page_item"><a href="{{ '/category/ubuntu/' | relative_url }}">Ubuntu</a></li>
+        <li class="page_item"><a href="{{ '/category/uncategorized/' | relative_url }}">Uncategorized</a></li>
+        <li class="page_item"><a href="{{ '/category/uni/' | relative_url }}">Uni</a></li>
+        <li class="page_item"><a href="{{ '/category/useful-bits/' | relative_url }}">Useful Bits</a></li>
+        <li class="page_item"><a href="{{ '/about/' | relative_url }}">About</a></li>
+        
         {% assign pages_list = site.pages | sort: 'order' %}
         {% for page in pages_list %}
-            {% if page.title and page.navigation != false %}
+            {% if page.title and page.navigation != false and page.title != 'About' and page.title != 'Contact' and page.title != 'Projects' and page.title != 'Tutorials' %}
             <li class="page_item">
                 <a href="{{ page.url | relative_url }}">{{ page.title | escape }}</a>
             </li>
