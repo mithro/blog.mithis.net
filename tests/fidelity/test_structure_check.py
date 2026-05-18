@@ -13,6 +13,11 @@ def test_every_structural_archetype_has_a_site_path():
         assert ARCHETYPE_SITE_PATHS[a.name].endswith(".html")
 
 def test_phantom_anchors_are_barthelme_dynamic_id_artifacts():
+    # Exact-set invariant: PHANTOM_ANCHORS must contain ONLY the one genuine
+    # PHP dynamic-id artifact.  Any future addition requires a justification
+    # note in FOLLOWUPS.md + an explicit update to this assertion.
+    assert PHANTOM_ANCHORS == frozenset({Anchor("div", "#post-")})
+    # Belt-and-suspenders membership checks (kept for readable failure messages):
     # #post- is a genuine PHP artifact (id="post-<?php the_ID()?>") — keep ignored
     assert Anchor("div", "#post-") in PHANTOM_ANCHORS
     # #post-0 is a static literal in 404.php/search.php — a real structural

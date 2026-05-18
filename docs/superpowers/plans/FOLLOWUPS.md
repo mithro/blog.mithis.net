@@ -140,12 +140,13 @@ Plan-verbatim, non-gating at P0; harden when the render path / CI matters:
   404 (and search-archetype) form at the existing `/search.html` client-side
   search so it actually works. Structural anchor is present (P1 OK); this is
   P4/P5 functional.
-- **P1-T9 / P5:** tighten `tests/fidelity/test_structure_check.py`
+- ~~**P1-T9 / P5:** tighten `tests/fidelity/test_structure_check.py`
   `test_phantom_anchors...` to assert the FULL set
   (`PHANTOM_ANCHORS == frozenset({Anchor("div","#post-")})`) so any future
   phantom addition is caught; rephrase the `PHANTOM_ANCHORS` NOTE comment as a
   standing invariant ("only genuine PHP dynamic-id artifacts belong here"),
-  not an action log. (Fold into P1-T9.)
+  not an action log. (Fold into P1-T9.)~~
+  **RESOLVED (P1-T9):** exact-set assertion added to `test_phantom_anchors_are_barthelme_dynamic_id_artifacts`; PHANTOM_ANCHORS block comment rephrased as a standing invariant with Barthelme source citations (single.php L8, index.php L8, archive.php L28, page.php L8). See FOLLOWUPS.md "P1 phantom-ignore justification (RESOLVED)" note.
 - **P6 (do NOT flag as defect):** `404.html` `div#content` has NO `class="hfeed"`
   — this is FAITHFUL (`404.php` is the only Barthelme template omitting hfeed).
   The P6 structural/visual audit must treat 404's missing hfeed as correct, not
@@ -185,7 +186,7 @@ Plan-verbatim, non-gating at P0; harden when the render path / CI matters:
 
 ## P1 — `#post-0` gate-integrity (MUST action at P1-T7/T8) + T1 polish (from P1-T1 review)
 
-- **IMPORTANT (P1-T7 notfound, P1-T8 search):** `PHANTOM_ANCHORS` in
+- ~~**IMPORTANT (P1-T7 notfound, P1-T8 search):** `PHANTOM_ANCHORS` in
   `structure_check.py` includes `Anchor("div","#post-0")`. Unlike `#post-`
   (genuine PHP-strip artifact of `id="post-<?php the_ID()?>"`), **`#post-0` is a
   STATIC LITERAL** in Barthelme `404.php` and `search.php` (no-results branch) —
@@ -194,14 +195,21 @@ Plan-verbatim, non-gating at P0; harden when the render path / CI matters:
   `div#post-0`. If NOT, ADD `<div id="post-0">` to those Jekyll templates for
   fidelity AND remove `Anchor("div","#post-0")` from `PHANTOM_ANCHORS` (+ fix the
   test & comment). Keep it ignored ONLY if the built HTML genuinely contains it
-  (then harmless). Do NOT mark notfound/search PASS until this is resolved.
-- **Minor (do in P1-T9 / opportunistically):** add a one-line comment in
+  (then harmless). Do NOT mark notfound/search PASS until this is resolved.~~
+  **RESOLVED (P1-T7/T8):** `div#post-0` added to `404.html` and `search.html`
+  (real structural element). `Anchor("div","#post-0")` removed from
+  `PHANTOM_ANCHORS`; notfound + search archetypes now pass the gate at 6/6.
+- ~~**Minor (do in P1-T9 / opportunistically):** add a one-line comment in
   `ARCHETYPE_SITE_PATHS` explaining the `post` entry is a flat `.html` (no
   trailing-slash permalink → Jekyll writes flat file, not dir/index.html);
   restore the dropped phantom-rationale comment in
   `test_structure_check.py::test_phantom_anchors_are_barthelme_dynamic_id_artifacts`;
   split the `out = Path(...); out.mkdir(...)` semicolon line; note
-  `check()`/`run_build()` assume repo-root CWD (untested in isolation).
+  `check()`/`run_build()` assume repo-root CWD (untested in isolation).~~
+  **PARTIALLY RESOLVED (P1-T9):** phantom-rationale comment restored and
+  upgraded to exact-set invariant assertion. Remaining minor polish items
+  (ARCHETYPE_SITE_PATHS comment, semicolon split, CWD note) deferred to P5
+  as non-gating cleanup.
 
 ## P1 — structural-extractor phantom anchors (from Task 6 review)
 
@@ -264,3 +272,42 @@ retry/UA opener cleanly) — not P0 module defects.
   `categories: [summer-of-code]`; the `category` layout filters on it. Static
   feed files correctly use the slug. Confirm archive pages list posts correctly
   and normalize casing.
+
+## P1 phantom-ignore justification (RESOLVED — P1-T9)
+
+`PHANTOM_ANCHORS == { div#post- }` — exactly one member; justification:
+
+Barthelme's content templates emit a per-post wrapper whose `id` attribute is
+computed at PHP request time:
+
+- `theme_analysis/barthelme/single.php` L8:
+  `<div id="post-<?php the_ID(); ?>" class="<?php barthelme_post_class(); ?>">`
+- `theme_analysis/barthelme/index.php` L8:
+  `<div id="post-<?php the_ID() ?>" class="<?php barthelme_post_class() ?>">`
+- Also: `archive.php` L28, `page.php` L8, `attachment.php` L8, `image.php` L8,
+  `search.php` L12, `links.php` L13, `sitemap.php` L12, `archives.php` L13.
+
+PHP-stripping (the P0 static extractor strips `<?php … ?>` blocks) reduces
+`id="post-<?php the_ID(); ?>"` to the bare prefix `id="post-"`, which the
+anchor extractor normalises to `#post-`. This token is NOT a valid CSS id (it
+has no numeric suffix) and NO faithful Jekyll output can or should carry it —
+Jekyll emits concrete post ids (`post-2186`, `post-84`, …) never the bare
+prefix. Ignoring `div#post-` in `structure_check` is therefore correct.
+
+`#post-0` was de-listed in P1-T7 (commit `a40770a` area; resolved under the
+`#post-0 gate-integrity` item above): it IS a static literal in Barthelme's
+`404.php` and `search.php` (no-results branch) — a REAL structural element now
+enforced by the gate and satisfied by the T7/T8 template additions.
+
+The standing invariant (only genuine PHP dynamic-id artifacts, never static
+literals) is now encoded both in the `PHANTOM_ANCHORS` block comment in
+`scripts/fidelity/structure_check.py` and in the exact-set assertion in
+`tests/fidelity/test_structure_check.py::test_phantom_anchors_are_barthelme_dynamic_id_artifacts`.
+
+**Picasa header literal-fidelity note (P1-T9):** `_includes/header.html`
+contains the Picasa photo-gallery strip unchanged from its creation commit
+(`8d0ada8`). No P1 branch commit has touched it (confirmed via `git log
+--oneline -- _includes/header.html`). Decision: replicate the Picasa strip
+EXACTLY (literal fidelity) for now; any improvement (broken lh3.ggpht.com
+thumbnails, picasaweb.google.com links now defunct) is deferred to P6 visual
+audit. Deep byte-fidelity vs the now-reachable live site is a P6 concern.

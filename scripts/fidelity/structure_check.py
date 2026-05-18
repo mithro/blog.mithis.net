@@ -28,13 +28,23 @@ ARCHETYPE_SITE_PATHS: dict[str, str] = {
 }
 
 PHANTOM_ANCHORS: frozenset[Anchor] = frozenset({
-    # #post- is a genuine PHP artifact: id="post-<?php the_ID()?>" strips to #post-
-    # (home/post/category/archive all use the dynamic WordPress post ID)
+    # INVARIANT — only genuine Barthelme PHP *dynamic-id* artifacts belong here:
+    # anchors that NO faithful Jekyll output can or should carry because the PHP
+    # id is computed at request time and PHP-stripping leaves only a bare prefix.
+    #
+    # Current member:
+    #   div#post-  ← Barthelme emits id="post-<?php the_ID(); ?>" in every
+    #                content template (single.php L8, index.php L8, archive.php
+    #                L28, page.php L8, …).  PHP-stripping reduces this to the
+    #                bare prefix "#post-", which is not a valid CSS id and will
+    #                never appear in built Jekyll HTML — correctly ignored.
+    #
+    # DO NOT ADD static literal ids here.  Example of what must NOT appear:
+    #   id="post-0"  — this IS a real static literal in Barthelme's 404.php and
+    #                  search.php (no-results branch).  It is a real structural
+    #                  element that MUST appear in the built HTML and MUST be
+    #                  enforced by the gate (not silently ignored).
     Anchor("div", "#post-"),
-    # NOTE: #post-0 is NOT a phantom — it is a static literal in 404.php and
-    # search.php (no-results branch). It is a real structural element and must
-    # NOT be silently ignored. It was removed from PHANTOM_ANCHORS so that
-    # structure_check correctly requires div#post-0 in notfound/search archetypes.
 })
 
 def check_html(archetype: str, barthelme_php: str, built_html: str
