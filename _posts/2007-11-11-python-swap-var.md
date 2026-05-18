@@ -33,27 +33,3 @@ Just thought I would share this tidbit.
 ## Comments
 **Anel** -     <time datetime="2010-10-11T17:26:30+00:00">2010-10-11</time>
 Haha, nice joke, guys&#8230;))
-<style>
-.comments {
-margin-top: 2rem;
-border-top: 1px solid #eee;
-padding-top: 2rem;
-}
-.comment {
-margin-bottom: 1.5rem;
-padding: 1rem;
-background: #f9f9f9;
-border-left: 4px solid #ddd;
-}
-.comment-meta {
-font-size: 0.9rem;
-color: #666;
-margin-bottom: 0.5rem;
-}
-.comment-content {
-line-height: 1.6;
-}
-.comment-content p {
-margin: 0.5rem 0;
-}
-</style>
