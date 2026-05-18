@@ -31,27 +31,3 @@ I hope this helps someone!
 The download link is broken.
 I found this alternative one: 
 [http://www.thousandparsec.net/~tim/crosstool-cygwin-gcc336.tar.bz2](http://www.thousandparsec.net/~tim/crosstool-cygwin-gcc336.tar.bz2)
-<style>
-.comments {
-margin-top: 2rem;
-border-top: 1px solid #eee;
-padding-top: 2rem;
-}
-.comment {
-margin-bottom: 1.5rem;
-padding: 1rem;
-background: #f9f9f9;
-border-left: 4px solid #ddd;
-}
-.comment-meta {
-font-size: 0.9rem;
-color: #666;
-margin-bottom: 0.5rem;
-}
-.comment-content {
-line-height: 1.6;
-}
-.comment-content p {
-margin: 0.5rem 0;
-}
-</style>
