@@ -12,6 +12,8 @@
 
 **P0 EXIT GATE (precise):** P0 is *not* "all fidelity passes." P0 is done when: (a) `bundle exec jekyll build` is clean — zero errors/warnings; (b) the harness runs end-to-end and writes `tmp/fidelity/fidelity-report.md`; (c) the content linter and structural comparator are operational and unit-tested. The gaps the report surfaces are the *inputs* to P1/P2 and are expected to be non-empty at P0.
 
+**Local environment note (execution machine):** This Debian box ships Bundler only as `bundle3.3` (no `bundle` on PATH); a global PATH shim is out of scope. Therefore: (a) harness code (`build.py`, `run.py`) resolves the bundler at runtime via `shutil.which("bundle") or shutil.which("bundle3.3")` — portable across machines and CI; (b) for manual shell steps in this plan, if `bundle` is absent substitute `bundle3.3` (e.g. `bundle3.3 exec jekyll build`). CI is unaffected (`ruby/setup-ruby` provides `bundle`).
+
 ---
 
 ## File Structure
@@ -683,7 +685,7 @@ Use @superpowers:test-driven-development for Step 1–4 (pure detector). Steps 5
 
 ```python
 # tests/fidelity/test_build.py
-from scripts.fidelity.build import detect_problems
+from scripts.fidelity.build import detect_problems, bundler
 
 GOOD = """Configuration file: /x/_config.yml
             Source: /x
@@ -707,6 +709,10 @@ def test_jekyll_error_prefix_is_a_problem():
 
 def test_normal_generating_line_is_not_a_problem():
     assert detect_problems("      Generating... \n                    done.\n") == []
+
+def test_bundler_resolves_to_a_command():
+    # Debian ships 'bundle3.3'; most machines/CI ship 'bundle'. Either is fine.
+    assert bundler()
 ```
 
 - [ ] **Step 2: Run test to verify it fails**
@@ -722,6 +728,7 @@ Expected: FAIL — `ModuleNotFoundError`
 wraps the same command CI runs and fails on any detected problem."""
 from __future__ import annotations
 import re
+import shutil
 import subprocess
 
 # Jekyll's actual problem signatures (avoid matching benign "Generating..." etc.)
@@ -738,8 +745,13 @@ _PROBLEM = re.compile(
 def detect_problems(log: str) -> list[str]:
     return [ln.strip() for ln in log.splitlines() if _PROBLEM.search(ln)]
 
+def bundler() -> str:
+    """Resolve the Bundler executable. Debian names it 'bundle3.3'; most
+    machines and CI provide 'bundle'. Portable across both."""
+    return shutil.which("bundle") or shutil.which("bundle3.3") or "bundle"
+
 def run_build(baseurl: str = "") -> tuple[bool, str]:
-    cmd = ["bundle", "exec", "jekyll", "build", "--trace"]
+    cmd = [bundler(), "exec", "jekyll", "build", "--trace"]
     if baseurl:
         cmd += ["--baseurl", baseurl]
     p = subprocess.run(cmd, capture_output=True, text=True)
@@ -1043,7 +1055,7 @@ import time
 from pathlib import Path
 
 from .archetypes import structural_archetypes
-from .build import run_build
+from .build import bundler, run_build
 from .compare import structural_diff
 from .lint_content import lint_paths
 from .report import render_report
@@ -1064,7 +1076,7 @@ def main() -> int:
         # serve output goes to a log file (NOT DEVNULL) so a flaky local
         # serve is debuggable and stderr stays visible.
         proc = subprocess.Popen(
-            ["bundle", "exec", "jekyll", "serve", "--port", "4000",
+            [bundler(), "exec", "jekyll", "serve", "--port", "4000",
              "--skip-initial-build", "--no-watch"],
             stdout=serve_log, stderr=subprocess.STDOUT)
         time.sleep(6)
