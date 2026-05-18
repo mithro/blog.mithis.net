@@ -1139,44 +1139,52 @@ def main() -> int:
 
     structural = []
     render_error = ""
-    proc = None
-    serve_log = open(OUT / "jekyll-serve.log", "w", encoding="utf-8")
-    try:
-        # No --detach: keep serve as a child so proc.terminate() reaps it.
-        # --skip-initial-build serves the _site produced by run_build() above.
-        # serve output goes to a log file (NOT DEVNULL) so a flaky local
-        # serve is debuggable and stderr stays visible.
-        proc = subprocess.Popen(
-            [bundler(), "exec", "jekyll", "serve", "--port", "4000",
-             "--skip-initial-build", "--no-watch"],
-            stdout=serve_log, stderr=subprocess.STDOUT)
-        time.sleep(6)
-        # spec §6.2: the Playwright visual layer is the LOCAL, non-gating step.
-        # It must never break the CI-able P0 gate (build+lint+structural). Two
-        # guards: (1) FIDELITY_SKIP_RENDER skips the browser entirely (it is
-        # heavyweight and not meaningful until P4 sets baseurl="" so served
-        # URLs resolve); (2) any capture exception degrades to no rendered HTML.
-        if os.environ.get("FIDELITY_SKIP_RENDER"):
-            rendered = {}
-            render_error = "skipped via FIDELITY_SKIP_RENDER (spec §6.2 local layer)"
-        else:
+    # spec §6.2: the P0 CI-able gate is build + linter + structural-comparator
+    # — NO browser, and therefore NO served site. The jekyll serve exists ONLY
+    # to feed the Playwright visual layer, so it lives entirely inside the
+    # render branch. Skipping render skips the serve too: this keeps the gate
+    # path server-free (no orphaned jekyll-serve to keep the process group
+    # alive). The render path is the local, non-gating step (not meaningful
+    # until P4 sets baseurl="" so served URLs resolve).
+    if os.environ.get("FIDELITY_SKIP_RENDER"):
+        rendered = {}
+        render_error = "skipped via FIDELITY_SKIP_RENDER (spec §6.2 local layer)"
+    else:
+        rendered = {}
+        proc = None
+        serve_log = open(OUT / "jekyll-serve.log", "w", encoding="utf-8")
+        try:
+            # --skip-initial-build serves the _site produced by run_build().
+            # serve output -> log file (NOT DEVNULL) so a flaky serve is
+            # debuggable and stderr stays visible.
+            proc = subprocess.Popen(
+                [bundler(), "exec", "jekyll", "serve", "--port", "4000",
+                 "--skip-initial-build", "--no-watch"],
+                stdout=serve_log, stderr=subprocess.STDOUT)
+            time.sleep(6)
             try:
                 from .render import capture_all
                 rendered = capture_all("http://localhost:4000", OUT / "jekyll")
             except Exception as e:
-                rendered = {}
                 render_error = repr(e)
-        for a in structural_archetypes():
-            r = rendered.get(a.name, {})
-            html = (Path(r["html"]).read_text(encoding="utf-8")
-                    if r.get("ok") else "")
-            php = (BARTHELME / a.barthelme_template).read_text(
-                encoding="utf-8", errors="replace")
-            structural.append(structural_diff(a.name, php, html))
-    finally:
-        if proc:
-            proc.terminate()
-        serve_log.close()
+        finally:
+            # Reliably reap the server (terminate -> wait -> hard kill) so it
+            # never orphans and hangs the caller's process group.
+            if proc:
+                proc.terminate()
+                try:
+                    proc.wait(timeout=10)
+                except subprocess.TimeoutExpired:
+                    proc.kill()
+            serve_log.close()
+
+    for a in structural_archetypes():
+        r = rendered.get(a.name, {})
+        html = (Path(r["html"]).read_text(encoding="utf-8")
+                if r.get("ok") else "")
+        php = (BARTHELME / a.barthelme_template).read_text(
+            encoding="utf-8", errors="replace")
+        structural.append(structural_diff(a.name, php, html))
 
     findings = lint_paths(sorted(glob.glob("_posts/*.md")), asset_root=".")
 
