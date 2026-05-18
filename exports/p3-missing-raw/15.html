@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+	<title>Mithro rants about stuff : Thousand Parsec Protocol Overview</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" media="screen,projection" href="https://blog.mithis.net/wp-content/themes/barthelme/style.css" title="Barthelme" />
+	<link rel="stylesheet" type="text/css" media="print" href="https://blog.mithis.net/wp-content/themes/barthelme/print.css" />
+	<link rel="alternate" type="application/rss+xml" href="https://blog.mithis.net/feed" title="Mithro rants about stuff RSS feed" />
+	<link rel="alternate" type="application/rss+xml" href="https://blog.mithis.net/comments/feed" title="Mithro rants about stuff comments RSS feed" />
+	<link rel="pingback" href="https://blog.mithis.net/xmlrpc.php" />
+
+<link rel="alternate" type="application/rss+xml" title="Mithro rants about stuff &raquo; Thousand Parsec Protocol Overview Comments Feed" href="https://blog.mithis.net/archives/tp/15-tp-protocol-overview/feed" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"https:\/\/blog.mithis.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.5.1"}};
+			!function(a,b,c){function d(a){var c,d,e,f=b.createElement("canvas"),g=f.getContext&&f.getContext("2d"),h=String.fromCharCode;if(!g||!g.fillText)return!1;switch(g.textBaseline="top",g.font="600 32px Arial",a){case"flag":return g.fillText(h(55356,56806,55356,56826),0,0),f.toDataURL().length>3e3;case"diversity":return g.fillText(h(55356,57221),0,0),c=g.getImageData(16,16,1,1).data,d=c[0]+","+c[1]+","+c[2]+","+c[3],g.fillText(h(55356,57221,55356,57343),0,0),c=g.getImageData(16,16,1,1).data,e=c[0]+","+c[1]+","+c[2]+","+c[3],d!==e;case"simple":return g.fillText(h(55357,56835),0,0),0!==g.getImageData(16,16,1,1).data[0];case"unicode8":return g.fillText(h(55356,57135),0,0),0!==g.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='openid-css'  href='https://blog.mithis.net/wp-content/plugins/openid/f/openid.css?ver=519' type='text/css' media='all' />
+<link rel='stylesheet' id='shashinStyle-css'  href='https://blog.mithis.net/wp-content/plugins/shashin/Public/Display/shashin.css?ver=3.0' type='text/css' media='all' />
+<link rel='stylesheet' id='highslideStyle-css'  href='https://blog.mithis.net/wp-content/plugins/shashin/Public/Display/highslide/highslide.css?ver=4.1.12' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-syntax-css-css'  href='https://blog.mithis.net/wp-content/plugins/wp-syntax/css/wp-syntax.css?ver=1.0' type='text/css' media='all' />
+<script type='text/javascript' src='https://blog.mithis.net/wp-includes/js/jquery/jquery.js?ver=1.12.3'></script>
+<script type='text/javascript' src='https://blog.mithis.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.0'></script>
+<script type='text/javascript' src='https://blog.mithis.net/wp-content/plugins/openid/f/openid.js?ver=519'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var shashinPhotoGroupsDisplayer = {"ajaxurl":"https:\/\/blog.mithis.net\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.mithis.net/wp-content/plugins/shashin/Public/Display/photoGroupsDisplayer.js?ver=3.0'></script>
+<script type='text/javascript' src='https://blog.mithis.net/wp-content/plugins/shashin/Public/Display/highslide/highslide.js?ver=4.1.12'></script>
+<script type='text/javascript' src='https://blog.mithis.net/wp-includes/js/swfobject.js?ver=2.2-20120417'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var highslideSettings = {"graphicsDir":"https:\/\/blog.mithis.net\/wp-content\/plugins\/shashin\/Public\/Display\/highslide\/graphics\/","outlineType":"rounded-white","dimmingOpacity":"0.75","interval":"5000","repeat":"1","position":"top center","hideController":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.mithis.net/wp-content/plugins/shashin/Public/Display/highslideSettings.js?ver=3.0'></script>
+<script type='text/javascript' src='https://blog.mithis.net/wp-content/plugins/google-analyticator/external-tracking.min.js?ver=6.4.9'></script>
+<link rel='https://api.w.org/' href='https://blog.mithis.net/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blog.mithis.net/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://blog.mithis.net/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Compiling tpserver-cpp under windows &#8211; Part 3' href='https://blog.mithis.net/archives/tp/13-compiling-tpserver-cpp-under-windows-part-3' />
+<link rel='next' title='Using Tailor &#8211; Creating Subversion Repository for Thousand Parsec' href='https://blog.mithis.net/archives/tp/16-tailor-darcs2svn-tp' />
+<meta name="generator" content="WordPress 4.5.1" />
+<link rel="canonical" href="https://blog.mithis.net/archives/tp/15-tp-protocol-overview" />
+<link rel='shortlink' href='https://blog.mithis.net/?p=15' />
+<link rel="alternate" type="application/json+oembed" href="https://blog.mithis.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.mithis.net%2Farchives%2Ftp%2F15-tp-protocol-overview" />
+<link rel="alternate" type="text/xml+oembed" href="https://blog.mithis.net/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.mithis.net%2Farchives%2Ftp%2F15-tp-protocol-overview&#038;format=xml" />
+<meta http-equiv="X-XRDS-Location" content="https://blog.mithis.net/?xrds" />
+<meta http-equiv="X-Yadis-Location" content="https://blog.mithis.net/?xrds" />
+
+<style type="text/css" media="screen,projection">
+/*<![CDATA[*/
+/* CSS inserted by Barthelme theme options */
+	body{font-family:arial,helvetica,sans-serif;font-size:100%;}
+	div#content h2,div#content h3,div#content h4,div#content h5,div#content h6,body.archive div.archive-meta,body.attachment div.entry-content div.attachment-content p.attachment-name,body.home div#content div.entry-meta span,body.archive div#content div.entry-meta span,body.search div#content div.entry-meta span,body.single div.entry-date,body.single div.entry-meta,div#content blockquote,div.comments ol.commentlist li div.comment-meta,div.entry-content div.page-link,div.entry-content span.tag-links,body.page div.archive-meta,div.formcontainer form#commentform div.form-input input,div.formcontainer form#commentform div.form-textarea textarea#comment,input#s,div.entry-content div.entry-caption{font-family:georgia,times,serif;}
+	body div#content div.hentry{text-align:left;}
+	body div#wrapper{width:auto;}
+	div#header,div#header h1#blog-title a,div#header h1#blog-title a:link,div#header h1#blog-title a:visited{color:#fefefe;outline:none;text-decoration:none;}
+	body div#header{background:#bbc8d9 url("https://blog.mithis.net/wp-content/themes/barthelme/images/header-img.php?upper=8999b0&lower=bbc8d9") repeat-x left top;}
+/*]]>*/
+</style>
+<!-- Google Analytics Tracking by Google Analyticator 6.4.9: http://www.videousermanuals.com/google-analyticator/ -->
+<script type="text/javascript">
+    var analyticsFileTypes = [''];
+    var analyticsSnippet = 'enabled';
+    var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+  
+	_gaq.push(['_setAccount', 'UA-23662574-1']);
+    _gaq.push(['_addDevId', 'i9k95']); // Google Analyticator App ID with Google
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+
+</head>
+
+<body class="wordpress y2026 m05 d19 h06 single s-y2007 s-m02 s-d23 s-h11 s-category-highlights s-category-tp s-author-mithro">
+
+<div id="wrapper">
+
+	<div id="header">
+		<table style="width: 100%; border: collapse; padding: 0; margin: 0;">
+			<tr>
+				<td style="padding:1.2em 0 1.2em 3em;">
+					<h1 id="blog-title"><a href="http://blog.mithis.net/" title="Mithro rants about stuff">Mithro rants about stuff</a></h1>
+				</td><td>
+
+<div class="shashinPhotoGroups"><table class="shashinThumbnailsTable" id="shashinGroup_1_1" style="">
+<caption></caption>
+<tr>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_1" style="width: 70px;"><a href="//video.google.com/googleplayer.swf?videoUrl=http%3A%2F%2Fv19.nonxt4.googlevideo.com%2Fvideoplayback%3Fid%3D97ab6f4a6a869c2b%26itag%3D37%26begin%3D0%26len%3D2147483647%26app%3Dpicasa%26et%3DINVALID%26el%3DINVALID%26ip%3D0.0.0.0%26ipbits%3D0%26expire%3D2899411713%26sparams%3Did%2Citag%2Cip%2Cipbits%2Cexpire%26signature%3DE47901DC12B6B53B3388AA76A932AC7BB518954.61A36C6DA23CBF869C5D0B7D2C2DEBF1DA037D%26key%3Dck1&amp;autoPlay=true" id="shashinThumbnailLink_1" onclick="return hs.htmlExpand(this, { objectType:'swf', minWidth: 1940, minHeight: 1100, objectWidth: 1920, objectHeight: 1080, allowSizeReduction: false, preserveContent: false, autoplay: false, slideshowGroup: 'group1' })" class="highslide"><img src="https://lh4.ggpht.com/-pcvb4CTNG_M/Tp7dXt2_YqI/AAAAAAAAktY/LRuVZ2-d3aM/MVI_1791.jpg?imgmax=64&amp;crop=1" alt="" width="64" height="64" class="shashinThumbnailImage" id="shashinThumbnailImage_1" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/20111013NiagraFallsSquirrels#5665208780795634338">View at Picasa</a></div></div>
+</div></td>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_2" style="width: 70px;"><a href="//lh3.ggpht.com/-elNsCJSltqE/TrXbPP8RQfI/AAAAAAAArkk/qfouAmzXWV8/IMG_2890.JPG?imgmax=800" id="shashinThumbnailLink_2" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group1' })" class="highslide"><img src="https://lh3.ggpht.com/-elNsCJSltqE/TrXbPP8RQfI/AAAAAAAArkk/qfouAmzXWV8/IMG_2890.JPG?imgmax=64&amp;crop=1" alt="" width="64" height="64" class="shashinThumbnailImage" id="shashinThumbnailImage_2" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/20111105ParisTourNotreDameChapel#5671680360766849522">View at Picasa</a></div><span class="shashinCaptionExif">05-Nov-2011 17:52, Canon Canon PowerShot SX230 HS, 4.5, 17.309mm, 0.013 sec, ISO 400</span></div>
+</div></td>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_3" style="width: 70px;"><a href="//lh4.ggpht.com/-sbiGM1V6axA/Sw0-bYNVw1I/AAAAAAAAJNE/xnqu61MmnRA/pict0194.jpg?imgmax=800" id="shashinThumbnailLink_3" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group1' })" class="highslide"><img src="https://lh4.ggpht.com/-sbiGM1V6axA/Sw0-bYNVw1I/AAAAAAAAJNE/xnqu61MmnRA/pict0194.jpg?imgmax=64&amp;crop=1" alt="" width="64" height="64" class="shashinThumbnailImage" id="shashinThumbnailImage_3" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/20060129#5408047367617626962">View at Picasa</a></div><span class="shashinCaptionExif">29-Jan-2006 11:45, KONICA MINOLTA DiMAGE E500, 5.6, 5.4mm, 0.001 sec, ISO 50</span></div>
+</div></td>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_4" style="width: 70px;"><a href="//lh6.ggpht.com/-aRdweidJaVc/TsjBhPVp8QI/AAAAAAAA3lE/J6Z06R-JQCw/20111117-night-safari.jpg?imgmax=800" id="shashinThumbnailLink_4" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group1' })" class="highslide"><img src="https://lh6.ggpht.com/-aRdweidJaVc/TsjBhPVp8QI/AAAAAAAA3lE/J6Z06R-JQCw/20111117-night-safari.jpg?imgmax=64&amp;crop=1" alt="" width="64" height="64" class="shashinThumbnailImage" id="shashinThumbnailImage_4" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/201111160NightSafari#5677000107097714946">View at Picasa</a></div><span class="shashinCaptionExif">16-Nov-2011 21:15, Canon Canon PowerShot SX230 HS, 5.0, 28.289mm, 0.067 sec, ISO 6400</span></div>
+</div></td>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_5" style="width: 70px;"><a href="//lh4.ggpht.com/-oBeTIbSvbn0/TpEwd7orQTI/AAAAAAAApnI/GEe7Jy_aI2c/IMG_0953.JPG?imgmax=800" id="shashinThumbnailLink_5" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group1' })" class="highslide"><img src="https://lh4.ggpht.com/-oBeTIbSvbn0/TpEwd7orQTI/AAAAAAAApnI/GEe7Jy_aI2c/IMG_0953.JPG?imgmax=64&amp;crop=1" alt="" width="64" height="64" class="shashinThumbnailImage" id="shashinThumbnailImage_5" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/20111008GuggenheimCentralParkEmpireStateBuilding#5661359497364062514">View at Picasa</a></div><span class="shashinCaptionExif">08-Oct-2011 19:11, Canon Canon PowerShot SX230 HS, 5.9, 70.0mm, 0.033 sec, ISO 3200</span></div>
+</div></td>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_6" style="width: 70px;"><a href="//lh6.ggpht.com/-b5txwC8y2yk/Sw2R6CmIpwI/AAAAAAAAOeo/eXWaEYwV_wM/pict0088.jpg?imgmax=800" id="shashinThumbnailLink_6" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group1' })" class="highslide"><img src="https://lh6.ggpht.com/-b5txwC8y2yk/Sw2R6CmIpwI/AAAAAAAAOeo/eXWaEYwV_wM/pict0088.jpg?imgmax=64&amp;crop=1" alt="" width="64" height="64" class="shashinThumbnailImage" id="shashinThumbnailImage_6" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/20060216#5408139153857095426">View at Picasa</a></div><span class="shashinCaptionExif">14-Feb-2006 13:23, KONICA MINOLTA DiMAGE E500, 5.6, 5.4mm, 0.001 sec, ISO 50</span></div>
+</div></td>
+</tr>
+</table>
+<script type="text/javascript">addHSSlideshow('group1');</script>
+</div>
+
+				</td>
+			</tr>
+		</table>
+
+	</div><!-- #header -->
+	
+	<div class="access"><span class="content-access"><a href="#content" title="Skip to content">Skip to content</a></span></div>
+
+<div id="globalnav"><ul id="menu"><li class="page_item_home home-link"><a href="https://blog.mithis.net/" title="Mithro rants about stuff" rel="home">Home</a></li><li class="page_item page-item-98"><a href="https://blog.mithis.net/contact-me">Contact Me</a></li></ul></div>
+
+	<div id="container">
+		<div id="content" class="hfeed">
+
+
+			<div id="post-15" class="hentry p1 post publish author-mithro category-highlights category-tp y2007 m02 d23 h11">
+				<div class="entry-date"><span class="meta-sep">{</span> <abbr class="published" title="2007-02-23T01:21:13+1000">2007 02 23</abbr> <span class="meta-sep">}</span></div>
+				<h2 class="entry-title">Thousand Parsec Protocol Overview</h2>
+				<div class="entry-content">
+<p> I&#8217;ve been planning to try and get tp04 into draft stage for a while now. However the AI competition and RL has kept me really busy so I haven&#8217;t got time to do the draft yet. I am going to however go over some highlights of the new tp04 protocol.</p>
+<p>Firstly, what does tp03 currently have?</p>
+<dl>
+<dt>Dynamic Orders</dt>
+<dd>Thousand Parsec servers can define new orders and clients can automatically discover these orders and show the user quite a bit of detail about what arguments should be given to the order.</dd>
+<dt>Comprehensive Design Support with tpcl</dt>
+<dd>Designing things is a very important part of most empire building games. tp03 includes support for building designs out of &#8220;components&#8221;, these components dynamical describe their properties and requirements. They can be either calculated on the server or calculated on the client. It is quite possible to have components which require other components, forbid other components via either specific exclusion or by using property values.</dd>
+<dt>Dynamic Resources</dt>
+<dd>Resources which are used for doing things are dynamical described by the server.</dd>
+<dt>Message and Board system</dt>
+<dd>Support for a wide variety of messages including referencing objects related to a message (IE This message came from this object). Servers can also have both private and public boards.</dd>
+<dt>Partial Design Discover</dt>
+<dd>Although no server currently implements a system where as you can only discover partial information about enemy designs, this option is total supported.</dd>
+</dl>
+<p> The next version of the tp protocol tp04 will have a bunch of new features. It is going to be built in an incremental way based on tp03. All the highlights of tp03 will still exist in tp04.</p>
+<p>Some of the new highlights include.</p>
+<dl>
+<dt>Full XML protocol specification</dt>
+<dd>The protocol will be completely specified in an XML document. This will allow more dynamic languages (such as Python, Ruby and PHP) to read in the protocol document and dynamical create the correct data. This doesn&#8217;t mean our good documentation is going away (for those people who want to implement it the &#8220;hard way&#8221;), instead it will be more accurate and contain better linking, lot more useful tables and even an index. The documentation will all be generated using XSLT from the protocol XML document so it will also always be current.</dd>
+<dt>Meta Protocol definition</dt>
+<dd>A definition on how to talk the &#8220;meta protocol&#8221;, IE talking to the metaserver and find local games will be specified. It will be almost identical to the current protocol specified separately.</dd>
+<dt>Filter Support</dt>
+<dd>The protocol will support filters such as encryption and compression (or even a 32bit aligned strings filter), there will be a way to negotiate which filters to use.</dd>
+<dt>Difference Support</dt>
+<dd>The protocol will include (and servers will be required to support) a proper method for downloading &#8220;what has changed&#8221; lists. This will be extended from the current &#8220;get id sequence&#8221; stuff but made so it doesn&#8217;t require downloading every single ID in the universe to find out the differences.</dd>
+<dt>Dynamic Objects</dt>
+<dd>Like how servers can define new a interesting order types, with tp04 servers will also be able to do the same for objects. A wide variety of object properties types will exist, from Graph like properties to just plain strings. This will rapidly allow many more advanced rulesets to exist.
+<dl>
+<dt>Old Data support</dt>
+<dd>As a side effect of Dynamic Objects, object properties will be able to be &#8220;aged&#8221;. This means that if you could detect/determine the value in the past, but can&#8217;t determine the value now, the client will be able to understand this.</dd>
+<dt>Multiple Instruction queue support</dt>
+<dd>As another side effect of Dynamic Objects, objects will be able to have multiple instruction queues. These will allow for things like &#8220;standing battle orders&#8221; and &#8220;research queues&#8221; (and probably plenty of other things I can&#8217;t think of at this very moment).</dd>
+<dt>Media support</dt>
+<dd>The current &#8220;media support&#8221; is just a hack in tpclient-pywx. The dynamic objects will allow proper specification of what media should be used for objects and such.</dd>
+</dl>
+</dd>
+<dt>Research support</dt>
+<dd>The protocol will include support for figuring out which &#8220;Research options&#8221; are available. It will support a wide range of research methods too (from researching for a specific object, to researching in a general area).</dd>
+<dt>EOT Support</dt>
+<dd>There will be support for things like saying &#8220;I&#8217;m Done&#8221; and &#8220;Please end the turn now.&#8221;. This will mean we are no longer just stuck with the EOT at a certain time problem like in tpserver-cpp (or when admin runs a special program like in tpserver-py).</dd>
+<dt>Frame Type Versions</dt>
+<dd>Support for changing frames (in a backward compatible way) separately. This will allow better updates of the protocol without having to do a complete new version.</dd>
+</dl>
+<p>tp05 will very much be another incremental version on top of tp04, the following is a list of what is planned for tp05 (and will not be included in tp04).</p>
+<dl>
+<dt>History Support</dt>
+<dd>Servers should start worrying about storing history as it will definitely be added in tp05.</dd>
+<dt>Trading or Diplomacy</dt>
+<dd>Diplomacy will still be able to be done via sending messages to each other, however the server will not support guaranteed diplomacy and trading. (IE If a person says they won&#8217;t attack you, the server will have no knowledge of this and they could still attack you.)</dd>
+<dt>Player / Race Separation</dt>
+<dd>There will be no specific support for a player controlling multiple races or a race having multiple players until tp05.</dd>
+<dt>Other stuff?</dt>
+<dd>Probably plenty of other stuff which I have forgotten.</dd>
+</dl>
+
+
+
+				</div>
+
+				<div class="entry-meta">
+					<span class="entry-published">Posted by <span class="entry-author author vcard"><a class="url fn" href="https://blog.mithis.net/archives/author/mithro" title="View all posts by mithro">mithro</a></span> on <abbr class="published" title="2007-02-23T01:21:13+1000">Friday, February 23, 2007, at 1:21 am</abbr>.</span> <span class="cat-links">Filed under <a href="https://blog.mithis.net/archives/category/highlights" rel="category tag">Highlights</a>, <a href="https://blog.mithis.net/archives/category/tp" rel="category tag">Thousand Parsec</a>.</span>  <span class="entry-rsslink">Follow any responses to this post with its <a href="https://blog.mithis.net/archives/tp/15-tp-protocol-overview/feed" title="Comments RSS to Thousand Parsec Protocol Overview" rel="alternate" type="application/rss+xml">comments RSS</a> feed.</span>
+					<span class="entry-interact">You can <a href="#respond" title="Post a comment">post a comment</a> or <a href="https://blog.mithis.net/archives/tp/15-tp-protocol-overview/trackback" rel="trackback" title="Trackback URL for your post">trackback</a> from your blog.</span>
+				</div>
+			</div><!-- .post -->
+
+<div class="comments">
+
+	<h3 class="comment-header" id="numcomments"><span class="comment-count"><span class="meta-sep">{</span> 5 <span class="meta-sep">}</span></span> Comments</h3>
+	<ol id="comments" class="commentlist">
+		<li id="comment-3" class="comment c-y2007 c-m02 c-d25 c-h12 alt c1">
+			<div class="comment-meta">
+				<span class="comment-author vcard">
