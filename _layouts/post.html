@@ -18,6 +18,22 @@ layout: default
                 {{ content }}
             </div>
             
+            {% assign post_slug = page.wordpress_url | split: '/' | last %}
+            {% if post_slug == blank %}
+                {% assign post_slug = page.path | split: '/' | last | remove: '.md' | remove: '.markdown' %}
+                {% assign _date_parts = post_slug | split: '-' %}
+                {% if _date_parts.size > 3 %}
+                    {% assign post_slug = _date_parts | slice: 3, _date_parts.size | join: '-' %}
+                {% endif %}
+            {% endif %}
+            {% if post_slug contains '-' %}
+                {% assign _slug_parts = post_slug | split: '-' %}
+                {% assign _first_part = _slug_parts.first %}
+                {% if _first_part == 'archives' or _first_part == 'category' %}
+                    {% assign post_slug = _slug_parts | slice: 1, _slug_parts.size | join: '-' %}
+                {% endif %}
+            {% endif %}
+
             <div class="entry-meta">
                 <span class="entry-published">
                     Posted by {{ site.title | escape }} on 
@@ -48,15 +64,7 @@ layout: default
                     <a href="{{ '/feed.xml' | relative_url }}" title="Comments RSS" rel="alternate" type="application/rss+xml">RSS feed</a>.
                 </span>
 
-                {% assign post_interact_slug = page.wordpress_url | split: '/' | last %}
-                {% if post_interact_slug == blank %}
-                    {% assign post_interact_slug = page.path | split: '/' | last | remove: '.md' | remove: '.markdown' %}
-                    {% assign _date_parts = post_interact_slug | split: '-' %}
-                    {% if _date_parts.size > 3 %}
-                        {% assign post_interact_slug = _date_parts | slice: 3, _date_parts.size | join: '-' %}
-                    {% endif %}
-                {% endif %}
-                {% assign _interact_comments = site.data.comments[post_interact_slug] %}
+                {% assign _interact_comments = site.data.comments[post_slug] %}
                 {% if _interact_comments and _interact_comments.size > 0 %}
                 <span class="entry-interact">You can <a href="#respond" title="Post a comment">post a comment</a>.</span>
                 {% else %}
@@ -64,16 +72,8 @@ layout: default
                 {% endif %}
             </div>
         </div><!-- .post -->
-        
+
         <!-- Comments section -->
-        {% assign post_slug = page.wordpress_url | split: '/' | last %}
-        {% if post_slug == blank %}
-            {% assign post_slug = page.path | split: '/' | last | remove: '.md' | remove: '.markdown' %}
-            {% assign date_parts = post_slug | split: '-' %}
-            {% if date_parts.size > 3 %}
-                {% assign post_slug = date_parts | slice: 3, date_parts.size | join: '-' %}
-            {% endif %}
-        {% endif %}
         
         {% include comments.html post_slug=post_slug %}
         
