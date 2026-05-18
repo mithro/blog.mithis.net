@@ -57,6 +57,10 @@ error); plan-verbatim so deliberately not changed in P0:
   `(False, log)`. Add `encoding="utf-8", errors="replace"`.
 - Minor: add a comment in `tests/fidelity/test_build.py` stating `run_build` is
   integration-verified by design (not a unit-test oversight).
+- `report.py` (Task 10): if the fidelity report ever becomes
+  machine-parsed/strict-Markdown-rendered, escape `Finding.message`/`archetype`
+  and guard `build_log_tail` against a lone ` ``` ` line closing the fence.
+  P0-fine today (controlled inputs; Jekyll logs have no triple-backticks).
 
 ## P1 — structural-extractor phantom anchors (from Task 6 review)
 
