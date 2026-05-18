@@ -110,6 +110,29 @@ Plan-verbatim, non-gating at P0; harden when the render path / CI matters:
   structural diff (the structural section in P0-RESULTS.md is the PHP-side
   anchor inventory = the P1 theme target list, not yet a Jekyll-vs-PHP diff).
 
+## P4/P5/P6 — from P1-T7 (notfound) review
+
+- **P4 (functional):** `404.html` `form#error404-searchform` uses
+  `action="{{ site.url }}"` → currently `https://mithro.github.io` (no baseurl).
+  Barthelme posted `?s=` to the WP home (server-side search). On a static
+  Jekyll site GET `?s=` does nothing. When P4 finalizes url/baseurl, fix the
+  action (`{{ site.url }}{{ site.baseurl }}`, or just `{{ site.url }}` once
+  baseurl="" + custom domain) AND decide fidelity-vs-function: likely point the
+  404 (and search-archetype) form at the existing `/search.html` client-side
+  search so it actually works. Structural anchor is present (P1 OK); this is
+  P4/P5 functional.
+- **P1-T9 / P5:** tighten `tests/fidelity/test_structure_check.py`
+  `test_phantom_anchors...` to assert the FULL set
+  (`PHANTOM_ANCHORS == frozenset({Anchor("div","#post-")})`) so any future
+  phantom addition is caught; rephrase the `PHANTOM_ANCHORS` NOTE comment as a
+  standing invariant ("only genuine PHP dynamic-id artifacts belong here"),
+  not an action log. (Fold into P1-T9.)
+- **P6 (do NOT flag as defect):** `404.html` `div#content` has NO `class="hfeed"`
+  — this is FAITHFUL (`404.php` is the only Barthelme template omitting hfeed).
+  The P6 structural/visual audit must treat 404's missing hfeed as correct, not
+  a gap. If a later pass ever standardizes hfeed across archetypes, 404 stays
+  the deliberate exception.
+
 ## P6 — CSS visual-audit micro-deltas (accumulate; verify in the pixel sweep)
 
 - P1-T6: `_layouts/page.html` title class `page-title`→`entry-title` (faithful to
