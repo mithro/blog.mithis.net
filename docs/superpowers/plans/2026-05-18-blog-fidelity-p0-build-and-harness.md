@@ -1118,6 +1118,7 @@ linter has findings. Structural results are REPORTED (P1 input) and do not, by
 themselves, fail P0 — P0's job is to measure, not to be all-green."""
 from __future__ import annotations
 import glob
+import os
 import subprocess
 import sys
 import time
@@ -1150,15 +1151,21 @@ def main() -> int:
              "--skip-initial-build", "--no-watch"],
             stdout=serve_log, stderr=subprocess.STDOUT)
         time.sleep(6)
-        # The Playwright visual layer is non-gating (spec §6.2). A missing
-        # browser binary / launch failure must NOT crash the harness: degrade
-        # to no rendered HTML, record the error, still emit build+lint+report.
-        try:
-            from .render import capture_all
-            rendered = capture_all("http://localhost:4000", OUT / "jekyll")
-        except Exception as e:
+        # spec §6.2: the Playwright visual layer is the LOCAL, non-gating step.
+        # It must never break the CI-able P0 gate (build+lint+structural). Two
+        # guards: (1) FIDELITY_SKIP_RENDER skips the browser entirely (it is
+        # heavyweight and not meaningful until P4 sets baseurl="" so served
+        # URLs resolve); (2) any capture exception degrades to no rendered HTML.
+        if os.environ.get("FIDELITY_SKIP_RENDER"):
             rendered = {}
-            render_error = repr(e)
+            render_error = "skipped via FIDELITY_SKIP_RENDER (spec §6.2 local layer)"
+        else:
+            try:
+                from .render import capture_all
+                rendered = capture_all("http://localhost:4000", OUT / "jekyll")
+            except Exception as e:
+                rendered = {}
+                render_error = repr(e)
         for a in structural_archetypes():
             r = rendered.get(a.name, {})
             html = (Path(r["html"]).read_text(encoding="utf-8")
@@ -1176,11 +1183,12 @@ def main() -> int:
     report = render_report(build_ok=build_ok, build_log_tail=log[-1500:],
                            structural=structural, lint=findings)
     if render_error:
-        report += ("\n## Renderer\n\nPlaywright visual layer UNAVAILABLE "
+        report += ("\n## Renderer\n\nPlaywright visual layer NOT RUN "
                    "(spec §6.2: local, non-gating). Structural results above "
                    "reflect NO rendered HTML (every Barthelme anchor shows as "
-                   "missing) — re-run locally with a browser for the real "
-                   f"structural diff.\nError: {render_error}\n")
+                   "missing) — re-run locally with a browser (after P4 sets "
+                   "baseurl=\"\" so served URLs resolve) for the real "
+                   f"structural diff.\nReason: {render_error}\n")
     (OUT / "fidelity-report.md").write_text(report, encoding="utf-8")
     print(report)
 
@@ -1210,13 +1218,14 @@ Expected: PASS — all unit tests across tasks 4–10 + smoke (no network/browse
 
 - [ ] **Step 4: Run the harness end-to-end (the P0 exit gate)**
 
-Run: `uv run python -m scripts.fidelity.run`
-Expected: writes `tmp/fidelity/fidelity-report.md` and prints it. The report MUST show `Build: PASS`. `Structural diff` and `Content linter` sections WILL likely show FAIL/findings — that is correct and expected: it is the measured P1/P2 worklist.
+Run: `FIDELITY_SKIP_RENDER=1 uv run python -m scripts.fidelity.run`
+(Per spec §6.2 the P0 exit gate is the CI-able build+linter+structural-comparator — NOT the browser. The Playwright visual layer is a local step that is not meaningful until P4 sets `baseurl=""` so served URLs resolve, and it is heavyweight; `FIDELITY_SKIP_RENDER=1` is the correct way to run the P0 gate. The full browser render is a documented post-P4 local step, not a P0 deliverable.)
+Expected: writes `tmp/fidelity/fidelity-report.md` and prints it. The report MUST show `Build: PASS`, a `## Renderer ... NOT RUN` note, and `Structural diff`/`Content linter` sections showing FAIL/findings — that is correct and expected: it is the measured P1/P2 worklist.
 
 - [ ] **Step 5: Verify the exit gate semantics**
 
-Run: `uv run python -m scripts.fidelity.run; echo "exit=$?"`
-Expected: `exit=1` *iff* build failed or linter has findings (normal at P0 since posts are unaudited). Confirm `Build: PASS` in the report regardless. If `Build: FAIL`, fix the build (extend `_config.yml` exclude or the offending template) before declaring P0 done — a clean build is mandatory.
+Run: `FIDELITY_SKIP_RENDER=1 uv run python -m scripts.fidelity.run; echo "exit=$?"`
+Expected: `exit=1` *iff* build failed or linter has findings (normal at P0 since posts are unaudited — exit=1 here is SUCCESS for P0, driven by the expected lint worklist). Confirm `Build: PASS` in the report regardless. If `Build: FAIL`, STOP and surface the build-log tail (do not mask it) — a clean build is mandatory and was verified in Task 8/2A.
 
 - [ ] **Step 6: @superpowers:verification-before-completion**
 
