@@ -138,6 +138,31 @@ remediation = reconstruct as **fenced ```` ``` ```` code blocks** (kramdown/GFM;
 the linter correctly skips fences). These are genuine *defects* (not deliberate
 code-example FPs) so class **R** even though the fix produces a fenced block.
 
+**IMPORTANT — fritzbox structural note (lines 42, 64, 79, 121):** In
+`_posts/2013-10-06-connecting-to-a-fritzbox-under-linux-using-vpnc.md` the
+single-backtick (`` ` ``) lines surrounding each code region are **multi-line
+block code delimiters — NOT inline-code spans**. The conversion left bare `` ` ``
+lines as open/close markers around each `<pre>` block. When reconstructing
+fenced ```` ``` ```` blocks, the remediator MUST replace these `` ` `` delimiter
+lines themselves (not treat them as inline code). Additionally, **line 121 has
+the `</pre>` and the closing `` ` `` concatenated on a single line** (literal:
+`` </pre>` ``) — the `</pre>` is not on its own line. Line 122 carries a stray
+`> ` blockquote-marker artifact that must also be removed as part of
+reconstructing that block. Target: each oracle `<pre>` block → one fenced
+```` ``` ```` block with no surrounding `` ` `` lines and no `> ` artifacts.
+
+**IMPORTANT — cfxs-free:19 structural note:** The stray `</pre>` on line 19 is
+embedded on the **same line as a blockquote marker** — the source line reads:
+`` > svn co http://verbal.mithis.com/svn/cfxs/trunk cfxs</pre>So why not check it out and build your own? ``
+The oracle-confirmed original is `<blockquote><pre>svn co …</pre></blockquote>`
+followed by plain prose. Faithful fix: **strip the leading `> ` blockquote
+marker**, convert the `svn co …` command to a fenced ```` ``` ```` code block
+(the command stands alone; no blockquote wrapper in Markdown), then continue
+"So why not check it out and build your own?" as a **separate prose paragraph**
+— NOT a blockquote wrapping a code block. Do not preserve the `> ` wrapper; the
+oracle shows `<blockquote>` only as the container for the `<pre>`, not as author
+commentary.
+
 ### 3.5 MANGLED_LI_CLOSE — 2 × `BLOCK_HTML` — class **R**
 
 `</li> /li>` orphan closers (the `<` of `</ul>` eaten too) from nested
@@ -160,13 +185,34 @@ this natively and renders `<dl>`, preserving the original structure.
 — a YouTube *Flash* embed. Oracle (live) confirms the original rendered exactly
 `<object><param><embed></embed></object>` (the same obsolete Flash player); the
 post text says "see it below". Markdown genuinely **cannot** express an
-`<object>/<embed>` → this is true **N (necessary HTML)**. Per-case decision is
-deferred to remediation (Task L / N-handling): faithful options are (a) a
-justified linter-allowance keeping a minimal embed, or (b) a modern responsive
-YouTube `<iframe>` for `8Ct36u8RPIU` (still an embed, still inline-HTML the
-linter flags — so still needs the N allowance). Either way the resolution is a
-*per-case justified linter-allowance*, **not** a content mangle and **not** a
-fenced block. Only 1 such finding in the entire corpus.
+`<object>/<embed>` → this is true **N (necessary HTML)**. Only 1 such finding
+in the entire corpus.
+
+**Concrete resolution (decided; encoded in Task L):** KEEP the `<object><embed>`
+element faithful (it renders the original YouTube video; do NOT mangle to
+Markdown or a fenced block). ADD an in-content `fidelity-allow` sentinel
+comment immediately adjacent to the element — a standard HTML comment of the
+form:
+
+```html
+<!-- fidelity-allow: BLOCK_HTML necessary-embed — YouTube; Markdown cannot express -->
+```
+
+When `lint_content` detects this sentinel on/adjacent to a BLOCK_HTML
+occurrence, it does NOT emit the finding for that line. Task L implements this
+minimal sentinel-allowance feature in `lint_content.py` (TDD: failing test first
+— sentinel suppresses exactly that one occurrence; un-annotated block HTML still
+flagged; F-lint/F-norm classes unaffected — both remain 0; all existing
+`test_lint_content.py` assertions green). After P2, `lint_content` over
+`_posts/*.md` reports **exactly 22** findings: only the R-P4 residuals; the 1 N
+is sentinel-suppressed (not counted). The exit-gate arithmetic is coherent: the
+N never inflates the residual beyond 22.
+
+This is NOT a blanket weakening of the linter — only explicitly annotated
+occurrences are suppressed. The broader F-lint/F-norm refinement remains
+deferred to P5 (0 F-norm and 0 F-lint in this corpus, so P5 linter-hardening
+items I3/I5/I1/I2/M1-M4 are still deferred; Task L partially advances P5 by
+establishing the necessary-HTML sentinel mechanism — noted in FOLLOWUPS).
 
 ## 4. Full finding table (47 rows, line-numbered)
 
@@ -271,18 +317,23 @@ LIQUID_LEAK + MISSING_IMAGE pair in P4 (~11 independent P4 edit-sites).
 
 ### Signal for Task L (linter refinement) and P2 scope
 
-- **Task L is NOT required.** 0 F-norm, 0 F-lint. The `lint_content` linter is
-  behaving correctly — every finding is a genuine WP→MD conversion defect or a
-  spec-forbidden Liquid artifact, *none* is the linter over-flagging legitimate
-  content. (The pre-planned conditional Task L can be **skipped**; the
-  FOLLOWUPS P5 linter-hardening items I3/I5/I1/I2/M1-M4 remain deferred to P5 as
-  before — they are not triggered by this corpus.)
+- **Task L IS required** — not for F-lint/F-norm (0 of each; linter correctly
+  flags every finding), but to implement the **necessary-HTML sentinel allowance**
+  for the 1 N (`techtalk-gamingforfreedom:22`). Without Task L the residual linter
+  count after all P2-NOW remediation would be 23 (22 R-P4 + the unflagged-but-
+  still-emitted N), breaking the exit-gate "exactly 22" assertion. Task L adds
+  minimal TDD'd support for an in-content `fidelity-allow` sentinel comment
+  (see §3.7) so the N is suppressed in the linter output. This is NOT a blanket
+  FP refinement — un-annotated block HTML is still flagged. The FOLLOWUPS P5
+  linter-hardening items I3/I5/I1/I2/M1-M4 remain deferred as before (not
+  triggered by this corpus; Task L partially advances P5 by establishing the
+  sentinel mechanism).
 - **P2 remediation is real and bounded (P2-NOW only):** ~11 posts, ~12 faithful
   content edits, all with concrete oracle-confirmed target structures (def-list,
   fenced code, nested lists, drop injected `<style>`), plus **1 N** decision
-  (Flash embed allowance). No linter/test changes needed for the findings; M1
-  (category links) and M2 (category prose) remain separate template/decision
-  tasks per the plan. The 22 R-P4 findings are P4's responsibility.
+  (Flash embed faithful-keep + Task L sentinel allowance). M1 (category links)
+  and M2 (category prose) remain separate template/decision tasks per the plan.
+  The 22 R-P4 findings are P4's responsibility.
 
 ## 6. Remediation plan grouped BY FILE (one commit per post)
 
@@ -297,7 +348,7 @@ Order roughly simplest → most complex.
 | 1 | `2007-02-26-darcs-almost-perfect.md` | BLOCK_HTML ×1 | mangled `<dl>` → kramdown definition list (3 terms) |
 | 2 | `2007-09-06-nm-autovpn.md` | BLOCK_HTML ×2 | remove injected comment-CSS `<style>` block |
 | 3 | `2007-11-11-python-swap-var.md` | BLOCK_HTML ×2 | remove injected comment-CSS `<style>` block |
-| 4 | `2008-02-18-cfxs-free.md` | BLOCK_HTML ×1 | `</pre>` → fenced ``` code (split prose) |
+| 4 | `2008-02-18-cfxs-free.md` | BLOCK_HTML ×1 | strip `> ` blockquote marker; `svn co …` → fenced ``` code block; "So why not…" → separate prose paragraph (see §3.4 cfxs-free note) |
 | 5 | `2009-01-20-reading-cookies-firefox.md` | BLOCK_HTML ×2 | remove injected comment-CSS `<style>` block |
 | 6 | `2009-01-26-osdc-orbital-death…never.md` | BLOCK_HTML ×2 | remove injected comment-CSS `<style>` block |
 | 7 | `2009-01-27-xcompiling-cygwin…windows.md` | BLOCK_HTML ×2 | remove injected comment-CSS `<style>` block |
@@ -305,15 +356,17 @@ Order roughly simplest → most complex.
 | 9 | `2014-07-28-hdmi2usb…day-5-6-7…2014.md` | BLOCK_HTML ×1 | `</pre>` error line → fenced ``` code block |
 | 10 | `2014-07-24-hdmi2usb…day-3…2014.md` | BLOCK_HTML ×2 | orphan `</li> /li>` → Markdown nested list; `</pre>` error dump → fenced ``` |
 | 11 | `2014-07-23-hdmi2usb…day-2…2014.md` | BLOCK_HTML ×3 | orphan `</li> /li>` → nested list; 2× `<pre>` error dumps → fenced ``` |
-| 12 | `2013-10-06-connecting-to-a-fritzbox…vpnc.md` | BLOCK_HTML ×4 | reconstruct 4× ``` ` ```-delimited regions as fenced ``` code (per oracle `<pre>` blocks) |
-| 13 | `2008-06-10-techtalk-gamingforfreedom.md` | BLOCK_HTML ×1 (**N**) | per-case: justified minimal embed allowance OR modern `<iframe>` for `8Ct36u8RPIU` — NOT a Markdown conversion (decide in remediation; the only N) |
+| 12 | `2013-10-06-connecting-to-a-fritzbox…vpnc.md` | BLOCK_HTML ×4 | reconstruct 4× fenced ``` code blocks: replace each `` ` `` delimiter line (NOT inline code — these are block markers), the `</pre>` on the same line as the closing `` ` `` (line 121: `` </pre>` ``), and the `> ` artifact on line 122 (see §3.4 fritzbox note) |
+| 13 | `2008-06-10-techtalk-gamingforfreedom.md` | BLOCK_HTML ×1 (**N**) | keep `<object><embed>` faithful (original video; NOT a Markdown conversion); add `<!-- fidelity-allow: BLOCK_HTML necessary-embed — YouTube; Markdown cannot express -->` sentinel adjacent to it; Task L implements linter suppression for the sentinel so linter shows exactly 22 R-P4 residuals |
 
 **Verification gate per P2-NOW post:** that post's BLOCK_HTML/N linter findings
 → 0; `structure_check` still PASS (6/6); `bundle3.3 exec jekyll build` clean;
 rendered `_site` output spot-matches the oracle (same headings/lists/links/code;
 no broken structure); only that post changed; zero front-matter/permalink drift.
-NOTE: after all P2-NOW posts are done, the linter will still show **22 R-P4
-findings** (LIQUID_LEAK + MISSING_IMAGE) — this is expected and correct.
+NOTE: after all P2-NOW posts are done (including the Task L sentinel
+implementation for the 1 N), the linter will show **exactly 22 R-P4
+findings** (LIQUID_LEAK + MISSING_IMAGE; the 1 N sentinel-suppressed) — this is
+expected and correct.
 
 ### P4-COUPLED (DO NOT TOUCH IN P2 — deferred to P4)
 

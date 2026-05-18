@@ -13,7 +13,7 @@
 
 **Local env:** no `bundle` → `bundle3.3`. `uv` on PATH. Work from the P2 worktree root. Inline `python -c` hook-blocked; use Python scripts in `tmp/` (gitignored; delete after) — NOT multi-statement shell loops. P2 EDITS `_posts/*.md` (that is the point — unlike P1), but ONLY the P2-NOW posts (BLOCK_HTML / N). P2 must NOT edit the LIQUID_LEAK/MISSING_IMAGE lines — see P4-COUPLED constraint below.
 
-**P2 EXIT GATE (precise):** `uv run python -c`-free reproduction: `lint_content` over all `_posts/*.md` (asset_root = repo root) reports **exactly 22 findings** — only the explicitly P4-COUPLED `LIQUID_LEAK`/`MISSING_IMAGE` findings (the 11 LIQUID_LEAK + 11 co-located MISSING_IMAGE across ~8 posts). Zero of the 24 R BLOCK_HTML findings remain; the 1 N (`techtalk-gamingforfreedom:22`) is resolved per-case with a justified linter-allowance. **The remaining 22 R-P4 findings are P4's responsibility; P2 does not touch the `relative_url` post lines (touching them now would break image URLs under the current `baseurl:"/blog.mithis.net"` — kramdown does NOT prepend baseurl to Markdown image paths, so plain `/assets/x` would render without the baseurl prefix on the current deployment).** AND `structure_check` still `PASS (6/6)` (content edits must not regress P1). AND `bundle3.3 exec jekyll build` clean (0). AND full unit suite green. AND a spot-check sample of the P2-NOW remediated posts renders faithfully vs the original site (same structure/lists/code; no mangled HTML).
+**P2 EXIT GATE (precise):** `uv run python -c`-free reproduction: `lint_content` over all `_posts/*.md` (asset_root = repo root) reports **exactly 22 findings** — only the explicitly P4-COUPLED `LIQUID_LEAK`/`MISSING_IMAGE` findings (the 11 LIQUID_LEAK + 11 co-located MISSING_IMAGE across ~8 posts). Zero of the 24 R BLOCK_HTML findings remain; the 1 N (`techtalk-gamingforfreedom:22`) is resolved via the Task L `fidelity-allow` sentinel allowance (the `<object><embed>` is kept faithful; the sentinel suppresses the linter finding so it does NOT appear in the 22 residuals — zero BLOCK_HTML in the final count). **The remaining 22 R-P4 findings are P4's responsibility; P2 does not touch the `relative_url` post lines (touching them now would break image URLs under the current `baseurl:"/blog.mithis.net"` — kramdown does NOT prepend baseurl to Markdown image paths, so plain `/assets/x` would render without the baseurl prefix on the current deployment).** AND `structure_check` still `PASS (6/6)` (content edits must not regress P1). AND `bundle3.3 exec jekyll build` clean (0). AND full unit suite green (including new Task L TDD tests). AND a spot-check sample of the P2-NOW remediated posts renders faithfully vs the original site (same structure/lists/code; no mangled HTML).
 
 ---
 
@@ -83,7 +83,7 @@ Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>"
 - [ ] **Step 1: Read** the post + its P2-FINDINGS §"P2-NOW" rows + the oracle evidence for that post. Verify: does this post also have P4-COUPLED rows? If yes, leave those lines EXACTLY as-is; only edit the BLOCK_HTML lines.
 - [ ] **Step 2: Remediate faithfully** per class (P2-NOW only):
   - **R block-HTML:** convert to equivalent Markdown (kramdown/GFM). The rendered `_site` HTML for that post must convey the same structure/content the original showed (lists→`-`/`1.`, emphasis, links, headings, blockquotes, pre/code→fenced). Keep genuinely-inline HTML the linter allows where Markdown can't express it.
-  - **N (necessary HTML):** do NOT mangle the post. The resolution is a per-case justified linter-allowance (the only N is `techtalk-gamingforfreedom:22` — Flash embed; see P2-FINDINGS §3.7).
+  - **N (necessary HTML):** do NOT mangle the post. The resolution is: keep the `<object><embed>` faithful AND add the `fidelity-allow` sentinel comment (the only N is `techtalk-gamingforfreedom:22` — Flash embed; see P2-FINDINGS §3.7). Task L must be completed BEFORE or together with the techtalk remediation so the sentinel is recognized by the linter.
   - **R-P4 (LIQUID_LEAK / MISSING_IMAGE):** DO NOT TOUCH. These are valid working Liquid today. Editing them under the current `baseurl:"/blog.mithis.net"` would break image URLs on the live deployment.
   - NEVER change the post's meaning vs the original; preserve front matter, permalink, dates, categories.
 - [ ] **Step 3: Verify** — re-run the linter for THIS post → its P2-NOW BLOCK_HTML findings gone (0 BLOCK_HTML for this file; any LIQUID_LEAK/MISSING_IMAGE rows remain as expected); `bundle3.3 exec jekyll build --trace 2>&1 | grep -ciE "error|warning|deprecation|conflict"` → 0; `uv run python -m scripts.fidelity.structure_check` → still `PASS (6/6)` (content edits must not regress P1); spot-compare the post's rendered `_site` output against the oracle (same headings/list items/links/text — no mangled HTML).
@@ -98,15 +98,61 @@ Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>"
 
 ---
 
-## Task L (only if triage finds F-lint/N): minimal `lint_content` FP refinement (TDD)
+## Task L: minimal TDD'd `lint_content` necessary-HTML sentinel allowance (REQUIRED)
 
-Use @superpowers:test-driven-development. ONLY if P2-FINDINGS has F-lint/N rows that cannot be faithfully content-normalized.
+Use @superpowers:test-driven-development. This task is **required** (not
+conditional/skippable): triage found 0 F-lint and 0 F-norm, but found 1 N
+(`techtalk-gamingforfreedom:22` `<object><embed>` Flash embed). Without this
+task the residual linter count after all P2-NOW remediation would be 23 (22
+R-P4 + the still-emitted N), breaking the "exactly 22" exit gate. This task
+implements the minimal sentinel mechanism that suppresses exactly that 1 N
+finding. Complete this task BEFORE or together with the techtalk post
+remediation (Task 13 in §6 of P2-FINDINGS).
 
 **Files:** `scripts/fidelity/lint_content.py`, `tests/fidelity/test_lint_content.py`
 
-- [ ] Add a failing test encoding the proven FP (e.g. `lint_text` must NOT flag `{{ x }}` inside single-backtick inline code; or must not flag block HTML inside a 4-space-indented code block). Run → fails.
-- [ ] Implement the minimal rule refinement (strip/ignore inline-code spans before the Liquid scan; treat 4-space-indented runs like fenced blocks) — keep all existing `test_lint_content.py` assertions green (real defects still flagged). This also advances the FOLLOWUPS P5 linter-hardening (note it there as partially-resolved).
-- [ ] Run full `uv run pytest -m "not integration" -q` → all pass. Re-run the post-corpus linter → the F-lint findings are gone WITHOUT having touched those posts. Commit (`scripts/fidelity/lint_content.py` + test only).
+**Design:** `lint_content` gains support for an in-content `fidelity-allow`
+sentinel HTML comment. When a line bearing (or immediately adjacent to) a
+BLOCK_HTML finding also has a comment of the form:
+
+```
+<!-- fidelity-allow: BLOCK_HTML necessary-embed — <reason> -->
+```
+
+`lint_content` does NOT emit the BLOCK_HTML finding for that occurrence.
+
+- [ ] **Step 1: Write a failing test** encoding the sentinel behaviour:
+  - (a) A `lint_text` call on content containing a BLOCK_HTML occurrence WITH the
+    sentinel comment → zero BLOCK_HTML findings emitted for that occurrence.
+  - (b) The same BLOCK_HTML occurrence WITHOUT the sentinel → the finding IS
+    emitted (no blanket weakening).
+  - (c) A second, un-annotated BLOCK_HTML occurrence in the same text → still
+    flagged (sentinel is per-occurrence, not file-wide).
+  - (d) F-lint/F-norm class assertions: 0 F-norm and 0 F-lint findings are
+    unchanged (this feature does not affect those paths).
+  - Run the test → it fails (red). Do NOT touch `lint_content.py` yet.
+- [ ] **Step 2: Implement** the minimal sentinel check in `lint_content.py` —
+  when about to emit a BLOCK_HTML finding, check whether the line (or an
+  immediately adjacent line, e.g. the line before) contains a
+  `fidelity-allow: BLOCK_HTML` comment; if so, skip that finding. Keep all
+  existing `test_lint_content.py` assertions green (real defects still flagged).
+- [ ] **Step 3: Run** `uv run pytest -m "not integration" -q` → all pass (new
+  tests green; existing tests still green). Re-run the post-corpus linter BEFORE
+  adding the techtalk sentinel → should show 23 findings (22 R-P4 + 1 N still
+  flagged without sentinel, confirming the feature only triggers on the
+  annotation). Document this intermediate count.
+- [ ] **Step 4: Commit** `scripts/fidelity/lint_content.py` + `tests/fidelity/test_lint_content.py` only:
+  ```bash
+  git add scripts/fidelity/lint_content.py tests/fidelity/test_lint_content.py
+  git -c commit.gpgsign=false commit -m "Task L: add fidelity-allow sentinel allowance to lint_content
+
+  Implements minimal necessary-HTML sentinel: a <!-- fidelity-allow: BLOCK_HTML … -->
+  comment adjacent to a BLOCK_HTML occurrence suppresses that one finding.
+  Resolves the 1 N (techtalk Flash embed) without blanket linter weakening.
+  Partially advances FOLLOWUPS P5 linter-hardening (sentinel mechanism established).
+
+  Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>"
+  ```
 
 ---
 
@@ -133,7 +179,7 @@ Use @superpowers:test-driven-development. ONLY if P2-FINDINGS has F-lint/N rows 
 
 Use @superpowers:verification-before-completion.
 
-- [ ] **Step 1: Full P2 gate.** Regenerate the linter over `_posts/*.md` (asset_root=`.`) → **exactly 22 findings** (only the P4-COUPLED LIQUID_LEAK/MISSING_IMAGE residuals; zero BLOCK_HTML). `uv run python -m scripts.fidelity.structure_check` → `PASS (6/6)`. `bundle3.3 exec jekyll build --trace 2>&1 | grep -ciE "error|warning|deprecation|conflict"` → 0. `uv run pytest -m "not integration" -q` → all pass. Spot-check ≥5 P2-NOW remediated posts: rendered `_site` HTML faithful vs the original site (no mangled HTML, lists/code/structure equivalent). Paste evidence. Confirm: the 22 residual findings are all `LIQUID_LEAK`/`MISSING_IMAGE` in the ~8 posts listed under "P4-COUPLED" in P2-FINDINGS §6 — this is expected and correct by design.
+- [ ] **Step 1: Full P2 gate.** Regenerate the linter over `_posts/*.md` (asset_root=`.`) → **exactly 22 findings** (only the P4-COUPLED LIQUID_LEAK/MISSING_IMAGE residuals; zero BLOCK_HTML; the 1 N resolved via the Task L `fidelity-allow` sentinel — sentinel-suppressed, not counted). `uv run python -m scripts.fidelity.structure_check` → `PASS (6/6)`. `bundle3.3 exec jekyll build --trace 2>&1 | grep -ciE "error|warning|deprecation|conflict"` → 0. `uv run pytest -m "not integration" -q` → all pass (including new Task L sentinel tests). Spot-check ≥5 P2-NOW remediated posts: rendered `_site` HTML faithful vs the original site (no mangled HTML, lists/code/structure equivalent); confirm `techtalk-gamingforfreedom` renders the embed. Paste evidence. Confirm: the 22 residual findings are all `LIQUID_LEAK`/`MISSING_IMAGE` in the ~8 posts listed under "P4-COUPLED" in P2-FINDINGS §6 — this is expected and correct by design. Confirm: 0 BLOCK_HTML in the final linter output (the 1 N is sentinel-suppressed by Task L, not deferred to P4).
 - [ ] **Step 2: Write `docs/superpowers/plans/P2-RESULTS.md`** — findings triaged (R-now/R-P4/N tallies: 25 P2-NOW [24 R + 1 N] + 22 R-P4 deferred), what was remediated in P2, the M1 fix, the M2 decision, confirmation P1 structural fidelity not regressed, the 22 R-P4 findings explicitly called out as P4's responsibility, P3 readiness (the 4 captured posts in `exports/p3-missing-raw/`). Commit.
 - [ ] **Step 3: Stop and re-plan.** Do NOT start P3 ad hoc. Return to @superpowers:writing-plans for the **P3** plan (recover the 4 captured missing posts → faithful Markdown matching existing post format + dual comment representation), then P4 (domain/`baseurl=""`+CNAME + strip the 22 R-P4 LIQUID_LEAK residuals → plain `/assets/…` + final linter-0 gate), P5 (new-post workflow + wire `lint_content` as build-guard + the FOLLOWUPS gate/linter hardening), P6 (visual + functional acceptance + user signoff).
 

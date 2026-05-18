@@ -17,6 +17,17 @@ covers them.
 
 ## P5 — prerequisites before wiring `lint_content` as the build gate
 
+- **PARTIAL RESOLUTION (P2 Task L):** P2 Task L implements a `fidelity-allow`
+  sentinel allowance in `lint_content.py` — a `<!-- fidelity-allow: BLOCK_HTML
+  necessary-embed — <reason> -->` HTML comment adjacent to a BLOCK_HTML occurrence
+  suppresses that one finding. This was required to resolve the 1 N finding
+  (`techtalk-gamingforfreedom:22` Flash embed) without counting it against the P2
+  exit-gate "exactly 22" residual. The sentinel is per-occurrence (not
+  file-wide); un-annotated block HTML is still flagged. The broader F-lint/F-norm
+  refinement items below remain deferred (0 F-lint and 0 F-norm in the P2
+  corpus). The sentinel mechanism (necessary-HTML allowance) is now established
+  and available for future necessary-HTML cases in P5/P6.
+
 - **I3 (important):** unclosed fenced code block leaves `in_fence=True` to EOF,
   silently suppressing all findings below it. Before P5 makes the linter a hard
   gate, add an `UNCLOSED_FENCE` finding so CI is self-diagnosing, not silently
@@ -30,7 +41,8 @@ covers them.
 - **I5 / docstring:** document the known false-positive classes in the
   `lint_content` module docstring: Liquid-in-inline-code, and structural HTML
   inside 4-space indented code blocks (the plan already accepts inline-code FP as
-  a conscious limitation; make it explicit in-code for P5 gate users).
+  a conscious limitation; make it explicit in-code for P5 gate users). Also
+  document the `fidelity-allow` sentinel (added in P2 Task L) in the docstring.
 - **I1/I2 (hardening):** `_split_front_matter` edge cases — front matter that
   closes at EOF with no trailing newline (potential off-by-one), and an explicit
   CRLF assumption note. Not triggered by the current corpus; harden before the
