@@ -110,6 +110,30 @@ Plan-verbatim, non-gating at P0; harden when the render path / CI matters:
   structural diff (the structural section in P0-RESULTS.md is the PHP-side
   anchor inventory = the P1 theme target list, not yet a Jekyll-vs-PHP diff).
 
+## P2 — internal-linking + category-prose reconciliation (from final P1 review)
+
+- **M1 (P2, pre-existing — verify before P2 spec):** `_layouts/home.html` links
+  each post's categories to `/archives/category/<slug>` which does NOT exist in
+  `_site` (Jekyll builds category pages at `/category/<slug>/`). Also category
+  display casing diverges across archetypes: home `| title` ("Summer Of Code"),
+  category `| capitalize` ("Summer of code"), post raw slug. Byte-identical
+  between `main` and the P1 HEAD → NOT introduced by P1 (correctly outside P1's
+  structural scope), but it's a real broken-internal-link + inconsistency. P2
+  (content/internal-linking) must reconcile to ONE category URL space
+  (`/category/<slug>/`) and one title-casing rule across home/post/category.
+- **M2 (P2 decision):** the per-category `.md` body prose ("Posts about
+  hardware development…") is no longer rendered — the Barthelme-faithful
+  `category.html` reads `page.description` front-matter (which the `.md`s don't
+  set), not `content`; `div.archive-meta` is correctly present-but-empty
+  (matches archive.php, which only renders WP `category_description()`). P2 must
+  decide: keep dropped (more faithful) or move that prose into `description:`
+  front matter to preserve it.
+- Note (no action): `nav-below` Liquid recurs in 4 layouts but each is
+  intentionally semantically distinct per its Barthelme source
+  (post=prev/next-post, index/archive=prev/next-posts, search=static) — a blind
+  shared include would be WRONG. Optional low-value parameterized-include
+  cleanup only; not urgent (P5 at most).
+
 ## P2/P5/P6 — from P1-T8 (search) review (Minors, structural gate already green)
 
 - **P2/P5:** `_includes/sidebar.html` search widget still has stale ids
