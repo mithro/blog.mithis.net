@@ -27,6 +27,14 @@ covers them.
   refinement items below remain deferred (0 F-lint and 0 F-norm in the P2
   corpus). The sentinel mechanism (necessary-HTML allowance) is now established
   and available for future necessary-HTML cases in P5/P6.
+  - **P5 polish (from Task L code review, non-blocking):** the
+    `_FIDELITY_ALLOW_BLOCK_HTML` regex's trailing `\b` after `BLOCK_HTML` is
+    redundant (the literal `fidelity-allow:` prefix already prevents partial
+    matches) — drop or comment its intent; add a unit test for the `i == 0`
+    body-first-line case WITH a (non-existent) preceding-line sentinel attempt
+    to lock the negative-index guard; add a brief inline comment at the
+    `prev_line` assignment noting fence predecessors are harmless; document the
+    sentinel in the `lint_content` module docstring (ties to I5).
 
 - **I3 (important):** unclosed fenced code block leaves `in_fence=True` to EOF,
   silently suppressing all findings below it. Before P5 makes the linter a hard
