@@ -29,27 +29,3 @@ This fundamental difference in mindset should drive every aspect of your game, w
 ## Comments
 **Mithro rants about stuff : OSDC & orbital death, better late then never…** -     <time datetime="2010-01-16T09:32:50+00:00">2010-01-16</time>
 [&#8230;] at the conference I had to produce a paper. This paper puts into writing a lot of what I have been talking about. I wasn't going to post it, but after getting a email out of the blue about the topic, [&#8230;]
-<style>
-.comments {
-margin-top: 2rem;
-border-top: 1px solid #eee;
-padding-top: 2rem;
-}
-.comment {
-margin-bottom: 1.5rem;
-padding: 1rem;
-background: #f9f9f9;
-border-left: 4px solid #ddd;
-}
-.comment-meta {
-font-size: 0.9rem;
-color: #666;
-margin-bottom: 0.5rem;
-}
-.comment-content {
-line-height: 1.6;
-}
-.comment-content p {
-margin: 0.5rem 0;
-}
-</style>
