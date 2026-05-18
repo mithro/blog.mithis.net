@@ -980,7 +980,12 @@ def capture_all(base_url: str, out_dir: str | Path,
             png = out / f"{a.name}.png"
             html = out / f"{a.name}.html"
             try:
-                page.goto(url, wait_until="networkidle", timeout=30000)
+                # NOT 'networkidle': the original Picasa header hotlinks dead
+                # Google CDN images, so the network never goes idle and every
+                # capture would burn the full timeout. 'domcontentloaded' + a
+                # short settle captures local CSS/layout without the stall.
+                page.goto(url, wait_until="domcontentloaded", timeout=20000)
+                page.wait_for_timeout(1500)
                 page.screenshot(path=str(png), full_page=True)
                 html.write_text(page.content(), encoding="utf-8")
                 results[a.name] = {"url": url, "png": str(png),
@@ -1052,11 +1057,16 @@ def main() -> int:
 
     structural = []
     proc = None
+    serve_log = open(OUT / "jekyll-serve.log", "w", encoding="utf-8")
     try:
+        # No --detach: keep serve as a child so proc.terminate() reaps it.
+        # --skip-initial-build serves the _site produced by run_build() above.
+        # serve output goes to a log file (NOT DEVNULL) so a flaky local
+        # serve is debuggable and stderr stays visible.
         proc = subprocess.Popen(
             ["bundle", "exec", "jekyll", "serve", "--port", "4000",
              "--skip-initial-build", "--no-watch"],
-            stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+            stdout=serve_log, stderr=subprocess.STDOUT)
         time.sleep(6)
         from .render import capture_all
         rendered = capture_all("http://localhost:4000", OUT / "jekyll")
@@ -1070,6 +1080,7 @@ def main() -> int:
     finally:
         if proc:
             proc.terminate()
+        serve_log.close()
 
     findings = lint_paths(sorted(glob.glob("_posts/*.md")), asset_root=".")
 
