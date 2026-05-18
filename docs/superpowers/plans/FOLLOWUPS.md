@@ -110,6 +110,28 @@ Plan-verbatim, non-gating at P0; harden when the render path / CI matters:
   structural diff (the structural section in P0-RESULTS.md is the PHP-side
   anchor inventory = the P1 theme target list, not yet a Jekyll-vs-PHP diff).
 
+## P1/P6 — structure_check gate-coverage + category fidelity minors (from P1-T5 review)
+
+- **GATE-COVERAGE (P6 acceptance must cover this):** `structure_check` checks ONE
+  representative per archetype (e.g. `category/hardware`). It did NOT catch that
+  multi-word/hyphenated category pages (`summer-of-code`, `gaming-miniconf`,
+  `timvideos-us`, …) were rendering "No posts found" (a Critical functional bug
+  found only by the deeper code-review's multi-word verification, now fixed in
+  T5 `01faf1d`). The structural gate ≠ functional correctness. **P6 final
+  acceptance MUST include a functional sweep**: every one of the 19 category
+  pages lists its posts; representative real variants of each archetype render
+  (not just the single structure_check sample). Consider a P5/P6 helper that
+  asserts no built page contains "No posts found"/empty content.
+- **Minor (P1 later / when multi-category posts exist):** `_layouts/category.html`
+  `entry-category` cross-link uses `{{ cat | replace:'-',' ' | capitalize }}` →
+  "Summer of code" not "Summer Of Code". Inert today (all posts single-category
+  so the loop body never emits). Fix to proper title-case / category-title
+  lookup if multi-category posts are ever added.
+- **Minor fidelity gap:** Barthelme `archive.php` L42 `barthelme_author_link()`
+  (an author link in `entry-meta`) is absent from `_layouts/category.html`
+  (and not required by the structural gate). Acceptable for a single-author
+  blog; note for full visual fidelity / P6.
+
 ## P1 — `#post-0` gate-integrity (MUST action at P1-T7/T8) + T1 polish (from P1-T1 review)
 
 - **IMPORTANT (P1-T7 notfound, P1-T8 search):** `PHANTOM_ANCHORS` in
