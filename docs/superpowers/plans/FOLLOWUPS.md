@@ -72,6 +72,19 @@ Also (P1-minor): add a one-line comment to barthelme's `"<?" not in attr` guard
 clarifying it catches strip failures (not pre-strip PHP); add an
 `anchors_in_html` unit test.
 
+## P3/P6 — wayback resolver call-site hardening (from Task 9 review)
+
+`scripts/fidelity/wayback.py` is correct/minimal for P0 but its callers must
+harden when authored:
+- P3's per-missing-post loop MUST wrap `snapshot_url(...)` in
+  `try/except (urllib.error.URLError, http.client.RemoteDisconnected)` so one
+  network failure doesn't abort the whole recovery sweep.
+- Consider `https://archive.org/wayback/available` (currently `http://`; works
+  via redirect but adds a round-trip) and set a descriptive `User-Agent` +
+  modest rate-limit/retry when calling in a tight P3 loop (archive.org throttles).
+These are call-site responsibilities (the module's DI `opener` seam supports a
+retry/UA opener cleanly) — not P0 module defects.
+
 ## P1 — theme/structure fidelity & cleanup (from Task 2A)
 
 - Remove orphaned dead code `_includes/category-feed.xml` (no callers; left in
