@@ -210,8 +210,8 @@ Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>"
 
 - [ ] **Step 1: Run the runner for real**
 
-Run: `FIDELITY_SKIP_RENDER=1 uv run python -m scripts.fidelity.structure_check; echo "exit=$?"`
-(It builds, diffs built `_site` vs Barthelme. exit=1 with MISSING anchors is EXPECTED here — that is the P1 worklist.)
+Run: `uv run python -m scripts.fidelity.structure_check; echo "exit=$?"`
+(It builds, then diffs built `_site` vs Barthelme. `structure_check` is inherently browser-free/server-free — it reads `_site/*.html` from disk, so NO `FIDELITY_SKIP_RENDER` is needed or relevant here. exit=1 with MISSING anchors is EXPECTED — that is the P1 worklist.)
 
 - [ ] **Step 2: Record the worklist**
 
