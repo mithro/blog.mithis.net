@@ -110,6 +110,15 @@ Plan-verbatim, non-gating at P0; harden when the render path / CI matters:
   structural diff (the structural section in P0-RESULTS.md is the PHP-side
   anchor inventory = the P1 theme target list, not yet a Jekyll-vs-PHP diff).
 
+## P6 — CSS visual-audit micro-deltas (accumulate; verify in the pixel sweep)
+
+- P1-T6: `_layouts/page.html` title class `page-title`→`entry-title` (faithful to
+  page.php L9; the old `.page-title` on pages was a pre-existing mis-application
+  of archive-context CSS). Net-neutral (font-size/align/weight identical; base
+  `.entry-title` margin `0.5em 0` is overridden back to `0` by
+  `div#content .entry-title`). P6 pixel sweep must confirm the page-title margin
+  renders identically to the original (no vertical-rhythm shift).
+
 ## P1/P6 — structure_check gate-coverage + category fidelity minors (from P1-T5 review)
 
 - **GATE-COVERAGE (P6 acceptance must cover this):** `structure_check` checks ONE
