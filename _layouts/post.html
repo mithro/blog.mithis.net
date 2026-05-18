@@ -44,9 +44,24 @@ layout: default
                 {% endif %}
                 
                 <span class="entry-rsslink">
-                    Follow any responses to this post with the 
+                    Follow any responses to this post with the
                     <a href="{{ '/feed.xml' | relative_url }}" title="Comments RSS" rel="alternate" type="application/rss+xml">RSS feed</a>.
                 </span>
+
+                {% assign post_interact_slug = page.wordpress_url | split: '/' | last %}
+                {% if post_interact_slug == blank %}
+                    {% assign post_interact_slug = page.path | split: '/' | last | remove: '.md' | remove: '.markdown' %}
+                    {% assign _date_parts = post_interact_slug | split: '-' %}
+                    {% if _date_parts.size > 3 %}
+                        {% assign post_interact_slug = _date_parts | slice: 3, _date_parts.size | join: '-' %}
+                    {% endif %}
+                {% endif %}
+                {% assign _interact_comments = site.data.comments[post_interact_slug] %}
+                {% if _interact_comments and _interact_comments.size > 0 %}
+                <span class="entry-interact">You can <a href="#respond" title="Post a comment">post a comment</a>.</span>
+                {% else %}
+                <span class="entry-interact">Both comments and trackbacks are currently closed.</span>
+                {% endif %}
             </div>
         </div><!-- .post -->
         
