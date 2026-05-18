@@ -294,7 +294,7 @@ has no numeric suffix) and NO faithful Jekyll output can or should carry it —
 Jekyll emits concrete post ids (`post-2186`, `post-84`, …) never the bare
 prefix. Ignoring `div#post-` in `structure_check` is therefore correct.
 
-`#post-0` was de-listed in P1-T7 (commit `a40770a` area; resolved under the
+`#post-0` was de-listed in P1-T7 (commit `63b1d47`; resolved under the
 `#post-0 gate-integrity` item above): it IS a static literal in Barthelme's
 `404.php` and `search.php` (no-results branch) — a REAL structural element now
 enforced by the gate and satisfied by the T7/T8 template additions.
