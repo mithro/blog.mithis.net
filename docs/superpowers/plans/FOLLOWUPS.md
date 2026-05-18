@@ -40,6 +40,20 @@ covers them.
 - **M3/M4:** add tests for `lint_paths` (file-read/`str(p)` path) and for
   `asset_root=None` (image check skipped) before relying on it as a gate.
 
+## P1 — structural-extractor phantom anchors (from Task 6 review)
+
+When `barthelme.extract_anchors` runs on real templates, mixed static/dynamic
+ids like `id="post-<?php the_ID(); ?>"` strip to `id="post-"` → a phantom
+`Anchor(tag, "#post-")` (appears in single.php + ~6 other templates). Harmless
+in P0 (the comparator only reports; P0 doesn't gate on structural), but in P1
+this injects spurious "missing anchor" entries into the fidelity diff for every
+looped/archetype page. P1 fix options: filter ids ending in `-`/clearly
+partial, OR populate Task 7 `structural_diff(..., ignore=...)` with the known
+phantom set (the comparator's `ignore` param was designed for exactly this).
+Also (P1-minor): add a one-line comment to barthelme's `"<?" not in attr` guard
+clarifying it catches strip failures (not pre-strip PHP); add an
+`anchors_in_html` unit test.
+
 ## P1 — theme/structure fidelity & cleanup (from Task 2A)
 
 - Remove orphaned dead code `_includes/category-feed.xml` (no callers; left in
