@@ -18,7 +18,10 @@ What already exists and works:
   navigation, comments) + `assets/css/main.css`. Posts are Markdown + YAML front matter.
 - **72 of 76 posts** migrated as clean Markdown with WordPress-exact per-post
   `permalink:` (`/archives/{category}/{id}-{slug}`).
-- **Static comment system**: 12 posts have threaded comments in `_data/comments/*.yml`.
+- **Static comment system**: 6 posts have comments under `_data/comments/` — each
+  represented *twice*: an aggregate `<id>-<slug>.yml` file **and** a same-named
+  `<id>-<slug>/` directory of individual per-comment files (10 individual comment files
+  total). Recovered posts in P3 must populate both forms to match.
 - **Reference source of truth**: `theme_analysis/barthelme/` contains the *complete*
   original WordPress theme — every `.php` template, `style.css`, `print.css`, and
   `screenshot.png`.
@@ -120,9 +123,22 @@ a defined input/output so it can be understood and tested in isolation.
   Input: repo. Output: `_site/` + a build log. Contract: non-zero exit on *any* Jekyll
   error or warning. This is the missing build gate.
 - **6.2 Archetype renderer** — drives Playwright (MCP) against the locally served site at
-  fixed viewport(s). Input: list of archetype URLs (home, a representative post, a
-  category page, a static page, 404, search, `feed.xml`). Output: per-archetype PNG
-  screenshot + serialized DOM snapshot in `tmp/fidelity/jekyll/`.
+  fixed viewport(s). Input: the **defined archetype set** — home, a representative post,
+  a category page, a static page, 404, search, `feed.xml`. These map to the Barthelme
+  templates `index.php`, `single.php`, `archive.php`, `page.php`, `404.php`, `search.php`,
+  and the feed. **Scope boundary:** Barthelme templates *not* in this set —
+  `archives.php`, `attachment.php`, `image.php`, `links.php`, `sitemap.php` — are
+  explicitly **out of scope** for the structural diff (no equivalent live surface in this
+  blog; `sitemap.xml`/`feed.xml` are validated by output, not structural diff). §11's
+  "every archetype" therefore means every member of *this* set, not all 13 PHP templates.
+  Output: per-archetype PNG screenshot + serialized DOM snapshot in
+  `tmp/fidelity/jekyll/`.
+  **CI vs local:** the *authoritative, CI-able* fidelity gates are the structural
+  comparator (6.4) and the content linter (6.5), which need no browser. Playwright
+  screenshotting is a **local/manual harness step** for human visual adjudication and the
+  Wayback pixel sweep — it is *not* a CI gate. If Playwright/MCP is unavailable, structural
+  + content gates still fully gate correctness; only the human-reviewed visual layer waits
+  for a local run.
 - **6.3 Reference capture** —
   - *Wayback fetcher*: for a given original URL, resolves the best `web.archive.org`
     snapshot and stores rendered HTML + screenshot in `tmp/fidelity/wayback/`.
