@@ -7,13 +7,13 @@ permalink: /search.html
 <div id="container">
     <div id="content" class="hfeed">
 
-        <h2 class="page-title"><span class="archive-meta"><span class="meta-sep">{</span> <span id="search-query-results">&#8220;&#8221;</span> <span class="meta-sep">}</span></span> Search Results</h2>
+        <h2 class="page-title" id="search-results-title"><span class="archive-meta"><span class="meta-sep">{</span> <span id="search-query-results">&#8220;&#8221;</span> <span class="meta-sep">}</span></span> Search Results</h2>
 
         <div id="search-results-list">
             <p id="search-prompt">Enter a search term below to find posts.</p>
         </div>
 
-        <div id="nav-below" class="navigation">
+        <div id="nav-below" class="navigation" hidden>
             <div class="nav-previous">
                 <a href="{{ '/' | relative_url }}">&laquo; Back to Home</a>
             </div>
@@ -24,7 +24,7 @@ permalink: /search.html
 
         <h2 class="page-title" id="search-noresults-title" hidden><span class="search-meta"><span class="meta-sep">{</span> <span id="search-query-noresults">&#8220;&#8221;</span> <span class="meta-sep">}</span></span> Search Results</h2>
 
-        <div id="post-0" class="post">
+        <div id="post-0" class="post" hidden>
             <h3 class="entry-title">Nothing Found</h3>
             <div class="entry-content">
                 <p id="search-noresults-text">Search this blog using the form below.</p>
@@ -70,6 +70,7 @@ permalink: /search.html
     var queryResults = document.getElementById('search-query-results');
     var queryNoResults = document.getElementById('search-query-noresults');
     var noResultsTitle = document.getElementById('search-noresults-title');
+    var resultsTitle = document.getElementById('search-results-title');
     var noResultsBlock = document.getElementById('post-0');
     var noResultsText = document.getElementById('search-noresults-text');
     var navBelow = document.getElementById('nav-below');
@@ -87,24 +88,21 @@ permalink: /search.html
 
     function highlight(text, query) {
         if (!text || !query) { return esc(text); }
-        var re = new RegExp('(' + escapeRegex(query) + ')', 'gi');
         return esc(text).replace(
             new RegExp('(' + escapeRegex(esc(query)) + ')', 'gi'),
             '<mark>$1</mark>');
     }
 
     function isoOf(dateStr) {
-        var d = new Date(dateStr);
-        return isNaN(d.getTime()) ? '' : d.toISOString();
+        return dateStr || '';
     }
 
     function shortDate(dateStr) {
-        var d = new Date(dateStr);
-        if (isNaN(d.getTime())) { return esc(dateStr); }
-        var y = d.getFullYear();
-        var m = ('0' + (d.getMonth() + 1)).slice(-2);
-        var day = ('0' + d.getDate()).slice(-2);
-        return y + ' ' + m + ' ' + day;
+        // dateStr is an ISO 8601 value (e.g. "2020-05-01T00:00:00+00:00").
+        // Extract the date part directly to avoid timezone shifts.
+        var m = dateStr && dateStr.match(/^(\d{4})-(\d{2})-(\d{2})/);
+        if (!m) { return esc(dateStr); }
+        return m[1] + ' ' + m[2] + ' ' + m[3];
     }
 
     function buildResult(post, query, index) {
@@ -157,7 +155,9 @@ permalink: /search.html
         clearResults();
         if (prompt) { prompt.hidden = true; }
         navBelow.hidden = true;
+        resultsTitle.hidden = true;
         noResultsTitle.hidden = false;
+        noResultsBlock.hidden = false;
         queryNoResults.innerHTML = '&#8220;' + esc(query) + '&#8221;';
         noResultsText.textContent =
             'Sorry, but nothing matched your search criteria. ' +
@@ -167,7 +167,9 @@ permalink: /search.html
     function showResults(results, query) {
         clearResults();
         if (prompt) { prompt.hidden = true; }
+        resultsTitle.hidden = false;
         noResultsTitle.hidden = true;
+        noResultsBlock.hidden = true;
         noResultsText.textContent = 'Search this blog using the form below.';
         navBelow.hidden = false;
         queryResults.innerHTML = '&#8220;' + esc(query) + '&#8221;';
@@ -182,7 +184,9 @@ permalink: /search.html
         query = (query || '').trim();
         if (query.length < 2) {
             clearResults();
+            resultsTitle.hidden = false;
             noResultsTitle.hidden = true;
+            noResultsBlock.hidden = true;
             navBelow.hidden = true;
             if (prompt) {
                 prompt.hidden = false;
