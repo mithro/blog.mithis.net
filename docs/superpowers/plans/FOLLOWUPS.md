@@ -62,6 +62,28 @@ error); plan-verbatim so deliberately not changed in P0:
   and guard `build_log_tail` against a lone ` ``` ` line closing the fence.
   P0-fine today (controlled inputs; Jekyll logs have no triple-backticks).
 
+## P4/P6 — build-determinism nuance & excluded WP artifacts (from final P0 review)
+
+- **M1 (P6):** the post-2A build is deterministic for ALL HTML/structural
+  content (byte-identical across builds); the ONLY cross-build byte difference
+  is `{{ site.time }}` in category-feed + first-party `feed.xml`
+  `<pubDate>`/`<lastBuildDate>` — normal Jekyll/RSS behavior, NOT the
+  destination-collision nondeterminism 2A fixed (that is fully gone: 0
+  `Conflict:`). The P6 Wayback/byte pixel-sweep MUST normalize feed
+  `pubDate`/`lastBuildDate` or it will report spurious feed deltas. (The
+  word "deterministic" in P0-RESULTS/2A commit means "structurally
+  deterministic"; the fidelity oracle is structural+visual on HTML, which is
+  fully deterministic.)
+- **M2 (P4/P6):** `_config.yml` excludes `xml/` (a deliberate Task 2 Step 4
+  leak-fix, but not recorded at the time). `xml/sitemaps/` = 30 WordPress-era
+  source sitemap fragments (`sitemap-pt-post-YYYY-MM.xml`), NOT Jekyll output —
+  Jekyll generates its own `sitemap.xml`/`sitemap_index.xml`. Excluding them is
+  correct (else they'd leak stale WP sitemaps into `_site`). P4/P6 sitemap work
+  must treat `xml/` as an intentionally-excluded WP artifact, not a regression.
+- **M3 (P5):** `run.py` only surfaces the build log into the report on FAILURE;
+  on a clean build no full build log is persisted. When build.py becomes the CI
+  gate (P5), persist the full build log unconditionally for CI debuggability.
+
 ## P1/P5 — orchestrator (`run.py`) robustness (from Task 12 review)
 
 Plan-verbatim, non-gating at P0; harden when the render path / CI matters:

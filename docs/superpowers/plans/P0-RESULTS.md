@@ -10,7 +10,7 @@
 
 Per spec §6.2 the P0 CI-able gate is build + content-linter + structural-comparator (no browser):
 
-- **Build: PASS** — clean, deterministic `bundle exec jekyll build` (zero errors/warnings/Deprecation/Conflict). Verified by the Task 8 gate + the orchestrator run.
+- **Build: PASS** — clean `bundle exec jekyll build` (zero errors/warnings/Deprecation/Conflict). **Structurally deterministic**: all HTML is byte-identical across builds; the only cross-build difference is `{{ site.time }}` in feed `<pubDate>`/`<lastBuildDate>` (normal Jekyll/RSS behavior, also true of first-party `feed.xml`) — NOT the destination-collision nondeterminism Task 2A eliminated (0 `Conflict:`). P6 pixel-sweep must normalize feed timestamps (see FOLLOWUPS M1). Verified by the Task 8 gate + the orchestrator run.
 - **Harness emits `tmp/fidelity/fidelity-report.md`** ✅ (8950 bytes, server-free skip-render path).
 - **Linter + structural comparator operational and unit-tested** ✅ — 35 hermetic unit tests pass (`uv run pytest -m "not integration" -q`).
 - Harness process exit = **1**, which is the CORRECT/expected P0 result (`return 0 if (build_ok and not findings)`; build clean but the linter has the expected P2 worklist — P0 measures, it is not all-green).
