@@ -1137,6 +1137,7 @@ def main() -> int:
     build_ok, log = run_build()
 
     structural = []
+    render_error = ""
     proc = None
     serve_log = open(OUT / "jekyll-serve.log", "w", encoding="utf-8")
     try:
@@ -1149,8 +1150,15 @@ def main() -> int:
              "--skip-initial-build", "--no-watch"],
             stdout=serve_log, stderr=subprocess.STDOUT)
         time.sleep(6)
-        from .render import capture_all
-        rendered = capture_all("http://localhost:4000", OUT / "jekyll")
+        # The Playwright visual layer is non-gating (spec §6.2). A missing
+        # browser binary / launch failure must NOT crash the harness: degrade
+        # to no rendered HTML, record the error, still emit build+lint+report.
+        try:
+            from .render import capture_all
+            rendered = capture_all("http://localhost:4000", OUT / "jekyll")
+        except Exception as e:
+            rendered = {}
+            render_error = repr(e)
         for a in structural_archetypes():
             r = rendered.get(a.name, {})
             html = (Path(r["html"]).read_text(encoding="utf-8")
@@ -1167,6 +1175,12 @@ def main() -> int:
 
     report = render_report(build_ok=build_ok, build_log_tail=log[-1500:],
                            structural=structural, lint=findings)
+    if render_error:
+        report += ("\n## Renderer\n\nPlaywright visual layer UNAVAILABLE "
+                   "(spec §6.2: local, non-gating). Structural results above "
+                   "reflect NO rendered HTML (every Barthelme anchor shows as "
+                   "missing) — re-run locally with a browser for the real "
+                   f"structural diff.\nError: {render_error}\n")
     (OUT / "fidelity-report.md").write_text(report, encoding="utf-8")
     print(report)
 
