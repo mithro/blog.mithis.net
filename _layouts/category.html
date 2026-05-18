@@ -12,7 +12,7 @@ layout: default
         <div class="archive-meta"></div>
         {% endif %}
 
-        {% assign category_key = page.category | downcase %}
+        {% assign category_key = page.url | split: '/' | where_exp: 's', 's != ""' | last %}
         {% assign category_posts = site.categories[category_key] %}
         {% for post in category_posts %}
         {% assign post_number = forloop.index %}
@@ -32,7 +32,7 @@ layout: default
             </div>
             <div class="entry-meta">
                 <span class="entry-date"><abbr class="published" title="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y %m %d' }}</abbr></span>
-                <span class="entry-category">{% assign other_cats = post.categories | where_exp: "cat", "cat != category_key" %}{% for cat in other_cats %}<a href="{{ '/category/' | append: cat | slugify | relative_url }}" rel="category tag">{{ cat | replace: '-', ' ' | capitalize }}</a>{% unless forloop.last %}<br/>{% endunless %}{% endfor %}</span>
+                <span class="entry-category">{% for cat in post.categories %}{% unless cat == category_key %}<a href="{{ '/category/' | append: cat | relative_url }}" rel="category tag">{{ cat | replace: '-', ' ' | capitalize }}</a>{% endunless %}{% endfor %}</span>
                 <span class="entry-comments"><a href="{{ post.url | relative_url }}#respond">Comments (0)</a></span>
             </div>
         </div><!-- .post -->
