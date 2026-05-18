@@ -13,8 +13,11 @@ def test_every_structural_archetype_has_a_site_path():
         assert ARCHETYPE_SITE_PATHS[a.name].endswith(".html")
 
 def test_phantom_anchors_are_barthelme_dynamic_id_artifacts():
+    # #post- is a genuine PHP artifact (id="post-<?php the_ID()?>") — keep ignored
     assert Anchor("div", "#post-") in PHANTOM_ANCHORS
-    assert Anchor("div", "#post-0") in PHANTOM_ANCHORS
+    # #post-0 is a static literal in 404.php/search.php — a real structural
+    # element, must NOT be silently ignored (it must appear in the built HTML)
+    assert Anchor("div", "#post-0") not in PHANTOM_ANCHORS
 
 def test_check_html_passes_when_anchors_present():
     php = '<div id="container"><div class="entry-content">x</div></div>'

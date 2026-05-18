@@ -28,8 +28,13 @@ ARCHETYPE_SITE_PATHS: dict[str, str] = {
 }
 
 PHANTOM_ANCHORS: frozenset[Anchor] = frozenset({
+    # #post- is a genuine PHP artifact: id="post-<?php the_ID()?>" strips to #post-
+    # (home/post/category/archive all use the dynamic WordPress post ID)
     Anchor("div", "#post-"),
-    Anchor("div", "#post-0"),
+    # NOTE: #post-0 is NOT a phantom — it is a static literal in 404.php and
+    # search.php (no-results branch). It is a real structural element and must
+    # NOT be silently ignored. It was removed from PHANTOM_ANCHORS so that
+    # structure_check correctly requires div#post-0 in notfound/search archetypes.
 })
 
 def check_html(archetype: str, barthelme_php: str, built_html: str
