@@ -4,138 +4,247 @@ title: "Search"
 permalink: /search.html
 ---
 
-<div class="hentry">
-    <h2 class="page-title">Search</h2>
-    
-    <div class="entry-content">
-        <form id="search-form">
-            <div>
-                <input id="search-input" name="q" type="text" placeholder="Search posts..." size="30" />
-                <input type="submit" value="Search" />
-            </div>
-        </form>
-        
-        <div id="search-results">
-            <p>Enter a search term above to find posts.</p>
+<div id="container">
+    <div id="content" class="hfeed">
+
+        <h2 class="page-title"><span class="archive-meta"><span class="meta-sep">{</span> <span id="search-query-results">&#8220;&#8221;</span> <span class="meta-sep">}</span></span> Search Results</h2>
+
+        <div id="search-results-list">
+            <p id="search-prompt">Enter a search term below to find posts.</p>
         </div>
-        
-        <div class="navigation">
+
+        <div id="nav-below" class="navigation">
             <div class="nav-previous">
                 <a href="{{ '/' | relative_url }}">&laquo; Back to Home</a>
             </div>
+            <div class="nav-next">
+                <a href="{{ '/archives/' | relative_url }}">All posts &raquo;</a>
+            </div>
         </div>
-    </div>
-</div>
+
+        <h2 class="page-title" id="search-noresults-title" hidden><span class="search-meta"><span class="meta-sep">{</span> <span id="search-query-noresults">&#8220;&#8221;</span> <span class="meta-sep">}</span></span> Search Results</h2>
+
+        <div id="post-0" class="post">
+            <h3 class="entry-title">Nothing Found</h3>
+            <div class="entry-content">
+                <p id="search-noresults-text">Search this blog using the form below.</p>
+            </div>
+            <form id="noresults-searchform" method="get" action="{{ '/search.html' | relative_url }}">
+                <div>
+                    <input id="noresults-s" name="s" type="text" value="" size="40" />
+                    <input id="noresults-searchsubmit" name="searchsubmit" type="submit" value="Search" />
+                </div>
+            </form>
+        </div><!-- .post #post-0 -->
+
+    </div><!-- #content .hfeed -->
+</div><!-- #container -->
+
+{% include sidebar.html %}
+
+<template id="search-result-template">
+    <div id="post-RESULTID" class="hentry post publish author-mithro">
+        <div class="post-container">
+            <div class="post-content">
+                <h3 class="entry-title"><a href="RESULTURL" title="Permalink to RESULTTITLE" rel="bookmark">RESULTTITLE</a></h3>
+                <div class="entry-content">
+                    <p class="search-excerpt">RESULTEXCERPT</p>
+                    <span class="tag-links">RESULTCATEGORIES</span>
+                </div>
+            </div>
+        </div>
+        <div class="entry-meta">
+            <span class="entry-date"><abbr class="published" title="RESULTISO">RESULTDATE</abbr></span>
+            <span class="entry-comments"><a href="RESULTURL#respond">Comments (0)</a></span>
+        </div>
+    </div><!-- .post -->
+</template>
 
 <script>
 (function() {
-    let searchData = [];
-    let searchInput = document.getElementById('search-input');
-    let searchResults = document.getElementById('search-results');
-    let searchForm = document.getElementById('search-form');
-    
-    // Load search data
-    fetch('/search.json')
-        .then(response => response.json())
-        .then(data => {
-            searchData = data;
-            
-            // Check for URL parameter and perform search
-            const urlParams = new URLSearchParams(window.location.search);
-            const query = urlParams.get('q');
+    var searchData = [];
+    var form = document.getElementById('noresults-searchform');
+    var input = document.getElementById('noresults-s');
+    var resultsList = document.getElementById('search-results-list');
+    var prompt = document.getElementById('search-prompt');
+    var queryResults = document.getElementById('search-query-results');
+    var queryNoResults = document.getElementById('search-query-noresults');
+    var noResultsTitle = document.getElementById('search-noresults-title');
+    var noResultsBlock = document.getElementById('post-0');
+    var noResultsText = document.getElementById('search-noresults-text');
+    var navBelow = document.getElementById('nav-below');
+    var tpl = document.getElementById('search-result-template');
+
+    function esc(s) {
+        return String(s == null ? '' : s)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
+    function escapeRegex(s) {
+        return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function highlight(text, query) {
+        if (!text || !query) { return esc(text); }
+        var re = new RegExp('(' + escapeRegex(query) + ')', 'gi');
+        return esc(text).replace(
+            new RegExp('(' + escapeRegex(esc(query)) + ')', 'gi'),
+            '<mark>$1</mark>');
+    }
+
+    function isoOf(dateStr) {
+        var d = new Date(dateStr);
+        return isNaN(d.getTime()) ? '' : d.toISOString();
+    }
+
+    function shortDate(dateStr) {
+        var d = new Date(dateStr);
+        if (isNaN(d.getTime())) { return esc(dateStr); }
+        var y = d.getFullYear();
+        var m = ('0' + (d.getMonth() + 1)).slice(-2);
+        var day = ('0' + d.getDate()).slice(-2);
+        return y + ' ' + m + ' ' + day;
+    }
+
+    function buildResult(post, query, index) {
+        var node = tpl.content
+            ? tpl.content.cloneNode(true).querySelector('.hentry')
+            : (function() {
+                var w = document.createElement('div');
+                w.innerHTML = tpl.innerHTML;
+                return w.querySelector('.hentry');
+            })();
+
+        node.id = 'post-' + (post.url
+            ? post.url.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '')
+            : index);
+
+        var titleLink = node.querySelector('h3.entry-title a');
+        titleLink.setAttribute('href', post.url);
+        titleLink.setAttribute('title',
+            'Permalink to ' + (post.title || ''));
+        titleLink.innerHTML = highlight(post.title, query);
+
+        var excerpt = node.querySelector('.search-excerpt');
+        excerpt.innerHTML = highlight(post.excerpt, query);
+
+        var tags = node.querySelector('.tag-links');
+        if (post.categories && post.categories.length) {
+            tags.textContent = 'Tagged ' + post.categories.join(', ');
+        } else {
+            tags.parentNode.removeChild(tags);
+        }
+
+        var abbrEl = node.querySelector('abbr.published');
+        abbrEl.setAttribute('title', isoOf(post.date));
+        abbrEl.textContent = shortDate(post.date);
+
+        var comments = node.querySelector('span.entry-comments a');
+        comments.setAttribute('href', (post.url || '') + '#respond');
+
+        return node;
+    }
+
+    function clearResults() {
+        var existing = resultsList.querySelectorAll('.hentry');
+        for (var i = 0; i < existing.length; i++) {
+            existing[i].parentNode.removeChild(existing[i]);
+        }
+    }
+
+    function showNoResults(query) {
+        clearResults();
+        if (prompt) { prompt.hidden = true; }
+        navBelow.hidden = true;
+        noResultsTitle.hidden = false;
+        queryNoResults.innerHTML = '&#8220;' + esc(query) + '&#8221;';
+        noResultsText.textContent =
+            'Sorry, but nothing matched your search criteria. ' +
+            'Please try again with some different keywords.';
+    }
+
+    function showResults(results, query) {
+        clearResults();
+        if (prompt) { prompt.hidden = true; }
+        noResultsTitle.hidden = true;
+        noResultsText.textContent = 'Search this blog using the form below.';
+        navBelow.hidden = false;
+        queryResults.innerHTML = '&#8220;' + esc(query) + '&#8221;';
+        var frag = document.createDocumentFragment();
+        for (var i = 0; i < results.length; i++) {
+            frag.appendChild(buildResult(results[i], query, i));
+        }
+        resultsList.appendChild(frag);
+    }
+
+    function performSearch(query) {
+        query = (query || '').trim();
+        if (query.length < 2) {
+            clearResults();
+            noResultsTitle.hidden = true;
+            navBelow.hidden = true;
+            if (prompt) {
+                prompt.hidden = false;
+                prompt.textContent =
+                    'Please enter at least 2 characters to search.';
+            }
+            return;
+        }
+        var q = query.toLowerCase();
+        var results = searchData.filter(function(post) {
+            var hay = (post.title + ' ' + post.excerpt + ' ' +
+                post.content + ' ' +
+                (post.categories || []).join(' ')).toLowerCase();
+            return hay.indexOf(q) !== -1;
+        });
+        if (results.length === 0) {
+            showNoResults(query);
+        } else {
+            showResults(results, query);
+        }
+    }
+
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var query = input.value.trim();
             if (query) {
-                searchInput.value = query;
+                performSearch(query);
+                var newUrl = window.location.pathname +
+                    '?s=' + encodeURIComponent(query);
+                window.history.pushState({}, '', newUrl);
+            }
+        });
+    }
+
+    fetch('{{ "/search.json" | relative_url }}')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            searchData = data;
+            var params = new URLSearchParams(window.location.search);
+            var query = params.get('s') || params.get('q');
+            if (query) {
+                input.value = query;
                 performSearch(query);
             }
         })
-        .catch(error => {
-            console.error('Error loading search data:', error);
-            searchResults.innerHTML = '<p>Error loading search data.</p>';
+        .catch(function(err) {
+            console.error('Error loading search data:', err);
+            if (prompt) {
+                prompt.hidden = false;
+                prompt.textContent = 'Error loading search data.';
+            }
         });
-    
-    // Handle form submission
-    searchForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const query = searchInput.value.trim();
-        if (query) {
-            performSearch(query);
-            // Update URL without reload
-            const newUrl = window.location.pathname + '?q=' + encodeURIComponent(query);
-            window.history.pushState({}, '', newUrl);
-        }
-    });
-    
-    // Perform search
-    function performSearch(query) {
-        if (!query || query.length < 2) {
-            searchResults.innerHTML = '<p>Please enter at least 2 characters to search.</p>';
-            return;
-        }
-        
-        const results = searchData.filter(post => {
-            const searchableText = (
-                post.title + ' ' + 
-                post.excerpt + ' ' + 
-                post.content + ' ' + 
-                post.categories.join(' ')
-            ).toLowerCase();
-            
-            return searchableText.includes(query.toLowerCase());
-        });
-        
-        displayResults(results, query);
-    }
-    
-    // Display search results
-    function displayResults(results, query) {
-        if (results.length === 0) {
-            searchResults.innerHTML = `<p>No posts found for "${query}".</p>`;
-            return;
-        }
-        
-        let html = `<p>Found ${results.length} post${results.length === 1 ? '' : 's'} for "${query}":</p>`;
-        
-        results.forEach(post => {
-            // Highlight search terms in title and excerpt
-            const highlightedTitle = highlightText(post.title, query);
-            const highlightedExcerpt = highlightText(post.excerpt, query);
-            
-            html += `
-                <div class="search-result" style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
-                    <h3 style="margin: 0 0 5px 0;">
-                        <a href="${post.url}" style="text-decoration: none;">${highlightedTitle}</a>
-                    </h3>
-                    <p style="margin: 5px 0; color: #666; font-size: 0.9em;">${post.date}</p>
-                    <p style="margin: 5px 0; line-height: 1.4;">${highlightedExcerpt}</p>
-                    ${post.categories.length > 0 ? `<p style="margin: 5px 0; font-size: 0.85em; color: #888;">Categories: ${post.categories.join(', ')}</p>` : ''}
-                </div>
-            `;
-        });
-        
-        searchResults.innerHTML = html;
-    }
-    
-    // Highlight search terms
-    function highlightText(text, query) {
-        if (!text || !query) return text;
-        
-        const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
-        return text.replace(regex, '<mark style="background: #ffff88; padding: 1px 2px;">$1</mark>');
-    }
-    
-    // Escape special regex characters
-    function escapeRegex(string) {
-        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    }
 })();
 </script>
 
 <style>
-#search-form {
-    margin-bottom: 20px;
+#noresults-searchform {
+    margin: 1em 0;
 }
 
-#search-input {
+#noresults-s {
     padding: 8px;
     font-size: 14px;
     border: 1px solid #ccc;
@@ -143,7 +252,7 @@ permalink: /search.html
     margin-right: 8px;
 }
 
-#search-form input[type="submit"] {
+#noresults-searchsubmit {
     padding: 8px 16px;
     background: #bbc8d9;
     color: white;
@@ -153,28 +262,36 @@ permalink: /search.html
     font-size: 14px;
 }
 
-#search-form input[type="submit"]:hover {
+#noresults-searchsubmit:hover {
     background: #a5b3c6;
 }
 
-.search-result h3 a:hover {
+#search-results-list .entry-title a:hover {
     color: #2f4e6f;
     text-decoration: underline;
 }
 
-/* Responsive search */
+#search-results-list mark {
+    background: #ffff88;
+    padding: 1px 2px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
 @media (max-width: 768px) {
-    #search-input {
+    #noresults-s {
         width: 100%;
         margin-bottom: 8px;
         margin-right: 0;
     }
-    
-    #search-form input[type="submit"] {
+
+    #noresults-searchsubmit {
         width: 100%;
     }
-    
-    #search-form div {
+
+    #noresults-searchform div {
         display: flex;
         flex-direction: column;
     }
