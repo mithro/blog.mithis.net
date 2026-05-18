@@ -172,6 +172,70 @@ git commit -m "P0: exclude non-site files from Jekyll build for a clean _site"
 
 ---
 
+## Task 2A: Resolve category-feed build conflicts (clean-build prerequisite)
+
+**Discovered during execution.** `bundle exec jekyll build` emits 19 `Conflict:`
+warnings — each `category/<cat>/feed.xml` (front matter `permalink:
+/category/<cat>/feed/`) is registered **twice**, both writing
+`_site/category/<cat>/feed/index.xml` ("written file may end up with unexpected
+contents" → nondeterministic `_site`). A nondeterministic build is fatal for a
+fidelity baseline, so this MUST be clean before the harness measures anything.
+This is sequenced after Task 2 (it completes "make the build clean") and before
+Task 3; the Python scaffold/TDD tasks do not depend on it, but Task 8/Task 12
+(build gate / exit gate) do.
+
+**Files:** likely the 19 `category/*/feed.xml`; possibly `_config.yml`. Dead
+code `_layouts/category_feed.xml` / `_includes/category-feed.xml` may be
+involved — investigate before touching.
+
+**Hard constraints (fidelity-preserving):**
+- Each of the 19 categories MUST still produce exactly one feed at the SAME
+  output URL (`/category/<cat>/feed/` → `_site/category/<cat>/feed/index.xml`)
+  with the same rendered RSS content. Do NOT delete category feeds, change their
+  URLs, or switch to jekyll-feed category generation (URL change = P1 fidelity
+  regression introduced by P0).
+- Minimal change: eliminate only the double-registration. Do not restructure the
+  category system or touch posts/layouts beyond what removes the conflict.
+- If `_layouts/category_feed.xml` and `_includes/category-feed.xml` are provably
+  unreferenced dead code, removing them is in scope ONLY if it is part of the
+  actual fix; otherwise leave them and note them for P1 cleanup.
+
+- [ ] **Step 1: Diagnose the double-registration**
+
+Run from the worktree: `bundle3.3 exec jekyll build --trace 2>&1 | grep -A4 "Conflict:" | sed 's/\x1b\[[0-9;]*m//g' | head -20`. Inspect a sample `category/<cat>/feed.xml` front matter and a sibling `category/<cat>.md`. Determine WHY Jekyll lists the one source file twice (e.g. trailing-slash `permalink` on a `.xml` file producing an ambiguous directory/file destination, a `defaults:` rule, or a duplicate generation path). State the root cause in your report before changing anything.
+
+- [ ] **Step 2: Apply the minimal fidelity-preserving fix**
+
+Apply the smallest change that makes Jekyll register each category feed exactly once at the same destination URL. (Likely candidate: give each feed an explicit unambiguous `permalink` such as `/category/<cat>/feed/index.xml`, or remove whichever single source is the duplicate — whichever your Step 1 diagnosis proves is correct. Preserve the `/category/<cat>/feed/` browser URL.)
+
+- [ ] **Step 3: Verify zero conflicts, feeds intact, no regression**
+
+```
+bundle3.3 exec jekyll build --trace 2>&1 | grep -c "Conflict:"        # MUST print 0
+bundle3.3 exec jekyll build --trace 2>&1 | grep -ciE "error|warning|Deprecation"   # no new problems
+```
+Then assert every category feed still exists and is non-empty RSS, e.g.:
+`for d in category/*/; do c=$(basename "$d"); test -s "_site/category/$c/feed/index.xml" || echo "MISSING $c"; done` → no MISSING output.
+Also confirm overall `_site` HTML page set is unchanged vs before the fix (capture `find _site -name '*.html' | wc -l` before and after; counts must match) and that `_site/category/<cat>/index.html` archive pages still exist.
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add -A
+git -c commit.gpgsign=false commit -m "P0: fix category-feed destination conflicts for a deterministic build
+
+<one-line root cause>. Each category still emits one feed at the same
+/category/<cat>/feed/ URL; no _site regression.
+
+Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>"
+```
+
+**Exit gate for 2A:** `grep -c "Conflict:"` on a fresh build prints `0`; all 19
+category feeds present and non-empty at the unchanged URL; `_site` HTML page
+count unchanged; no new errors/warnings/deprecations.
+
+---
+
 ## Task 3: Python harness scaffold
 
 **Files:**
@@ -710,6 +774,10 @@ def test_jekyll_error_prefix_is_a_problem():
 def test_normal_generating_line_is_not_a_problem():
     assert detect_problems("      Generating... \n                    done.\n") == []
 
+def test_jekyll_conflict_is_a_problem():
+    log = "          Conflict: The following destination is shared by multiple files.\n"
+    assert detect_problems(log)
+
 def test_bundler_resolves_to_a_command():
     # Debian ships 'bundle3.3'; most machines/CI ship 'bundle'. Either is fine.
     assert bundler()
@@ -738,7 +806,8 @@ _PROBLEM = re.compile(
     r"|(^\s*jekyll \d.*Error)"
     r"|(Deprecation:)"
     r"|(\bwarning:\s)"
-    r"|(Build Warning:)",
+    r"|(Build Warning:)"
+    r"|(Conflict:)",
     re.IGNORECASE | re.MULTILINE,
 )
 
