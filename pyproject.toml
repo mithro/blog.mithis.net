@@ -1,0 +1,16 @@
+[project]
+name = "blog-fidelity-harness"
+version = "0.1.0"
+description = "Fidelity verification harness for the blog.mithis.net Jekyll migration"
+requires-python = ">=3.11"
+dependencies = []
+
+[dependency-groups]
+dev = ["pytest>=8", "playwright>=1.44"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+markers = [
+  "integration: needs a built site, network, or a browser (deselect with -m 'not integration')",
+]
