@@ -27,27 +27,3 @@ While the first season is available on Joost, it is apparently horrible mangled.
 ## Comments
 **Amanda** -     <time datetime="2011-07-09T07:20:56+00:00">2011-07-09</time>
 Joss as the creators of Starhunter were probably inspired by Blake's 7
-<style>
-.comments {
-margin-top: 2rem;
-border-top: 1px solid #eee;
-padding-top: 2rem;
-}
-.comment {
-margin-bottom: 1.5rem;
-padding: 1rem;
-background: #f9f9f9;
-border-left: 4px solid #ddd;
-}
-.comment-meta {
-font-size: 0.9rem;
-color: #666;
-margin-bottom: 0.5rem;
-}
-.comment-content {
-line-height: 1.6;
-}
-.comment-content p {
-margin: 0.5rem 0;
-}
-</style>
