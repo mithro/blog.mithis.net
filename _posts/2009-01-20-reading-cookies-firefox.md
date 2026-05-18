@@ -166,27 +166,3 @@ result = ret[0]
 It's just that you put result = as opposed to ret = on that first line and then used ret further on.
 **mithro** -     <time datetime="2010-08-23T05:49:46+00:00">2010-08-23</time>
 I've updated the code once more, it might work now. As I said I can't actually test this code as I don't have a windows computer.
-<style>
-.comments {
-margin-top: 2rem;
-border-top: 1px solid #eee;
-padding-top: 2rem;
-}
-.comment {
-margin-bottom: 1.5rem;
-padding: 1rem;
-background: #f9f9f9;
-border-left: 4px solid #ddd;
-}
-.comment-meta {
-font-size: 0.9rem;
-color: #666;
-margin-bottom: 0.5rem;
-}
-.comment-content {
-line-height: 1.6;
-}
-.comment-content p {
-margin: 0.5rem 0;
-}
-</style>
