@@ -40,6 +40,24 @@ covers them.
 - **M3/M4:** add tests for `lint_paths` (file-read/`str(p)` path) and for
   `asset_root=None` (image check skipped) before relying on it as a gate.
 
+## P5 — build-gate (`build.py`) hardening before it becomes the CI gate (from Task 8 review)
+
+All fail-safe (false-positive → noisy block, never false-negative → missed
+error); plan-verbatim so deliberately not changed in P0:
+- `\bwarning:\s` (IGNORECASE, unanchored) can match Ruby `--trace` gem/bundler
+  warnings like `/path.rb:N: warning: ...` → spurious CI block if a future gem
+  emits one. Consider anchoring to Jekyll's own `warning:`/`Build Warning:`
+  forms or excluding Ruby-backtrace lines.
+- `Conflict:` is unanchored — could match a post whose build-output line text
+  contains "Conflict:" (not seen in Jekyll's actual output, but tighten to
+  line-start `^\s*Conflict:` for safety).
+- `run_build` uses `subprocess.run(..., text=True)` with no explicit
+  `encoding=`; under a non-UTF-8 CI locale (`LANG=C`) non-ASCII Jekyll output
+  could raise `UnicodeDecodeError` and crash the gate instead of returning
+  `(False, log)`. Add `encoding="utf-8", errors="replace"`.
+- Minor: add a comment in `tests/fidelity/test_build.py` stating `run_build` is
+  integration-verified by design (not a unit-test oversight).
+
 ## P1 — structural-extractor phantom anchors (from Task 6 review)
 
 When `barthelme.extract_anchors` runs on real templates, mixed static/dynamic
