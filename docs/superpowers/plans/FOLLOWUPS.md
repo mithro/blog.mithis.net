@@ -62,6 +62,32 @@ error); plan-verbatim so deliberately not changed in P0:
   and guard `build_log_tail` against a lone ` ``` ` line closing the fence.
   P0-fine today (controlled inputs; Jekyll logs have no triple-backticks).
 
+## P1/P5 — orchestrator (`run.py`) robustness (from Task 12 review)
+
+Plan-verbatim, non-gating at P0; harden when the render path / CI matters:
+- **P1:** after `proc.kill()` in the serve-teardown `except TimeoutExpired`,
+  add `proc.wait()` to reap the SIGKILLed zombie (currently relies on
+  `Popen.__del__`; not a hang, just process hygiene). Only affects the
+  not-skip render path.
+- **P1:** `main()` has no top-level try/except — if `run_build()` raises
+  (e.g. bundler missing) or a Barthelme template file is absent, it crashes
+  with a traceback instead of writing a partial report + returning 1. Wrap
+  for a harder-to-silently-break gate.
+- **P5:** the `## Renderer` section is string-appended in `run.py` (report.py
+  frozen) — if a later phase adds a renderer section to report.py, dedupe to
+  avoid a double section.
+- **P5:** guard `(BARTHELME / a.barthelme_template)` when template is "" (only
+  reachable if someone adds a structural archetype with no template; today the
+  feed archetype is structural=False so it's safe).
+- **P0-RUN visual diff (post-P4):** the real structural diff requires the
+  Playwright render, which is (a) heavyweight and was OOM-adjacent with leaked
+  `playwright-mcp` procs, and (b) not meaningful until P4 sets `baseurl=""` —
+  the served site is currently at `http://localhost:4000/blog.mithis.net/`, so
+  `capture_all("http://localhost:4000")` would 404 every archetype. After P4,
+  re-run WITHOUT `FIDELITY_SKIP_RENDER` locally to get the real per-archetype
+  structural diff (the structural section in P0-RESULTS.md is the PHP-side
+  anchor inventory = the P1 theme target list, not yet a Jekyll-vs-PHP diff).
+
 ## P1 — structural-extractor phantom anchors (from Task 6 review)
 
 When `barthelme.extract_anchors` runs on real templates, mixed static/dynamic
