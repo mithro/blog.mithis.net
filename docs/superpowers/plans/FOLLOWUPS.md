@@ -144,6 +144,31 @@ Also (P1-minor): add a one-line comment to barthelme's `"<?" not in attr` guard
 clarifying it catches strip failures (not pre-strip PHP); add an
 `anchors_in_html` unit test.
 
+## P3 — STATUS: source captured, phase de-risked (2026-05-19)
+
+blog.mithis.net root = **HTTP 200** (TLS cert expired → fetch with verification
+disabled; the content is what matters). The 4 missing posts each return
+**HTTP 500** BUT the server still emits the FULL themed article page
+(`entry-content`, `<h2 class="entry-title">…`, real titles, 21–24 KB) — this
+500 is almost certainly the original migration-skip cause. Raw HTML snapshotted
+to **`exports/p3-missing-raw/{15,35,84,92}.html`** (committed `cc4a28e`):
+
+- 15 → `tp/15-tp-protocol-overview` — "Thousand Parsec Protocol Overview"
+- 35 → `tp/35-using-tailor-to-go-to-git` — "Using Tailor to go to git"
+- 84 → `ubuntu/84-my-three-weeks-on-a-mac` — "My three weeks on a Mac"
+- 92 → `uncategorized/92-power-scripts-in-intrepid` — "WTF power scripts went in Intrepid…."
+
+**P3 phase work** (its own spec→plan→subagent cycle, after P1/P2 unless the user
+re-sequences): convert these 4 captures to Jekyll Markdown matching the existing
+post format + dual comment representation, using the existing
+`scripts/html_to_markdown.py` pipeline; set WordPress-exact permalinks
+(`/archives/<cat>/<id>-<slug>`) + `wordpress_id`/`wordpress_category`/
+`wordpress_url` front matter; run the P0 content linter on them; structure_check
+must still pass. Wayback is now only a per-post cross-check/fallback (no longer
+required — source is captured & durable). Flag to user: the live WP server 500s
+on exactly these 4 posts (worth fixing server-side if a clean 200 is ever
+wanted, but NOT required for P3 — the captures are complete).
+
 ## P3/P6 — wayback resolver call-site hardening (from Task 9 review)
 
 `scripts/fidelity/wayback.py` is correct/minimal for P0 but its callers must
