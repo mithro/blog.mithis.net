@@ -4,3 +4,5 @@ _site
 .jekyll-metadata
 vendor
 .claude/settings.local.json
+tmp/
+.bundle/

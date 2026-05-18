@@ -79,14 +79,36 @@ kramdown:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - scripts/
+  - tests/
+  - tmp/
+  - docs/
+  - exports/
+  - theme_analysis/
+  - .github/
+  - vendor/
+  - node_modules/
+  - Gemfile
+  - Gemfile.lock
+  - pyproject.toml
+  - uv.lock
+  - setup-tools.sh
+  - test_migration.sh
+  - debug_posts.py
+  - CLAUDE.md
+  - MIGRATION_PLAN.md
+  - MIGRATION_TODO.md
+  - BARTHELME_SOURCE_ANALYSIS.md
+  - BARTHELME_THEME_ANALYSIS.md
+  - URL_STRUCTURE_COMPARISON.md
+  - URL_VERIFICATION_REPORT.md
+  - WORDPRESS_EXPORT_STRATEGY.md
+  - migration_status.json
+  - all_post_urls.json
+  - checkpoint_10.json
+  - checkpoint_20.json
+  - checkpoint_30.json
+  - checkpoint_40.json
+  - checkpoint_50.json
+  - xml/
