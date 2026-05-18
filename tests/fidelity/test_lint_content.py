@@ -47,3 +47,72 @@ def test_finding_has_line_number():
     f = lint_text("p.md", FM + "line1\n{{ bad }}\n")
     leak = [x for x in f if x.code == "LIQUID_LEAK"][0]
     assert leak.line == 6  # 4 FM lines + "line1" + the leak
+
+
+# --- Task L: fidelity-allow sentinel tests ---
+
+_EMBED_LINE = '<object data="foo.swf"><embed src="foo.swf"></embed></object>'
+_SENTINEL = '<!-- fidelity-allow: BLOCK_HTML necessary-embed — Flash video required for original content fidelity -->'
+
+def test_fidelity_allow_sentinel_suppresses_block_html():
+    """(a) BLOCK_HTML with fidelity-allow sentinel on the same line → zero BLOCK_HTML findings."""
+    line = _EMBED_LINE + " " + _SENTINEL
+    f = lint_text("p.md", FM + line + "\n")
+    block_findings = [x for x in f if x.code == "BLOCK_HTML"]
+    assert block_findings == [], (
+        f"Expected no BLOCK_HTML findings when sentinel is present, got: {block_findings}"
+    )
+
+
+def test_fidelity_allow_sentinel_on_preceding_line_suppresses_block_html():
+    """(a) BLOCK_HTML with fidelity-allow sentinel on the immediately preceding line → zero BLOCK_HTML findings."""
+    body = _SENTINEL + "\n" + _EMBED_LINE + "\n"
+    f = lint_text("p.md", FM + body)
+    block_findings = [x for x in f if x.code == "BLOCK_HTML"]
+    assert block_findings == [], (
+        f"Expected no BLOCK_HTML findings when sentinel is on preceding line, got: {block_findings}"
+    )
+
+
+def test_block_html_without_sentinel_is_still_flagged():
+    """(b) The same BLOCK_HTML occurrence WITHOUT the sentinel → the finding IS emitted."""
+    f = lint_text("p.md", FM + _EMBED_LINE + "\n")
+    block_findings = [x for x in f if x.code == "BLOCK_HTML"]
+    assert len(block_findings) >= 1, (
+        "Expected at least one BLOCK_HTML finding when no sentinel is present"
+    )
+
+
+def test_sentinel_is_per_occurrence_not_file_wide():
+    """(c) A second un-annotated BLOCK_HTML occurrence in the same text → still flagged."""
+    # First occurrence has sentinel (suppressed), second does not (flagged)
+    body = (
+        _SENTINEL + "\n"
+        + _EMBED_LINE + "\n"
+        + "<div>this div has no sentinel</div>\n"
+    )
+    f = lint_text("p.md", FM + body)
+    block_findings = [x for x in f if x.code == "BLOCK_HTML"]
+    assert len(block_findings) == 1, (
+        f"Expected exactly 1 BLOCK_HTML finding (the un-annotated div), got: {block_findings}"
+    )
+
+
+def test_sentinel_does_not_affect_liquid_leak_or_missing_image(tmp_path):
+    """(d) F-lint/F-norm unaffected: LIQUID_LEAK and MISSING_IMAGE paths unchanged."""
+    (tmp_path / "assets").mkdir()
+    body = (
+        _SENTINEL + "\n"
+        + _EMBED_LINE + "\n"
+        + "{{ page.title }}\n"
+        + "![img](/assets/missing.png)\n"
+    )
+    f = lint_text("p.md", FM + body, asset_root=tmp_path)
+    codes_found = codes(f)
+    # The sentinel-annotated BLOCK_HTML is suppressed
+    assert "BLOCK_HTML" not in codes_found, (
+        "Sentinel should suppress BLOCK_HTML on the annotated embed"
+    )
+    # But LIQUID_LEAK and MISSING_IMAGE are still emitted
+    assert "LIQUID_LEAK" in codes_found, "LIQUID_LEAK should still be flagged"
+    assert "MISSING_IMAGE" in codes_found, "MISSING_IMAGE should still be flagged"

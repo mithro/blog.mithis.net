@@ -24,6 +24,9 @@ _BLOCK_HTML = re.compile(
 _LIQUID = re.compile(r"\{\{|\{%")
 _MD_IMG = re.compile(r"!\[[^\]]*\]\(\s*([^)\s]+)")
 _HTML_IMG = re.compile(r"<img[^>]+src=[\"']([^\"']+)[\"']", re.IGNORECASE)
+_FIDELITY_ALLOW_BLOCK_HTML = re.compile(
+    r"<!--\s*fidelity-allow:\s*BLOCK_HTML\b", re.IGNORECASE
+)
 
 def _split_front_matter(text: str) -> tuple[int, str]:
     """Return (1-based line where body starts, body text)."""
@@ -49,8 +52,9 @@ def _check_image(path, lineno, src, asset_root, out):
 def lint_text(path: str, text: str, *, asset_root: Path | None = None) -> list[Finding]:
     out: list[Finding] = []
     body_start, body = _split_front_matter(text)
+    lines = body.splitlines()
     in_fence = False
-    for i, raw in enumerate(body.splitlines()):
+    for i, raw in enumerate(lines):
         lineno = body_start + i
         s = raw.lstrip()
         if s.startswith("```") or s.startswith("~~~"):
@@ -62,8 +66,14 @@ def lint_text(path: str, text: str, *, asset_root: Path | None = None) -> list[F
             out.append(Finding(path, lineno, "LIQUID_LEAK",
                                "Unrendered Liquid ({{ or {%) in committed content"))
         if _BLOCK_HTML.search(raw):
-            out.append(Finding(path, lineno, "BLOCK_HTML",
-                               "Hardcoded block-level HTML; express this in Markdown"))
+            prev_line = lines[i - 1] if i > 0 else ""
+            allowed = (
+                _FIDELITY_ALLOW_BLOCK_HTML.search(raw)
+                or _FIDELITY_ALLOW_BLOCK_HTML.search(prev_line)
+            )
+            if not allowed:
+                out.append(Finding(path, lineno, "BLOCK_HTML",
+                                   "Hardcoded block-level HTML; express this in Markdown"))
         for m in _MD_IMG.finditer(raw):
             _check_image(path, lineno, m.group(1), asset_root, out)
         for m in _HTML_IMG.finditer(raw):
