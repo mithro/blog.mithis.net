@@ -110,6 +110,26 @@ Plan-verbatim, non-gating at P0; harden when the render path / CI matters:
   structural diff (the structural section in P0-RESULTS.md is the PHP-side
   anchor inventory = the P1 theme target list, not yet a Jekyll-vs-PHP diff).
 
+## P1 — `#post-0` gate-integrity (MUST action at P1-T7/T8) + T1 polish (from P1-T1 review)
+
+- **IMPORTANT (P1-T7 notfound, P1-T8 search):** `PHANTOM_ANCHORS` in
+  `structure_check.py` includes `Anchor("div","#post-0")`. Unlike `#post-`
+  (genuine PHP-strip artifact of `id="post-<?php the_ID()?>"`), **`#post-0` is a
+  STATIC LITERAL** in Barthelme `404.php` and `search.php` (no-results branch) —
+  a REAL structural element. Ignoring it could let T7/T8 falsely PASS. At T7 and
+  T8: check whether built `_site/404.html` / `_site/search.html` contain
+  `div#post-0`. If NOT, ADD `<div id="post-0">` to those Jekyll templates for
+  fidelity AND remove `Anchor("div","#post-0")` from `PHANTOM_ANCHORS` (+ fix the
+  test & comment). Keep it ignored ONLY if the built HTML genuinely contains it
+  (then harmless). Do NOT mark notfound/search PASS until this is resolved.
+- **Minor (do in P1-T9 / opportunistically):** add a one-line comment in
+  `ARCHETYPE_SITE_PATHS` explaining the `post` entry is a flat `.html` (no
+  trailing-slash permalink → Jekyll writes flat file, not dir/index.html);
+  restore the dropped phantom-rationale comment in
+  `test_structure_check.py::test_phantom_anchors_are_barthelme_dynamic_id_artifacts`;
+  split the `out = Path(...); out.mkdir(...)` semicolon line; note
+  `check()`/`run_build()` assume repo-root CWD (untested in isolation).
+
 ## P1 — structural-extractor phantom anchors (from Task 6 review)
 
 When `barthelme.extract_anchors` runs on real templates, mixed static/dynamic
