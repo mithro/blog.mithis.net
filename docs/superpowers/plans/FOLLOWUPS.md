@@ -62,6 +62,34 @@ error); plan-verbatim so deliberately not changed in P0:
   and guard `build_log_tail` against a lone ` ``` ` line closing the fence.
   P0-fine today (controlled inputs; Jekyll logs have no triple-backticks).
 
+## P4 — 22 R-P4 LIQUID_LEAK/MISSING_IMAGE findings transferred from P2-T1 triage
+
+**P4 now ALSO owns** (from P2-T1 triage, commit `97323c4`): the 22 R-P4
+findings — after setting `baseurl:""`+CNAME (P4's core job), strip the
+redundant `{{ … | relative_url }}` Liquid in ~12 post image lines (11
+LIQUID_LEAK + 11 co-located MISSING_IMAGE across the ~8 affected posts listed
+in P2-FINDINGS §6 "P4-COUPLED") to plain `/assets/…` (then pure-Markdown,
+faithful, correct), and run the FINAL post-corpus `lint_content`-0 gate.
+P2's exit gate is linter-clean EXCEPT these 22 by design (expected residual:
+exactly 22 LIQUID_LEAK/MISSING_IMAGE findings remain after P2 completes).
+
+**Why deferred:** `_config.yml` currently has `baseurl:"/blog.mithis.net"`.
+kramdown does NOT prepend baseurl to Markdown image/link paths — it is a
+Jekyll server-level routing prefix. Replacing `{{ '/assets/x' | relative_url }}`
+with plain `/assets/x` now would render `<img src="/assets/x">` instead of the
+correct `<img src="/blog.mithis.net/assets/x">`, breaking image URLs on the
+current deployment. There is no pure-Markdown form that is BOTH no-Liquid AND
+baseurl-correct under a non-empty baseurl. The fix is only safe and correct
+once P4 sets `baseurl:""`.
+
+**P4 action:** (1) set `baseurl:""`+CNAME; (2) in the ~8 posts, replace each
+`{{ '/assets/…' | relative_url }}` with the plain `/assets/…` path; (3) run
+`lint_content` over all `_posts/*.md` → 0 findings (the post-corpus
+linter-0 final gate). See P2-FINDINGS.md §4 "P4-COUPLED findings" for the
+exact file+line inventory.
+
+---
+
 ## P4/P6 — build-determinism nuance & excluded WP artifacts (from final P0 review)
 
 - **M1 (P6):** the post-2A build is deterministic for ALL HTML/structural

@@ -2,18 +2,18 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax. Before claiming P2 done: use @superpowers:verification-before-completion.
 
-**Goal:** Make every migrated post faithful, clean content — drive `lint_content` to zero *real* findings across `_posts/*.md` (hardcoded structural HTML → Markdown, unrendered Liquid leaks fixed, missing images resolved) WITHOUT corrupting legitimate code examples, and reconcile broken category internal-links.
+**Goal:** Make every migrated post faithful, clean content — drive `lint_content` to zero *remediable* findings across `_posts/*.md` (hardcoded structural HTML → Markdown, 1 N handled per-case) WITHOUT corrupting legitimate content, and reconcile broken category internal-links. The 22 R-P4 LIQUID_LEAK/MISSING_IMAGE findings are deliberately excluded from P2 scope (baseurl-coupled; see P2-FINDINGS.md §3.1 and P4-COUPLED set) and will remain in the linter output until P4.
 
-**Architecture:** Data-driven, mirroring P0/P1. Keystone triage task re-runs the P0 `lint_content` over `_posts/`, classifies every finding (REAL defect vs faithful-content false-positive vs necessary-HTML) against the original post as the fidelity oracle, and records `P2-FINDINGS.md`. Remediation tasks (grouped by finding-class) then fix REAL defects to faithful Markdown, normalize FP code-examples to fenced blocks, and apply the minimal justified `lint_content` refinement for genuine linter-rule gaps. Gate: linter clean over posts AND structural fidelity (P1) + clean build NOT regressed.
+**Architecture:** Data-driven, mirroring P0/P1. Keystone triage task re-runs the P0 `lint_content` over `_posts/`, classifies every finding (REAL defect vs faithful-content false-positive vs necessary-HTML vs P4-COUPLED-deferred) against the original post as the fidelity oracle, and records `P2-FINDINGS.md`. Remediation tasks (grouped by finding-class) then fix the 25 P2-NOW findings (24 R BLOCK_HTML + 1 N) to faithful Markdown/per-case, leaving the 22 R-P4 findings untouched. Gate: linter shows only the expected 22 P4-coupled residuals AND structural fidelity (P1) + clean build NOT regressed.
 
 **Tech Stack:** P0 harness (`scripts/fidelity/lint_content.py`, `structure_check.py`, `build.py`) via `uv`; Jekyll 4.4 (`bundle3.3`); kramdown/GFM; `curl -k`/Wayback for the original-content fidelity oracle.
 
 **Spec:** `docs/superpowers/specs/2026-05-18-blog-fidelity-completion-design.md` (§5 P2, §7 content-fidelity strategy, the "no hardcoded structural HTML" rule)
 **Inputs:** `docs/superpowers/plans/FOLLOWUPS.md` (the P2 worklist, M1 category-links/casing, M2 category-prose, the P5 linter-FP classes), `P1-RESULTS.md`, `P0-RESULTS.md`. Fidelity oracle: original posts at `https://blog.mithis.net/...` (live, **TLS cert expired → fetch with verification disabled**), `exports/p3-missing-raw/` (not relevant to P2's 72 posts), Wayback fallback.
 
-**Local env:** no `bundle` → `bundle3.3`. `uv` on PATH. Work from the P2 worktree root. Inline `python -c` hook-blocked; use Python scripts in `tmp/` (gitignored; delete after) — NOT multi-statement shell loops. P2 EDITS `_posts/*.md` (that is the point — unlike P1).
+**Local env:** no `bundle` → `bundle3.3`. `uv` on PATH. Work from the P2 worktree root. Inline `python -c` hook-blocked; use Python scripts in `tmp/` (gitignored; delete after) — NOT multi-statement shell loops. P2 EDITS `_posts/*.md` (that is the point — unlike P1), but ONLY the P2-NOW posts (BLOCK_HTML / N). P2 must NOT edit the LIQUID_LEAK/MISSING_IMAGE lines — see P4-COUPLED constraint below.
 
-**P2 EXIT GATE (precise):** `uv run python -c`-free reproduction: `lint_content` over all `_posts/*.md` (asset_root = repo root) reports **0 findings**, where every original finding was resolved by EXACTLY ONE of: (a) faithful Markdown remediation of a real defect, (b) faithful normalization of a legitimate code example to a fenced block, (c) a justified, TDD'd `lint_content` refinement for a genuine FP class (recorded). AND `structure_check` still `PASS (6/6)` (content edits must not regress P1). AND `bundle3.3 exec jekyll build` clean (0). AND full unit suite green. AND a spot-check sample of remediated posts renders faithfully vs the original site.
+**P2 EXIT GATE (precise):** `uv run python -c`-free reproduction: `lint_content` over all `_posts/*.md` (asset_root = repo root) reports **exactly 22 findings** — only the explicitly P4-COUPLED `LIQUID_LEAK`/`MISSING_IMAGE` findings (the 11 LIQUID_LEAK + 11 co-located MISSING_IMAGE across ~8 posts). Zero of the 24 R BLOCK_HTML findings remain; the 1 N (`techtalk-gamingforfreedom:22`) is resolved per-case with a justified linter-allowance. **The remaining 22 R-P4 findings are P4's responsibility; P2 does not touch the `relative_url` post lines (touching them now would break image URLs under the current `baseurl:"/blog.mithis.net"` — kramdown does NOT prepend baseurl to Markdown image paths, so plain `/assets/x` would render without the baseurl prefix on the current deployment).** AND `structure_check` still `PASS (6/6)` (content edits must not regress P1). AND `bundle3.3 exec jekyll build` clean (0). AND full unit suite green. AND a spot-check sample of the P2-NOW remediated posts renders faithfully vs the original site (same structure/lists/code; no mangled HTML).
 
 ---
 
@@ -76,25 +76,25 @@ Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>"
 
 ## Tasks 2…N: Remediate — data-driven by P2-FINDINGS.md (controller dispatches per file/group)
 
-**Each task = one post (or a small group of closely-related posts) with all its findings.** Same protocol per task:
+**P2 scope: P2-NOW findings ONLY (25 total: 24 R BLOCK_HTML + 1 N).** The 22 R-P4 LIQUID_LEAK/MISSING_IMAGE findings are OUT OF P2 SCOPE — owned by P4, do not touch.
 
-- [ ] **Step 1: Read** the post + its P2-FINDINGS rows + the oracle evidence for that post.
-- [ ] **Step 2: Remediate faithfully** per class:
+**Each task = one post (or a small group of closely-related posts) with all its P2-NOW findings.** Same protocol per task:
+
+- [ ] **Step 1: Read** the post + its P2-FINDINGS §"P2-NOW" rows + the oracle evidence for that post. Verify: does this post also have P4-COUPLED rows? If yes, leave those lines EXACTLY as-is; only edit the BLOCK_HTML lines.
+- [ ] **Step 2: Remediate faithfully** per class (P2-NOW only):
   - **R block-HTML:** convert to equivalent Markdown (kramdown/GFM). The rendered `_site` HTML for that post must convey the same structure/content the original showed (lists→`-`/`1.`, emphasis, links, headings, blockquotes, pre/code→fenced). Keep genuinely-inline HTML the linter allows where Markdown can't express it.
-  - **R Liquid-leak:** fix the leaked `{{ }}`/`{% %}` — restore the intended literal text (escape via `{% raw %}`/backticks/`&#123;` as faithful to what the original rendered) or correct the conversion artifact. The post must no longer render literal Liquid junk.
-  - **R missing-image:** make the reference resolve — locate the real image (original WP uploads via the oracle URL / Wayback / existing `assets/`), add it under `assets/images/...` if absent, and fix the Markdown/HTML `src` to the correct in-repo path. The image must exist & render.
-  - **F-norm:** convert the demonstrated HTML/Liquid example to a fenced ```` ``` ```` code block (language-tagged where obvious). Faithful (renders as code) and linter-clean.
-  - **F-lint / N:** do NOT mangle the post. If triage assigned F-lint/N, the resolution is the minimal TDD'd `lint_content` refinement (a dedicated task — see "Linter refinement" below), not a content edit.
+  - **N (necessary HTML):** do NOT mangle the post. The resolution is a per-case justified linter-allowance (the only N is `techtalk-gamingforfreedom:22` — Flash embed; see P2-FINDINGS §3.7).
+  - **R-P4 (LIQUID_LEAK / MISSING_IMAGE):** DO NOT TOUCH. These are valid working Liquid today. Editing them under the current `baseurl:"/blog.mithis.net"` would break image URLs on the live deployment.
   - NEVER change the post's meaning vs the original; preserve front matter, permalink, dates, categories.
-- [ ] **Step 3: Verify** — re-run the linter for THIS post → its findings gone (0 for this file); `bundle3.3 exec jekyll build --trace 2>&1 | grep -ciE "error|warning|deprecation|conflict"` → 0; `uv run python -m scripts.fidelity.structure_check` → still `PASS (6/6)` (content edits must not regress P1); spot-compare the post's rendered `_site` output against the oracle (same headings/list items/links/images/text — no literal Liquid, no broken image).
+- [ ] **Step 3: Verify** — re-run the linter for THIS post → its P2-NOW BLOCK_HTML findings gone (0 BLOCK_HTML for this file; any LIQUID_LEAK/MISSING_IMAGE rows remain as expected); `bundle3.3 exec jekyll build --trace 2>&1 | grep -ciE "error|warning|deprecation|conflict"` → 0; `uv run python -m scripts.fidelity.structure_check` → still `PASS (6/6)` (content edits must not regress P1); spot-compare the post's rendered `_site` output against the oracle (same headings/list items/links/text — no mangled HTML).
 - [ ] **Step 4: Commit** that post/group:
 ```bash
 git add _posts/<file>.md [assets/...]
-git -c commit.gpgsign=false commit -m "P2: content fidelity — <post> (<R/F-norm summary>)
+git -c commit.gpgsign=false commit -m "P2: content fidelity — <post> (<R/N summary>)
 
 Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>"
 ```
-**Exit per task:** that post's linter findings = 0; build clean; structure_check 6/6; rendered output faithful to the original; only that post (+ its images) changed; zero front-matter/permalink drift.
+**Exit per task:** that post's BLOCK_HTML/N linter findings = 0; any LIQUID_LEAK/MISSING_IMAGE rows remain (correct); build clean; structure_check 6/6; rendered output faithful to the original; only that post changed; zero front-matter/permalink drift.
 
 ---
 
@@ -133,9 +133,9 @@ Use @superpowers:test-driven-development. ONLY if P2-FINDINGS has F-lint/N rows 
 
 Use @superpowers:verification-before-completion.
 
-- [ ] **Step 1: Full P2 gate.** Regenerate the linter over `_posts/*.md` (asset_root=`.`) → **0 findings**. `uv run python -m scripts.fidelity.structure_check` → `PASS (6/6)`. `bundle3.3 exec jekyll build --trace 2>&1 | grep -ciE "error|warning|deprecation|conflict"` → 0. `uv run pytest -m "not integration" -q` → all pass. Spot-check ≥5 remediated posts: rendered `_site` HTML faithful vs the original site (no literal Liquid, images resolve, lists/structure equivalent). Paste evidence.
-- [ ] **Step 2: Write `docs/superpowers/plans/P2-RESULTS.md`** — findings triaged (R/F-norm/F-lint/N tallies), what was remediated, the M1 fix, the M2 decision, any linter refinement (cross-ref FOLLOWUPS P5), confirmation P1 structural fidelity not regressed, P3 readiness (the 4 captured posts in `exports/p3-missing-raw/`). Commit.
-- [ ] **Step 3: Stop and re-plan.** Do NOT start P3 ad hoc. Return to @superpowers:writing-plans for the **P3** plan (recover the 4 captured missing posts → faithful Markdown matching existing post format + dual comment representation), then P4 (domain/`baseurl=""`+CNAME), P5 (new-post workflow + wire `lint_content` as build-guard + the FOLLOWUPS gate/linter hardening), P6 (visual + functional acceptance + user signoff).
+- [ ] **Step 1: Full P2 gate.** Regenerate the linter over `_posts/*.md` (asset_root=`.`) → **exactly 22 findings** (only the P4-COUPLED LIQUID_LEAK/MISSING_IMAGE residuals; zero BLOCK_HTML). `uv run python -m scripts.fidelity.structure_check` → `PASS (6/6)`. `bundle3.3 exec jekyll build --trace 2>&1 | grep -ciE "error|warning|deprecation|conflict"` → 0. `uv run pytest -m "not integration" -q` → all pass. Spot-check ≥5 P2-NOW remediated posts: rendered `_site` HTML faithful vs the original site (no mangled HTML, lists/code/structure equivalent). Paste evidence. Confirm: the 22 residual findings are all `LIQUID_LEAK`/`MISSING_IMAGE` in the ~8 posts listed under "P4-COUPLED" in P2-FINDINGS §6 — this is expected and correct by design.
+- [ ] **Step 2: Write `docs/superpowers/plans/P2-RESULTS.md`** — findings triaged (R-now/R-P4/N tallies: 25 P2-NOW [24 R + 1 N] + 22 R-P4 deferred), what was remediated in P2, the M1 fix, the M2 decision, confirmation P1 structural fidelity not regressed, the 22 R-P4 findings explicitly called out as P4's responsibility, P3 readiness (the 4 captured posts in `exports/p3-missing-raw/`). Commit.
+- [ ] **Step 3: Stop and re-plan.** Do NOT start P3 ad hoc. Return to @superpowers:writing-plans for the **P3** plan (recover the 4 captured missing posts → faithful Markdown matching existing post format + dual comment representation), then P4 (domain/`baseurl=""`+CNAME + strip the 22 R-P4 LIQUID_LEAK residuals → plain `/assets/…` + final linter-0 gate), P5 (new-post workflow + wire `lint_content` as build-guard + the FOLLOWUPS gate/linter hardening), P6 (visual + functional acceptance + user signoff).
 
 ---
 

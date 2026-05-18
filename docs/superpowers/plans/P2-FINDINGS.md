@@ -54,36 +54,60 @@ same line — they disappear once the Liquid leak is fixed."
 All 47 findings fall into **7 patterns**. Classes: **R** real defect,
 **F-norm** FP→fence, **F-lint** linter-fault, **N** necessary HTML.
 
-### 3.1 RELURL_LIQUID — 11 × `LIQUID_LEAK` — class **R**
+### 3.1 RELURL_LIQUID — 11 × `LIQUID_LEAK` — class **R-P4 (deferred to P4)**
 
 Lines of the form `… src="{{ '/assets/…' | relative_url }}" …` or
 `[…]({{ '/assets/…' | relative_url }})`. **Not a leak**: this is *valid working
-Jekyll Liquid* (the `relative_url` filter), rendering a correct `/assets/…`
-URL; all 13 referenced files **exist on disk** (`tmp/imgcheck.py`,
-`EXISTS=True` for every one); 0 non-`relative_url` `{{`/`{%` exist anywhere in
-the flagged corpus.
+Jekyll Liquid* (the `relative_url` filter), rendering a correct baseurl-prefixed
+`/assets/…` URL TODAY; all 13 occurrences / 12 unique asset paths **exist on
+disk** (`tmp/imgcheck.py`, `EXISTS=True` for every one); 0 non-`relative_url`
+`{{`/`{%` exist anywhere in the flagged corpus.
 
-Why **R** (content edit) and not F-lint (linter refinement): the spec mandates
+Why **R** (real defect) and not F-lint (linter refinement): the spec mandates
 posts be **pure Markdown** (commit `b1ad5c2` goal; spec §7 "posts stay
 Markdown… no structural/layout HTML… no theme chrome"; the `{{`/`{%`-in-posts
 rule is the deliberate P5 build-guard). The Liquid was a *partial pre-completion
 fix* (commit `2022316` "Fix asset URLs in posts to use relative_url filter
-(partial fix)"). With `baseurl: ""` (spec §P4), `{{ '/assets/x' | relative_url }}`
-≡ literal `/assets/x` — **removing the Liquid for the plain path is zero-fidelity-loss
-and is the spec-compliant faithful remediation**. The linter is *correctly*
-enforcing the rule; the content genuinely needs the edit. Oracle (live) confirms
-the original rendered a real image at each site (e.g. `almost-there` →
+(partial fix)"). Once P4 sets `baseurl: ""`, `{{ '/assets/x' | relative_url }}`
+≡ literal `/assets/x` — **removing the Liquid for the plain path is then
+zero-fidelity-loss and is the spec-compliant faithful remediation**.
+
+**CRITICAL — WHY THESE ARE P4-COUPLED, NOT REMEDIATED IN P2:**
+`_config.yml` currently has `baseurl: "/blog.mithis.net"` (P4 has not yet run).
+kramdown does NOT prepend `baseurl` to Markdown image/link paths — it is a
+Jekyll server-level routing prefix, not a string prepended to literal paths.
+Therefore, replacing `{{ '/assets/x' | relative_url }}` with plain `/assets/x`
+NOW would render WITHOUT the baseurl prefix: `<img src="/assets/x">` instead of
+the correct `<img src="/blog.mithis.net/assets/x">`, **breaking image URLs on
+the current deployment**. There is no pure-Markdown form that is BOTH no-Liquid
+AND baseurl-correct under a non-empty baseurl.
+
+These 22 findings (11 LIQUID_LEAK + 11 co-located MISSING_IMAGE) are therefore
+class **R-P4**: real defects confirmed (the spec forbids Liquid in post bodies),
+but **deferred to P4** because the faithful, correct remediation — replacing the
+Liquid with plain `/assets/…` paths — is only correct once P4 sets `baseurl: ""`.
+**P2 must NOT touch these lines.** P4 will: set `baseurl:""`+CNAME (its core
+job), THEN strip the now-redundant `relative_url` Liquid → plain `/assets/…` in
+those ~12 post image lines, THEN run the final post-corpus linter-0 gate.
+
+The linter is *correctly* enforcing the rule; the content genuinely needs the
+edit — just not yet. Oracle (live) confirms the original rendered a real image
+at each site (e.g. `almost-there` →
 `<p align="center"><a href="…cfxs-try2.jpg"><img src="…cfxs-try2.thumbnail.jpg"/></a></p>`).
 
-### 3.2 RELURL_IMG_ARTIFACT — 11 × `MISSING_IMAGE` — class **R** (auto-resolved)
+### 3.2 RELURL_IMG_ARTIFACT — 11 × `MISSING_IMAGE` — class **R-P4 (deferred to P4)**
 
 `Local image not found: {{ ` — pure **linter artifact**: `_MD_IMG`/`_HTML_IMG`
 naively extract the literal string `{{ ` as the "src" before Liquid resolves.
 Every one is on the *same line* as a RELURL_LIQUID finding. Not an independent
 defect: the single per-post edit that replaces the `relative_url` Liquid with
 the plain `/assets/…` path removes BOTH the LIQUID_LEAK and the MISSING_IMAGE.
-(Confirmed: 0 of 13 real targets missing on disk.) Counted R because the
-remediation is a faithful content edit, not a linter change.
+(Confirmed: 0 of the 13 occurrences / 12 unique asset paths are actually missing
+on disk.) These co-locate 1-for-1 with their RELURL_LIQUID row and are
+**deferred to P4** for the same reason (see §3.1): they auto-resolve when the
+LIQUID_LEAK is fixed, but fixing the LIQUID_LEAK now would break image URLs
+under the current `baseurl:"/blog.mithis.net"`. Class **R-P4** (real defect
+pair, P4-coupled).
 
 ### 3.3 STYLE_COMMENT_CSS — 12 × `BLOCK_HTML` — class **R**
 
@@ -148,23 +172,18 @@ fenced block. Only 1 such finding in the entire corpus.
 
 `path:line | code | class | original-content evidence (oracle) | planned remediation`
 
+**Class key:** `R` = P2-NOW (real defect, fix in P2); `R-P4` = real defect, P4-COUPLED (deferred — only correct to fix after P4 sets `baseurl:""`); `N` = necessary HTML (per-case allowance in P2).
+
+### P2-NOW findings (25 rows — P2 remediates these)
+
 | path:line | code | class | original-content evidence (oracle source) | planned remediation |
 |---|---|---|---|---|
 | _posts/2007-02-26-darcs-almost-perfect.md:17 | BLOCK_HTML | R | LIVE: real `<dl><dt>×3<dd>×3</dl>` definition list | kramdown def-list (`term`/`: def`) |
-| _posts/2007-05-09-almost-there.md:19 | LIQUID_LEAK | R | LIVE: `<p align=center><a href=cfxs-try2.jpg><img src=…thumbnail.jpg></a></p>` | replace `{{…relative_url}}` w/ plain `/assets/…` linked-thumbnail (md/min inline `<img>`) |
-| _posts/2007-05-09-almost-there.md:19 | MISSING_IMAGE | R | artifact of the line above (file exists on disk) | auto-resolved by the same edit |
-| _posts/2007-08-17-resume.md:18 | LIQUID_LEAK | R | LIVE n/a-needed: working PDF link; `resume.pdf` exists | replace `{{…relative_url}}` w/ plain `/assets/…` md link |
 | _posts/2007-09-06-nm-autovpn.md:91 | BLOCK_HTML | R | GIT: injected `<style>` (commit 8a6c3f9); not in original | remove injected comment-CSS `<style>` block |
 | _posts/2007-09-06-nm-autovpn.md:114 | BLOCK_HTML | R | GIT: closing `</style>` of the injected block | remove injected comment-CSS `<style>` block |
 | _posts/2007-11-11-python-swap-var.md:36 | BLOCK_HTML | R | GIT: injected `<style>` (commit 8a6c3f9); live 500/WB 429 | remove injected comment-CSS `<style>` block |
 | _posts/2007-11-11-python-swap-var.md:59 | BLOCK_HTML | R | GIT: closing `</style>` of the injected block | remove injected comment-CSS `<style>` block |
-| _posts/2008-02-04-google-patchwork.md:17 | LIQUID_LEAK | R | LIVE-pattern: rendered map `<img>` (file exists) | replace `{{…relative_url}}` w/ plain `/assets/…`; fix unclosed `[` md-link |
-| _posts/2008-02-04-google-patchwork.md:17 | MISSING_IMAGE | R | artifact of the line above (file exists) | auto-resolved by the same edit |
-| _posts/2008-02-04-google-patchwork.md:19 | LIQUID_LEAK | R | LIVE-pattern: rendered map `<img>` (file exists) | replace `{{…relative_url}}` w/ plain `/assets/…`; fix unclosed `[` md-link |
-| _posts/2008-02-04-google-patchwork.md:19 | MISSING_IMAGE | R | artifact of the line above (file exists) | auto-resolved by the same edit |
 | _posts/2008-02-18-cfxs-free.md:19 | BLOCK_HTML | R | LIVE: `<blockquote><pre>svn co …</pre></blockquote>` | fenced ``` code block; split prose off the `</pre>` line |
-| _posts/2008-02-18-cfxs-free.md:22 | LIQUID_LEAK | R | LIVE: `<p><img src=…cfxs-try2.jpg alt=""></p>` | replace `{{…relative_url}}` w/ plain `/assets/…` |
-| _posts/2008-02-18-cfxs-free.md:22 | MISSING_IMAGE | R | artifact of the line above (file exists) | auto-resolved by the same edit |
 | _posts/2008-06-10-techtalk-gamingforfreedom.md:22 | BLOCK_HTML | N | LIVE: original rendered identical `<object><param><embed>` Flash embed | per-case justified linter-allowance (minimal embed / modern `<iframe>` 8Ct36u8RPIU) — NOT a content mangle |
 | _posts/2009-01-20-reading-cookies-firefox.md:169 | BLOCK_HTML | R | GIT: injected `<style>` (commit 8a6c3f9); live 500/WB 429 | remove injected comment-CSS `<style>` block |
 | _posts/2009-01-20-reading-cookies-firefox.md:192 | BLOCK_HTML | R | GIT: closing `</style>` of the injected block | remove injected comment-CSS `<style>` block |
@@ -172,31 +191,47 @@ fenced block. Only 1 such finding in the entire corpus.
 | _posts/2009-01-26-osdc-orbital-death-better-late-then-never.md:55 | BLOCK_HTML | R | GIT: closing `</style>` of the injected block | remove injected comment-CSS `<style>` block |
 | _posts/2009-01-27-xcompiling-cygwin-on-linux-for-windows.md:34 | BLOCK_HTML | R | GIT: injected `<style>` (commit 8a6c3f9) | remove injected comment-CSS `<style>` block |
 | _posts/2009-01-27-xcompiling-cygwin-on-linux-for-windows.md:57 | BLOCK_HTML | R | GIT: closing `</style>` of the injected block | remove injected comment-CSS `<style>` block |
-| _posts/2009-05-26-starhunter-fireflys-little-known-older-cousin.md:22 | LIQUID_LEAK | R | LIVE-pattern: rendered screenshot `<img>` (file exists) | replace `{{…relative_url}}` w/ plain `/assets/…` |
-| _posts/2009-05-26-starhunter-fireflys-little-known-older-cousin.md:22 | MISSING_IMAGE | R | artifact of the line above (file exists) | auto-resolved by the same edit |
 | _posts/2009-05-26-starhunter-fireflys-little-known-older-cousin.md:30 | BLOCK_HTML | R | GIT: injected `<style>` (commit 8a6c3f9) | remove injected comment-CSS `<style>` block |
 | _posts/2009-05-26-starhunter-fireflys-little-known-older-cousin.md:53 | BLOCK_HTML | R | GIT: closing `</style>` of the injected block | remove injected comment-CSS `<style>` block |
 | _posts/2013-10-06-connecting-to-a-fritzbox-under-linux-using-vpnc.md:42 | BLOCK_HTML | R | LIVE: `<code><pre>…config…</pre>` | fenced ``` code block (reconstruct from the ``` ` ```-delimited region) |
 | _posts/2013-10-06-connecting-to-a-fritzbox-under-linux-using-vpnc.md:64 | BLOCK_HTML | R | LIVE: `<code><pre>…config…</pre>` | fenced ``` code block |
 | _posts/2013-10-06-connecting-to-a-fritzbox-under-linux-using-vpnc.md:79 | BLOCK_HTML | R | LIVE: `<pre>…vpnc.conf template…</pre>` | fenced ``` code block |
 | _posts/2013-10-06-connecting-to-a-fritzbox-under-linux-using-vpnc.md:121 | BLOCK_HTML | R | LIVE: `<pre>…fritzbox-script…</pre>` | fenced ``` code block |
-| _posts/2013-10-06-connecting-to-a-fritzbox-under-linux-using-vpnc.md:125 | LIQUID_LEAK | R | LIVE-pattern: rendered `VPN-error.png` `<img>` (file exists) | replace `{{…relative_url}}` w/ plain `/assets/…` (keep minimal inline `<img>`) |
-| _posts/2013-10-06-connecting-to-a-fritzbox-under-linux-using-vpnc.md:125 | MISSING_IMAGE | R | artifact of the line above (file exists) | auto-resolved by the same edit |
-| _posts/2013-10-06-connecting-to-a-fritzbox-under-linux-using-vpnc.md:127 | LIQUID_LEAK | R | LIVE-pattern: rendered `VPN-encrypt.png` `<img>` (file exists) | replace `{{…relative_url}}` w/ plain `/assets/…` (keep minimal inline `<img>`) |
-| _posts/2013-10-06-connecting-to-a-fritzbox-under-linux-using-vpnc.md:127 | MISSING_IMAGE | R | artifact of the line above (file exists) | auto-resolved by the same edit |
 | _posts/2014-07-23-hdmi2usb…day-2-22nd-july-2014.md:34 | BLOCK_HTML | R | LIVE: nested `<ul><li>…<ul>…</ul></li></ul>` | delete orphan `</li> /li>`; restore Markdown nested-list indent |
 | _posts/2014-07-23-hdmi2usb…day-2-22nd-july-2014.md:41 | BLOCK_HTML | R | LIVE: `<blockquote><pre style=…>…ioclk_buf…</pre>` | fenced ``` code block (error dump) |
 | _posts/2014-07-23-hdmi2usb…day-2-22nd-july-2014.md:46 | BLOCK_HTML | R | LIVE: `<pre>…map Error 139</pre>` | fenced ``` code block (error dump) |
 | _posts/2014-07-24-hdmi2usb…day-3-23rd-july-2014.md:32 | BLOCK_HTML | R | LIVE-pattern: nested `<ul><li>` (sibling post confirmed) | delete orphan `</li> /li>`; restore Markdown nested-list indent |
 | _posts/2014-07-24-hdmi2usb…day-3-23rd-july-2014.md:45 | BLOCK_HTML | R | LIVE-pattern: `<pre>…xusbdfwu.rules:3'</pre>` error dump | fenced ``` code block (error dump) |
-| _posts/2014-07-25-hdmi2usb…day-4-24th-july-2014.md:21 | LIQUID_LEAK | R | LIVE-pattern: two rendered photo `<img>` (files exist) | replace `{{…relative_url}}` w/ plain `/assets/…` (×2 imgs on this line) |
-| _posts/2014-07-25-hdmi2usb…day-4-24th-july-2014.md:21 | MISSING_IMAGE | R | artifact (1st `{{` on the line; file exists) | auto-resolved by the same edit |
-| _posts/2014-07-25-hdmi2usb…day-4-24th-july-2014.md:21 | MISSING_IMAGE | R | artifact (2nd `{{` on the line; file exists) | auto-resolved by the same edit |
-| _posts/2014-07-25-hdmi2usb…day-4-24th-july-2014.md:23 | LIQUID_LEAK | R | LIVE-pattern: rendered VGA-board photo `<img>` (file exists) | replace `{{…relative_url}}` w/ plain `/assets/…` |
-| _posts/2014-07-25-hdmi2usb…day-4-24th-july-2014.md:23 | MISSING_IMAGE | R | artifact of the line above (file exists) | auto-resolved by the same edit |
 | _posts/2014-07-28-hdmi2usb…day-5-6-and-7th…july-2014.md:20 | BLOCK_HTML | R | LIVE-pattern: `<pre>ERROR:Place …ioclk_buf…</pre>` | fenced ``` code block (error line) |
-| _posts/2015-07-05-first-v2-hdmi2usb-production-board-constructed.md:17 | LIQUID_LEAK | R | LIVE-pattern: rendered board photo `<img>` (`HDMI2USB-Prod-V2…` exists) | replace `{{…relative_url}}` w/ plain `/assets/…` (keep minimal inline `<img>`) |
-| _posts/2015-07-05-first-v2-hdmi2usb-production-board-constructed.md:17 | MISSING_IMAGE | R | artifact of the line above (file exists) | auto-resolved by the same edit |
+
+### P4-COUPLED findings (22 rows — DO NOT TOUCH IN P2; deferred to P4)
+
+> These are VALID WORKING Liquid today. Replacing with plain `/assets/…` now would break image URLs under `baseurl:"/blog.mithis.net"`. P4 will fix these after setting `baseurl:""`.
+
+| path:line | code | class | original-content evidence (oracle source) | planned remediation (IN P4, NOT P2) |
+|---|---|---|---|---|
+| _posts/2007-05-09-almost-there.md:19 | LIQUID_LEAK | R-P4 | LIVE: `<p align=center><a href=cfxs-try2.jpg><img src=…thumbnail.jpg></a></p>` | P4: replace `{{…relative_url}}` w/ plain `/assets/…` linked-thumbnail after `baseurl:""` |
+| _posts/2007-05-09-almost-there.md:19 | MISSING_IMAGE | R-P4 | artifact of the line above (file exists on disk) | P4: auto-resolved by the same edit |
+| _posts/2007-08-17-resume.md:18 | LIQUID_LEAK | R-P4 | LIVE n/a-needed: working PDF link; `resume.pdf` exists | P4: replace `{{…relative_url}}` w/ plain `/assets/…` md link after `baseurl:""` |
+| _posts/2008-02-04-google-patchwork.md:17 | LIQUID_LEAK | R-P4 | LIVE-pattern: rendered map `<img>` (file exists) | P4: replace `{{…relative_url}}` w/ plain `/assets/…`; fix unclosed `[` md-link |
+| _posts/2008-02-04-google-patchwork.md:17 | MISSING_IMAGE | R-P4 | artifact of the line above (file exists) | P4: auto-resolved by the same edit |
+| _posts/2008-02-04-google-patchwork.md:19 | LIQUID_LEAK | R-P4 | LIVE-pattern: rendered map `<img>` (file exists) | P4: replace `{{…relative_url}}` w/ plain `/assets/…`; fix unclosed `[` md-link |
+| _posts/2008-02-04-google-patchwork.md:19 | MISSING_IMAGE | R-P4 | artifact of the line above (file exists) | P4: auto-resolved by the same edit |
+| _posts/2008-02-18-cfxs-free.md:22 | LIQUID_LEAK | R-P4 | LIVE: `<p><img src=…cfxs-try2.jpg alt=""></p>` | P4: replace `{{…relative_url}}` w/ plain `/assets/…` |
+| _posts/2008-02-18-cfxs-free.md:22 | MISSING_IMAGE | R-P4 | artifact of the line above (file exists) | P4: auto-resolved by the same edit |
+| _posts/2009-05-26-starhunter-fireflys-little-known-older-cousin.md:22 | LIQUID_LEAK | R-P4 | LIVE-pattern: rendered screenshot `<img>` (file exists) | P4: replace `{{…relative_url}}` w/ plain `/assets/…` |
+| _posts/2009-05-26-starhunter-fireflys-little-known-older-cousin.md:22 | MISSING_IMAGE | R-P4 | artifact of the line above (file exists) | P4: auto-resolved by the same edit |
+| _posts/2013-10-06-connecting-to-a-fritzbox-under-linux-using-vpnc.md:125 | LIQUID_LEAK | R-P4 | LIVE-pattern: rendered `VPN-error.png` `<img>` (file exists) | P4: replace `{{…relative_url}}` w/ plain `/assets/…` (keep minimal inline `<img>`) |
+| _posts/2013-10-06-connecting-to-a-fritzbox-under-linux-using-vpnc.md:125 | MISSING_IMAGE | R-P4 | artifact of the line above (file exists) | P4: auto-resolved by the same edit |
+| _posts/2013-10-06-connecting-to-a-fritzbox-under-linux-using-vpnc.md:127 | LIQUID_LEAK | R-P4 | LIVE-pattern: rendered `VPN-encrypt.png` `<img>` (file exists) | P4: replace `{{…relative_url}}` w/ plain `/assets/…` (keep minimal inline `<img>`) |
+| _posts/2013-10-06-connecting-to-a-fritzbox-under-linux-using-vpnc.md:127 | MISSING_IMAGE | R-P4 | artifact of the line above (file exists) | P4: auto-resolved by the same edit |
+| _posts/2014-07-25-hdmi2usb…day-4-24th-july-2014.md:21 | LIQUID_LEAK | R-P4 | LIVE-pattern: two rendered photo `<img>` (files exist) | P4: replace `{{…relative_url}}` w/ plain `/assets/…` (×2 imgs on this line) |
+| _posts/2014-07-25-hdmi2usb…day-4-24th-july-2014.md:21 | MISSING_IMAGE | R-P4 | artifact (1st `{{` on the line; file exists) | P4: auto-resolved by the same edit |
+| _posts/2014-07-25-hdmi2usb…day-4-24th-july-2014.md:21 | MISSING_IMAGE | R-P4 | artifact (2nd `{{` on the line; file exists) | P4: auto-resolved by the same edit |
+| _posts/2014-07-25-hdmi2usb…day-4-24th-july-2014.md:23 | LIQUID_LEAK | R-P4 | LIVE-pattern: rendered VGA-board photo `<img>` (file exists) | P4: replace `{{…relative_url}}` w/ plain `/assets/…` |
+| _posts/2014-07-25-hdmi2usb…day-4-24th-july-2014.md:23 | MISSING_IMAGE | R-P4 | artifact of the line above (file exists) | P4: auto-resolved by the same edit |
+| _posts/2015-07-05-first-v2-hdmi2usb-production-board-constructed.md:17 | LIQUID_LEAK | R-P4 | LIVE-pattern: rendered board photo `<img>` (`HDMI2USB-Prod-V2…` exists) | P4: replace `{{…relative_url}}` w/ plain `/assets/…` (keep minimal inline `<img>`) |
+| _posts/2015-07-05-first-v2-hdmi2usb-production-board-constructed.md:17 | MISSING_IMAGE | R-P4 | artifact of the line above (file exists) | P4: auto-resolved by the same edit |
 
 > "LIVE-pattern" = the *pattern* (relurl `<img>` rendering / `<pre>` block /
 > nested `<ul>`) was directly confirmed on the live original for at least one
@@ -206,17 +241,33 @@ fenced block. Only 1 such finding in the entire corpus.
 
 ## 5. Tally
 
-| Class | Count | Notes |
-|---|---|---|
-| **R** (real defect) | **46** | 11 RELURL_LIQUID + 11 RELURL_IMG_ARTIFACT (auto-resolved w/ the Liquid) + 12 STYLE_COMMENT_CSS + 9 STRAY_PRE_CLOSE + 2 MANGLED_LI_CLOSE + 1 MANGLED_DL |
-| **F-norm** (FP → fenced) | **0** | no post is a *deliberate* HTML/Liquid code example mis-flagged |
-| **F-lint** (linter-fault) | **0** | no inline-code-mid-sentence Liquid; the linter is over-flagging *nothing* — every `{{` is a removable redundant artifact, not correct content |
-| **N** (necessary HTML) | **1** | `techtalk-gamingforfreedom:22` `<object><embed>` Flash embed (Markdown can't express; per-case justified linter-allowance) |
-| **TOTAL** | **47** | |
+| Class | Count | Scope | Notes |
+|---|---|---|---|
+| **R** (real defect, P2-NOW) | **24** | P2-NOW | 12 STYLE_COMMENT_CSS + 9 STRAY_PRE_CLOSE + 2 MANGLED_LI_CLOSE + 1 MANGLED_DL — all BLOCK_HTML; no baseurl dependency |
+| **R-P4** (real defect, P4-COUPLED) | **22** | DEFERRED to P4 | 11 RELURL_LIQUID + 11 RELURL_IMG_ARTIFACT — deferred because plain `/assets/…` is only correct+faithful once P4 sets `baseurl:""` |
+| **F-norm** (FP → fenced) | **0** | — | no post is a *deliberate* HTML/Liquid code example mis-flagged |
+| **F-lint** (linter-fault) | **0** | — | no inline-code-mid-sentence Liquid; the linter is over-flagging *nothing* |
+| **N** (necessary HTML) | **1** | P2-NOW | `techtalk-gamingforfreedom:22` `<object><embed>` Flash embed (Markdown can't express; per-case justified linter-allowance) |
+| **TOTAL** | **47** | | 25 P2-NOW (24 R + 1 N) + 22 R-P4 |
 
-Of the 47, only **22 are independent edit-sites** (the 11 MISSING_IMAGE
-RELURL_IMG_ARTIFACT rows are co-located with their RELURL_LIQUID row and
-auto-resolve). Real *content-edit* work ≈ **26 edit points across 18 posts**.
+**P2-NOW set (25 findings — P2 remediates these):** the 24 R BLOCK_HTML
+findings (injected `<style>` comment-CSS, mangled `<dl>`/`<dt>`/`<dd>`, mangled
+`<li>`, stray `<pre>` closers) PLUS the 1 N (`techtalk-gamingforfreedom:22`
+Flash embed — per-case justified linter-allowance). These have NO baseurl
+dependency; P2 fixes them now.
+
+**P4-COUPLED set (22 findings — DEFERRED to P4):** the 11 RELURL_LIQUID + 11
+co-located RELURL_IMG_ARTIFACT findings. These are VALID WORKING Liquid
+producing correct baseurl-prefixed URLs TODAY. They only become removable to
+plain `/assets/…` (pure Markdown, faithful, correct) once P4 sets `baseurl:""`.
+**P2 does NOT touch these lines** — touching them now would break image URLs
+under the current `baseurl:"/blog.mithis.net"`.
+
+Of the 25 P2-NOW findings, all 25 are distinct BLOCK_HTML/N rows (no
+co-located auto-resolve pairs in the P2-NOW set). Real *content-edit* work in
+P2 ≈ **13 commits across ~13 posts** (the BLOCK_HTML + 1 N items, grouped per
+the §6 remediation plan). The 22 R-P4 findings each resolve as a co-located
+LIQUID_LEAK + MISSING_IMAGE pair in P4 (~11 independent P4 edit-sites).
 
 ### Signal for Task L (linter refinement) and P2 scope
 
@@ -226,48 +277,63 @@ auto-resolve). Real *content-edit* work ≈ **26 edit points across 18 posts**.
   content. (The pre-planned conditional Task L can be **skipped**; the
   FOLLOWUPS P5 linter-hardening items I3/I5/I1/I2/M1-M4 remain deferred to P5 as
   before — they are not triggered by this corpus.)
-- **P2 remediation is real and bounded:** 18 posts, ~26 faithful content edits,
-  all with concrete oracle-confirmed target structures (def-list, fenced code,
-  nested lists, plain `/assets/` image paths, drop injected `<style>`), plus
-  **1 N** decision (Flash embed allowance). No linter/test changes needed for
-  the findings; M1 (category links) and M2 (category prose) remain separate
-  template/decision tasks per the plan.
+- **P2 remediation is real and bounded (P2-NOW only):** ~11 posts, ~12 faithful
+  content edits, all with concrete oracle-confirmed target structures (def-list,
+  fenced code, nested lists, drop injected `<style>`), plus **1 N** decision
+  (Flash embed allowance). No linter/test changes needed for the findings; M1
+  (category links) and M2 (category prose) remain separate template/decision
+  tasks per the plan. The 22 R-P4 findings are P4's responsibility.
 
 ## 6. Remediation plan grouped BY FILE (one commit per post)
 
-Each post = one remediation task/commit fixing **all** its findings (`P2:
-content fidelity — <post> (<summary>)` + Co-Authored-By trailer). Order roughly
-simplest → most complex.
+### P2-NOW (P2 remediates these — 11 posts, BLOCK_HTML + N only)
 
-| # | Post (commit unit) | Findings | Faithful remediation (oracle-confirmed) |
+Each post = one remediation task/commit fixing **all its P2-NOW findings**
+(`P2: content fidelity — <post> (<summary>)` + Co-Authored-By trailer).
+Order roughly simplest → most complex.
+
+| # | Post (commit unit) | P2-NOW Findings | Faithful remediation (oracle-confirmed) |
 |---|---|---|---|
-| 1 | `2007-08-17-resume.md` | LIQUID_LEAK ×1 | relurl→plain `/assets/…resume.pdf` md link |
-| 2 | `2007-02-26-darcs-almost-perfect.md` | BLOCK_HTML ×1 | mangled `<dl>` → kramdown definition list (3 terms) |
-| 3 | `2007-05-09-almost-there.md` | LIQUID_LEAK ×1 + MISSING_IMAGE ×1 | relurl→plain path; linked-thumbnail (`[![alt](thumb)](full)` or min inline `<a><img>`) per original `<p align=center>` |
-| 4 | `2008-02-04-google-patchwork.md` | LIQUID_LEAK ×2 + MISSING_IMAGE ×2 | relurl→plain path ×2; repair the two unclosed `[<img …` md-links → plain images |
-| 5 | `2008-02-18-cfxs-free.md` | BLOCK_HTML ×1 + LIQUID_LEAK ×1 + MISSING_IMAGE ×1 | `</pre>`→ fenced ``` code (split prose); relurl→plain `…cfxs-try2.jpg` image |
-| 6 | `2009-05-26-starhunter-fireflys…cousin.md` | LIQUID_LEAK ×1 + MISSING_IMAGE ×1 + BLOCK_HTML ×2 | relurl→plain screenshot img; remove injected comment-CSS `<style>` block |
-| 7 | `2007-09-06-nm-autovpn.md` | BLOCK_HTML ×2 | remove injected comment-CSS `<style>` block |
-| 8 | `2007-11-11-python-swap-var.md` | BLOCK_HTML ×2 | remove injected comment-CSS `<style>` block |
-| 9 | `2009-01-20-reading-cookies-firefox.md` | BLOCK_HTML ×2 | remove injected comment-CSS `<style>` block |
-| 10 | `2009-01-26-osdc-orbital-death…never.md` | BLOCK_HTML ×2 | remove injected comment-CSS `<style>` block |
-| 11 | `2009-01-27-xcompiling-cygwin…windows.md` | BLOCK_HTML ×2 | remove injected comment-CSS `<style>` block |
-| 12 | `2015-07-05-first-v2-hdmi2usb…constructed.md` | LIQUID_LEAK ×1 + MISSING_IMAGE ×1 | relurl→plain board-photo path (keep minimal inline `<img>` for sizing) |
-| 13 | `2014-07-28-hdmi2usb…day-5-6-7…2014.md` | BLOCK_HTML ×1 | `</pre>` error line → fenced ``` code block |
-| 14 | `2014-07-24-hdmi2usb…day-3…2014.md` | BLOCK_HTML ×2 | orphan `</li> /li>` → Markdown nested list; `</pre>` error dump → fenced ``` |
-| 15 | `2014-07-23-hdmi2usb…day-2…2014.md` | BLOCK_HTML ×3 | orphan `</li> /li>` → nested list; 2× `<pre>` error dumps → fenced ``` |
-| 16 | `2014-07-25-hdmi2usb…day-4…2014.md` | LIQUID_LEAK ×2 + MISSING_IMAGE ×3 | relurl→plain path for all 3 photo `<img>` (lines 21 has 2 imgs, 23 has 1) |
-| 17 | `2013-10-06-connecting-to-a-fritzbox…vpnc.md` | BLOCK_HTML ×4 + LIQUID_LEAK ×2 + MISSING_IMAGE ×2 | reconstruct 4× ``` ` ```-delimited regions as fenced ``` code (per oracle `<pre>` blocks); relurl→plain path for 2 inline `<img>` |
-| 18 | `2008-06-10-techtalk-gamingforfreedom.md` | BLOCK_HTML ×1 (**N**) | per-case: justified minimal embed allowance OR modern `<iframe>` for `8Ct36u8RPIU` — NOT a Markdown conversion (decide in remediation; the only N) |
+| 1 | `2007-02-26-darcs-almost-perfect.md` | BLOCK_HTML ×1 | mangled `<dl>` → kramdown definition list (3 terms) |
+| 2 | `2007-09-06-nm-autovpn.md` | BLOCK_HTML ×2 | remove injected comment-CSS `<style>` block |
+| 3 | `2007-11-11-python-swap-var.md` | BLOCK_HTML ×2 | remove injected comment-CSS `<style>` block |
+| 4 | `2008-02-18-cfxs-free.md` | BLOCK_HTML ×1 | `</pre>` → fenced ``` code (split prose) |
+| 5 | `2009-01-20-reading-cookies-firefox.md` | BLOCK_HTML ×2 | remove injected comment-CSS `<style>` block |
+| 6 | `2009-01-26-osdc-orbital-death…never.md` | BLOCK_HTML ×2 | remove injected comment-CSS `<style>` block |
+| 7 | `2009-01-27-xcompiling-cygwin…windows.md` | BLOCK_HTML ×2 | remove injected comment-CSS `<style>` block |
+| 8 | `2009-05-26-starhunter-fireflys…cousin.md` | BLOCK_HTML ×2 | remove injected comment-CSS `<style>` block |
+| 9 | `2014-07-28-hdmi2usb…day-5-6-7…2014.md` | BLOCK_HTML ×1 | `</pre>` error line → fenced ``` code block |
+| 10 | `2014-07-24-hdmi2usb…day-3…2014.md` | BLOCK_HTML ×2 | orphan `</li> /li>` → Markdown nested list; `</pre>` error dump → fenced ``` |
+| 11 | `2014-07-23-hdmi2usb…day-2…2014.md` | BLOCK_HTML ×3 | orphan `</li> /li>` → nested list; 2× `<pre>` error dumps → fenced ``` |
+| 12 | `2013-10-06-connecting-to-a-fritzbox…vpnc.md` | BLOCK_HTML ×4 | reconstruct 4× ``` ` ```-delimited regions as fenced ``` code (per oracle `<pre>` blocks) |
+| 13 | `2008-06-10-techtalk-gamingforfreedom.md` | BLOCK_HTML ×1 (**N**) | per-case: justified minimal embed allowance OR modern `<iframe>` for `8Ct36u8RPIU` — NOT a Markdown conversion (decide in remediation; the only N) |
 
-**Verification gate per post (from the plan):** that post's linter findings → 0;
-`structure_check` still PASS (6/6); `bundle3.3 exec jekyll build` clean; rendered
-`_site` output spot-matches the oracle (same headings/lists/links/images/code;
-no literal `{{…}}`, no broken image); only that post (+ assets) changed; zero
-front-matter/permalink drift.
+**Verification gate per P2-NOW post:** that post's BLOCK_HTML/N linter findings
+→ 0; `structure_check` still PASS (6/6); `bundle3.3 exec jekyll build` clean;
+rendered `_site` output spot-matches the oracle (same headings/lists/links/code;
+no broken structure); only that post changed; zero front-matter/permalink drift.
+NOTE: after all P2-NOW posts are done, the linter will still show **22 R-P4
+findings** (LIQUID_LEAK + MISSING_IMAGE) — this is expected and correct.
 
-**Image-asset note:** all 13 `relative_url` target files already exist under
-`assets/images/wp-content/uploads/...` (verified). No MISSING_IMAGE finding
-requires sourcing a new asset — they all resolve once the Liquid is removed for
-the plain repo path. (P2 plan's "possibly add assets" path is **not** needed
-for these findings.)
+### P4-COUPLED (DO NOT TOUCH IN P2 — deferred to P4)
+
+The following posts still carry LIQUID_LEAK + MISSING_IMAGE findings after P2 is
+complete. **P2 must not touch these lines.** Touching them now would break image
+URLs under `baseurl:"/blog.mithis.net"`. P4 owns these.
+
+| Post | P4-COUPLED Findings | P4 remediation (after `baseurl:""`) |
+|---|---|---|
+| `2007-05-09-almost-there.md` | LIQUID_LEAK ×1 + MISSING_IMAGE ×1 | relurl→plain path; linked-thumbnail per original `<p align=center>` |
+| `2007-08-17-resume.md` | LIQUID_LEAK ×1 | relurl→plain `/assets/…resume.pdf` md link |
+| `2008-02-04-google-patchwork.md` | LIQUID_LEAK ×2 + MISSING_IMAGE ×2 | relurl→plain path ×2; repair the two unclosed `[<img …` md-links |
+| `2008-02-18-cfxs-free.md` | LIQUID_LEAK ×1 + MISSING_IMAGE ×1 | relurl→plain `…cfxs-try2.jpg` image |
+| `2009-05-26-starhunter-fireflys…cousin.md` | LIQUID_LEAK ×1 + MISSING_IMAGE ×1 | relurl→plain screenshot img |
+| `2013-10-06-connecting-to-a-fritzbox…vpnc.md` | LIQUID_LEAK ×2 + MISSING_IMAGE ×2 | relurl→plain path for 2 inline `<img>` |
+| `2014-07-25-hdmi2usb…day-4…2014.md` | LIQUID_LEAK ×2 + MISSING_IMAGE ×3 | relurl→plain path for all 3 photo `<img>` |
+| `2015-07-05-first-v2-hdmi2usb…constructed.md` | LIQUID_LEAK ×1 + MISSING_IMAGE ×1 | relurl→plain board-photo path |
+
+**Image-asset note:** all 13 occurrences / 12 unique `relative_url` target
+paths already exist under `assets/images/wp-content/uploads/...` (verified).
+No MISSING_IMAGE finding requires sourcing a new asset — they all resolve once
+the Liquid is removed for the plain repo path in P4. (P2 plan's "possibly add
+assets" path is **not** needed for any of these findings.)
