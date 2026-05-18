@@ -6,3 +6,5 @@ vendor
 .claude/settings.local.json
 tmp/
 .bundle/
+.venv/
+uv.lock
