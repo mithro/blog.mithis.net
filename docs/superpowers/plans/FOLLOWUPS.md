@@ -110,6 +110,25 @@ Plan-verbatim, non-gating at P0; harden when the render path / CI matters:
   structural diff (the structural section in P0-RESULTS.md is the PHP-side
   anchor inventory = the P1 theme target list, not yet a Jekyll-vs-PHP diff).
 
+## P2/P5/P6 — from P1-T8 (search) review (Minors, structural gate already green)
+
+- **P2/P5:** `_includes/sidebar.html` search widget still has stale ids
+  `search-input`/`search-results` (the old pre-rewrite ones; no JS wires them
+  anywhere — pre-existing dead code). Convert it to a real
+  `<form method="get" action="{{ '/search.html' | relative_url }}"><input
+  name="s" ...></form>` so it submits to the working `?s=` handler. (Pairs with
+  the P4 404/search form-action item.)
+- **P2 (a11y):** the search results list has no `aria-live="polite"` — screen
+  readers won't announce dynamically injected results. Add in the P2/a11y pass.
+- **P2 (UX, minor):** no loading indicator if the user submits before
+  `search.json` fetch resolves (brief "Nothing Found" flash). Optional polish.
+- **P6 (general, supersedes the home-specific note):** Barthelme's
+  `div#nav-below`/`div.navigation` has float children and the theme CSS has no
+  clearfix, so an empty/realised nav-below computes zero height (observed on
+  home, category, search). This is faithful to Barthelme's own CSS behavior;
+  the P6 pixel sweep must confirm it matches the original (do NOT "fix" with a
+  non-Barthelme clearfix unless the original visibly differs).
+
 ## P4/P5/P6 — from P1-T7 (notfound) review
 
 - **P4 (functional):** `404.html` `form#error404-searchform` uses
