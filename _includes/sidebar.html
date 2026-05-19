@@ -20,10 +20,10 @@
         <!-- Search Widget -->
         <li class="widget">
             <h3 class="widgettitle">Search</h3>
-            <div class="search-container">
-                <input type="text" id="search-input" placeholder="Search posts...">
-                <div id="search-results"></div>
-            </div>
+            <form method="get" action="{{ '/search.html' | relative_url }}">
+              <input name="s" id="sidebar-s" type="text" placeholder="Search…"/>
+              <input type="submit" value="Search"/>
+            </form>
         </li>
         
         <!-- Categories Widget -->
@@ -41,7 +41,7 @@
                 <option value="{{ '/archives/category/lca/' | relative_url }}">linux.conf.au (12)</option>
                 <option value="{{ '/archives/category/pcb/' | relative_url }}">PCB (5)</option>
                 <option value="{{ '/archives/category/python/' | relative_url }}">Python (6)</option>
-                <option value="{{ '/archives/category/rcs-darcs/' | relative_url }}">RCS (3)</option>
+                <option value="{{ '/archives/rcs/darcs/' | relative_url }}">RCS (3)</option>
                 <option value="{{ '/archives/category/sci-fi/' | relative_url }}">Sci Fi (1)</option>
                 <option value="{{ '/archives/category/summer-of-code/' | relative_url }}">Summer of Code (8)</option>
                 <option value="{{ '/archives/category/timvideos-us/' | relative_url }}">TimVideos.us (10)</option>

@@ -4,4 +4,6 @@ title: Hardware
 cat_slug: hardware
 permalink: /archives/category/hardware/
 description: ""
+redirect_from:
+  - /category/hardware/
 ---

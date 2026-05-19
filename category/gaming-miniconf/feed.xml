@@ -2,6 +2,8 @@
 layout: null
 category: gaming-miniconf
 permalink: /archives/category/gaming-miniconf/feed/
+redirect_from:
+  - /category/gaming-miniconf/feed/
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
