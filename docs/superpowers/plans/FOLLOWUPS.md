@@ -225,6 +225,31 @@ Plan-verbatim, non-gating at P0; harden when the render path / CI matters:
   a gap. If a later pass ever standardizes hfeed across archetypes, 404 stays
   the deliberate exception.
 
+## P6 — user signoff: 3 linked-thumbnail `<a title="…">` hover-tooltips lost in P4 R-P4 pure-Markdown conversion (fidelity-vs-no-HTML; accepted per approved P4-FINDINGS §B)
+
+- **What:** P4 Task B converted the 22 R-P4 image residuals. Three were
+  linked thumbnails whose original WP `<a>` carried a `title=` (hover
+  tooltip): `2007-05-09-almost-there.md` (`title="CFXS Try2 PCB Board"`) and
+  `2008-02-04-google-patchwork.md` ×2 (`title="Google patchwork."`,
+  `title="Google Transsision"`). The approved P4-FINDINGS §B chose the pure
+  Markdown `[![alt](thumb)](full)` form (spec §7 prefers Markdown over inline
+  HTML; linter-clean; spec+code review PASSED). Markdown's image-link syntax
+  CANNOT carry a link `title=`, so the hover tooltip is lost (alt text,
+  image, and the thumb→full link itself are all faithfully preserved — only
+  the `<a>` tooltip differs).
+- **The tension (same class as the fritzbox-bold item):** spec §7 *would*
+  permit a minimal inline `<a href="…" title="…"><img alt="…" src="…"/></a>`
+  here (a link `title` is genuinely Markdown-inexpressible — the same
+  justification used for the width/height/class inline `<img>`s elsewhere in
+  Task B). The approved §B deliberately chose pure Markdown for these three
+  (simplicity / Markdown-first). It is a real, tiny, user-visible delta.
+- **MANDATORY user signoff (acceptance bar #3):** P6 must show the user the
+  before/after for these 3 image-links and get an explicit decision: (a)
+  accept the lost hover-tooltip (ship pure Markdown — current state), or (b)
+  restore via the §7-sanctioned minimal inline `<a title><img></a>` form.
+  Do NOT silently claim 100% fidelity here. P4-Z handoff must surface this
+  alongside the fritzbox-bold item.
+
 ## P6 — MANDATORY user visual signoff: bold emphasis lost inside fritzbox code blocks (fidelity-vs-no-HTML tension; accepted per approved §3.4)
 
 - **What:** the 4 fritzbox (`2013-10-06-connecting-to-a-fritzbox-…vpnc.md`)
