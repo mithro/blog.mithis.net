@@ -1,7 +1,7 @@
 ---
 layout: category
 title: Ideas
-category: ideas
+cat_slug: ideas
 permalink: /archives/category/ideas/
-description: "Proposals which I'll probably never get around to implementing."
+description: "Proposals which I’ll probably never get around to implementing."
 ---
