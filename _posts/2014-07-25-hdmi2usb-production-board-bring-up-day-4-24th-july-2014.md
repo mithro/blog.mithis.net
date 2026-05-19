@@ -2,6 +2,7 @@
 author: mithro
 categories:
 - timvideos-us
+- hdmi2usb
 date: 2014-07-25 12:18:12 +1000
 excerpt: Generally slow progress today, but some success. Able to successfully load
   libFPGALink firmware onto Cypress chip and programmed the FPGA using it. Yay! Wrote

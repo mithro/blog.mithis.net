@@ -2,6 +2,8 @@
 author: mithro
 categories:
 - tp
+- rcs-darcs
+- tailor
 date: 2007-04-21T08:17:42+1000
 excerpt: 'As our code repositories for Thousand Parsec where down anyway (because
   of the host being compromised), we decided to do something we had been thinking

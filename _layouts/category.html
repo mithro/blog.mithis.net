@@ -12,8 +12,12 @@ layout: default
         <div class="archive-meta"></div>
         {% endif %}
 
-        {% assign category_key = page.url | split: '/' | where_exp: 's', 's != ""' | last %}
-        {% assign category_posts = site.categories[category_key] %}
+        {% if page.cat_slug %}
+          {% assign category_key = page.cat_slug %}
+        {% else %}
+          {% assign category_key = page.url | split: '/' | where_exp: 's', 's != ""' | last %}
+        {% endif %}
+        {% assign category_posts = site.posts | where_exp: "post", "post.categories contains category_key" %}
         {% for post in category_posts %}
         {% assign post_number = forloop.index %}
         <div id="post-{% if post.wordpress_id %}{{ post.wordpress_id }}{% else %}{{ post.slug }}{% endif %}" class="hentry p{{ post_number }} post publish author-mithro {% for cat in post.categories %}category-{{ cat | slugify }} {% endfor %}y{{ post.date | date: '%Y' }} m{{ post.date | date: '%m' }} d{{ post.date | date: '%d' }} h{{ post.date | date: '%H' }}{% cycle '', ' alt' %}">

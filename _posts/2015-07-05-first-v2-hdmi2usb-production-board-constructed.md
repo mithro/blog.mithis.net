@@ -2,6 +2,8 @@
 author: mithro
 categories:
 - timvideos-us
+- hdmi2usb
+- hardware
 date: 2015-07-05 14:47:57 +1000
 excerpt: For the last year and a half, I have been working with Numato Labs to create
   a “HDMI2USB Production Board” for our HDMI2USB firmware that was originally developed

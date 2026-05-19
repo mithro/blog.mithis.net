@@ -2,6 +2,7 @@
 author: mithro
 categories:
 - timvideos-us
+- hdmi2usb
 date: 2014-07-28 23:39:31 +1000
 excerpt: 25th July 2014 Setup xob‘s hacked up colormake in our build system. Nice
   colorized output now! Fought more with ERROR:Place - Constraint Resolved NO placeable

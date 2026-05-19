@@ -2,6 +2,7 @@
 author: mithro
 categories:
 - timvideos-us
+- hdmi2usb
 date: 2014-07-22 11:16:49 +1000
 excerpt: Wrote snippets for the last 3 days. slidelint work Further updated some slidelint
   site documentation. Committed the slidelint nginx configuration. Got set up in Joel
