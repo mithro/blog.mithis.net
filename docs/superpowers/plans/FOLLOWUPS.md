@@ -258,6 +258,18 @@ Plan-verbatim, non-gating at P0; harden when the render path / CI matters:
   ship this as "100% fidelity" — it is a known, user-visible reduction. P2-Z
   handoff MUST surface this prominently.
 
+## P6 — source-cosmetic micro-nits (no render/fidelity impact; tidy in the cosmetic pass)
+
+- **fritzbox R-E (commit `85e6d8c`):** region-3's closing ``` fence (the
+  `IPSec gateway …` vpnc.conf template) is immediately followed by the
+  `As this file contains usernames…` paragraph with NO intervening blank
+  line, whereas region-4's closing fence has one before the following
+  heading. CommonMark/kramdown require neither; rendered output is
+  byte-correct vs the oracle (spec-review confirmed). Pure source-style
+  uniformity nit — add one blank line after the region-3 closing fence in
+  the cosmetic pass if desired. Non-blocking; left as-is in P2 to avoid
+  re-opening an approved commit for a zero-render-impact change.
+
 ## P6 — CSS visual-audit micro-deltas (accumulate; verify in the pixel sweep)
 
 - P1-T6: `_layouts/page.html` title class `page-title`→`entry-title` (faithful to
