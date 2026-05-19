@@ -589,6 +589,11 @@ All 8 hdmi2usb posts currently have `categories: [timvideos-us]` only in Jekyll 
 
 3. Also add `category/timvideos-us/hdmi2usb/` to the sidebar dropdown in `_includes/sidebar.html` at an appropriate position (after `timvideos-us`) with display text "HDMI2USB".
 
+**CORRECTION (spec-review independent oracle sweep):** The live oracle at `/archives/category/timvideos-us/hdmi2usb/` lists **10** posts, not the 8 enumerated above. Two additional posts were missing their faithful category sets in P4 Task D-B and have been restored (front-matter only):
+- WP 2167 (`2016-01-15-timvideos-us-2016-new-years-resolutions.md`): faithful cats `[lca, pcb, timvideos-us, hdmi2usb]` — oracle body class: `s-category-hdmi2usb s-category-lca s-category-pcb s-category-timvideos-us`.
+- WP 2169 (`2016-03-15-timvideos-us-and-google-summer-of-code-2016.md`): faithful cats `[summer-of-code, hardware, timvideos-us, hdmi2usb]` — oracle body class: `s-category-hardware s-category-hdmi2usb s-category-summer-of-code s-category-timvideos-us`.
+The 8-post enumeration above was incomplete; the live oracle's 10-post set is the authoritative record.
+
 ---
 
 ### D.4 Scheme/Sydney/Tailor categories
