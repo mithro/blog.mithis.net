@@ -7,10 +7,20 @@ Usage: {% include comments.html post_slug=page.slug %}
 {% assign comments = site.data.comments[post_slug] %}
 
 {% if comments and comments.size > 0 %}
+{% comment %}
+  site.data.comments[slug] is the directory hash: { "comment-<id>-<YYYYMMDD>-<HHMMSS>" => {date,id,name,message,...} }
+  Iterating a hash in Liquid 4 yields [key, value] pairs, so comment.name etc. would be nil.
+  Collect the value objects, then sort ascending by date (faithful WordPress/Barthelme order).
+{% endcomment %}
+{% assign _comment_objects = "" | split: "" %}
+{% for _pair in comments %}
+  {% assign _comment_objects = _comment_objects | push: _pair[1] %}
+{% endfor %}
+{% assign _sorted_comments = _comment_objects | sort: "date" %}
 <div class="comments-section">
     <h3>Comments ({{ comments.size }})</h3>
-    
-    {% for comment in comments %}
+
+    {% for comment in _sorted_comments %}
     <div class="comment" id="comment-{{ comment.id }}">
         <div class="comment-header">
             <strong class="comment-author">{{ comment.name }}</strong>
