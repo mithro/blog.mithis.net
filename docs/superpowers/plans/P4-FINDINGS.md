@@ -81,6 +81,20 @@ Reason: replacing `{{ '/assets/x' | relative_url }}` with plain `/assets/x` in a
 4. **Commit 4** (P4-C4): Edge-case URL fixes — rcs-darcs redirect, timvideos-us/hdmi2usb sub-category, Scheme/Sydney/Tailor category pages, 404/search form-action.
 5. **Commit 5** (P4-C5): Gemfile + Gemfile.lock update adding `jekyll-redirect-from` (needed by §D redirects).
 
+> **CONTROLLER DECISION (2026-05-19, supersedes the C1/C5 split above):**
+> P4-C5's `jekyll-redirect-from` Gemfile/lock/`plugins:` addition was
+> deliberately **consolidated into the keystone P4-C1 commit** (`8a1308f`).
+> Rationale: it is a one-line, harmless, purely-additive infra prerequisite
+> for the later §D redirect work; bundling it with the baseurl/CNAME/workflow
+> config keystone keeps all P4 config/infra atomic and avoids a
+> disproportionate standalone commit+review cycle for a single gem line. The
+> ONLY constraint that is correctness-critical here is the **C1-before-C2**
+> ordering (baseurl set before any R-P4 post conversion) — that is preserved.
+> The 5-commit split was a suggested granularity, not a correctness contract;
+> the functional P4-C1 gate (build clean, zero `/blog.mithis.net/` prefix,
+> structure 6/6, corpus still 22) was fully met. Reviewers/P4-Z: treat the
+> gem-in-C1 as the sanctioned plan, NOT a deviation/defect.
+
 ---
 
 ## B. Regenerated 22 R-P4 worklist (current line numbers, exact source text, faithful target)
