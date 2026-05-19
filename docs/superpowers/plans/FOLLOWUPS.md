@@ -454,6 +454,50 @@ EXACTLY (literal fidelity) for now; any improvement (broken lh3.ggpht.com
 thumbnails, picasaweb.google.com links now defunct) is deferred to P6 visual
 audit. Deep byte-fidelity vs the now-reachable live site is a P6 concern.
 
+## SYSTEMIC/HIGH — corpus-wide multi-category UNDER-IMPORT (discovered in P4 D-B; the single largest remaining fidelity gap; needs a DEDICATED pass + USER DECISION)
+
+- **Symptom:** the live-WP oracle sweep during P4 D-B found **11 categories
+  whose built post count < the live WP count** (gaming-miniconf 1 vs 7;
+  summer-of-code 1 vs 8; google 3 vs 7; uni 2 vs 5; python 4 vs 6; pcb 3 vs
+  5; diary/games/highlights/ubuntu/useful-bits each −1). See P4-RESULTS §4
+  for the table.
+- **Confirmed cause (at least partly):** the original WP→Jekyll migration
+  (P0/P1 era) imported many posts with ONLY their PRIMARY WP category. Proof:
+  live WP shows posts 75/66/65/62/61/46 in BOTH `lca` AND `gaming-miniconf`;
+  in `_posts` they exist but carry `categories: [lca]` only → they don't
+  appear on the `gaming-miniconf` page; that page (and ~10 others) and the
+  sidebar counts under-report. D-B oracle-fixed exactly this for its scoped
+  14 posts; the count table proves it is SYSTEMIC, far beyond D-B's slice.
+- **OPEN QUESTION (unresolved — the dedicated pass must answer first):** is
+  some shortfall ALSO entirely-missing posts (corpus < live WP), which would
+  contradict the design's "76/76 posts" success criterion (§11), or is it
+  purely under-categorization of the 76 we have? `gaming-miniconf` is proven
+  pure under-categorization; the others are NOT yet proven to be only that.
+- **Why it MUST be addressed:** the goal is *verified 100% fidelity*; faithful
+  category membership is part of it (the original blog showed every post in
+  ALL its WP categories). This is now the single largest known fidelity gap.
+- **Owner / shape:** a **dedicated oracle-driven systemic pass** (own
+  brainstorm→spec→plan→subagent cycle, like P2-R / P3 / the flat-list pass):
+  (a) audit true corpus completeness vs the live WP (enumerate live WP posts;
+  compare to our 76; resolve the open question); (b) for EVERY post, fetch
+  its live `rel="category tag"` set and restore the faithful full
+  multi-category `categories:` front matter (front-matter-only, oracle-exact,
+  per-post 2-stage reviewed — same rigor as D-B); (c) P3-style re-import any
+  genuinely-missing posts; (d) THEN correct/auto-compute the sidebar counts
+  (ties to the P5 dynamic-count item). Gate: every category page's post set
+  == the live WP oracle's, corpus-wide.
+- **P4 interim posture (deliberate, faithful):** P4 left the hardcoded
+  sidebar counts at the WP-oracle values for the 11 affected categories
+  (they match the ORIGINAL Barthelme sidebar — faithful; the built shortfall
+  is THIS gap, not a label bug). Only `lca`/`hdmi2usb` (D-B achieved full
+  faithful membership → built==oracle) were corrected. Do NOT "fix" the
+  others by lowering them to built counts (that would be LESS faithful) —
+  fix the underlying membership in the dedicated pass.
+- **USER DECISION pending (surfaced by the controller after P4 merge):**
+  whether to run this dedicated systemic pass next (recommended — it is core
+  to the 100% goal), its priority vs P5/P6, and how to treat any
+  genuinely-missing posts vs the "76/76" criterion.
+
 ## P6/SYSTEMIC — flat WP→MD lists don't reproduce original list structure (HIGH — core to the 100%-fidelity goal; surfaced repeatedly during P2-R-C/R-D)
 
 - **Symptom (systemic, NOT linter-detectable, NOT in the 47 P2 findings):** the
