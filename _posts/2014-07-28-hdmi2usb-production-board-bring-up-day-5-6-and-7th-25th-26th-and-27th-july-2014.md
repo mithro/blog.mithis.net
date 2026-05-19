@@ -17,7 +17,10 @@ wordpress_url: https://blog.mithis.net/archives/timvideos-us/2003-hdmi2usb-produ
 ## 25th July 2014
 - Setup [xob](https://github.com/xobs)‘s hacked up [colormake in our build system](https://github.com/timvideos/HDMI2USB/pull/69). Nice colorized output now!
 - Fought more with
-ERROR:Place - Constraint Resolved NO placeable site for hdmiMatri_Comp/dvi_rx1/ioclk_buf issue</pre>
+
+  ```
+  ERROR:Place - Constraint Resolved NO placeable site for hdmiMatri_Comp/dvi_rx1/ioclk_buf issue
+  ```
 - Watched [Paul Fenwick’s OSCon Keynote](https://www.youtube.com/watch?v=xuK6udkbyGo).
 **Streaming System Hacking**
 - Made the configuration system better and adding a lot of comments to the json file (which isn’t really valid json any more).
