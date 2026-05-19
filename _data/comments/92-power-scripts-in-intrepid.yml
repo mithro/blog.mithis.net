@@ -1,0 +1,19 @@
+- date: 2009-01-21 18:55:00 +0000
+  id: '7164'
+  message: <p>Awesome. This was frustrating me too &#8211; thanks for your explanation.</p>
+  name: David Adam
+  wordpress_url: https://blog.mithis.net/archives/uncategorized/92-power-scripts-in-intrepid#comment-7164
+- date: 2009-05-21 05:11:00 +0000
+  id: '7212'
+  message: <p>cheers for this, exactly what i needed.</p>
+  name: paul
+  wordpress_url: https://blog.mithis.net/archives/uncategorized/92-power-scripts-in-intrepid#comment-7212
+- date: 2009-10-28 23:27:00 +0000
+  id: '7224'
+  message: <p>What an absolute pain in the arse this is. Someone had to go and convert
+    the maintainer-supplied stuff in acpi.d across to the pm.d, it would not have
+    been much trouble to put a check in the package postinst script to see if there
+    was stuff lying around and inform the administrator if so, let alone document it
+    in the release notes.</p>
+  name: Jon
+  wordpress_url: https://blog.mithis.net/archives/uncategorized/92-power-scripts-in-intrepid#comment-7224
