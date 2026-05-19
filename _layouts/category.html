@@ -12,6 +12,13 @@ layout: default
         <div class="archive-meta"></div>
         {% endif %}
 
+        {% comment %}
+          Post listing is keyed off page.cat_slug (MUST be set on every category page —
+          Jekyll reserves the 'category' variable). The URL-last-segment fallback is ONLY
+          safe for flat /archives/category/<slug>/ URLs and is WRONG for hierarchical ones
+          (e.g. /archives/rcs/darcs/ whose cat_slug is 'rcs-darcs', not 'darcs') — so
+          all hierarchical category pages MUST set cat_slug explicitly in their front matter.
+        {% endcomment %}
         {% if page.cat_slug %}
           {% assign category_key = page.cat_slug %}
         {% else %}
