@@ -42,7 +42,7 @@ layout: null
   {% for category in categories %}
     {% if category != '' %}
     <url>
-      <loc>{{ site.url }}{{ site.baseurl }}/category/{{ category | slugify }}/</loc>
+      <loc>{{ site.url }}{{ site.baseurl }}/archives/category/{{ category | slugify }}/</loc>
       <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.6</priority>

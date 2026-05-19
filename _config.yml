@@ -110,3 +110,4 @@ exclude:
   - checkpoint_40.json
   - checkpoint_50.json
   - xml/
+  - sitemap_index.xml
