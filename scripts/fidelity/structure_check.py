@@ -21,7 +21,7 @@ BARTHELME = Path("theme_analysis/barthelme")
 ARCHETYPE_SITE_PATHS: dict[str, str] = {
     "home":     "index.html",
     "post":     "archives/hardware/2186-nmigen-new-improved-by-whitequark.html",
-    "category": "category/hardware/index.html",
+    "category": "archives/category/hardware/index.html",
     "page":     "about/index.html",
     "notfound": "404.html",
     "search":   "search.html",
