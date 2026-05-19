@@ -171,6 +171,26 @@ commentary.
 list items; faithful remediation = delete the orphan closer lines / restore
 proper Markdown nested-list indentation.
 
+> **P2-NOW scope clarification (controller decision, 2026-05-19 — added during
+> R-D execution).** Live-oracle inspection of `hdmi2usb` day-2/day-3 shows the
+> originals are 3–4-level-deep nested `<ul>`s, while the WP→MD export flattened
+> ALL list items to top-level `-` with no indentation across the WHOLE corpus
+> (and dropped blank-line paragraph separators). That flat-vs-nested divergence
+> is **valid Markdown with no raw HTML → not linter-detectable → a SYSTEMIC,
+> corpus-wide structural-fidelity problem**, NOT one of the 47 findings.
+> Restoring full nesting only around the finding lines would be incoherent
+> (the same post has many un-nested sublists with no closer-finding) and would
+> conflate two scopes. **Therefore P2-R-D's bounded scope for MANGLED_LI_CLOSE
+> is: DELETE the orphan `</li> /li>` line (this removes the BLOCK_HTML raw-HTML
+> finding) and DO NOT re-nest/re-indent the surrounding flat list.** The
+> "restore proper Markdown nested-list indentation" half of the remediation
+> above is the systemic structural-fidelity work, deferred to the dedicated
+> P6/SYSTEMIC pass — see `FOLLOWUPS.md` → "P6/SYSTEMIC — flat WP→MD lists don't
+> reproduce original list structure" (committed `e4e706c`). This mirrors how
+> R-C deliberately left cfxs-free's systemic paragraph-joining untouched. The
+> co-located `<pre>` dumps in the same posts ARE in P2 scope (raw `</pre>` is a
+> finding) and are reconstructed as fenced code blocks, oracle-verbatim.
+
 ### 3.6 MANGLED_DL — 1 × `BLOCK_HTML` — class **R**
 
 `<dl> dt>…</dt> dd>…</dd> … /dl>` (opening `<` stripped from `dt`/`dd`/`/dl`).
