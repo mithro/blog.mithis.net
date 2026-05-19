@@ -383,3 +383,45 @@ contains the Picasa photo-gallery strip unchanged from its creation commit
 EXACTLY (literal fidelity) for now; any improvement (broken lh3.ggpht.com
 thumbnails, picasaweb.google.com links now defunct) is deferred to P6 visual
 audit. Deep byte-fidelity vs the now-reachable live site is a P6 concern.
+
+## P6/SYSTEMIC — flat WP→MD lists don't reproduce original list structure (HIGH — core to the 100%-fidelity goal; surfaced repeatedly during P2-R-C/R-D)
+
+- **Symptom (systemic, NOT linter-detectable, NOT in the 47 P2 findings):** the
+  WP→MD export emitted post bodies with NO blank-line separators and ALL list
+  items flattened to top-level `- ` (no indentation). kramdown (`input: GFM`)
+  therefore renders structures that DIVERGE from the live original even though
+  the Markdown is valid and has zero raw HTML:
+  - Consecutive prose lines merge into ONE `<p>` (e.g. `cfxs-free` lines 15–18
+    render as a single `<p>`; the original had separate `<p>` per paragraph).
+  - Multi-level nested `<ul><li><ul>…</ul></li></ul>` (live oracle confirmed on
+    `hdmi2usb` day-2/day-3) is flattened to a single-level list.
+  - A list that the original CLOSED, followed by an interstitial
+    `<p><strong>…</strong></p>` and a NEW `<ul>`, instead renders as one
+    continuous `<ul>` absorbing the strong-text + following items (confirmed by
+    the R-D day-5 spec review: live oracle = 3-`<li>` "25th July" `<ul>` then
+    `<p><strong>Streaming System Hacking</strong></p>` then a new `<ul>`; built
+    site = one 16-item `<ul>`). Present byte-identically in parent commits — a
+    pre-existing export artifact, not introduced by any P2 commit.
+- **Why P2 does NOT fix this:** P2's approved scope (spec §7 / P2-FINDINGS) is
+  the content-LINTER findings = raw mangled HTML only. This flat-structure
+  divergence is *valid* Markdown with no raw HTML, so the linter cannot and does
+  not flag it; "re-nesting/blank-lining the whole corpus" is explicitly out of
+  P2-NOW scope and was deliberately left untouched in R-C/R-D (only the
+  finding-local sublist tied to a mangled `</li> /li>` closer is restored, per
+  P2-FINDINGS §3.5). Touching it post-wide in P2 would be unbounded scope creep
+  and would conflate two different problems.
+- **Why it MUST be addressed (owner):** the project goal is *verified 100%
+  visual fidelity*. This systemic divergence affects MANY posts (every
+  multi-paragraph / nested-list post) and is exactly the gap between "no raw
+  HTML in posts" (P2) and "renders pixel-identical to the original" (P6). It is
+  almost certainly too large+structural for the P6 *CSS* micro-delta sweep
+  alone — recommend a **dedicated systemic content-structure pass** (its own
+  brainstorm→spec→plan→subagent cycle) BEFORE or AS PART OF P6, driven by the
+  now-reachable live oracle (TLS cert expired → verify-disabled fetch), that
+  restores faithful paragraph separation + list nesting/breaks across the whole
+  `_posts` corpus WITHOUT hardcoding HTML (i.e. correct Markdown blank-lines +
+  indentation), with a structural diff vs the live original as the gate. The P6
+  Wayback/live pixel sweep + user signoff will otherwise fail on these posts.
+- **Action:** P2-Z handoff MUST surface this prominently to P3/P6 planning; the
+  P6 (or dedicated-pass) spec MUST own a corpus-wide list/paragraph-structure
+  fidelity gate. Do NOT lose this between phases.
