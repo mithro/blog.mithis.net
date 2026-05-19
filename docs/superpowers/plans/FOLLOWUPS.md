@@ -492,6 +492,23 @@ audit. Deep byte-fidelity vs the now-reachable live site is a P6 concern.
   pre-existing `\n\n` EOF on a post whose P2 edit did not touch EOF as a
   documented NON-REGRESSION (per this note), not a defect.
 
+## P5 — comment-system follow-ups (from P3 comment-render fix; non-blocking)
+
+- **`_includes/comments.html` assumes BOTH comment forms always exist.** P3
+  confirmed Jekyll resolves `site.data.comments[slug]` to the per-comment
+  DIRECTORY hash (the same-named `<slug>.yml` aggregate is shadowed). The
+  fixed include (commit `8fe51c7`) iterates the dir-hash values + sorts by
+  `date` ascending. If a FUTURE comment post is added with ONLY the `.yml`
+  aggregate and no `<slug>/` dir, `site.data.comments[slug]` would be a LIST
+  and the include would render zero comments. The P5 new-post/new-comment
+  workflow MUST require creating BOTH forms (per design §1) — bake this into
+  the scaffold/doc — OR make the include list-fallback-robust. (Spec §1
+  already mandates both forms; this is a workflow-guardrail + doc item.)
+- **Cosmetic (P6):** the comment-include's array-accumulation `{% assign %}`/
+  `{% for %}` block emits ~2 blank lines of HTML whitespace before
+  `<div class="comments-section">` (no visible/render defect; build clean).
+  Optionally add `{%- -%}` whitespace-control in the P6 cosmetic pass.
+
 ## P5 — category-fidelity follow-ups (from M1/M2 code review; non-blocking)
 
 - **Dead `_includes/category-feed.xml` has stale `/category/<slug>/` URLs
