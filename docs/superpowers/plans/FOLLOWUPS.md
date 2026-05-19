@@ -425,3 +425,24 @@ audit. Deep byte-fidelity vs the now-reachable live site is a P6 concern.
 - **Action:** P2-Z handoff MUST surface this prominently to P3/P6 planning; the
   P6 (or dedicated-pass) spec MUST own a corpus-wide list/paragraph-structure
   fidelity gate. Do NOT lose this between phases.
+
+## P5-housekeeping — corpus-wide EOF trailing-blank-line normalization (MINOR, cosmetic, NOT P2)
+
+- **Observation (R-D day-2 spec review):** many `_posts/*.md` end with `\n\n`
+  (one trailing blank line) rather than a single `\n`, a WP→MD export artifact
+  present corpus-wide. It is invisible (kramdown ignores trailing blank lines —
+  zero render/fidelity impact), NOT a content-linter finding, and NOT in the 47.
+- **Why P2 does NOT touch it:** mid-file P2 edits (R-D day-2/3/5) correctly do
+  NOT alter EOF bytes outside their edit region — preserving the pre-existing
+  byte is the faithful, in-scope behaviour (changing it would be unrequested
+  drift). Posts whose P2 edit happened to be AT EOF (R-A's 6 `<style>`
+  removals) legitimately normalized to a single `\n` because the injected
+  block's removal restored the original pre-injection EOF — so the corpus is
+  now MIXED (single-`\n` for R-A's 6; `\n\n` for the untouched majority). This
+  mixed state is cosmetic only.
+- **Owner:** a dedicated **P5 housekeeping** one-shot (or fold into the
+  P6/SYSTEMIC pass) — normalize every `_posts/*.md` to exactly one trailing
+  `\n` in a single mechanical commit, with a guard added to the new-post
+  workflow/linter (P5) so future posts stay normalized. Reviewers: treat a
+  pre-existing `\n\n` EOF on a post whose P2 edit did not touch EOF as a
+  documented NON-REGRESSION (per this note), not a defect.
