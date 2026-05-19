@@ -22,7 +22,7 @@ posts' permalinks resolve under `_site/archives/...`.
 | Hermetic suite (`tests/`) | green | **45 passed** ✓ |
 | `bundle3.3 exec jekyll build` | clean | **PASS** ✓ |
 | Comments (84, 92) | both `_data/comments/` forms + render | both forms present & verbatim; render chronologically ✓ |
-| Working tree | clean | clean; 8 commits ahead of `main` |
+| Working tree | clean | clean; FF-mergeable, P3 commits ahead of `main` |
 
 ## 2. What P3 did
 

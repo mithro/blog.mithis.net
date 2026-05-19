@@ -492,6 +492,22 @@ audit. Deep byte-fidelity vs the now-reachable live site is a P6 concern.
   pre-existing `\n\n` EOF on a post whose P2 edit did not touch EOF as a
   documented NON-REGRESSION (per this note), not a defect.
 
+## P6 — verify pre-existing comment-data fidelity (from P3 final review; non-blocking, NOT a P3 regression)
+
+- **`82-techtalk-gamingforfreedom` comment 7236 renders its author "name" as
+  a blog-post title** (`Mithro rants about stuff : OSDC & orbital death,
+  better late then never…`) with the message being an excerpt. This is
+  almost certainly a WordPress **pingback/trackback** (WP displays the
+  linking post's title as the "author" — so this MAY be faithful to the
+  original). This is PRE-EXISTING comment data (committed before P3; the
+  comment-render fix merely made it visible — it was an empty shell before),
+  NOT a P3 regression. P6 (or a comment-data verification pass) MUST check
+  the live/Wayback original for these 6 long-standing comment posts and
+  confirm each stored comment `name`/`message` is faithful (esp.
+  pingbacks/trackbacks rendered the WP way; no scrape-mangled names). Only
+  the 4 P3-recovered posts' comments (84/92) were oracle-verified verbatim
+  in P3; the 6 pre-existing ones' comment DATA fidelity was out of P3 scope.
+
 ## P5 — comment-system follow-ups (from P3 comment-render fix; non-blocking)
 
 - **`_includes/comments.html` assumes BOTH comment forms always exist.** P3
