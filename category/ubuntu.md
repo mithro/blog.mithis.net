@@ -1,7 +1,7 @@
 ---
 layout: category
 title: Ubuntu
-category: ubuntu
+cat_slug: ubuntu
 permalink: /archives/category/ubuntu/
 description: ""
 ---

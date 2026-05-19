@@ -1,7 +1,7 @@
 ---
 layout: category
 title: Games
-category: games
+cat_slug: games
 permalink: /archives/category/games/
 description: ""
 ---

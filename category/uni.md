@@ -1,7 +1,7 @@
 ---
 layout: category
 title: Uni
-category: uni
+cat_slug: uni
 permalink: /archives/category/uni/
 description: ""
 ---

@@ -1,7 +1,7 @@
 ---
 layout: category
 title: Uncategorized
-category: uncategorized
+cat_slug: uncategorized
 permalink: /archives/category/uncategorized/
 description: ""
 ---

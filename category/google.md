@@ -1,7 +1,7 @@
 ---
 layout: category
 title: Google
-category: google
+cat_slug: google
 permalink: /archives/category/google/
 description: ""
 ---

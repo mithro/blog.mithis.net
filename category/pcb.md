@@ -1,7 +1,7 @@
 ---
 layout: category
 title: PCB
-category: pcb
+cat_slug: pcb
 permalink: /archives/category/pcb/
 description: ""
 ---

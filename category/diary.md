@@ -1,7 +1,7 @@
 ---
 layout: category
 title: Diary
-category: diary
+cat_slug: diary
 permalink: /archives/category/diary/
 description: ""
 ---

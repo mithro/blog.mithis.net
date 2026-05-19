@@ -1,7 +1,7 @@
 ---
 layout: category
 title: Python
-category: python
+cat_slug: python
 permalink: /archives/category/python/
 description: ""
 ---

@@ -1,7 +1,7 @@
 ---
 layout: category
 title: Highlights
-category: highlights
+cat_slug: highlights
 permalink: /archives/category/highlights/
 description: ""
 ---

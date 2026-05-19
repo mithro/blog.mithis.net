@@ -1,7 +1,7 @@
 ---
 layout: category
 title: Useful Bits
-category: useful-bits
+cat_slug: useful-bits
 permalink: /archives/category/useful-bits/
 description: ""
 ---

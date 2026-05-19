@@ -1,7 +1,7 @@
 ---
 layout: category
 title: Hardware
-category: hardware
+cat_slug: hardware
 permalink: /archives/category/hardware/
 description: ""
 ---

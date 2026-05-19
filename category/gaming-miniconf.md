@@ -1,7 +1,7 @@
 ---
 layout: category
 title: Gaming Miniconf
-category: gaming-miniconf
+cat_slug: gaming-miniconf
 permalink: /archives/category/gaming-miniconf/
 description: ""
 ---
