@@ -137,6 +137,15 @@
 
 #### Faithful `description:` to set (verbatim oracle; YAML-safe format)
 
+> **CORRECTION (2026-05-19, post-implementation review):** the `ideas`
+> description's apostrophe is the typographic RIGHT SINGLE QUOTATION MARK
+> **U+2019** (the live oracle emits `&#8217;` — WordPress auto-curly-quote),
+> NOT the ASCII `'` (U+0027) that the tables/code-blocks in this doc render
+> at lines 37/148/208/416. The implementation (commit `b747390`) correctly
+> uses U+2019 and byte-matches the oracle; the ASCII shown below is a
+> doc-rendering artifact only. Treat the oracle (U+2019) as authoritative
+> for `ideas`.
+
 | slug | SET `description:` to | YAML-quoting note |
 |---|---|---|
 | diary | `""` | empty |

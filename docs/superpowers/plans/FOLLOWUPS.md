@@ -491,3 +491,28 @@ audit. Deep byte-fidelity vs the now-reachable live site is a P6 concern.
   workflow/linter (P5) so future posts stay normalized. Reviewers: treat a
   pre-existing `\n\n` EOF on a post whose P2 edit did not touch EOF as a
   documented NON-REGRESSION (per this note), not a defect.
+
+## P5 — category-fidelity follow-ups (from M1/M2 code review; non-blocking)
+
+- **Dead `_includes/category-feed.xml` has stale `/category/<slug>/` URLs
+  (lines ~9–10).** It is NOT referenced by any layout/include (the live
+  per-category feeds are the committed `category/<slug>/feed.xml` files,
+  already migrated to `/archives/category/<slug>/feed/`). Harmless dead code
+  now, but a latent trap if ever wired in, and it pollutes a repo-wide
+  `/category/` grep. P5 cleanup: delete the dead include (or migrate its URLs
+  if a reason to keep it emerges).
+- **`category/<slug>/feed.xml` deliberately keeps `category:` front matter
+  (NOT renamed to `cat_slug:`).** This is CORRECT: the reserved-word trap only
+  breaks cross-page `site.pages | where: "category", …`; the feed body's
+  same-page `page.category` read works fine. Documented here so a future
+  editor does NOT "normalize" feed.xml to `cat_slug` and silently break the
+  feed's post filter. (The `.md` pages use `cat_slug:` specifically to enable
+  the cross-page title lookup in the 3 layouts.)
+- **`cat_slug:` needs a one-line explanatory hint for the new-category
+  workflow.** Adding a 20th category by copy-pasting a `category/*.md` works,
+  but an editor may write `category:` (reserved → silently regresses the
+  display name to the raw slug). P5 (which owns the new-post/new-content
+  workflow + templates) should add a brief inline rationale (YAML comment in
+  the category template, or doc in the workflow) noting WHY it's `cat_slug`
+  not `category` (Jekyll reserves `category`/`categories` on pages, breaking
+  `where: "category"` lookups — see M1/M2 commit `86d8ddb`).
