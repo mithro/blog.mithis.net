@@ -308,8 +308,7 @@ Note: The `srcset` second entry (`https://blog.mithis.net/wp-content/uploads/201
 
 **Oracle (LIVE — `https://blog.mithis.net/archives/timvideos-us/1995-hdmi2usb-production-board-bring-up-day-4-24th-july-2014`):**
 
-- Line 21, image 1: `<a href="…/IMG_20140725_0029322.jpg"><img … src="…/IMG_20140725_0029322-225x300.jpg" alt="Numato HDMI2USB Prototype driving 2 screens" width="225" height="300" srcset="…" /></a>`
-- Line 21, image 2: `<img … src="…/IMG_20140725_003008-300x225.jpg" alt="HDMI2USB weird image artifact" width="400" height="300" srcset="…" />` (no link wrapper for this one)
+- Line 21: `<a href="…/IMG_20140725_0029322.jpg"><img … src="…/IMG_20140725_0029322-225x300.jpg" alt="Numato HDMI2USB Prototype driving 2 screens" width="225" height="300" srcset="…" />  <img … src="…/IMG_20140725_003008-300x225.jpg" alt="HDMI2USB weird image artifact" width="400" height="300" srcset="…" /></a>` — **CORRECTION (spec-review fidelity fix):** the live oracle places BOTH images inside ONE `<a href="…/IMG_20140725_0029322.jpg">…</a>` anchor; the earlier reading ("image 2: no link wrapper") was wrong. Both thumbnails are clickable to the full `IMG_20140725_0029322.jpg`.
 - Line 23: `<a href="…/IMG_20140725_010725.jpg"><img … src="…/IMG_20140725_010725-225x300.jpg" alt="HDMI2USB - Rohit's VGA Capture board" width="225" height="300" srcset="…" /></a>`
 
 **Asset existence:**
@@ -331,8 +330,9 @@ All three image files exist:
 **Faithful replacement for line 21** (both images on one line; keep on one line or split — preserve original line grouping):
 
 ```html
-<a href="/assets/images/wp-content/uploads/2014/07/IMG_20140725_0029322.jpg"><img alt="Numato HDMI2USB Prototype driving 2 screens" class="alignnone wp-image-1997 size-medium" height="300" sizes="(max-width: 225px) 100vw, 225px" src="/assets/images/wp-content/uploads/2014/07/IMG_20140725_0029322-225x300.jpg" srcset="/assets/images/wp-content/uploads/2014/07/IMG_20140725_0029322-225x300.jpg 225w" width="225"/></a>  <img alt="HDMI2USB weird image artifact" class="alignnone wp-image-1998" height="300" sizes="(max-width: 400px) 100vw, 400px" src="/assets/images/wp-content/uploads/2014/07/IMG_20140725_003008-300x225.jpg" srcset="/assets/images/wp-content/uploads/2014/07/IMG_20140725_003008-300x225.jpg 300w" width="400"/>
+<a href="/assets/images/wp-content/uploads/2014/07/IMG_20140725_0029322.jpg"><img alt="Numato HDMI2USB Prototype driving 2 screens" class="alignnone wp-image-1997 size-medium" height="300" sizes="(max-width: 225px) 100vw, 225px" src="/assets/images/wp-content/uploads/2014/07/IMG_20140725_0029322-225x300.jpg" srcset="/assets/images/wp-content/uploads/2014/07/IMG_20140725_0029322-225x300.jpg 225w" width="225"/>  <img alt="HDMI2USB weird image artifact" class="alignnone wp-image-1998" height="300" sizes="(max-width: 400px) 100vw, 400px" src="/assets/images/wp-content/uploads/2014/07/IMG_20140725_003008-300x225.jpg" srcset="/assets/images/wp-content/uploads/2014/07/IMG_20140725_003008-300x225.jpg 300w" width="400"/></a>
 ```
+*(Corrected vs. the original spec: both imgs are inside the single anchor, matching the live oracle — see the oracle note above.)*
 
 **Faithful replacement for line 23:**
 
