@@ -29,7 +29,6 @@ wordpress_url: https://blog.mithis.net/archives/timvideos-us/1993-hdmi2usb-produ
 - Alternatives to jig appear to be;
 - https://github.com/icefox/git-hooks – Written in bash
 - https://pypi.python.org/pypi/git-pre-commit-hook – Written in python
-</li> /li>
 - Got my “fake” Xilinx Platform Cable USB (Model DLC9G) working under Linux – Full instructions can be found at [https://github.com/timvideos/HDMI2USB/wiki/Xilinx-Platform-Cable-USB-under-Linux](https://github.com/timvideos/HDMI2USB/wiki/Xilinx-Platform-Cable-USB-under-Linux)
 - The device was [purchased from eBay](http://www.ebay.com.au/itm/Xilinx-Platform-USB-Download-Cable-Jtag-Programmer-for-FPGA-CPLD-C-Mod-XC2C64A/390809652326) on the 11th July, costed $37 USD with shipping and arrived at Joel’s house on Monday.
 - First issue was /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/setup_pcusb didn’t understand I had udev and was trying to install for the ancient hotplug.
@@ -39,10 +38,13 @@ wordpress_url: https://blog.mithis.net/archives/timvideos-us/1993-hdmi2usb-produ
 - Next setup_pcusb didn’t ask me to install fxload, so I needed to install it with apt-get install fxload
 - Next the rules that were installed to /etc/udev/rules.d/xusbdfwu.rules were invalid; they caused the following errors in /var/log/daemon.log
 
+```
 Jul 23 16:40:29 laptop udevd[841]: unknown key 'SYSFS{idVendor}' in /etc/udev/rules.d/xusbdfwu.rules:2
 Jul 23 16:40:29 laptop udevd[841]: invalid rule '/etc/udev/rules.d/xusbdfwu.rules:2'
 Jul 23 16:46:11 laptop udevd[841]: unknown key 'SYSFS{idVendor}' in /etc/udev/rules.d/xusbdfwu.rules:3
-Jul 23 16:46:11 laptop udevd[841]: invalid rule '/etc/udev/rules.d/xusbdfwu.rules:3'</pre>
+Jul 23 16:46:11 laptop udevd[841]: invalid rule '/etc/udev/rules.d/xusbdfwu.rules:3'
+```
+
 - This was fixed with;
 - Changing SYSFS to ATTRS
 - Changing BUS to SUBSYSTEM
