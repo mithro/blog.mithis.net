@@ -1,6 +1,7 @@
 ---
 layout: category
-category: ideas
 title: Ideas
-permalink: /category/ideas/
+category: ideas
+permalink: /archives/category/ideas/
+description: "Proposals which I'll probably never get around to implementing."
 ---

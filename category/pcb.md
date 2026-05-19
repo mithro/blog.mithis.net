@@ -1,6 +1,7 @@
 ---
 layout: category
-category: pcb
 title: PCB
-permalink: /category/pcb/
+category: pcb
+permalink: /archives/category/pcb/
+description: ""
 ---

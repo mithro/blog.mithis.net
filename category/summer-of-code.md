@@ -1,8 +1,7 @@
 ---
 layout: category
-title: "Summer of Code"
-category: "Summer Of Code"
-permalink: /category/summer-of-code/
+title: Summer of Code
+category: summer-of-code
+permalink: /archives/category/summer-of-code/
+description: ""
 ---
-
-Posts about Google Summer of Code projects and experiences.

@@ -1,6 +1,7 @@
 ---
 layout: category
-category: highlights
 title: Highlights
-permalink: /category/highlights/
+category: highlights
+permalink: /archives/category/highlights/
+description: ""
 ---

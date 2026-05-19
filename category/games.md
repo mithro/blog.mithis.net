@@ -1,8 +1,7 @@
 ---
 layout: category
-title: "Games"
-category: "Games"
-permalink: /category/games/
+title: Games
+category: games
+permalink: /archives/category/games/
+description: ""
 ---
-
-Posts about game development and gaming projects.

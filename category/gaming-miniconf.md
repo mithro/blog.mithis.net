@@ -1,8 +1,7 @@
 ---
 layout: category
-title: "Gaming Miniconf"
-category: "Gaming Miniconf"
-permalink: /category/gaming-miniconf/
+title: Gaming Miniconf
+category: gaming-miniconf
+permalink: /archives/category/gaming-miniconf/
+description: ""
 ---
-
-Posts about Gaming Miniconf events and game development.

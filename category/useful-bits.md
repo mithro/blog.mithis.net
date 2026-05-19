@@ -1,8 +1,7 @@
 ---
 layout: category
-title: "Useful Bits"
-category: "Useful Bits"
-permalink: /category/useful-bits/
+title: Useful Bits
+category: useful-bits
+permalink: /archives/category/useful-bits/
+description: ""
 ---
-
-Useful technical tips, tricks, and helpful information for developers and engineers.

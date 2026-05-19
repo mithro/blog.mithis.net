@@ -1,6 +1,7 @@
 ---
 layout: category
-category: uni
 title: Uni
-permalink: /category/uni/
+category: uni
+permalink: /archives/category/uni/
+description: ""
 ---

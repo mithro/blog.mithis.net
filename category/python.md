@@ -1,6 +1,7 @@
 ---
 layout: category
-category: python
 title: Python
-permalink: /category/python/
+category: python
+permalink: /archives/category/python/
+description: ""
 ---

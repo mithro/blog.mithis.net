@@ -1,8 +1,7 @@
 ---
 layout: category
-title: "Hardware"
-category: "Hardware"
-permalink: /category/hardware/
+title: Hardware
+category: hardware
+permalink: /archives/category/hardware/
+description: ""
 ---
-
-Posts about hardware development, electronics, and open source hardware projects.

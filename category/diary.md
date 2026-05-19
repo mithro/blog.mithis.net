@@ -1,6 +1,7 @@
 ---
 layout: category
-category: diary
 title: Diary
-permalink: /category/diary/
+category: diary
+permalink: /archives/category/diary/
+description: ""
 ---

@@ -1,8 +1,7 @@
 ---
 layout: category
-title: "TimVideos.us"
-category: "Timvideos Us"
-permalink: /category/timvideos-us/
+title: TimVideos.us
+category: timvideos-us
+permalink: /archives/category/timvideos-us/
+description: 'TimVideos.us is a group of exciting projects which together create a system for doing both recording and live event streaming for conferences, meetings, user groups and other presentations.'
 ---
-
-Posts about TimVideos.us project - open source video capture and streaming hardware.

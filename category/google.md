@@ -1,6 +1,7 @@
 ---
 layout: category
-category: google
 title: Google
-permalink: /category/google/
+category: google
+permalink: /archives/category/google/
+description: ""
 ---
