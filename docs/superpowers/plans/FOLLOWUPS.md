@@ -225,6 +225,39 @@ Plan-verbatim, non-gating at P0; harden when the render path / CI matters:
   a gap. If a later pass ever standardizes hfeed across archetypes, 404 stays
   the deliberate exception.
 
+## P6 — MANDATORY user visual signoff: bold emphasis lost inside fritzbox code blocks (fidelity-vs-no-HTML tension; accepted per approved §3.4)
+
+- **What:** the 4 fritzbox (`2013-10-06-connecting-to-a-fritzbox-…vpnc.md`)
+  code blocks in the live original are `<pre>` with **embedded `<strong>`**:
+  pre-1 bolds `iphone = 1;` / `xauth_key = "xxxxx";`; pre-2 bolds `key_id` and
+  the `use_xauth = yes; xauth { … }` block; pre-3 bolds all 5 replace-me
+  placeholders (`ip address or DNS name…`, `[username entered…]`, `[shared
+  secret key…]`, `[username…]`, `[password…]`). pre-4 (the shell script) has
+  NO bold. The bold guides the reader to exactly the lines that matter.
+- **The tension:** the project goal is BOTH "100% visual fidelity" AND "no
+  hard-coded HTML in posts". A Markdown fenced code block is **literal** —
+  kramdown cannot put `<strong>` inside `<pre><code>`. The ONLY ways to keep
+  the bold are raw `<pre><strong>` HTML (violates "no hardcoded HTML" AND is
+  exactly the BLOCK_HTML linter finding) or a non-existent kramdown extension.
+  So fenced-code = bold is necessarily LOST; raw-HTML = goal violated. These
+  two user constraints genuinely conflict here.
+- **Decision (follow approved plan):** P2-R-E follows the approved P2-FINDINGS
+  §3.4 remediation — convert each `<pre>` to a fenced ``` block with the
+  oracle text **plain** (`<strong>` stripped to its inner text; NO literal
+  `**` asterisks — the original showed bold text, never literal asterisks, so
+  plain text is the closest faithful no-HTML representation). Bold emphasis is
+  the accepted casualty of the no-hardcoded-HTML constraint.
+- **MANDATORY ACTION — user signoff (acceptance bar #3):** this is precisely a
+  "all other options exhausted → user does final visual signoff" case the user
+  defined. P6 (or sooner if convenient) MUST explicitly show the user the
+  before (bolded) vs after (plain code) for these 4 blocks and get an explicit
+  decision: (a) accept the delta (ship plain code blocks), or (b) re-introduce
+  emphasis via a sanctioned non-HTML mechanism (e.g. a `# >>>` comment
+  convention, a callout, or an agreed minimal-inline-`<strong>` exception
+  documented like the techtalk `fidelity-allow` sentinel). Do NOT silently
+  ship this as "100% fidelity" — it is a known, user-visible reduction. P2-Z
+  handoff MUST surface this prominently.
+
 ## P6 — CSS visual-audit micro-deltas (accumulate; verify in the pixel sweep)
 
 - P1-T6: `_layouts/page.html` title class `page-title`→`entry-title` (faithful to
