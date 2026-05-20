@@ -42,4 +42,5 @@ I’m still looking for an extension which makes the Firefox 3.0 URL bar sane. I
 - Support for “smart bookmarks” as the last option. These let you search for the current term at Google or Wikipedia without prefixing it with a stupid keyword or something.
 
 Here is what my Firefox looks like currently. As you can see I have significantly customized the toolbar to remove all that excesses.
-[<img alt="Screenshot of my Firefox" src="http://web.archive.org/web/20110311214257im_//assets/images/wp-content/uploads/2008/04/myfirefox.png" | relative_url }}"/>
+<!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
+<p style="text-align: center"><a href="http://web.archive.org/web/20110311214257/https://blog.mithis.net/wp-content/uploads/2008/04/myfirefox.png" title="Screenshot of my Firefox"><img alt="Screenshot of my Firefox" src="http://web.archive.org/web/20110311214257im_/https://blog.mithis.net/wp-content/uploads/2008/04/myfirefox.png"/></a></p>
