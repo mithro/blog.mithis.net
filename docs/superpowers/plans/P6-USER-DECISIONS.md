@@ -615,3 +615,59 @@ B-9 restore
    the branch for merge.
 
 If any restoration reveals an unexpected linter issue, P6-Z will surface it before finalizing.
+
+---
+
+## §6 — Applied decisions (controller-autonomous execution, 2026-05-20)
+
+The following decisions were applied by the implementer subagent per the controller's
+autonomous-default directive and the bundle's per-item recommendations. Restorations
+(B-1, B-4, B-7, B-9) were committed atomically to `_posts/`; accept-decisions (B-2, B-3,
+B-5, B-6, B-8) are documented here with no source change.
+
+### Applied restorations
+
+- **B-1** (`fritzbox-vpnc`): `<blockquote>` wrapper added around the final section.
+  Commit: `d612830` — "P6-EXEC: restore blockquote wrapper in fritzbox-vpnc (B-1)"
+- **B-4** (`hdmi2usb-day-4`): `<blockquote>` + `<p style="text-align: center">` wrapper
+  and `<p>&nbsp;</p>` spacer added. Commit: `d93376f` — "P6-EXEC: restore blockquote +
+  center wrapper in hdmi2usb-day-4 (B-4)"
+- **B-7** (`epiphany2firefox`): Broken `| relative_url }}` Liquid fragment removed AND
+  centered `<p style="text-align: center">` wrapper restored. Commit: `8bfb9ec` —
+  "P6-EXEC: fix broken Liquid + restore center wrapper in epiphany2firefox (B-7)"
+- **B-9** (`starhunter`): `<div style="float: right; padding: 10px;">` wrapper added
+  around the ship image. Commit: `7fb5da5` — "P6-EXEC: restore float:right div wrapper
+  in starhunter (B-9)"
+
+### Accepted divergences
+
+- **B-2** (`fritzbox-vpnc` — `<pre><strong>` bold in code blocks): Accepted. Three fenced
+  code blocks lose bold emphasis on key lines (the `iphone`/`xauth_key` settings and the
+  "replace-me" vpnc.conf placeholders). Bold-in-code is structurally impossible in Markdown
+  fenced blocks. Replacing with raw `<pre>` HTML would be the most invasive BLOCK_HTML type
+  and conflicts with design §7-tolerance (structural divergence). The content is fully
+  preserved; the bold is a presentational emphasis. Accepted per design §7 tolerance.
+
+- **B-3** (`hdmi2usb-day-3` — post-PRE orphan `<ul><ul>` nesting): Accepted. The oracle's
+  double-nested `<ul><ul>` (no `<li>` on the outer) is invalid HTML from WordPress's legacy
+  editor, not an intentional presentational choice. The Jekyll migration renders a semantically
+  correct single-level `<ul>`. Restoring the orphan structure would introduce known-bad HTML.
+  The content (list items and sub-items) is fully preserved. Accepted as a semantic improvement.
+
+- **B-5** (`hdmi2usb-snippets` — 4× `<p>&nbsp;</p>` spacers): Accepted. Empty non-breaking-
+  space paragraphs are a WordPress layout hack with no semantic meaning. Standard paragraph
+  spacing from Markdown renders all content fully readable; the sections are slightly less
+  visually separated than in the oracle but no content is missing. Accepted per design
+  §7-tolerance (cosmetic-only divergence).
+
+- **B-6** (`hdmi2usb-day-5-6-7` — 3× `<p>&nbsp;</p>` spacers): Accepted. Same reasoning
+  as B-5. Three `<p>&nbsp;</p>` paragraphs between topic sections are WordPress layout
+  artifacts. Markdown paragraph spacing is semantically equivalent. Accepted per design
+  §7-tolerance.
+
+- **B-8** (`almost-there` + `google-patchwork` — `<a title="…">` hover-tooltips, 3 links):
+  Accepted. The `title=` attribute on `<a>` tags provides tooltip text on hover; this
+  attribute is absent from Markdown-generated `<a>` tags. The images, alt text, and link
+  functionality are fully intact. `alt` text serves the primary accessibility role; tooltips
+  are a low-impact UX nicety. The bundle recommendation was `either` (P6-Z defaults to
+  accept). Accepted per bundle default and low visual/accessibility impact.
