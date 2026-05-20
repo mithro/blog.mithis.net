@@ -618,3 +618,11 @@ audit. Deep byte-fidelity vs the now-reachable live site is a P6 concern.
   the category template, or doc in the workflow) noting WHY it's `cat_slug`
   not `category` (Jekyll reserves `category`/`categories` on pages, breaking
   `where: "category"` lookups — see M1/M2 commit `86d8ddb`).
+
+## P5 polish — from P5-EXEC code review (Minor; non-blocking; bundle in a future polish pass)
+
+1. **`scripts/fidelity/lint_content.py` line 42 comment is technically inaccurate** — claims the prefix prevents partial matches but `\b` also anchored at a word boundary (preventing `BLOCK_HTML_EXTRA` etc.). Harmless in practice (sentinel values are controlled). Reword to: `# \b removed — sentinel values are controlled; no corpus text matches BLOCK_HTML_* variants`.
+2. **`tests/test_new_post.py` lines 10–18: dead `run_new_post()` helper** — defined but never called (all 5 tests use `subprocess.run` via the `post_env` fixture). Delete it.
+3. **`docs/AUTHORING.md` §8 wording self-contradicts after P5-D** — says "you MUST create BOTH forms" then notes the `.yml` aggregate alone is sufficient (P5-D made the include list-fallback-robust). Reword §8 lead-in to: "If a post will have comments, create the aggregate `<id>-<slug>.yml`. The per-comment directory form is optional (the include handles both)."
+4. **`scripts/new_post.py` `--slug` accepts spaces/uppercase without normalization** — silently produces broken filenames/permalinks. Add a guard rejecting `^[^a-z0-9-]` OR auto-normalize via `re.sub(r"[^a-z0-9-]+", "-", args.slug.lower()).strip("-")`. Add a test asserting the behavior.
+5. **`.github/workflows/jekyll.yml` lint step assumes `uv` pre-installed** on ubuntu-latest (true since 2024). Self-documentation polish: pin a minimum runner version OR add an explicit setup step (`pip install uv` fallback) so the workflow is self-contained against future runner-image changes.
