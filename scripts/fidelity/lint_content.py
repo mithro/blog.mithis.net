@@ -32,7 +32,8 @@ class Finding:
 _BLOCK_HTML = re.compile(
     r"</?(?:div|section|article|header|footer|nav|aside|main|table|thead|tbody|"
     r"tfoot|tr|td|th|ul|ol|li|dl|dt|dd|h[1-6]|p|figure|figcaption|blockquote|"
-    r"pre|form|fieldset|iframe|script|style|center|font|object|embed)\b",
+    r"pre|form|fieldset|iframe|script|style|center|font|object|embed)\b"
+    r"|<hr\s*/?>",
     re.IGNORECASE,
 )
 _LIQUID = re.compile(r"\{\{|\{%")

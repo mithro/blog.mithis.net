@@ -19,7 +19,7 @@ wordpress_url: https://blog.mithis.net/archives/lca/2167-timvideos-us-2016-new-y
 This is a [cross post](https://hdmi2usb.tv/timvideos/hdmi2usb/2016/01/11/new-year-roadmap/) from the [HDMI2USB](https://hdmi2usb.tv) website about my plans for 2016 and the [TimVideos project](https://code.timvideos.us/). Last year was an exciting time for my personal projects!
 
 > # [TimVideos.us 2016 New Year’s Resolutions](https://hdmi2usb.tv/timvideos/hdmi2usb/2016/01/11/new-year-roadmap/)
-> <hr/>
+> ---
 >
 > Hello everyone,
 >

@@ -192,3 +192,16 @@ def test_cli_file_with_violation_exits_one(tmp_path):
     assert "BLOCK_HTML" in result.stdout, (
         f"Expected BLOCK_HTML finding in stdout; got: {result.stdout!r}"
     )
+
+
+def test_detects_hr_block_html():
+    """<hr> and <hr/> must be detected as BLOCK_HTML (A-2c coverage extension)."""
+    f_bare = lint_text("p.md", FM + "<hr>\n")
+    assert "BLOCK_HTML" in codes(f_bare), "<hr> must be flagged as BLOCK_HTML"
+    f_self = lint_text("p.md", FM + "<hr/>\n")
+    assert "BLOCK_HTML" in codes(f_self), "<hr/> must be flagged as BLOCK_HTML"
+    f_spaced = lint_text("p.md", FM + "<hr />\n")
+    assert "BLOCK_HTML" in codes(f_spaced), "<hr /> must be flagged as BLOCK_HTML"
+    # In a blockquote prefix context (as in timvideos-2016)
+    f_bq = lint_text("p.md", FM + "> <hr/>\n")
+    assert "BLOCK_HTML" in codes(f_bq), "> <hr/> inside blockquote must be flagged as BLOCK_HTML"
