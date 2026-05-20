@@ -19,7 +19,11 @@ Generally slow progress today, but some success.
 - Wrote a test firmware based on http://hamsterworks.co.nz/mediawiki/index.php/DVI-D_Serdes to transmit 720p output from both the TX ports.
   - Images are successfully received on both devices but there is a weird artifact in the image.
 
-<a href="/assets/images/wp-content/uploads/2014/07/IMG_20140725_0029322.jpg"><img alt="Numato HDMI2USB Prototype driving 2 screens" class="alignnone wp-image-1997 size-medium" height="300" sizes="(max-width: 225px) 100vw, 225px" src="/assets/images/wp-content/uploads/2014/07/IMG_20140725_0029322-225x300.jpg" srcset="/assets/images/wp-content/uploads/2014/07/IMG_20140725_0029322-225x300.jpg 225w" width="225"/>  <img alt="HDMI2USB weird image artifact" class="alignnone wp-image-1998" height="300" sizes="(max-width: 400px) 100vw, 400px" src="/assets/images/wp-content/uploads/2014/07/IMG_20140725_003008-300x225.jpg" srcset="/assets/images/wp-content/uploads/2014/07/IMG_20140725_003008-300x225.jpg 300w" width="400"/></a>
+<!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
+<blockquote><p style="text-align: center;"><a href="/assets/images/wp-content/uploads/2014/07/IMG_20140725_0029322.jpg"><img class="alignnone wp-image-1997 size-medium" alt="Numato HDMI2USB Prototype driving 2 screens" height="300" sizes="(max-width: 225px) 100vw, 225px" src="/assets/images/wp-content/uploads/2014/07/IMG_20140725_0029322-225x300.jpg" srcset="/assets/images/wp-content/uploads/2014/07/IMG_20140725_0029322-225x300.jpg 225w" width="225"/>  <img class="alignnone wp-image-1998" alt="HDMI2USB weird image artifact" height="300" sizes="(max-width: 400px) 100vw, 400px" src="/assets/images/wp-content/uploads/2014/07/IMG_20140725_003008-300x225.jpg" srcset="/assets/images/wp-content/uploads/2014/07/IMG_20140725_003008-300x225.jpg 300w" width="400"/></a></p></blockquote>
+
+<!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
+<p>&nbsp;</p>
 
 - [Rohit’s VGA expansion board](http://dreamsxtrinsic.blogspot.com.au/) was received, but yet to turn it on. Looking forward to seeing that working live!
 
