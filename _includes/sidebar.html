@@ -27,6 +27,12 @@
         </li>
         
         <!-- Categories Widget -->
+        <!-- NOTE: Category counts below are static integers set to the WP oracle values by the
+             PSC phase. To switch to auto-computed Liquid counts after the corpus is confirmed
+             oracle-complete, replace each static "(N)" with a Liquid size filter, e.g.:
+               ({{ site.posts | where_exp: "p", "p.categories contains 'hardware'" | size }})
+             Deferred in P5 (USER-DECISION C-1) — keep static until the systemic multi-category
+             under-import pass confirms the corpus is oracle-complete. -->
         <li class="widget">
             <h3 class="widgettitle">Categories</h3>
             <select id="categories-dropdown" onchange="if(this.value) window.location.href=this.value">

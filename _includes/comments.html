@@ -13,9 +13,17 @@ Usage: {% include comments.html post_slug=page.slug %}
   Collect the value objects, then sort ascending by date (faithful WordPress/Barthelme order).
 {% endcomment %}
 {% assign _comment_objects = "" | split: "" %}
-{% for _pair in comments %}
-  {% assign _comment_objects = _comment_objects | push: _pair[1] %}
-{% endfor %}
+{% if comments.first[0] %}
+  {%- comment -%}Hash: site.data.comments[slug] is a dir-hash → [key, value] pairs{%- endcomment -%}
+  {% for _pair in comments %}
+    {% assign _comment_objects = _comment_objects | push: _pair[1] %}
+  {% endfor %}
+{% else %}
+  {%- comment -%}List: site.data.comments[slug] is a .yml list → use directly{%- endcomment -%}
+  {% for item in comments %}
+    {% assign _comment_objects = _comment_objects | push: item %}
+  {% endfor %}
+{% endif %}
 {% assign _sorted_comments = _comment_objects | sort: "date" %}
 <div class="comments-section">
     <h3>Comments ({{ comments.size }})</h3>
