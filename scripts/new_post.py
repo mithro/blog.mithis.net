@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import datetime
+import re
 import sys
 from pathlib import Path
 
@@ -101,6 +102,19 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
+
+    # Normalize slug: lowercase, replace non-[a-z0-9-] with hyphens, strip leading/trailing hyphens
+    raw_slug = args.slug
+    normalized_slug = re.sub(r"[^a-z0-9-]+", "-", raw_slug.lower()).strip("-")
+    if normalized_slug != raw_slug:
+        print(
+            f"WARNING: slug {raw_slug!r} normalized to {normalized_slug!r}.",
+            file=sys.stderr,
+        )
+    if not normalized_slug:
+        print("ERROR: --slug produced an empty string after normalization.", file=sys.stderr)
+        return 1
+    args.slug = normalized_slug
 
     # Resolve date
     if args.date:

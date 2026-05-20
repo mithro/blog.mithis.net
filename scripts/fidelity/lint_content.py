@@ -39,7 +39,7 @@ _LIQUID = re.compile(r"\{\{|\{%")
 _MD_IMG = re.compile(r"!\[[^\]]*\]\(\s*([^)\s]+)")
 _HTML_IMG = re.compile(r"<img[^>]+src=[\"']([^\"']+)[\"']", re.IGNORECASE)
 _FIDELITY_ALLOW_BLOCK_HTML = re.compile(
-    r"<!--\s*fidelity-allow:\s*BLOCK_HTML", re.IGNORECASE  # \b was redundant — prefix already prevents partial matches
+    r"<!--\s*fidelity-allow:\s*BLOCK_HTML", re.IGNORECASE  # \b removed — sentinel values are controlled; no corpus text matches BLOCK_HTML_* variants
 )
 
 def _split_front_matter(text: str) -> tuple[int, str]:

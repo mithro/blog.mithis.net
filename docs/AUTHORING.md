@@ -246,11 +246,7 @@ finding on the annotated line (or the line immediately following the sentinel).
 
 ## 8. Comment Data Format
 
-If a post will have comments, you MUST create BOTH forms in `_data/comments/`:
-
-**Requirement:** `_includes/comments.html` resolves `site.data.comments[slug]` to the
-directory hash when both forms exist. If only the `.yml` exists, the include uses the list
-fallback path (robust as of P5-D). Both forms are required for full compatibility.
+If a post will have comments, create the aggregate `<id>-<slug>.yml`. The per-comment directory form is optional (the include handles both).
 
 **Aggregate file `_data/comments/<slug>.yml`:**
 

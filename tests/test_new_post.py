@@ -7,18 +7,6 @@ from pathlib import Path
 import pytest
 
 
-def run_new_post(tmp_path: Path, *args: str) -> subprocess.CompletedProcess:
-    """Run the scaffold script against a fake _posts/ in tmp_path."""
-    posts_dir = tmp_path / "_posts"
-    posts_dir.mkdir()
-    return subprocess.run(
-        [sys.executable, "scripts/new_post.py", *args],
-        capture_output=True,
-        text=True,
-        cwd=str(tmp_path),
-    )
-
-
 def _copy_script(tmp_path: Path) -> None:
     """Copy the script to tmp_path so it runs from there."""
     scripts_dir = tmp_path / "scripts"
@@ -128,3 +116,25 @@ def test_scaffold_default_category_is_uncategorized(post_env: Path) -> None:
     content = (post_env / "_posts" / "2026-05-20-default-cat.md").read_text(encoding="utf-8")
     assert "- uncategorized" in content
     assert "/archives/uncategorized/default-cat" in content
+
+
+def test_scaffold_normalizes_slug(post_env: Path) -> None:
+    """Slug with uppercase/spaces is auto-normalized to lowercase-hyphenated form."""
+    result = subprocess.run(
+        [sys.executable, "scripts/new_post.py",
+         "--title", "Normalization Test",
+         "--slug", "My Post Slug!",
+         "--date", "2026-05-20"],
+        capture_output=True, text=True, cwd=str(post_env),
+    )
+    # Must succeed (normalize, not reject)
+    assert result.returncode == 0, f"Script failed: {result.stderr}"
+    # Normalized slug: lowercase, spaces → hyphens, '!' stripped
+    normalized = "my-post-slug"
+    assert (post_env / "_posts" / f"2026-05-20-{normalized}.md").exists(), (
+        f"Expected file 2026-05-20-{normalized}.md after slug normalization"
+    )
+    # Warning must be printed to stderr
+    assert "WARNING" in result.stderr and normalized in result.stderr, (
+        "Must print a WARNING with the normalized slug"
+    )
