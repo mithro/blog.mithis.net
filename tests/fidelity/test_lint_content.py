@@ -116,3 +116,33 @@ def test_sentinel_does_not_affect_liquid_leak_or_missing_image(tmp_path):
     # But LIQUID_LEAK and MISSING_IMAGE are still emitted
     assert "LIQUID_LEAK" in codes_found, "LIQUID_LEAK should still be flagged"
     assert "MISSING_IMAGE" in codes_found, "MISSING_IMAGE should still be flagged"
+
+
+# --- P5-A: new tests for i==0 guard and UNCLOSED_FENCE ---
+
+def test_block_html_on_first_body_line_is_not_suppressed_by_last_line_sentinel():
+    """i==0 guard: sentinel on the prev line (none) must not shadow from lines[-1]."""
+    # Put a sentinel at the END of the body (which is lines[-1])
+    # The BLOCK_HTML is on the FIRST body line (i=0). Must NOT be suppressed.
+    body = (
+        FM
+        + "<div>this is first body line — no preceding sentinel</div>\n"
+        + "some prose\n"
+        + _SENTINEL + "\n"  # sentinel at end, NOT adjacent to the div
+    )
+    f = lint_text("p.md", body)
+    block_findings = [x for x in f if x.code == "BLOCK_HTML"]
+    assert len(block_findings) >= 1, (
+        "BLOCK_HTML on first body line must not be suppressed by a sentinel "
+        "elsewhere in the body (negative-index guard must hold)"
+    )
+
+
+def test_unclosed_fence_is_flagged():
+    """UNCLOSED_FENCE: a fenced block never closed produces a finding at EOF."""
+    body = FM + "```python\ndef foo():\n    pass\n# no closing fence\n"
+    f = lint_text("p.md", body)
+    codes_found = [x.code for x in f]
+    assert "UNCLOSED_FENCE" in codes_found, (
+        "An unclosed fenced code block must produce an UNCLOSED_FENCE finding"
+    )
