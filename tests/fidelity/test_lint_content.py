@@ -146,3 +146,49 @@ def test_unclosed_fence_is_flagged():
     assert "UNCLOSED_FENCE" in codes_found, (
         "An unclosed fenced code block must produce an UNCLOSED_FENCE finding"
     )
+
+
+# --- P5-H: CLI smoke tests ---
+
+import subprocess
+import sys
+
+
+def test_cli_clean_corpus_exits_zero():
+    """CLI smoke: linting the real _posts corpus exits 0 (no findings)."""
+    result = subprocess.run(
+        [sys.executable, "-m", "scripts.fidelity.lint_content",
+         "_posts", "--asset-root", "."],
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0, (
+        f"Expected exit 0 for clean corpus; got {result.returncode}.\n"
+        f"stdout: {result.stdout!r}\nstderr: {result.stderr!r}"
+    )
+    assert result.stdout == "", (
+        f"Expected no output for clean corpus; got: {result.stdout!r}"
+    )
+
+
+def test_cli_file_with_violation_exits_one(tmp_path):
+    """CLI smoke: linting a file with a raw <div> exits 1 + finding in stdout."""
+    bad = tmp_path / "badpost.md"
+    bad.write_text(
+        "---\ntitle: x\nlayout: post\n---\n"
+        "<div>block HTML violation</div>\n",
+        encoding="utf-8",
+    )
+    result = subprocess.run(
+        [sys.executable, "-m", "scripts.fidelity.lint_content",
+         str(bad), "--asset-root", "."],
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 1, (
+        f"Expected exit 1 for file with BLOCK_HTML; got {result.returncode}.\n"
+        f"stdout: {result.stdout!r}\nstderr: {result.stderr!r}"
+    )
+    assert "BLOCK_HTML" in result.stdout, (
+        f"Expected BLOCK_HTML finding in stdout; got: {result.stdout!r}"
+    )

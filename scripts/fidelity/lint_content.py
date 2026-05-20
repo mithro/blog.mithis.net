@@ -110,3 +110,57 @@ def lint_paths(paths, *, asset_root: Path | None = None) -> list[Finding]:
         out.extend(lint_text(str(p), p.read_text(encoding="utf-8"),
                              asset_root=asset_root))
     return out
+
+
+def _cli_main(argv=None) -> int:
+    import argparse
+    import glob
+    import sys as _sys
+
+    parser = argparse.ArgumentParser(
+        description="Lint post Markdown files for LIQUID_LEAK, BLOCK_HTML, "
+                    "MISSING_IMAGE, and UNCLOSED_FENCE.",
+    )
+    parser.add_argument(
+        "paths",
+        nargs="*",
+        default=["_posts"],
+        help="Files or directories to lint (default: _posts). "
+             "Directories are expanded to *.md (sorted).",
+    )
+    parser.add_argument(
+        "--asset-root",
+        default=".",
+        metavar="DIR",
+        help="Root directory for resolving local image paths (default: .).",
+    )
+    args = parser.parse_args(argv)
+
+    # Resolve paths: expand directories → sorted *.md glob; files → as-is.
+    resolved: list[str] = []
+    for raw in args.paths:
+        p = Path(raw)
+        if not p.exists():
+            print(f"error: path does not exist: {raw}", file=_sys.stderr)
+            return 1
+        if p.is_dir():
+            md_files = sorted(glob.glob(str(p / "*.md")))
+            if not md_files:
+                # Empty directory is not an error — just nothing to lint.
+                pass
+            resolved.extend(md_files)
+        else:
+            resolved.append(str(p))
+
+    asset_root = Path(args.asset_root)
+    findings = lint_paths(resolved, asset_root=asset_root)
+
+    for f in findings:
+        print(f"{f.path}:{f.line} [{f.code}] {f.message}")
+
+    return 1 if findings else 0
+
+
+if __name__ == "__main__":
+    import sys as _sys
+    _sys.exit(_cli_main())
