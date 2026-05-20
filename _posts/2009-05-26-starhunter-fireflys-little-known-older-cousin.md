@@ -19,7 +19,12 @@ comments:
     content: |
       <p>Joss as the creators of Starhunter were probably inspired by Blake&#8217;s 7</p>
 ---
-<img alt="Tulip - The ship from Starhunter" height="219" src="/assets/images/wp-content/uploads/2009/05/screenshot.png" title="Tulip - The ship from Starhunter" width="300"/>
+<!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
+<div style="float: right; padding: 10px;">
+<img alt="Tulip - The ship from Starhunter" class="aligncenter size-full wp-image-103" height="219" src="/assets/images/wp-content/uploads/2009/05/screenshot.png" title="Tulip - The ship from Starhunter" width="300"/>
+<!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
+</div>
+
 I have recently been watching and really enjoying a little known series called [Starhunter](http://en.wikipedia.org/wiki/Starhunter). At first I thought it was an enjoyable rip off of [Firefly](http://en.wikipedia.org/wiki/Firefly_(TV_series)), so i was surprised to find out that it was made first.
 
 It has so many of the same elements, the quirky ship mechanic, the captain who doesn’t play by the rules with a darker background, raiders, etc. I have no doubt that [Joss Whedon](http://www.imdb.com/name/nm0923736/) stole many the ideas for Firefly from this series and in the process improving on them in many ways. Sadly, like Firefly this series was canceled way before it reached a wide audience.
