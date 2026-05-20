@@ -4,7 +4,7 @@ categories:
 - timvideos-us
 - hdmi2usb
 date: 2014-07-28 23:39:31 +1000
-excerpt: 25th July 2014 Setup xob's hacked up colormake in our build system. Nice
+excerpt: 25th July 2014 Setup xob‘s hacked up colormake in our build system. Nice
   colorized output now! Fought more with ERROR:Place - Constraint Resolved NO placeable
   site for hdmiMatri_Comp/dvi_rx1/ioclk_buf issue Watched...
 layout: post
@@ -17,17 +17,17 @@ wordpress_url: https://blog.mithis.net/archives/timvideos-us/2003-hdmi2usb-produ
 ---
 ## 25th July 2014
 
-- Setup [xob](https://github.com/xobs)'s hacked up [colormake in our build system](https://github.com/timvideos/HDMI2USB/pull/69). Nice colorized output now!
+- Setup [xob](https://github.com/xobs)‘s hacked up [colormake in our build system](https://github.com/timvideos/HDMI2USB/pull/69). Nice colorized output now!
 - Fought more with
 
   ```
   ERROR:Place - Constraint Resolved NO placeable site for hdmiMatri_Comp/dvi_rx1/ioclk_buf issue
   ```
-- Watched [Paul Fenwick's OSCon Keynote](https://www.youtube.com/watch?v=xuK6udkbyGo).
+- Watched [Paul Fenwick’s OSCon Keynote](https://www.youtube.com/watch?v=xuK6udkbyGo).
 
 **Streaming System Hacking**
 
-- Made the configuration system better and adding a lot of comments to the json file (which isn't really valid json any more).
+- Made the configuration system better and adding a lot of comments to the json file (which isn’t really valid json any more).
 - Made pycon2internal.py slightly better and able to parse PyOhio format (based on the PyCon US format).
 - Added hack to make event2internal.py to use pycon2internal.py at some periods.
 - Set up a bunch of encoders in the Oregon EC2 region.
@@ -37,9 +37,9 @@ wordpress_url: https://blog.mithis.net/archives/timvideos-us/2003-hdmi2usb-produ
 
 - Went into the [Adelaide Hackerspace](http://hackerspace-adelaide.org.au/) and created a cable to interface the [USB3300 ULPI](http://www.microchip.com/wwwproducts/Devices.aspx?product=USB3300) chip to 2xPMOD headers.
 - Got streaming working for day 1 of [PyOhio](http://pyohio.org), it was late as we were disorganised.
-- [aps-sids](http://aps-sids.github.io/) foolishly pointed out a bug in the title of the streaming system, so I [taught him](http://logs.timvideos.us/%23timvideos/%23timvideos.2014-07-26.log.html#t2014-07-26T16:15:22) about how we actually flumotion for an event.
+- [aps-sids](http://aps-sids.github.io/) foolishly pointed out a bug in the title of the streaming system, so I [taught him](http://logs.timvideos.us/%23timvideos/%23timvideos.2014-07-26.log.html#t2014-07-26T16:15:22) about how we actually flumotion for an event.
 
-##  27th July 2014
+##  27th July 2014
 
 - Did a lot of spreadsheet hacking on the production board pin planning spreadsheet;
     - Added half bank / BUFIO2 regions.

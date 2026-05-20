@@ -11,19 +11,19 @@ excerpt: This is a cross post from the HDMI2USB website about my plans for 2016 
   TimVideos.us 2016...
 layout: post
 permalink: /archives/lca/2167-timvideos-us-2016-new-years-resolutions
-title: TimVideos.us 2016 New Year's Resolutions
+title: TimVideos.us 2016 New Year’s Resolutions
 wordpress_category: lca
 wordpress_id: 2167
 wordpress_url: https://blog.mithis.net/archives/lca/2167-timvideos-us-2016-new-years-resolutions
 ---
 This is a [cross post](https://hdmi2usb.tv/timvideos/hdmi2usb/2016/01/11/new-year-roadmap/) from the [HDMI2USB](https://hdmi2usb.tv) website about my plans for 2016 and the [TimVideos project](https://code.timvideos.us/). Last year was an exciting time for my personal projects!
 
-> # [TimVideos.us 2016 New Year's Resolutions](https://hdmi2usb.tv/timvideos/hdmi2usb/2016/01/11/new-year-roadmap/)
+> # [TimVideos.us 2016 New Year’s Resolutions](https://hdmi2usb.tv/timvideos/hdmi2usb/2016/01/11/new-year-roadmap/)
 > <hr/>
 >
 > Hello everyone,
 >
-> Hope everyone has had an awesome start to 2016 so far. As is tradition in many western countries, I thought I would put together some [New Year's Resolutions](https://en.wikipedia.org/wiki/New_Year%27s_resolution) and reflect on our progress in 2015. I guess more business minded people might call it a "project roadmap" 🙂
+> Hope everyone has had an awesome start to 2016 so far. As is tradition in many western countries, I thought I would put together some [New Year’s Resolutions](https://en.wikipedia.org/wiki/New_Year%27s_resolution) and reflect on our progress in 2015. I guess more business minded people might call it a “project roadmap” 🙂
 >
 > ### [TimVideos Project](https://code.timvideos.us/)
 >
@@ -36,14 +36,14 @@ This is a [cross post](https://hdmi2usb.tv/timvideos/hdmi2usb/2016/01/11/new-yea
 >     - The [DebConf Video team](https://wiki.debconf.org/wiki/Videoteam) for their [MiniDebConf in November](https://wiki.debian.org/DebianEvents/gb/2015/MiniDebConfCambridge#Video).
 >     - [Myself for recording](https://www.youtube.com/user/mithro) my own talks on the HDMI2USB project at user groups here in Sydney!
 >
-> With the success of this focus in 2015, the [TimVideos project](https://code.timvideos.us/) is going to continue to focus on the[HDMI2USB project](https://hdmi2usb.tv/) for 2016 (and I'll go into more detailed goals shortly).
+> With the success of this focus in 2015, the [TimVideos project](https://code.timvideos.us/) is going to continue to focus on the[HDMI2USB project](https://hdmi2usb.tv/) for 2016 (and I’ll go into more detailed goals shortly).
 >
 > The [TimVideos project](https://code.timvideos.us/) has also been mildly successful in collaborating with other open source groups doing things related to video recording and production. In 2016, I hope we can strengthen these bonds and forge new ones. Some specific goals around this include;
 >
 > - Getting the TimVideos project to join [Software Freedom Conservancy](https://sfconservancy.org/) (or similar organisation).
 > - Figure out the right way to collaborate with the [C3VOC team](https://c3voc.de/) on [voctomix](https://github.com/voc/voctomix) and start adding missing features from [gst-switch](https://github.com/timvideos/gst-switch) allowing that project to be retired.
 > - Continue to work with supporting groups like [NextDayVideo](http://nextdayvideo.com/), the [DebConf Video team](https://wiki.debconf.org/wiki/Videoteam) and [Linux Australia](https://linux.org.au/).
-> - Support and help [Mike "Hamster" Field](http://hamsterworks.co.nz/mediawiki/index.php/FPGA_Projects) continue to develop a [fully open source DisplayPort core](https://github.com/hamsternz/FPGA_DisplayPort).
+> - Support and help [Mike “Hamster” Field](http://hamsterworks.co.nz/mediawiki/index.php/FPGA_Projects) continue to develop a [fully open source DisplayPort core](https://github.com/hamsternz/FPGA_DisplayPort).
 > - Collaborate with the [apertus° project](http://apertus.org/) on high end (4k and greater!) video capture and processing.
 >
 > ### [HDMI2USB Project](https://hdmi2usb.tv)
@@ -53,10 +53,10 @@ This is a [cross post](https://hdmi2usb.tv/timvideos/hdmi2usb/2016/01/11/new-yea
 > HDMI2USB **firmware** goals;
 >
 > - Refactor the HDMI core to allow support a wider range of interfaces, better debugging and addition of more features. A document about the refactor has been [started here](https://docs.google.com/a/mithis.com/document/d/1L8lz7u2uj6MrzSQv4b1Vk6Rmic26okyRklOju5IWLYA/edit?usp=drive_web).
-> - Add support for the [high-speed GTP transceivers](https://hdmi2usb.tv/timvideos/hdmi2usb/2016/01/11/new-year-roadmap/) and [Mike "Hamster" Field](http://hamsterworks.co.nz/mediawiki/index.php/FPGA_Projects) [open source DisplayPort core](https://github.com/hamsternz/FPGA_DisplayPort).
+> - Add support for the [high-speed GTP transceivers](https://hdmi2usb.tv/timvideos/hdmi2usb/2016/01/11/new-year-roadmap/) and [Mike “Hamster” Field](http://hamsterworks.co.nz/mediawiki/index.php/FPGA_Projects) [open source DisplayPort core](https://github.com/hamsternz/FPGA_DisplayPort).
 > - Get Ethernet support working (on both the Atlys and Opsis boards). The two major Ethernet features are;
 >     - Ethernet supports identical capture and control feature set to the USB port.
->     - Allowing HDMI2USB boards to act has "HDMI over Ethernet extenders".
+>     - Allowing HDMI2USB boards to act has “HDMI over Ethernet extenders”.
 > - [Support for more hardware](https://hdmi2usb.tv/potential-boards/);
 >     - miniSpartan6+
 >     - Digilent Nexys Video
@@ -74,4 +74,4 @@ This is a [cross post](https://hdmi2usb.tv/timvideos/hdmi2usb/2016/01/11/new-yea
 >
 > Hope this update give you an idea of what we have planned for 2016! We would love your help making it all possible.
 >
-> Tim 'mithro' Ansell
+> Tim ‘mithro’ Ansell
