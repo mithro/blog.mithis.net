@@ -626,3 +626,28 @@ audit. Deep byte-fidelity vs the now-reachable live site is a P6 concern.
 3. **`docs/AUTHORING.md` §8 wording self-contradicts after P5-D** — says "you MUST create BOTH forms" then notes the `.yml` aggregate alone is sufficient (P5-D made the include list-fallback-robust). Reword §8 lead-in to: "If a post will have comments, create the aggregate `<id>-<slug>.yml`. The per-comment directory form is optional (the include handles both)."
 4. **`scripts/new_post.py` `--slug` accepts spaces/uppercase without normalization** — silently produces broken filenames/permalinks. Add a guard rejecting `^[^a-z0-9-]` OR auto-normalize via `re.sub(r"[^a-z0-9-]+", "-", args.slug.lower()).strip("-")`. Add a test asserting the behavior.
 5. **`.github/workflows/jekyll.yml` lint step assumes `uv` pre-installed** on ubuntu-latest (true since 2024). Self-documentation polish: pin a minimum runner version OR add an explicit setup step (`pip install uv` fallback) so the workflow is self-contained against future runner-image changes.
+
+## PSL polish — from PSL-EXEC reviews (Minor; non-blocking; bundle in a future polish pass)
+
+These are pre-existing or cosmetic items surfaced during PSL Phase 1/2/3 reviews. None block the PSL merge to `main`; capture them for a future housekeeping commit.
+
+1. **Pre-existing trailing whitespace on 10 lines across 6 posts** — present at base commit `1679cf1`, NOT introduced by PSL. Affected: `2007-03-01-graphical-programming.md` lines 16,18,20,22,24; `2007-03-24-liferea-bug.md` line 16; `2008-03-18-gsoc2008.md` line 19; `2008-04-27-going-to-sydney.md` line 24; `2008-11-15-in-the-land-of-the-sheep.md` line 21; `2016-03-15-timvideos-us-and-google-summer-of-code-2016.md` line 21. Sweep + `sed -i 's/ *$//'` across `_posts/*.md` in a single commit; verify linter remains 0 (trailing whitespace is not a linter finding today but is hygiene).
+
+2. **Pre-existing NBSP (U+00A0) inside body text** of `_posts/2014-07-29-hdmi2usb-production-board-bring-up-day-8-…-2014.md` line 20 (`Was\xc2\xa0able to view`) — present at base commit, preserved by Phase 2's re-indent. WordPress export artifact; replace with ASCII space if desired in the same housekeeping commit (but verify against the live oracle first — the NBSP may be intentional for line-break suppression).
+
+3. **PSL Phase 3 fix commit (`96ecd0b`) Co-Authored-By trailer** says `Claude Sonnet 4.6` instead of the project-convention `Claude Opus 4.7 (1M context)`. Cosmetic; no functional impact. A future `git commit --amend` (on the local branch before push) OR a documentation note here closes the loop. **Recorded.**
+
+4. **PSL Phase 2 commit subject lines >72 chars** (4 commits: `0e955ee` 82c, `34ff90c` 80c, `e6e3998` 75c, `32b0d27` 75c) — long slug names plus the `(B3)` classifier push them over the soft conventional 72-char guideline. Subjects are still readable; this is a cosmetic gap only. Future polish: when commit subjects must contain a long slug, drop the `(B3)` suffix (information is in the body) or use a shortened identifier.
+
+5. **`scripts/fidelity/lint_content.py` `_BLOCK_HTML` pattern coverage gap: `<hr>`** (and `<hr/>`) is NOT flagged. A `<hr/>` survives in `_posts/2016-01-15-timvideos-us-2016-new-years-resolutions.md` line 22 (pre-existing; PSL preserved). Visually equivalent to `---` markdown, so usually harmless, but the linter should at least flag for review. Add `r"<hr\s*/?>"` to the pattern and either replace existing `<hr/>` instances with `---` or add a `<!-- fidelity-allow: BLOCK_HTML -->` sentinel.
+
+6. **PSL/P6 accepted WP-artifact `<p>`-count tolerances** — Phase 2/3 commit bodies accept structural divergences that **legitimately need inline HTML per design §7** to fully reproduce. These are candidates for P6 USER-DECISION (restore via minimal `<HTML>` per §7, OR accept the divergence and document):
+   - `epiphany2firefox`: oracle `<p style="text-align: center">` around a screenshot.
+   - `hdmi2usb-day-4`: oracle `<p>&nbsp;</p>` spacer; oracle `<blockquote><p style="text-align: center">` image wrapper.
+   - `hdmi2usb-snippets`: 4 oracle `<p>&nbsp;</p>` spacers between sections.
+   - `hdmi2usb-day-5-6-7`: 3 oracle `<p>&nbsp;</p>` spacers.
+   - `hdmi2usb-day-3`: post-PRE orphan `<ul><ul>` (oracle has nested `<ul>` without an enclosing `<li>` after the `<pre>` block — Markdown can't express this); also oracle's two separate `<ul>` blocks merge into one in the built rendering.
+   - `fritzbox-vpnc`: final section wrapped in `<blockquote>` containing an `<h2>` + paragraphs (oracle); source uses standalone `## heading` (built renders as heading-not-quoted). NOTE: existing P6 USER-DECISION for `<pre><strong>` bold-in-code still pending separately.
+   - `starhunter`: oracle has an empty `<div>` thumbnail wrapper (probably the linked-thumbnail tooltip case already in the P6 USER-DECISION list).
+
+   For each, P6 visual signoff decides: accept the divergence (no change), or restore via minimal `<HTML>` per design §7 with a `<!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->` sentinel.
