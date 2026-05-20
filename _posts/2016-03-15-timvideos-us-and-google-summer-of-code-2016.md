@@ -18,7 +18,7 @@ wordpress_url: https://blog.mithis.net/archives/summer-of-code/2169-timvideos-us
 ---
 This is a [cross post](https://hdmi2usb.tv/gsoc/hdmi2usb/2016/03/14/gsoc-2016/) from the [HDMI2USB](https://hdmi2usb.tv) website.
 
-> 
+>
 # [TimVideos.us and Google Summer of Code 2016!](https://hdmi2usb.tv/timvideos/hdmi2usb/2016/01/11/new-year-roadmap/)
 The [TimVideos.us project](https://code.timvideos.us/) is happy to announce that it has been selected to participate in the [Google Summer of Code for 2016 ](https://developers.google.com/open-source/gsoc/)(GSoC). GSoC is a program where students are paid to contribute to selected open source projects over the northern hemisphere summer, [flip bits not burgers](http://google-opensource.blogspot.com.au/2013/02/flip-bits-not-burgers-google-summer-of.html)!
 
