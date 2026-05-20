@@ -57,4 +57,3 @@ make: *** [map] Error 139
 - Reviewed Rohit’s weekly summary blog post.
 - Reviewed Rohit’s VGA board V2 schematic.
 - Reviewed Rohit’s VGA board V2 PCB.
-

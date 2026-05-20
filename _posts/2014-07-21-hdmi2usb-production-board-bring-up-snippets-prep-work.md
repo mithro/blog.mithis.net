@@ -43,4 +43,3 @@ The following snippets are for the preparation work I did before the week;
 - Turns out it doesn’t work under Python 3 as torandio2 is unmaintained.
 - Ported circus-web to sockjs-torando.
 - Found the tests don’t work.
-
