@@ -2,6 +2,7 @@
 author: mithro
 categories:
 - ideas
+- ubuntu
 date: 2007-09-08T15:31:41+0000
 excerpt: Recovered from Wayback Machine archive
 layout: post

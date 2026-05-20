@@ -2,6 +2,7 @@
 author: mithro
 categories:
 - ubuntu
+- useful-bits
 date: 2013-10-06 23:44:04 +1000
 excerpt: I have two Fritz!Box 7390 (one at my place and one at my parents primary
   residence) and one Fritz!Box 7270 devices (the house they are building). They are

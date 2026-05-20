@@ -1,6 +1,7 @@
 ---
 author: mithro
 categories:
+- google
 - ubuntu
 date: 2008-07-08T14:00:38+1000
 excerpt: 'As everyone knows, I recently started at Google. When I started I was given

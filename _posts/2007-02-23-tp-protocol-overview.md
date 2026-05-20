@@ -1,6 +1,7 @@
 ---
 author: mithro
 categories:
+- highlights
 - tp
 date: 2007-02-23T01:21:13+1000
 excerpt: 'I’ve been planning to try and get tp04 into draft stage for a while now.

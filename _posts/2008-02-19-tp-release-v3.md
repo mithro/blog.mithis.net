@@ -1,6 +1,7 @@
 ---
 author: mithro
 categories:
+- lca
 - tp
 date: '2008-02-19T09:35:23+10:00'
 excerpt: As announced at Linux.conf.au, I’m happy to point out that we have finally

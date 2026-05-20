@@ -1,6 +1,7 @@
 ---
 author: mithro
 categories:
+- games
 - lca
 date: '2007-08-23T22:43:58+10:00'
 excerpt: As some of you may know, I was invited to speak about my experiences with

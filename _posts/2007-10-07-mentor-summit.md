@@ -1,6 +1,7 @@
 ---
 author: mithro
 categories:
+- summer-of-code
 - tp
 date: '2007-10-07T03:27:50+10:00'
 excerpt: Well, I am currently sitting in the famous Googleplex. I’m attending the

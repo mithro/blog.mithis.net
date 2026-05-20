@@ -2,6 +2,7 @@
 
 author: mithro
 categories:
+- lca
 - tp
 date: 2009-01-27T16:22:22+1000
 excerpt: Recovered from Wayback Machine archive
