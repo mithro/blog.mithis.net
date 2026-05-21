@@ -5,6 +5,29 @@ deferred to a later phase (out of P0 scope). Task 13 folds this into P0-RESULTS.
 and the P1/P2/P5 plans. Do NOT action these during P0 unless a P0 task explicitly
 covers them.
 
+## P7-pivot — "broken stuff and all" fidelity directive (2026-05-21)
+
+**User directive received during P7-EXEC:** "The github version should be faithful
+to the current live https://blog.mithis.net - broken stuff and all."
+
+This **supersedes** the prior CLAUDE.md requirement "Remove Broken Features: Twitter
+integration and Google Picasa integration." From this point:
+- All Picasa/Shashin integrations are RESTORED (broken ggpht.com URLs preserved as-is)
+- Twitter cached tweet widget is RESTORED (broken API links preserved as-is)
+- The P7-EXEC subagent (2026-05-21) applied:
+  - Header: restored Shashin table+gallery structure (exact live HTML, 6 thumbnails)
+  - Sidebar: restored aktt-widget (3 cached tweets) + Shashin photos widget (14 entries)
+  - CSS: added shashin.css rules verbatim from live WP plugin
+  - CLAUDE.md updated to reflect "Full WP Fidelity" vs "Remove Broken Features"
+  - P6-PICASA-CHECK.md prepended with disposition-inversion note
+
+Files changed in P7-pivot commits:
+- `_includes/header.html` — Shashin gallery restored
+- `_includes/sidebar.html` — Twitter + Shashin photo widgets restored
+- `assets/css/main.css` — Shashin CSS added
+- `CLAUDE.md` — "Full WP Fidelity" requirement added
+- `docs/superpowers/plans/P6-PICASA-CHECK.md` — inversion note prepended
+
 ## P2 — content remediation worklist (from Task 5 linter smoke run)
 
 `scripts/fidelity/lint_content.py` over `_posts/*.md` (asset_root='.') → **47 findings**:

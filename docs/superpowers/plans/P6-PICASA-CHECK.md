@@ -1,5 +1,13 @@
 # P6-PICASA-CHECK — Picasa Header Byte-Fidelity vs Wayback Machine
 
+> **DISPOSITION INVERTED — 2026-05-21 (P7-EXEC pivot)**
+> The P6 conclusion ("DOCUMENTED-DIVERGENCE / ACCEPTED — remove Shashin/Picasa") is now
+> **SUPERSEDED** by the user directive: "The github version should be faithful to the current
+> live https://blog.mithis.net - broken stuff and all." All Picasa/Shashin integrations have
+> been **restored** to match the live site exactly (broken ggpht.com URLs preserved). The
+> prior "Remove Broken Features" requirement is replaced by "Full WP Fidelity". See
+> FOLLOWUPS.md P7-pivot entry and the CLAUDE.md update.
+
 **Phase:** P6 Final Acceptance
 **Date:** 2026-05-20
 **Item:** A-9 from P6-FINDINGS.md

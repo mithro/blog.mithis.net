@@ -21,7 +21,7 @@ The project follows a 4-phase migration approach:
 - **Theme Fidelity**: Recreate the Barthelme WordPress theme appearance in Jekyll
 - **URL Structure**: Maintain WordPress permalink structure with proper redirects
 - **Content Focus**: Technical blog about open source hardware, software development, and tech projects
-- **Remove Broken Features**: Twitter integration and Google Picasa integration
+- **Full WP Fidelity**: Preserve full WordPress rendering including broken integrations — broken Picasa thumbnails, Twitter cached tweets, Shashin galleries (user directive 2026-05-21: "The github version should be faithful to the current live https://blog.mithis.net - broken stuff and all")
 
 ## Important: Working Directory
 
