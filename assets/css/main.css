@@ -68,9 +68,60 @@ body.page div#content {
 /* Header */
 body div#header {
     margin: 3em -2em 3em 0;
-    padding: 1.2em 0 1.2em 3em;
+    padding: 0;
     cursor: pointer;
     background: #bbc8d9;
+}
+
+/* Shashin plugin CSS (faithful copy from live WP site) */
+.shashinThumbnailsTable {
+    margin: 5px;
+}
+
+.shashinThumbnailsTable caption {
+    text-align: center;
+    margin: 5px;
+}
+
+.shashinThumbnailsTable td {
+    vertical-align: top;
+}
+
+.shashinThumbnailDiv {
+    border: thin solid Black;
+    background-color: White;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.shashinThumbnailDiv:hover {
+    border-color: Silver;
+}
+
+.shashinThumbnailImage {
+    padding: 3px;
+    border: none;
+}
+
+.shashinThumbnailCaption {
+    display: block;
+    padding: 0px 5px 5px 5px;
+    font-size: x-small;
+    font-weight: bold;
+}
+
+.shashinCaptionExif {
+    display: block;
+    color: darkgray;
+}
+
+.shashinHighslideLinkToOriginalPhoto {
+    float: right;
+    padding-left: 5px;
+}
+
+.highslide-caption {
+    display: none;
 }
 
 div#header h1#blog-title {
