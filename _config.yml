@@ -38,8 +38,8 @@ plugins:
 # Permalink structure - individual permalinks set in each post front matter
 # permalink: /:year/:month/:title/  # Disabled - using WordPress-compatible permalinks
 
-# Timezone
-timezone: America/Los_Angeles
+# Timezone — match live blog.mithis.net WP timezone (+10:00, AEST/AEDT no DST = Brisbane)
+timezone: Australia/Brisbane
 
 # Google Analytics
 google_analytics: UA-XXXXXXXX-X  # Replace with actual tracking ID
