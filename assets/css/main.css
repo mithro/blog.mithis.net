@@ -40,29 +40,30 @@ a:active {
     text-decoration: underline;
 }
 
-/* Container Layout */
+/* Container Layout — sidebar on RIGHT to match live blog.mithis.net rendering
+   (P7-iter2 fix: bf4e353 wrongly flipped container/sidebar floats — see commit) */
 body div#wrapper {
-    margin: 0 8em 0 0;
+    margin: 0 0 0 8em;
 }
 
 body div#container {
-    float: right;
-    margin: 0 0 5em -16em;
+    float: left;
+    margin: 0 -16em 5em 0;
     width: 100%;
 }
 
 body div#content {
-    margin: 0 0 0 16em;
+    margin: 0 16em 0 0;
 }
 
 body.single div#container,
 body.page div#container {
-    margin: 0 0 6em -20em;
+    margin: 0 -20em 6em 0;
 }
 
 body.single div#content,
 body.page div#content {
-    margin: 0 0 0 20em;
+    margin: 0 20em 0 0;
 }
 
 /* Header */
@@ -296,9 +297,10 @@ body.search div#content div.post-content {
     margin: 1.5em 0;
 }
 
-/* Sidebar */
+/* Sidebar — float:right to match live blog.mithis.net rendering
+   (P7-iter2 fix: bf4e353 wrongly set float:left assuming Barthelme base) */
 body div.sidebar {
-    float: left;
+    float: right;
     overflow: hidden;
     width: 15em;
 }
