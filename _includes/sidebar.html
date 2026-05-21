@@ -1,141 +1,194 @@
 <div id="primary" class="sidebar">
     <ul>
-        
-        <!-- Twitter Feed Widget -->
-        <li class="widget">
-            <h3 class="widgettitle">Follow Me on Twitter</h3>
-            <div class="twitter-feed">
-                <p><em>Note: Twitter integration has been removed during migration. Follow <a href="https://twitter.com/mithro">@mithro</a> on Twitter.</em></p>
-            </div>
-        </li>
-        
-        <!-- Photo Gallery Widget -->
-        <li class="widget">
-            <h3 class="widgettitle">Photos</h3>
-            <div class="photo-gallery">
-                <p><em>Note: Photo gallery integration has been removed during migration. View photos at <a href="https://github.com/mithro">GitHub</a>.</em></p>
-            </div>
-        </li>
-        
-        <!-- Search Widget -->
-        <li class="widget">
-            <h3 class="widgettitle">Search</h3>
-            <form method="get" action="{{ '/search.html' | relative_url }}">
-              <input name="s" id="sidebar-s" type="text" placeholder="Search…"/>
-              <input type="submit" value="Search"/>
-            </form>
-        </li>
-        
-        <!-- Categories Widget -->
-        <!-- NOTE: Category counts below are static integers set to the WP oracle values by the
-             PSC phase. To switch to auto-computed Liquid counts after the corpus is confirmed
-             oracle-complete, replace each static "(N)" with a Liquid size filter, e.g.:
-               ({{ site.posts | where_exp: "p", "p.categories contains 'hardware'" | size }})
-             Deferred in P5 (USER-DECISION C-1) — keep static until the systemic multi-category
-             under-import pass confirms the corpus is oracle-complete. -->
-        <li class="widget">
-            <h3 class="widgettitle">Categories</h3>
-            <select id="categories-dropdown" onchange="if(this.value) window.location.href=this.value">
-                <option value="">Select Category</option>
-                <option value="{{ '/archives/category/diary/' | relative_url }}">Diary (2)</option>
-                <option value="{{ '/archives/category/games/' | relative_url }}">Games (3)</option>
-                <option value="{{ '/archives/category/gaming-miniconf/' | relative_url }}">Gaming Miniconf (7)</option>
-                <option value="{{ '/archives/category/google/' | relative_url }}">Google (7)</option>
-                <option value="{{ '/archives/category/hardware/' | relative_url }}">Hardware (3)</option>
-                <option value="{{ '/archives/category/highlights/' | relative_url }}">Highlights (2)</option>
-                <option value="{{ '/archives/category/ideas/' | relative_url }}">Ideas (9)</option>
-                <option value="{{ '/archives/category/lca/' | relative_url }}">linux.conf.au (12)</option>
-                <option value="{{ '/archives/category/pcb/' | relative_url }}">PCB (5)</option>
-                <option value="{{ '/archives/category/python/' | relative_url }}">Python (6)</option>
-                <option value="{{ '/archives/rcs/darcs/' | relative_url }}">RCS (3)</option>
-                <option value="{{ '/archives/category/sci-fi/' | relative_url }}">Sci Fi (1)</option>
-                <option value="{{ '/archives/category/scheme/' | relative_url }}">Scheme (1)</option>
-                <option value="{{ '/archives/category/summer-of-code/' | relative_url }}">Summer of Code (8)</option>
-                <option value="{{ '/archives/category/sydney/' | relative_url }}">Sydney (1)</option>
-                <option value="{{ '/archives/rcs/tailor/' | relative_url }}">Tailor (1)</option>
-                <option value="{{ '/archives/category/timvideos-us/' | relative_url }}">TimVideos.us (10)</option>
-                <option value="{{ '/archives/category/timvideos-us/hdmi2usb/' | relative_url }}">HDMI2USB (10)</option>
-                <option value="{{ '/archives/category/ubuntu/' | relative_url }}">Ubuntu (3)</option>
-                <option value="{{ '/archives/category/uncategorized/' | relative_url }}">Uncategorized (10)</option>
-                <option value="{{ '/archives/category/uni/' | relative_url }}">Uni (5)</option>
-                <option value="{{ '/archives/category/useful-bits/' | relative_url }}">Useful Bits (4)</option>
-            </select>
-        </li>
-        
-        <!-- Personal Links Widget -->
-        <li class="widget">
-            <h3 class="widgettitle">Personal Links</h3>
-            <ul>
-                <li><a href="{{ '/contact/' | relative_url }}">Contact Me</a></li>
-                <li><a href="https://launchpad.net/~mithro/+archive/ppa" title="My Ubuntu packages.">My Packages</a></li>
-                <li><a href="https://picasaweb.google.com/mithro" title="Pictures I have taken of things.">My Photos</a></li>
-                <li><a href="http://blog.mithis.net/cgi-bin/gitweb.cgi" title="Useful code snippets and other juicy tidbits.">My Useful Bits</a></li>
-                <li><a href="https://www.youtube.com/mithro" title="My Youtube Videos – Talks, Social and otherwise.">My Videos</a></li>
-            </ul>
-        </li>
-        
-        <!-- RSS Feeds Widget -->
-        <li class="widget">
-            <h3 class="widgettitle">RSS</h3>
-            <ul>
-                <li><a href="{{ '/feed/' | relative_url }}" title="Mithro rants about stuff RSS 2.0 Feed">All posts</a></li>
-                <li><a href="{{ '/comments/feed/' | relative_url }}" title="Mithro rants about stuff Comments RSS 2.0 Feed">All comments</a></li>
-            </ul>
-        </li>
-        
-        <!-- Tags Cloud Widget -->
-        <li class="widget">
-            <h3 class="widgettitle">Tags</h3>
-            <div class="tag-cloud">
-                <a href="{{ '/archives/tag/code' | relative_url }}" title="1 topic">code</a>
-                <a href="{{ '/archives/tag/cookies' | relative_url }}" title="2 topics">cookies</a>
-                <a href="{{ '/archives/tag/cross-compile' | relative_url }}" title="1 topic">cross compile</a>
-                <a href="{{ '/archives/tag/cross-compiling' | relative_url }}" title="1 topic">cross compiling</a>
-                <a href="{{ '/archives/tag/cygwin' | relative_url }}" title="1 topic">cygwin</a>
-                <a href="{{ '/archives/tag/firefly' | relative_url }}" title="1 topic">firefly</a>
-                <a href="{{ '/archives/tag/firefox' | relative_url }}" title="3 topics">firefox</a>
-                <a href="{{ '/archives/tag/foss' | relative_url }}" title="2 topics">foss</a>
-                <a href="{{ '/archives/tag/freedom' | relative_url }}" title="1 topic">freedom</a>
-                <a href="{{ '/archives/tag/games' | relative_url }}" title="3 topics">Games</a>
-                <a href="{{ '/archives/tag/gaming' | relative_url }}" title="1 topic">gaming</a>
-                <a href="{{ '/archives/tag/google' | relative_url }}" title="4 topics">Google</a>
-                <a href="{{ '/archives/tag/gsoc' | relative_url }}" title="2 topics">gsoc</a>
-                <a href="{{ '/archives/tag/python' | relative_url }}" title="2 topics">Python</a>
-                <a href="{{ '/archives/tag/sydney' | relative_url }}" title="2 topics">Sydney</a>
-                <a href="{{ '/archives/tag/ubuntu' | relative_url }}" title="2 topics">Ubuntu</a>
-            </div>
-        </li>
-        
-        <!-- Recent Posts Widget -->
-        <li class="widget">
-            <h3 class="widgettitle">Recent Posts</h3>
-            <ul>
-                {% for post in site.posts limit: 10 %}
-                    <li>
-                        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </li>
-        
-        <!-- Other Cool People Widget -->
-        <li class="widget">
-            <h3 class="widgettitle">Other Cool People</h3>
-            <ul>
-                <li><a href="https://www.rowetel.com/blog/" title="A guy who is involved with some cool open source hardware!">David Rowe's Blog</a></li>
-                <li><a href="http://jms.id.au/" title="Joel Stanley is my local OLPC guru.">Joel Stanley's Blog</a></li>
-                <li><a href="http://katharos.id.au/blog/" title="Friend from work who does cool python.">Katie Bell's Blog</a></li>
-                <li><a href="http://ozlabs.org/~rusty/" title="The famous Rusty Russel's intresting blog.">Rusty's Blog</a></li>
-            </ul>
-        </li>
-        
-        <!-- Meta Widget -->
-        <li class="widget">
-            <h3 class="widgettitle">Meta</h3>
-            <ul>
-                <li><a href="https://blog.mithis.net/wp-login.php?redirect_to=%2F">Log in</a></li>
-            </ul>
-        </li>
+
+<!-- Twitter/aktt widget - faithful to live WP aktt-widget (Auto-Keet Tweet) -->
+<li id="aktt-widget-3" class="widget aktt-widget"><h3 class='widgettitle'></h3>
+<div class="aktt_tweets">
+	<ul>
+		<li>
+RT <a href="http://twitter.com/nextdayvideo">@nextdayvideo</a>: We support open hardware for video recording. See the <a href="http://twitter.com/numatolab">@numatolab</a> Opsis board developed by <a href="http://twitter.com/TimVideosUs">@TimVideosUs</a> <a href="http://youtu.be/O39wuCC7hNs">youtu.be/O39wuCC7hNs</a> <a href="http://twitter.com/1/status/647200064021004288" class="aktt_tweet_time">11 years ago</a>
+</li>
+		<li>
+Announcing the <a href="http://twitter.com/numatolab">@numatolab</a> Opsis Champion program. Be the first to get an Opsis board! &#8211;<a href="https://www.crowdsupply.com/numato-lab/opsis/updates/1823">crowdsupply.com/numato-lab/ops…</a> <a href="http://twitter.com/crowd_supply">@crowd_supply</a> <a href="http://twitter.com/1/status/647036548781772800" class="aktt_tweet_time">11 years ago</a>
+</li>
+		<li>
+RT <a href="http://twitter.com/XilinxInc">@XilinxInc</a>: $349, Open-Source, FPGA-based Video Dev Platform fully funded. Get yours! <a href="http://bit.ly/1gL9GdN">bit.ly/1gL9GdN</a> http://t.co/7SZNBcpp7P <a href="http://twitter.com/1/status/646880351726399488" class="aktt_tweet_time">11 years ago</a>
+</li>
+	</ul>
+</div>
+	<p class="aktt_more_updates"><a href="http://twitter.com/mithro">Follow Me on Twitter</a></p>
+</li>
+
+<!-- Shashin photos widget - faithful to live WP shashin widget (broken ggpht URLs preserved) -->
+<li id="shashinwidgetwp-3" class="widget "><div class="shashinPhotoGroups"><table class="shashinThumbnailsTable" id="shashinGroup_2_2" style="margin-left: auto; margin-right: auto;clear: none;">
+<caption></caption>
+<tr>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_7" style="width: 151px;"><a href="//lh6.ggpht.com/-WnYSvrGWQXc/Szt6b7ZzR6I/AAAAAAAAad0/_C6ya7x9oBM/pict0346.jpg?imgmax=800" id="shashinThumbnailLink_7" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group2' })" class="highslide"><img src="https://lh6.ggpht.com/-WnYSvrGWQXc/Szt6b7ZzR6I/AAAAAAAAad0/_C6ya7x9oBM/pict0346.jpg?imgmax=150" alt="" width="145" height="150" class="shashinThumbnailImage" id="shashinThumbnailImage_7" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/Me#5421061196691490722">View at Picasa</a></div><span class="shashinCaptionExif">12-Jan-2006 14:18, KONICA MINOLTA DiMAGE E500, 5.6, 5.4mm, 0.006 sec, ISO 200</span></div>
+</div></td>
+</tr>
+<tr>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_8" style="width: 118px;"><a href="//lh6.ggpht.com/-k-wvthUYOOw/Tj0AzHnkC-I/AAAAAAAAfkg/ag_w-cPjVv0/butterfly.JPG?imgmax=800" id="shashinThumbnailLink_8" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group2' })" class="highslide"><img src="https://lh6.ggpht.com/-k-wvthUYOOw/Tj0AzHnkC-I/AAAAAAAAfkg/ag_w-cPjVv0/butterfly.JPG?imgmax=150" alt="" width="112" height="150" class="shashinThumbnailImage" id="shashinThumbnailImage_8" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/Me#5637663186756045794">View at Picasa</a></div><span class="shashinCaptionExif">06-Dec-2010 05:58, SAMSUNG SAMSUNG ES65, ES67 / VLUU ES65, ES67 / SAMSUNG SL50, 5.6, 11.2mm, 0.022 sec, ISO 240</span></div>
+</div></td>
+</tr>
+<tr>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_9" style="width: 156px;"><a href="//lh4.ggpht.com/-Ri09etTnr3s/S0vUGosicgI/AAAAAAAAdfI/n7RGa4kXQBo/pict0015.jpg?imgmax=800" id="shashinThumbnailLink_9" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group2' })" class="highslide"><img src="https://lh4.ggpht.com/-Ri09etTnr3s/S0vUGosicgI/AAAAAAAAdfI/n7RGa4kXQBo/pict0015.jpg?imgmax=150" alt="" width="150" height="133" class="shashinThumbnailImage" id="shashinThumbnailImage_9" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/Me#5425663386566423042">View at Picasa</a></div><span class="shashinCaptionExif">30-Sep-2005 17:42, KONICA MINOLTA DiMAGE E500, 2.8, 5.4mm, 0.003 sec, ISO 200</span></div>
+</div></td>
+</tr>
+<tr>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_10" style="width: 105px;"><a href="//lh5.ggpht.com/-aUbdNrJ0tQo/SsB6Oh5m8RI/AAAAAAAAARg/LyrD49C2Nsk/tim3.JPG?imgmax=800" id="shashinThumbnailLink_10" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group2' })" class="highslide"><img src="https://lh5.ggpht.com/-aUbdNrJ0tQo/SsB6Oh5m8RI/AAAAAAAAARg/LyrD49C2Nsk/tim3.JPG?imgmax=150" alt="" width="99" height="150" class="shashinThumbnailImage" id="shashinThumbnailImage_10" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/Me#5386439544371867922">View at Picasa</a></div></div>
+</div></td>
+</tr>
+<tr>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_11" style="width: 106px;"><a href="//lh5.ggpht.com/-YrtVjk6oxhw/SsB6OnIOl8I/AAAAAAAAARk/E3BSzM6-LMc/me.png?imgmax=800" id="shashinThumbnailLink_11" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group2' })" class="highslide"><img src="https://lh5.ggpht.com/-YrtVjk6oxhw/SsB6OnIOl8I/AAAAAAAAARk/E3BSzM6-LMc/me.png?imgmax=150" alt="" width="100" height="150" class="shashinThumbnailImage" id="shashinThumbnailImage_11" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/Me#5386439545775364034">View at Picasa</a></div></div>
+</div></td>
+</tr>
+<tr>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_12" style="width: 115px;"><a href="//lh5.ggpht.com/-6UEWgeAfqY0/Szt6bvNj5pI/AAAAAAAAadw/gf8um-E8jkc/pict0186.jpg?imgmax=800" id="shashinThumbnailLink_12" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group2' })" class="highslide"><img src="https://lh5.ggpht.com/-6UEWgeAfqY0/Szt6bvNj5pI/AAAAAAAAadw/gf8um-E8jkc/pict0186.jpg?imgmax=150" alt="" width="109" height="150" class="shashinThumbnailImage" id="shashinThumbnailImage_12" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/Me#5421061193418925714">View at Picasa</a></div><span class="shashinCaptionExif">29-Jan-2006 11:40, KONICA MINOLTA DiMAGE E500, 5.6, 5.4mm, 0.001 sec, ISO 50</span></div>
+</div></td>
+</tr>
+<tr>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_13" style="width: 105px;"><a href="//lh4.ggpht.com/-u5PtCuJGdMU/SsB6iUXKU0I/AAAAAAAAARs/Wj2q05nBJzQ/me3.JPG?imgmax=800" id="shashinThumbnailLink_13" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group2' })" class="highslide"><img src="https://lh4.ggpht.com/-u5PtCuJGdMU/SsB6iUXKU0I/AAAAAAAAARs/Wj2q05nBJzQ/me3.JPG?imgmax=150" alt="" width="99" height="150" class="shashinThumbnailImage" id="shashinThumbnailImage_13" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/Me#5386439884335108930">View at Picasa</a></div></div>
+</div></td>
+</tr>
+<tr>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_14" style="width: 156px;"><a href="//lh3.ggpht.com/-VmdTPxjkXRY/TmLTwDj0tFI/AAAAAAAAfns/HVp9q0ktaik/6102827522_bbce6cf34a_o.jpg?imgmax=800" id="shashinThumbnailLink_14" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group2' })" class="highslide"><img src="https://lh3.ggpht.com/-VmdTPxjkXRY/TmLTwDj0tFI/AAAAAAAAfns/HVp9q0ktaik/6102827522_bbce6cf34a_o.jpg?imgmax=150" alt="PyCon 2010 and 2011 organisers" title="PyCon 2010 and 2011 organisers" width="150" height="100" class="shashinThumbnailImage" id="shashinThumbnailImage_14" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/Me#5648309705218765906">View at Picasa</a></div>PyCon 2010 and 2011 organisers<span class="shashinCaptionExif">21-Aug-2011 17:42, Panasonic DMC-LX3, 2.6, 10.2mm, 0.05 sec, ISO 400</span></div>
+</div></td>
+</tr>
+<tr>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_15" style="width: 156px;"><a href="//lh6.ggpht.com/-Jt6qN8tNtqA/TbrKiIJT65I/AAAAAAAAfYg/Vkgmw1C-8rA/IMAG0115.jpg?imgmax=800" id="shashinThumbnailLink_15" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group2' })" class="highslide"><img src="https://lh6.ggpht.com/-Jt6qN8tNtqA/TbrKiIJT65I/AAAAAAAAfYg/Vkgmw1C-8rA/IMAG0115.jpg?imgmax=150" alt="" width="150" height="89" class="shashinThumbnailImage" id="shashinThumbnailImage_15" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/Me#5601011774239533970">View at Picasa</a></div><span class="shashinCaptionExif">26-Apr-2011 00:05, HTC HTC Desire, 4.31mm, ISO 455</span></div>
+</div></td>
+</tr>
+<tr>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_16" style="width: 156px;"><a href="//lh4.ggpht.com/-d5aY4qMpXXw/SsB6Oa7mONI/AAAAAAAAARc/i8RNhii2sPM/tim2.JPG?imgmax=800" id="shashinThumbnailLink_16" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group2' })" class="highslide"><img src="https://lh4.ggpht.com/-d5aY4qMpXXw/SsB6Oa7mONI/AAAAAAAAARc/i8RNhii2sPM/tim2.JPG?imgmax=150" alt="" width="150" height="130" class="shashinThumbnailImage" id="shashinThumbnailImage_16" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/Me#5386439542501161170">View at Picasa</a></div></div>
+</div></td>
+</tr>
+<tr>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_17" style="width: 134px;"><a href="//lh6.ggpht.com/-UpW7qo7R6N4/SsB6OQA8NMI/AAAAAAAAARY/-I_mhJMI9Ig/tim.JPG?imgmax=800" id="shashinThumbnailLink_17" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group2' })" class="highslide"><img src="https://lh6.ggpht.com/-UpW7qo7R6N4/SsB6OQA8NMI/AAAAAAAAARY/-I_mhJMI9Ig/tim.JPG?imgmax=150" alt="" width="128" height="150" class="shashinThumbnailImage" id="shashinThumbnailImage_17" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/Me#5386439539570783426">View at Picasa</a></div></div>
+</div></td>
+</tr>
+<tr>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_18" style="width: 156px;"><a href="//lh3.ggpht.com/-dg4s4wfv7WI/ToiHeJrabHI/AAAAAAAAoxE/1MbNcWBQ_sI/IMG_0001.JPG?imgmax=800" id="shashinThumbnailLink_18" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group2' })" class="highslide"><img src="https://lh3.ggpht.com/-dg4s4wfv7WI/ToiHeJrabHI/AAAAAAAAoxE/1MbNcWBQ_sI/IMG_0001.JPG?imgmax=150" alt="" width="150" height="112" class="shashinThumbnailImage" id="shashinThumbnailImage_18" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/Me#5658921883854859378">View at Picasa</a></div><span class="shashinCaptionExif">30-Sep-2011 07:02, Canon Canon PowerShot SX230 HS, 3.1, 5.0mm, 0.033 sec, ISO 400</span></div>
+</div></td>
+</tr>
+<tr>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_19" style="width: 156px;"><a href="//lh3.ggpht.com/-eL-O6WywFAo/SsB6Oru0p9I/AAAAAAAAARo/E3BEkLIofWE/me.png?imgmax=800" id="shashinThumbnailLink_19" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group2' })" class="highslide"><img src="https://lh3.ggpht.com/-eL-O6WywFAo/SsB6Oru0p9I/AAAAAAAAARo/E3BEkLIofWE/me.png?imgmax=150" alt="" width="150" height="112" class="shashinThumbnailImage" id="shashinThumbnailImage_19" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/Me#5386439547010983890">View at Picasa</a></div></div>
+</div></td>
+</tr>
+<tr>
+<td><div class="shashinThumbnailDiv" id="shashinThumbnailDiv_20" style="width: 156px;"><a href="//lh5.ggpht.com/-2kOVOq-iZBs/S0AGTVETNMI/AAAAAAAAajk/C4yC9Y-Je_Q/tim.jpg?imgmax=800" id="shashinThumbnailLink_20" onclick="return hs.expand(this, { autoplay: false, slideshowGroup: 'group2' })" class="highslide"><img src="https://lh5.ggpht.com/-2kOVOq-iZBs/S0AGTVETNMI/AAAAAAAAajk/C4yC9Y-Je_Q/tim.jpg?imgmax=150" alt="" width="150" height="99" class="shashinThumbnailImage" id="shashinThumbnailImage_20" /></a><div class="highslide-caption"> <div class="shashinHighslideLinkToOriginalPhoto"><a href="https://picasaweb.google.com/116784438228731043690/Me#5422340880496538818">View at Picasa</a></div></div>
+</div></td>
+</tr>
+</table>
+<script type="text/javascript">addHSSlideshow('group2');</script>
+</div>
+</li>
+
+<!-- Personal Links - faithful to live WP linkcat-90 (blank widgettitle) -->
+<li id="linkcat-90" class="widget widget_links"><h3 class='widgettitle'></h3>
+
+	<ul class='xoxo blogroll'>
+<li><a href="{{ '/contact/' | relative_url }}" rel="me">Contact Me</a></li>
+<li><a href="https://launchpad.net/~mithro/+archive/ppa" rel="me" title="My Ubuntu packages.">My Packages</a></li>
+<li><a href="https://picasaweb.google.com/mithro" rel="me" title="Pictures I have taken of things.">My Photos</a></li>
+<li><a href="http://blog.mithis.net/cgi-bin/gitweb.cgi" rel="me" title="Useful code snippets and other juicy tidbits.">My Useful Bits</a></li>
+<li><a href="https://www.youtube.com/mithro" rel="me" title="My Youtube Videos &#8211; Talks, Social and otherwise.">My Videos</a></li>
+
+	</ul>
+</li>
+
+<!-- Search Widget -->
+<li id="search" class="widget widget_search"><h3 class='widgettitle'><label for="s">Search</label></h3>
+    <form id="searchform" method="get" action="{{ '/search.html' | relative_url }}">
+        <div>
+            <input id="s" name="s" class="text-input" type="text" value="" size="10" tabindex="1" accesskey="S" />
+            <input id="searchsubmit" name="searchsubmit" class="submit-button" type="submit" value="Find" tabindex="2" />
+        </div>
+    </form>
+</li>
+
+<!-- Categories Widget -->
+<!-- NOTE: Category counts below are static integers set to the WP oracle values by the
+     PSC phase. To switch to auto-computed Liquid counts after the corpus is confirmed
+     oracle-complete, replace each static "(N)" with a Liquid size filter, e.g.:
+       ({{ site.posts | where_exp: "p", "p.categories contains 'hardware'" | size }})
+     Deferred in P5 (USER-DECISION C-1) — keep static until the systemic multi-category
+     under-import pass confirms the corpus is oracle-complete. -->
+<li id="categories-3" class="widget widget_categories"><h3 class='widgettitle'>Categories</h3>
+<label class="screen-reader-text" for="cat">Categories</label>
+<select name='cat' id='cat' class='postform' onchange="if(this.value > 0) window.location.href=this.value">
+    <option value='-1'>Select Category</option>
+    <option class="level-0" value="{{ '/archives/category/diary/' | relative_url }}">Diary&nbsp;&nbsp;(2)</option>
+    <option class="level-0" value="{{ '/archives/category/games/' | relative_url }}">Games&nbsp;&nbsp;(3)</option>
+    <option class="level-0" value="{{ '/archives/category/gaming-miniconf/' | relative_url }}">Gaming Miniconf&nbsp;&nbsp;(7)</option>
+    <option class="level-0" value="{{ '/archives/category/google/' | relative_url }}">Google&nbsp;&nbsp;(7)</option>
+    <option class="level-0" value="{{ '/archives/category/hardware/' | relative_url }}">Hardware&nbsp;&nbsp;(3)</option>
+    <option class="level-0" value="{{ '/archives/category/highlights/' | relative_url }}">Highlights&nbsp;&nbsp;(2)</option>
+    <option class="level-0" value="{{ '/archives/category/ideas/' | relative_url }}">Ideas&nbsp;&nbsp;(9)</option>
+    <option class="level-0" value="{{ '/archives/category/lca/' | relative_url }}">linux.conf.au&nbsp;&nbsp;(12)</option>
+    <option class="level-0" value="{{ '/archives/category/pcb/' | relative_url }}">PCB&nbsp;&nbsp;(5)</option>
+    <option class="level-0" value="{{ '/archives/category/python/' | relative_url }}">Python&nbsp;&nbsp;(6)</option>
+    <option class="level-0" value="{{ '/archives/category/rcs/' | relative_url }}">RCS&nbsp;&nbsp;(3)</option>
+    <option class="level-1" value="{{ '/archives/rcs/darcs/' | relative_url }}">&nbsp;&nbsp;&nbsp;darcs&nbsp;&nbsp;(3)</option>
+    <option class="level-1" value="{{ '/archives/rcs/tailor/' | relative_url }}">&nbsp;&nbsp;&nbsp;Tailor&nbsp;&nbsp;(1)</option>
+    <option class="level-0" value="{{ '/archives/category/scheme/' | relative_url }}">Scheme&nbsp;&nbsp;(1)</option>
+    <option class="level-0" value="{{ '/archives/category/sci-fi/' | relative_url }}">Sci Fi&nbsp;&nbsp;(1)</option>
+    <option class="level-0" value="{{ '/archives/category/summer-of-code/' | relative_url }}">Summer of Code&nbsp;&nbsp;(8)</option>
+    <option class="level-0" value="{{ '/archives/category/sydney/' | relative_url }}">Sydney&nbsp;&nbsp;(1)</option>
+    <option class="level-0" value="{{ '/archives/category/timvideos-us/' | relative_url }}">TimVideos.us&nbsp;&nbsp;(10)</option>
+    <option class="level-1" value="{{ '/archives/category/timvideos-us/hdmi2usb/' | relative_url }}">&nbsp;&nbsp;&nbsp;HDMI2USB&nbsp;&nbsp;(10)</option>
+    <option class="level-0" value="{{ '/archives/category/ubuntu/' | relative_url }}">Ubuntu&nbsp;&nbsp;(3)</option>
+    <option class="level-0" value="{{ '/archives/category/uncategorized/' | relative_url }}">Uncategorized&nbsp;&nbsp;(10)</option>
+    <option class="level-0" value="{{ '/archives/category/uni/' | relative_url }}">Uni&nbsp;&nbsp;(5)</option>
+    <option class="level-0" value="{{ '/archives/category/useful-bits/' | relative_url }}">Useful Bits&nbsp;&nbsp;(4)</option>
+</select>
+</li>
+
+<!-- RSS Feeds Widget -->
+<li id="rss_links" class="widget widget_rss_links"><h3 class='widgettitle'>RSS</h3>
+    <ul>
+        <li><a href="{{ '/feed/' | relative_url }}" title="Mithro rants about stuff Posts RSS feed" rel="alternate" type="application/rss+xml">All posts</a></li>
+        <li><a href="{{ '/comments/feed/' | relative_url }}" title="Mithro rants about stuff Comments RSS feed" rel="alternate" type="application/rss+xml">All comments</a></li>
     </ul>
-    
+</li>
+
+<!-- Tags Cloud Widget -->
+<li id="tag_cloud-3" class="widget widget_tag_cloud"><h3 class='widgettitle'>Tags</h3>
+<div class="tagcloud">
+<a href="{{ '/archives/tag/code' | relative_url }}" class='tag-link-74' title='1 topic' style='font-size: 8pt;'>code</a>
+<a href="{{ '/archives/tag/cookies' | relative_url }}" class='tag-link-55' title='2 topics' style='font-size: 14.3pt;'>cookies</a>
+<a href="{{ '/archives/tag/cross-compile' | relative_url }}" class='tag-link-76' title='1 topic' style='font-size: 8pt;'>cross compile</a>
+<a href="{{ '/archives/tag/cross-compiling' | relative_url }}" class='tag-link-82' title='1 topic' style='font-size: 8pt;'>cross compiling</a>
+<a href="{{ '/archives/tag/cygwin' | relative_url }}" class='tag-link-78' title='1 topic' style='font-size: 8pt;'>cygwin</a>
+<a href="{{ '/archives/tag/firefly' | relative_url }}" class='tag-link-104' title='1 topic' style='font-size: 8pt;'>firefly</a>
+<a href="{{ '/archives/tag/firefox' | relative_url }}" class='tag-link-42' title='3 topics' style='font-size: 18.5pt;'>firefox</a>
+<a href="{{ '/archives/tag/foss' | relative_url }}" class='tag-link-38' title='2 topics' style='font-size: 14.3pt;'>foss</a>
+<a href="{{ '/archives/tag/freedom' | relative_url }}" class='tag-link-93' title='1 topic' style='font-size: 8pt;'>freedom</a>
+<a href="{{ '/archives/tag/games' | relative_url }}" class='tag-link-346' title='3 topics' style='font-size: 18.5pt;'>Games</a>
+<a href="{{ '/archives/tag/gaming' | relative_url }}" class='tag-link-92' title='1 topic' style='font-size: 8pt;'>gaming</a>
+<a href="{{ '/archives/tag/google' | relative_url }}" class='tag-link-348' title='4 topics' style='font-size: 22pt;'>Google</a>
+<a href="{{ '/archives/tag/gsoc' | relative_url }}" class='tag-link-350' title='2 topics' style='font-size: 14.3pt;'>gsoc</a>
+<a href="{{ '/archives/tag/python' | relative_url }}" class='tag-link-345' title='2 topics' style='font-size: 14.3pt;'>Python</a>
+<a href="{{ '/archives/tag/sydney' | relative_url }}" class='tag-link-349' title='2 topics' style='font-size: 14.3pt;'>Sydney</a>
+<a href="{{ '/archives/tag/ubuntu' | relative_url }}" class='tag-link-347' title='2 topics' style='font-size: 14.3pt;'>Ubuntu</a>
+</div>
+</li>
+
+<!-- Other Cool People Widget -->
+<li id="linkcat-4" class="widget widget_links"><h3 class='widgettitle'>Other Cool People</h3>
+
+	<ul class='xoxo blogroll'>
+<li><a href="https://www.rowetel.com/blog/" rel="friend met neighbor" title="A guy who is involved with some cool open source hardware!">David Rowe&#8217;s Blog</a></li>
+<li><a href="http://jms.id.au/" rel="friend met co-worker" title="Joel Stanley is my local OLPC guru.">Joel Stanley&#039;s Blog</a></li>
+<li><a href="http://katharos.id.au/blog/" rel="friend met co-worker co-resident" title="Friend from work who does cool python.">Katie Bell&#8217;s Blog</a></li>
+<li><a href="http://ozlabs.org/~rusty/" title="The famous Rusty Russel&#8217;s intresting blog.">Rusty&#8217;s Blog</a></li>
+
+	</ul>
+</li>
+
+<!-- Meta Widget -->
+<li id="meta_enhanced-3" class="widget meta_enhanced"><h3 class='widgettitle'>Meta</h3>
+<ul>      <li><a href="https://blog.mithis.net/wp-login.php?redirect_to=%2F" id="social_login">Log in</a></li></ul></li>
+
+    </ul>
+
 </div><!-- #primary .sidebar -->
