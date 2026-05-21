@@ -24,7 +24,23 @@
     {% endif %}
 </head>
 
-<body class="wordpress y{{ 'now' | date: '%Y' }} m{{ 'now' | date: '%m' }} d{{ 'now' | date: '%d' }} h{{ 'now' | date: '%H' }} {% if page.layout %}{{ page.layout }}{% endif %}">
+{%- comment -%}
+    Map Jekyll layout to Barthelme WP body class (the theme CSS targets
+    body.single / body.home / body.archive / body.page / body.search).
+    Use post.date for post pages so the y/m/d/h reflect post publish time
+    (WP-faithful) rather than build time.
+{%- endcomment -%}
+{%- assign body_dt = 'now' -%}
+{%- if page.date -%}{%- assign body_dt = page.date -%}{%- endif -%}
+{%- assign body_extra = '' -%}
+{%- case page.layout -%}
+    {%- when 'post' -%}{%- assign body_extra = 'single' -%}
+    {%- when 'category' -%}{%- assign body_extra = 'archive' -%}
+    {%- when 'hardware' or 'project' or 'tutorial' -%}{%- assign body_extra = 'single' -%}
+{%- endcase -%}
+{%- assign body_search = '' -%}
+{%- if page.url contains '/search' -%}{%- assign body_search = 'search' -%}{%- endif -%}
+<body class="wordpress y{{ body_dt | date: '%Y' }} m{{ body_dt | date: '%m' }} d{{ body_dt | date: '%d' }} h{{ body_dt | date: '%H' }}{% if page.layout %} {{ page.layout }}{% endif %}{% if body_extra != '' %} {{ body_extra }}{% endif %}{% if body_search != '' %} {{ body_search }}{% endif %}">
 
 <div id="wrapper">
     
