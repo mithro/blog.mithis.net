@@ -28,6 +28,46 @@ Files changed in P7-pivot commits:
 - `CLAUDE.md` — "Full WP Fidelity" requirement added
 - `docs/superpowers/plans/P6-PICASA-CHECK.md` — inversion note prepended
 
+## P8 — visual-fidelity followups (deferred per user "merge P7 now + iterate" 2026-05-22)
+
+P7 closed the major rendered-pixel deltas (sidebar position RIGHT, header
+Picasa gallery, Twitter widget, category full-content, category `<br/>`
+separator, +1000 timezone, body-class mapping). Remaining cosmetic items
+for a P8 pass (none block the P7 merge):
+
+1. **Category ORDER on multi-category posts** differs from live. Example:
+   the SoC post — live order `Hardware, HDMI2USB, Summer of Code,
+   TimVideos.us`; local order `Summer of Code, Hardware, TimVideos.us,
+   HDMI2USB` (post frontmatter order). WP orders categories
+   alphabetically-or-by-ID; replicate that sort in `home.html` +
+   `category.html` `{% for category in post.categories %}` (e.g. `| sort`).
+
+2. **More page-type screenshot verification** vs live, not yet exhaustively
+   done: image-heavy posts, code-heavy posts (WP-Syntax vs Rouge styling),
+   `/search/`, 404, `hardware`/`project`/`tutorial` layouts, date archives
+   (`/archives/2009/...`), tag pages (`/archives/tag/...`), author page
+   (`/archives/author/mithro`). Screenshot-compare each at 1280px.
+
+3. **Subtle font-weight / spacing micro-deltas** — P7 matched layout
+   structure + major styling; a fine-grained per-element typography pass
+   (line-heights, margins, link colors on hover) could close residual
+   sub-pixel differences.
+
+4. **Shashin highslide lightbox JS** not loaded locally — clicking a header
+   thumbnail navigates to the ggpht 404 directly instead of opening the JS
+   lightbox. Low priority (thumbnail + lightbox image both 404 anyway). If
+   full fidelity wanted: load `shashin.css`+`highslide.js` (vendored or
+   referenced) and the `addHSSlideshow('group1')` init script.
+
+5. **WP-Syntax code-block styling** — live uses the `wp-syntax` plugin CSS
+   (line-numbered tables for some code blocks); local uses Rouge
+   (`highlighter-rouge`). Verify code blocks render visually equivalent;
+   if not, add WP-Syntax-matching CSS or accept the divergence.
+
+6. **`.entry-meta` exact whitespace** — spot-check other meta separators
+   (author/category/comments/permalink spacing) against live's exact markup
+   (live has literal tab/newline whitespace between spans from PHP).
+
 ## P2 — content remediation worklist (from Task 5 linter smoke run)
 
 `scripts/fidelity/lint_content.py` over `_posts/*.md` (asset_root='.') → **47 findings**:
