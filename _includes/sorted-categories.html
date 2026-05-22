@@ -23,4 +23,4 @@ Algorithm: build "title|slug" strings, sort them lexicographically, then output 
   {%- assign _sc_page2 = site.pages | where: "cat_slug", _sc_slug2 | first -%}
   {%- assign _sc_title2 = _sc_page2.title | default: _sc_slug2 -%}
   <a href="{{ '/archives/category/' | append: _sc_slug2 | relative_url }}" rel="category tag">{{ _sc_title2 }}</a>{%- unless forloop.last %}{{ include.separator }}{% endunless -%}
-{%- endfor %}
+{%- endfor -%}
