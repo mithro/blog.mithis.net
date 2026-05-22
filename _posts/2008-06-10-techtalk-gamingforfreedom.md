@@ -28,7 +28,7 @@ At the beginning this time I tried some of the “one word per slide quick succe
 
 If you have any feedback on the talk, please do [send me an email](mailto://mithro@mithis.com)!
 
-The real reason for this post is to [upload the slides for the tech talk so they can be linked from the YouTube video.
+The real reason for this post is to [upload the slides for the tech talk](/assets/images/wp-content/uploads/2008/06/techtalk6-pdfable.pdf) so they can be linked from the YouTube video.
 
 *Edit: The talk has now been uploaded, you can access it via the following [link](http://www.youtube.com/watch?v=8Ct36u8RPIU) or see it below,*
 <!-- fidelity-allow: BLOCK_HTML necessary-embed - original YouTube Flash player; Markdown cannot express this -->
