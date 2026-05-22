@@ -9,6 +9,14 @@
     <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
     
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    {%- comment -%} Shashin/Highslide lightbox — vendored from live wp-syntax/shashin
+        plugin so the header Picasa thumbnails open the highslide lightbox like live
+        (faithful broken-stuff-and-all: the ggpht images 404, same as live). {%- endcomment -%}
+    <link rel="stylesheet" href="{{ '/assets/shashin/Public/Display/shashin.css' | relative_url }}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ '/assets/shashin/Public/Display/highslide/highslide.css' | relative_url }}" type="text/css" media="all">
+    <script type="text/javascript">var highslideSettings = {"graphicsDir":"{{ '/assets/shashin/Public/Display/highslide/graphics/' | relative_url }}","outlineType":"rounded-white","dimmingOpacity":"0.75","interval":"5000","repeat":"1","position":"top center","hideController":"0"};</script>
+    <script type="text/javascript" src="{{ '/assets/shashin/Public/Display/highslide/highslide.js' | relative_url }}"></script>
+    <script type="text/javascript" src="{{ '/assets/shashin/Public/Display/highslideSettings.js' | relative_url }}"></script>
     <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ '/feed/' | relative_url }}">
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
     
