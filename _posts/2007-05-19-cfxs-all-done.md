@@ -18,7 +18,7 @@ The day was way more stressful then it needed to be. I needed quite a bit of tim
 
 The demonstration worked pretty well. I had two problems, but neither of them where significant or really noticed by the moderator or supervisor.
 
-My documentation turned out pretty good too. I was required to produce two documents, the first was a “[ Final Report” which covered what I actually did. The second was as a “[Technical Document“, my supervisor suggested I do this in the form of a data sheet for my project. I’ve attached both the documents here for people to have a look over.
+My documentation turned out pretty good too. I was required to produce two documents, the first was a “[Final Report](/assets/images/wp-content/uploads/2007/05/final-report-small.pdf)” which covered what I actually did. The second was as a “[Technical Document](/assets/images/wp-content/uploads/2007/05/technical-small.pdf)”, my supervisor suggested I do this in the form of a data sheet for my project. I’ve attached both the documents here for people to have a look over.
 
 So where do I go from here? Most people just stop once they had done their final project. The University has some strange rules about collaboration on Honours projects, so I wasn’t able to do this project as an piece of Open Source Hardware. Now however that restriction has been lifted, over the next couple of months I hope to move it all to Open Source.
 
