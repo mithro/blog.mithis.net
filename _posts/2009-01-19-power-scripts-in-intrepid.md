@@ -30,30 +30,26 @@ It appears that thanks to moving towards [HAL](http://www.freedesktop.org/wiki/S
 
 Previously, my script was found in */etc/acpi/resume.d/99-custom.sh* looked like the following,
 
-```bash
-#! /bin/sh
-# Turn off the CD drive and the bluetooth device
-echo 1 > /sys/devices/platform/sony-laptop/cdpower
-echo 0 > /sys/devices/platform/sony-laptop/cdpower
-
-echo 1 > /sys/devices/platform/sony-laptop/bluetoothpower
-echo 0 > /sys/devices/platform/sony-laptop/bluetoothpower
-```
+>     #! /bin/sh
+>     # Turn off the CD drive and the bluetooth device
+>     echo 1 > /sys/devices/platform/sony-laptop/cdpower
+>     echo 0 > /sys/devices/platform/sony-laptop/cdpower
+>
+>     echo 1 > /sys/devices/platform/sony-laptop/bluetoothpower
+>     echo 0 > /sys/devices/platform/sony-laptop/bluetoothpower
 
 Now my script script must be found in */etc/pm/sleep.d/10-custom* and looks like the following,
 
-```bash
-#!/bin/sh -e
-case "$1" in
-	resume)
-		# Turn off the CD drive and the bluetooth device
-		echo 1 > /sys/devices/platform/sony-laptop/cdpower
-		echo 0 > /sys/devices/platform/sony-laptop/cdpower
-
-		echo 1 > /sys/devices/platform/sony-laptop/bluetoothpower
-		echo 0 > /sys/devices/platform/sony-laptop/bluetoothpower
-	;;
-esac
-```
+>     #!/bin/sh -e
+>     case "$1" in
+>     	resume)
+>     		# Turn off the CD drive and the bluetooth device
+>     		echo 1 > /sys/devices/platform/sony-laptop/cdpower
+>     		echo 0 > /sys/devices/platform/sony-laptop/cdpower
+>
+>     		echo 1 > /sys/devices/platform/sony-laptop/bluetoothpower
+>     		echo 0 > /sys/devices/platform/sony-laptop/bluetoothpower
+>     	;;
+>     esac
 
 The main reason I’m posting this on my blog is that this change does **not seem to be documented anywhere**. Searching on Google for things like “resume script intrepid” or “/etc/acpi/resume.d intrepid” does not come up with anything useful. Hopefully some people will find this helpful.

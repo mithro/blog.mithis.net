@@ -17,16 +17,29 @@ wordpress_id: 6
 wordpress_url: https://blog.mithis.net/archives/ideas/6-gnome-improvements
 ---
 Here are a bunch of things which I would love to see added to gnome to make it much easier for me to use.
+
 - Add the ability to drag around the items in the task bar like you can in the tabs in the browser
-- Add the ability to lock panels so you can’t drag them about
-This is needed because when the computer gets loaded the mouse interprets the clicks as click and drag. It is also a problem were people aren’t skilled with the mouse (IE hold and drag the item). The means panel ends up getting dragged about. I have the same frustration under older versions of windows.
+
+- Add the ability to lock panels so you can't drag them about
+
+    This is needed because when the computer gets loaded the mouse interprets the clicks as click and drag. It is also a problem were people aren't skilled with the mouse (IE hold and drag the item). The means panel ends up getting dragged about. I have the same frustration under older versions of windows.
+
 - Network applets should display information about the connection status in tool tip (IE IP Address/essid/etc)
-Everything else seems to display useful information. The CPU applet displays the current CPU speed. The laptop temp applet displays the current temperature. Why doesn’t the network applets show the current configuration? 
+
+    Everything else seems to display useful information. The CPU applet displays the current CPU speed. The laptop temp applet displays the current temperature. Why doesn't the network applets show the current configuration?
+
 - Memory improvements, I know gnome is already working on this but 256MB is painful to use.
-Recently the 512MB stick of ram in my laptop died. This means that I’m currently restricted to 256MB of ram. Gnome positively sucks with this much ram.  This is annoying because XP runs quite nicely with this amount.
-Evolution and Epiphany are the to biggest hogs but all the other little things really add up. Disabling the SPAM filtering in Evolution seems to have make a fairly big difference.
-Not to mention my video card has to steal main memory (It’s a Intel i855, I have to restricted to 32mb).  
-To make matters even worse I have a very very slow hard drive (4200rpm, 1.5 Inch drive) this makes swapping even more painful then most people.
+
+    Recently the 512MB stick of ram in my laptop died. This means that I'm currently restricted to 256MB of ram. Gnome positively sucks with this much ram.  This is annoying because XP runs quite nicely with this amount.
+
+    Evolution and Epiphany are the to biggest hogs but all the other little things really add up. Disabling the SPAM filtering in Evolution seems to have make a fairly big difference.
+
+    Not to mention my video card has to steal main memory (It's a Intel i855, I have to restricted to 32mb).
+
+    To make matters even worse I have a very very slow hard drive (4200rpm, 1.5 Inch drive) this makes swapping even more painful then most people.
+
 -  Disk access improvements, things seem to access the disk a lot more then needed.
-My hard drive seems to do a lot of work even when not swapping. Doing a “echo 1 > /proc/sys/vm/block_dump” shows that a lot of things are accessing the hard drive when they are idle or not doing anything.
-The hard drive is one of the biggest consumers of battery life in the laptop. Reducing the accesses would make everything faster. I guess this is counter reducing memory usage however.
+
+    My hard drive seems to do a lot of work even when not swapping. Doing a "echo 1 > /proc/sys/vm/block_dump" shows that a lot of things are accessing the hard drive when they are idle or not doing anything.
+
+    The hard drive is one of the biggest consumers of battery life in the laptop. Reducing the accesses would make everything faster. I guess this is counter reducing memory usage however.
