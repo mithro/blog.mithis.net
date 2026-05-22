@@ -2,6 +2,14 @@
 author: mithro
 categories:
 - uncategorized
+tags:
+- css
+- dvd
+- dvd-video
+- matshita
+- regionset
+- sony
+- vaio
 date: 2008-07-08T14:43:04+1000
 excerpt: Recovered from Wayback Machine archive
 layout: post

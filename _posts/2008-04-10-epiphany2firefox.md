@@ -2,6 +2,12 @@
 author: mithro
 categories:
 - uncategorized
+tags:
+- browser
+- epiphany
+- firefox
+- gnome
+- web
 date: 2008-04-10T10:04:50+0000
 excerpt: Recovered from Wayback Machine archive
 layout: post

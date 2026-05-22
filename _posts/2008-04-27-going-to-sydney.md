@@ -3,6 +3,10 @@ author: mithro
 categories:
 - google
 - sydney
+tags:
+- Google
+- moving
+- Sydney
 date: 2008-04-27T22:51:50+0000
 excerpt: Recovered from Wayback Machine archive
 layout: post

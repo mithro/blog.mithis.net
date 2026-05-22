@@ -4,6 +4,15 @@ author: mithro
 categories:
 - lca
 - tp
+tags:
+- cross compile
+- cross compiling
+- cygwin
+- linux.conf.au
+- mingw32
+- thousand parsec
+- tpserver-cpp
+- windows
 date: 2009-01-27T16:22:22+1000
 excerpt: Recovered from Wayback Machine archive
 layout: post

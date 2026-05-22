@@ -2,6 +2,17 @@
 author: mithro
 categories:
 - lca
+tags:
+- hot plug
+- kernel
+- ksplice
+- lca09
+- lca10
+- lca2009
+- lca2010
+- lguest
+- linux
+- linux.conf.au
 date: 2010-01-03 13:05:37 +1000
 excerpt: As it’s only a couple of weeks till another Linux.conf.au is underway, I
   thought I better post this draft from the last one! This year LCA is in Wellington,

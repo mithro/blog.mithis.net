@@ -3,6 +3,11 @@
 author: mithro
 categories:
 - sci-fi
+tags:
+- firefly
+- scifi
+- starhunter
+- youtube
 date: 2009-05-26T00:05:06+1100
 excerpt: Recovered from Wayback Machine archive
 layout: post

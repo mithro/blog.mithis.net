@@ -2,6 +2,11 @@
 author: mithro
 categories:
 - google
+tags:
+- Google
+- mtv
+- newbie
+- Sydney
 date: 2008-05-27T09:25:18+1000
 excerpt: Recovered from Wayback Machine archive
 layout: post

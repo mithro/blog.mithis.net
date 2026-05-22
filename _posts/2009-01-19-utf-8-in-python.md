@@ -2,6 +2,13 @@
 author: mithro
 categories:
 - python
+tags:
+- $LANG
+- encoding
+- Python
+- sys.stdout
+- utf-8
+- utf8
 date: '2009-01-19T13:24:08+10:00'
 excerpt: This is not a post about using UTF-8 properly in Python, but doing evil,
   evil things. Python dutifully respects the $LANG environment variable on the terminal.

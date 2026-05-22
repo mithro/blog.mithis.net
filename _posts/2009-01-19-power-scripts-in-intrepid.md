@@ -2,6 +2,15 @@
 author: mithro
 categories:
 - uncategorized
+tags:
+- acpi
+- hal
+- intrepid
+- power
+- resume
+- scripts
+- suspend
+- Ubuntu
 date: 2009-01-19T15:12:19+1000
 excerpt: 'On previous versions of Ubuntu, the scripts which are called after a resume
   from suspend have been found in /etc/acpi/resume.d directory. I used this functionality

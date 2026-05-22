@@ -3,6 +3,12 @@ author: mithro
 categories:
 - games
 - google
+tags:
+- foss
+- Games
+- Google
+- talking
+- techtalk
 date: '2008-06-10T03:15:04+10:00'
 excerpt: Last week on friday, I gave a Tech Talk about Open Source Gaming as part
   of Leslie Hawthorn’s “Open Source Developers @ Google” talk series. For those who

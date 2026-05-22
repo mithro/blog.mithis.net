@@ -3,6 +3,12 @@
 author: mithro
 categories:
 - python
+tags:
+- code
+- cookies
+- firefox
+- Python
+- snippet
 date: 2009-01-20T09:29:49+1100
 excerpt: Recovered from Wayback Machine archive
 layout: post

@@ -3,6 +3,12 @@
 author: mithro
 categories:
 - games
+tags:
+- freedom
+- gaming
+- late
+- osdc
+- paper
 date: 2009-01-26 14:43:32 +1000
 excerpt: So last year at the end of November I spoke at OSDC. I had been meaning to
   blog about the conference but never gotten around to doing so. The conference...

@@ -2,6 +2,9 @@
 author: mithro
 categories:
 - uncategorized
+tags:
+- tshirts
+- twitter
 date: '2008-07-08T17:38:00+10:00'
 excerpt: '
 

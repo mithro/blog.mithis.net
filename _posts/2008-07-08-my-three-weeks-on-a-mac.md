@@ -3,6 +3,12 @@ author: mithro
 categories:
 - google
 - ubuntu
+tags:
+- apple
+- mac
+- problems
+- Ubuntu
+- ui
 date: 2008-07-08T14:00:38+1000
 excerpt: 'As everyone knows, I recently started at Google. When I started I was given
   a MacBook Pro to use as the company laptop before I had a chance to change it, I
