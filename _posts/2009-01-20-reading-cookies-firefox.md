@@ -46,8 +46,8 @@ Yesterday, I wrote about how to reading the [cookies from Firefox 3.0](http://bl
 #! /usr/bin/env python
 # Reading the cookie's from Firefox/Mozilla. Supports Firefox 3.0 and Firefox 2.x
 #
-# Author: Noah Fontes , 
-#         Tim Ansell 
+# Author: Noah Fontes <nfontes AT cynigram DOT com>,
+#         Tim Ansell <mithro AT mithis DOT com>
 # License: MIT
 def sqlite2cookie(filename):
 from cStringIO import StringIO
