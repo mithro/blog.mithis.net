@@ -28,12 +28,32 @@ Files changed in P7-pivot commits:
 - `CLAUDE.md` — "Full WP Fidelity" requirement added
 - `docs/superpowers/plans/P6-PICASA-CHECK.md` — inversion note prepended
 
-## P8 — visual-fidelity followups (deferred per user "merge P7 now + iterate" 2026-05-22)
+## P9 — residual visual-fidelity followups (after P8; non-blocking)
+
+P8 closed: category sort order, entry-meta fidelity, author + tag archive
+pages (created), the **systemic tag import** (WP migration had dropped ALL
+tags — 19 posts re-tagged from live), code-block container styling
+(gray-bg + silver border matching live `.wp_syntax`). Confirmed non-issues:
+search (static-equivalent), 404, unused hardware/project/tutorial layouts,
+date archives (live has none). Residual items deferred to P9:
+
+1. **Tag slug edge case** (2 dot-tags): `sys.stdout`→Jekyll `sys-stdout` vs
+   live `sysstdout`; `linux.conf.au`→`linux-conf-au` vs live `linuxconfau`.
+   Jekyll `slugify` converts `.`→`-`; WP removes it. Alias archives created
+   (both resolve), but the primary post-footer tag link uses the Jekyll
+   slug. To match live exactly: WP-compatible slug filter for dot-tags.
+2. **Rouge vs GeSHi syntax token colors**: code-block container matches
+   live now; per-token highlight COLORS differ (Rouge palette vs live
+   GeSHi). Would need a custom Rouge theme to match exactly.
+3. **Highslide lightbox JS**: header-thumbnail click → ggpht 404 directly
+   instead of the JS lightbox. Low priority (thumbnails 404 regardless).
+
+## P8 — visual-fidelity followups (deferred per user "merge P7 now + iterate" 2026-05-22) — RESOLVED in P8
 
 P7 closed the major rendered-pixel deltas (sidebar position RIGHT, header
 Picasa gallery, Twitter widget, category full-content, category `<br/>`
-separator, +1000 timezone, body-class mapping). Remaining cosmetic items
-for a P8 pass (none block the P7 merge):
+separator, +1000 timezone, body-class mapping). These P8 items are now
+DONE (see P8-RESULTS.md); kept here for history:
 
 1. **Category ORDER on multi-category posts** differs from live. Example:
    the SoC post — live order `Hardware, HDMI2USB, Summer of Code,
