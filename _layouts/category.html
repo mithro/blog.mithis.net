@@ -43,7 +43,7 @@ layout: default
             </div>
             <div class="entry-meta">
                 <span class="entry-date"><abbr class="published" title="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y %m %d' }}</abbr></span>
-                <span class="entry-category">{% assign _other_cats = post.categories | where_exp: "c", "c != category_key" %}{% for cat in _other_cats %}{% assign _cat_page = site.pages | where: "cat_slug", cat | first %}<a href="{{ '/archives/category/' | append: cat | relative_url }}" rel="category tag">{{ _cat_page.title | default: cat }}</a>{% unless forloop.last %}<br/>{% endunless %}{% endfor %}</span>
+                <span class="entry-category">{% include sorted-categories.html cats=post.categories separator="<br/>" exclude=category_key %}</span>
                 <span class="entry-comments"><a href="{{ post.url | relative_url }}#respond">Comments (0)</a></span>
             </div>
         </div><!-- .post -->

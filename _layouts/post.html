@@ -43,10 +43,8 @@ layout: default
                 
                 {% if page.categories.size > 0 %}
                 <span class="cat-links">
-                    Filed under 
-                    {% for category in page.categories %}
-                        {% assign _cat_page = site.pages | where: "cat_slug", category | first %}<a href="{{ '/archives/category/' | append: category | relative_url }}" rel="category tag">{{ _cat_page.title | default: category }}</a>{% unless forloop.last %}, {% endunless %}
-                    {% endfor %}.
+                    Filed under
+                    {% include sorted-categories.html cats=page.categories separator=", " %}.
                 </span>
                 {% endif %}
                 

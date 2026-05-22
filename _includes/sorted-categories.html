@@ -1,0 +1,26 @@
+{% comment %}
+sorted-categories.html — render a post's categories sorted by display title (alphabetical,
+matching live WP behaviour). Parameters:
+  include.cats       — the array of category slugs (required)
+  include.separator  — string between links, e.g. "<br/>" or ", " (required)
+  include.exclude    — single slug to omit from output (optional; used on category pages)
+
+Algorithm: build "title|slug" strings, sort them lexicographically, then output links.
+{% endcomment %}
+{%- assign _sc_pairs = "" | split: "" -%}
+{%- for _sc_slug in include.cats -%}
+  {%- unless _sc_slug == include.exclude -%}
+    {%- assign _sc_page = site.pages | where: "cat_slug", _sc_slug | first -%}
+    {%- assign _sc_title = _sc_page.title | default: _sc_slug -%}
+    {%- assign _sc_key = _sc_title | downcase | append: "|" | append: _sc_slug -%}
+    {%- assign _sc_pairs = _sc_pairs | push: _sc_key -%}
+  {%- endunless -%}
+{%- endfor -%}
+{%- assign _sc_pairs = _sc_pairs | sort -%}
+{%- for _sc_pair in _sc_pairs -%}
+  {%- assign _sc_parts = _sc_pair | split: "|" -%}
+  {%- assign _sc_slug2 = _sc_parts | last -%}
+  {%- assign _sc_page2 = site.pages | where: "cat_slug", _sc_slug2 | first -%}
+  {%- assign _sc_title2 = _sc_page2.title | default: _sc_slug2 -%}
+  <a href="{{ '/archives/category/' | append: _sc_slug2 | relative_url }}" rel="category tag">{{ _sc_title2 }}</a>{%- unless forloop.last %}{{ include.separator }}{% endunless -%}
+{%- endfor %}
