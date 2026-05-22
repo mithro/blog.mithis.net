@@ -513,14 +513,26 @@ div.entry-content pre {
     font: 1em/150% "courier new", courier, monospace;
 }
 
-/* Syntax Highlighting - no border/background per Barthelme original */
+/* Syntax Highlighting — match live WP-Syntax plugin .wp_syntax container
+   (background #f9f9f9 + silver border + bottom margin). The Rouge outer
+   wrapper .highlighter-rouge corresponds to live's <div class="wp_syntax">. */
+.highlighter-rouge {
+    color: #100;
+    background-color: #f9f9f9;
+    border: 1px solid silver;
+    margin: 0 0 1.5em 0;
+    overflow: auto;
+}
+
 .highlight {
-    margin: 1em 0;
+    margin: 0;
     overflow-x: auto;
 }
 
-.highlight pre {
+.highlight pre,
+.highlighter-rouge pre.highlight {
     margin: 0;
+    padding: 0.5em;
 }
 
 .highlight code {
