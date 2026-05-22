@@ -109,3 +109,19 @@ blockquote pre code,
     border: none;
     padding: 0;
 }
+
+/* GeSHi palette override — match live wp-syntax (GeSHi) Python token colors.
+   Mapped from live blog.mithis.net inline span colors. This block is LAST in
+   the last-loaded stylesheet so it wins over the Rouge defaults above. */
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm,
+.highlight .c1, .highlight .cs, .highlight .cpf { color: #808080; font-style: italic } /* comments */
+.highlight .k, .highlight .kc, .highlight .kd, .highlight .kn,
+.highlight .kp, .highlight .kr, .highlight .kt { color: #ff7700; font-weight: bold } /* keywords */
+.highlight .nb, .highlight .bp, .highlight .ne { color: #008000 } /* builtins / exceptions */
+.highlight .n, .highlight .na, .highlight .nl, .highlight .nn,
+.highlight .nx, .highlight .py, .highlight .nv { color: #dc143c } /* names */
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sa, .highlight .sb,
+.highlight .sc, .highlight .dl, .highlight .sd, .highlight .sh, .highlight .si,
+.highlight .sx, .highlight .sr, .highlight .ss { color: #483d8b } /* strings */
+.highlight .se { color: #000099; font-weight: bold } /* string escape */
+.highlight .o, .highlight .ow, .highlight .p { color: #66cc66 } /* operators / punctuation */
