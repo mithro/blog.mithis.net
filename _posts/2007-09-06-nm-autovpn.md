@@ -31,7 +31,7 @@ Recently I started a [new job](http://www.astc-design.com/), to get my laptop on
 
 This wouldn’t be a problem if I only had to do it once or twice a day. However, wireless being wireless, drops out 4-5 times a day. While, Network Manager will automatically reassociated, I have to manually reconnect to the VPN which is a pain.
 
-To fix this I have developed two small scripts, the first is a small shell script which will automatically call a command when connecting to certain wireless networks ([/etc/NetworkManager/dispatcher.d/02runcmd). The second is a little Python script which will tell Network Manager to connect to a VPN from the command line ([/usr/local/bin/nm-startvpn). When you combind these two, you get auto VPN connection goodness, yay!!
+To fix this I have developed two small scripts, the first is a small shell script which will automatically call a command when connecting to certain wireless networks ([/etc/NetworkManager/dispatcher.d/02runcmd](/assets/images/wp-content/uploads/2007/09/02runcmd)). The second is a little Python script which will tell Network Manager to connect to a VPN from the command line ([/usr/local/bin/nm-startvpn](/assets/images/wp-content/uploads/2007/09/nm-startvpn)). When you combind these two, you get auto VPN connection goodness, yay!!
 
 If people find this useful I might put together a config utility and properly package them.
 ## Comments
