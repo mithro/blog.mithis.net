@@ -17,10 +17,10 @@ Here at Google we have quite a few remote file systems which contain various too
 
 I wrote FastComplete as a solution to this problem. The tool creates a local cache of links on your hard drive to everything in your $PATH. It uses a couple of tricks to make sure all the stats remain locally, while still allowing the remote file to change without needing to update the cache. Linux should also keep this information in memory disk cache making tab completion almost instant again. Yay!
 
-You can find FastComplete at [https://github.com/mithro/rcfiles/blob/master/bin/fastcomplete](https://github.com/mithro/rcfiles/blob/master/bin/fastcomplete) It is a stand alone python program which shouldn't have any non-core dependencies. The usage documentation is as follows;
+You can find FastComplete at [https://github.com/mithro/rcfiles/blob/master/bin/fastcomplete](https://github.com/mithro/rcfiles/blob/master/bin/fastcomplete) It is a stand alone python program which shouldn’t have any non-core dependencies. The usage documentation is as follows;
 
 > Fast complete creates a local disk cache of your path.
-> It's specifically designed to make bash tab complete run much faster. The correct fix would be to add caching to bash, but it was to hard to do so.
+> It’s specifically designed to make bash tab complete run much faster. The correct fix would be to add caching to bash, but it was to hard to do so.
 >
 > To find out what path fastcomplete is currently using:
 >
@@ -28,7 +28,7 @@ You can find FastComplete at [https://github.com/mithro/rcfiles/blob/master/bin/
 >     # Found 3977 commands
 >     export PATH=/home/tansell/bin: ... :/home/build/google3/googledata/validators:/home/build/google3/ads/db
 >
-> To get fastcomplete to rebuild it's cache:
+> To get fastcomplete to rebuild it’s cache:
 >
 >     > ~tansell/bin/fastcomplete --rebuild
 >     # Using path of '/home/tansell/bin: ... :/home/build/google3/googledata/validators:/home/build/google3/ads/db'
