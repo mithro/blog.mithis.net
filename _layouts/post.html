@@ -35,11 +35,7 @@ layout: default
             {% endif %}
 
             <div class="entry-meta">
-                <span class="entry-published">
-                    Posted by {{ site.title | escape }} on 
-                    <abbr class="published" title="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%A, %B %d, %Y,' }}</abbr> 
-                    at {{ page.date | date: '%H:%M' }}.
-                </span>
+                <span class="entry-published">Posted by <span class="entry-author author vcard"><a class="url fn" href="{{ '/archives/author/mithro' | relative_url }}" title="View all posts by mithro">mithro</a></span> on <abbr class="published" title="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%A, %B %d, %Y,' }}</abbr> at {{ page.date | date: '%-I:%M %P' }}.</span>
                 
                 {% if page.categories.size > 0 %}
                 <span class="cat-links">
@@ -52,15 +48,12 @@ layout: default
                 <span class="tag-links">
                     Tagged 
                     {% for tag in page.tags %}
-                        <a href="{{ '/tag/' | append: tag | relative_url }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+                        <a href="{{ '/archives/tag/' | append: tag | slugify | relative_url }}" rel="tag">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
                     {% endfor %}.
                 </span>
                 {% endif %}
                 
-                <span class="entry-rsslink">
-                    Follow any responses to this post with the
-                    <a href="{{ '/feed.xml' | relative_url }}" title="Comments RSS" rel="alternate" type="application/rss+xml">RSS feed</a>.
-                </span>
+                <span class="entry-rsslink">Follow any responses to this post with its <a href="{{ page.url | append: '/feed' | relative_url }}" title="Comments RSS to {{ page.title | escape }}" rel="alternate" type="application/rss+xml">comments RSS</a> feed.</span>
 
                 {% assign _interact_comments = site.data.comments[post_slug] %}
                 {% if _interact_comments and _interact_comments.size > 0 %}
