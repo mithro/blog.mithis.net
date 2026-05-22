@@ -28,7 +28,11 @@ Files changed in P7-pivot commits:
 - `CLAUDE.md` — "Full WP Fidelity" requirement added
 - `docs/superpowers/plans/P6-PICASA-CHECK.md` — inversion note prepended
 
-## P9 — residual visual-fidelity followups (after P8; non-blocking)
+## P9 — residual visual-fidelity followups — ✅ ALL RESOLVED in P9 (see P9-RESULTS.md)
+
+The 3 items below were all resolved in P9: tag-slug WP-match (`ebb33da`),
+GeSHi token colors (`f1ae541`), highslide lightbox vendoring (`a1fecc9`).
+Kept here for history. No known visible visual delta remains vs live.
 
 P8 closed: category sort order, entry-meta fidelity, author + tag archive
 pages (created), the **systemic tag import** (WP migration had dropped ALL
