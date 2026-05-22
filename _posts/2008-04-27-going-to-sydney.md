@@ -27,4 +27,4 @@ I’ve spent most of this [ANZAC Day](http://en.wikipedia.org/wiki/Anzac_day) lo
 
 I’m a little bit of a technology pack rat (like most geeks) but I have been trying to give away all the old computer bits that I had always being meaning to fix or use. There should be plenty of happy Adelaide FOSS people soon 😉
 
-If you are in Adelaide and want to catch up before I head off (Friday the 16th), or in Sydney (or even the Mountain View, USA) and want to come and say “Hi!” please feel free to [email me](http://web.archive.org/web/20110311022506/mailto://mithis.com/).
+If you are in Adelaide and want to catch up before I head off (Friday the 16th), or in Sydney (or even the Mountain View, USA) and want to come and say “Hi!” please feel free to [email me](mailto://mithro@mithis.com).
