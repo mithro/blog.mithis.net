@@ -13,7 +13,7 @@ wordpress_category: ideas
 wordpress_id: 21
 wordpress_url: https://blog.mithis.net/archives/ideas/21-eagle-for-pcb
 ---
-![PCB Board for my Honors Project](https://blog.mithis.net/wp-content/uploads/2007/03/board.png) For the last 3 days I have been working on routing the Honours project. For the design I use [CadSoft Eagle](http://www.cadsoftusa.com/). However, it’s been annoying me quite a bit.Here is just a shortlist of things,
+[![PCB Board for my Honors Project](https://blog.mithis.net/wp-content/uploads/2007/03/board.png)](https://blog.mithis.net/wp-content/uploads/2007/03/board.png) For the last 3 days I have been working on routing the Honours project. For the design I use [CadSoft Eagle](http://www.cadsoftusa.com/). However, it’s been annoying me quite a bit.Here is just a shortlist of things,
 
 - You can’t change pads unless you modify a library. At my Uni they use a rivet system for doing plated through holes, these means that the holes and pads have to be a certain size as you have to solder the rivets to the pads. This means that you often want to change a hole and pad for a particular instance of an IC so that it can have a rivet put in it.
 - Polygon Pours can not be put in “outline” mode. This makes it quite annoying, as you want to put in the GND plane first so it removes all the GND airwires, but then you are constantly using the “rip-up” command so you can see where you are putting signals.
