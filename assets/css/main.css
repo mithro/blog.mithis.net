@@ -40,6 +40,13 @@ a:active {
     text-decoration: underline;
 }
 
+/* Live underlines body content links (only inside .entry-content; the title,
+   meta column, sidebar and header links stay undecorated — verified against
+   the live oracle). */
+div#content .entry-content a {
+    text-decoration: underline;
+}
+
 /* Container Layout — sidebar on RIGHT to match live blog.mithis.net rendering
    (P7-iter2 fix: bf4e353 wrongly flipped container/sidebar floats — see commit) */
 body div#wrapper {
@@ -520,7 +527,7 @@ div.entry-content pre {
    border) in courier — verified element-by-element against the live oracle.
    (An earlier pass wrongly boxed them like a WP-Syntax .wp_syntax container.) */
 .highlighter-rouge {
-    color: #100;
+    color: #444;
     background-color: transparent;
     border: none;
     margin: 0 0 1.5em 0;
