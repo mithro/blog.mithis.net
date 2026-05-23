@@ -47,4 +47,47 @@ Usage: {% include comments.html post_slug=page.slug %}
     </div>
     {% endfor %}
 </div>
+{% else %}
+{% comment %}
+  Faithful to live blog.mithis.net: the "Post a Comment" form is shown ONLY on
+  posts that currently have zero comments (older commented posts show just the
+  empty comment list and no form). The form is a STATIC, non-functional replica
+  of live's WordPress/Barthelme commentform — it will not submit on a static
+  host (the action 404s), which is accepted "broken stuff, and all" fidelity,
+  like the site's broken Picasa images and reCAPTCHA.
+{% endcomment %}
+<div class="comments">
+
+	<h3 id="respond">Post a Comment</h3>
+
+	<div class="formcontainer">
+
+		<form id="commentform" action="https://blog.mithis.net/wp-comments-post.php" method="post">
+
+			<div id="comment-notes">Your email is <em>never</em> published nor shared. Required fields are marked <span class="req-field">*</span></div>
+
+			<div class="form-label"><label for="author">Name <span class="req-field">*</span></label></div>
+			<div class="form-input"><input id="author" name="author" type="text" value="" size="30" maxlength="20" tabindex="3"></div>
+
+			<div class="form-label"><label for="email">Email <span class="req-field">*</span></label></div>
+			<div class="form-input"><input id="email" name="email" type="text" value="" size="30" maxlength="50" tabindex="4"></div>
+
+			<div class="form-label"><label for="url">Website</label></div>
+			<div class="form-input"><input id="url" name="url" type="text" value="" size="30" maxlength="50" tabindex="5"></div>
+
+			<div class="form-label"><label for="comment">Comment</label></div>
+			<div class="form-textarea"><textarea id="comment" name="comment" cols="45" rows="8" tabindex="6"></textarea></div>
+			<div class="form-submit"><input type="hidden" name="comment_post_ID" value="{{ page.wordpress_id }}"></div>
+
+			<div class="g-recaptcha" data-sitekey="6Ld_VgkTAAAAAEMZc-RBav9ZROsvT5oWc-9a0XUU" data-theme="standard"></div>
+			<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=en"></script>
+			<div id="recaptcha-submit-btn-area">&nbsp;<input id="submit" name="submit" type="submit" value="Submit comment" tabindex="6"></div>
+			<noscript>
+			<style type="text/css">#submit {display:none;}</style>
+			<input name="submit" type="submit" id="submit-alt" tabindex="6" value="Submit Comment" />
+			</noscript>
+		</form><!-- #commentform -->
+	</div><!-- .formcontainer -->
+
+</div>
 {% endif %}

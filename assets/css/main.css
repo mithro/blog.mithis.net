@@ -752,6 +752,11 @@ div.formcontainer form#commentform {
 
 div.formcontainer div.form-input input,
 div.formcontainer div.form-textarea textarea#comment {
+    /* Setting an explicit font-family makes the browser drop the special form-
+       control font metrics and inherit the normal cascade, so 0.9em resolves
+       against the 16px body (=14.4px) exactly like live — without this the
+       control keeps its ~13px UA default and fields render ~24px too short. */
+    font-family: georgia, times, serif;
     padding: 0.3em;
     width: 50%;
     border: 1px inset #888;
