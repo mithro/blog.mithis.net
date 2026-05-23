@@ -277,7 +277,7 @@ body.home div#content div.entry-meta abbr.published,
 body.archive div#content div.entry-meta abbr.published,
 body.search div#content div.entry-meta abbr.published {
     color: #444;
-    font-size: 1em;
+    font-size: 1.1em;
     word-spacing: 0.2em;
 }
 
