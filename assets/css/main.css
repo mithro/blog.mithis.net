@@ -43,32 +43,32 @@ a:active {
 /* Container Layout — sidebar on RIGHT to match live blog.mithis.net rendering
    (P7-iter2 fix: bf4e353 wrongly flipped container/sidebar floats — see commit) */
 body div#wrapper {
-    margin: 0 0 0 8em;
+    margin: 0 2em 0 0;
 }
 
 body div#container {
     float: left;
-    margin: 0 -16em 5em 0;
+    margin: 0 0 5em -16em;
     width: 100%;
 }
 
 body div#content {
-    margin: 0 16em 0 0;
+    margin: 0 0 0 17em;
 }
 
 body.single div#container,
 body.page div#container {
-    margin: 0 -20em 6em 0;
+    margin: 0 0 0 -16em;
 }
 
 body.single div#content,
 body.page div#content {
-    margin: 0 20em 0 0;
+    margin: 0 0 0 17em;
 }
 
 /* Header */
 body div#header {
-    margin: 3em -2em 3em 0;
+    margin: 0 -2em 3em 0;
     padding: 0;
     cursor: pointer;
     background: #bbc8d9;
@@ -214,12 +214,12 @@ input#s {
     font-family: georgia, times, serif;
 }
 
-/* Posts */
-.entry-title {
-    font-size: 1.7em;
-    font-weight: 400;
-    text-align: center;
-    margin: 0.5em 0;
+/* Posts — listing/home title. Barthelme scopes the 1.7em + centered styling to
+   body.single / body.page (see "Post Titles" below); the home/archive listing title
+   stays left-aligned at the default (bold) weight, sized 1.2em via
+   div.post-content .entry-title (faithful to barthelme-original.css). */
+div.post-content .entry-title {
+    font-size: 1.2em;
 }
 
 .entry-title a {
@@ -234,7 +234,7 @@ input#s {
 
 .entry-date {
     color: #444;
-    font-size: 1.1em;
+    font-size: 1em;
     word-spacing: 0.2em;
     text-align: center;
     margin: 1em 0;
@@ -242,7 +242,7 @@ input#s {
 
 .entry-meta {
     color: #666;
-    font-size: 0.9em;
+    font-size: 1em;
     text-align: center;
     margin: 1em 0;
 }
@@ -254,7 +254,7 @@ body.search div#content div.entry-meta {
     float: left;
     overflow: hidden;
     text-align: right;
-    width: 10em;
+    width: 7.5em;
 }
 
 body.home div#content div.entry-meta span.entry-date,
@@ -267,7 +267,7 @@ body.home div#content div.entry-meta abbr.published,
 body.archive div#content div.entry-meta abbr.published,
 body.search div#content div.entry-meta abbr.published {
     color: #444;
-    font-size: 1.1em;
+    font-size: 1em;
     word-spacing: 0.2em;
 }
 
@@ -282,7 +282,7 @@ body.home div#content div.post-container,
 body.archive div#content div.post-container,
 body.search div#content div.post-container {
     float: right;
-    margin: 0 0 4em -11.5em;
+    margin: 0 0 4em -8.5em;
     width: 100%;
 }
 
@@ -290,7 +290,7 @@ body.home div#content div.post-content,
 body.archive div#content div.post-content,
 body.search div#content div.post-content {
     clear: both;
-    margin: 0 0 0 11.5em;
+    margin: 0 0 0 8.5em;
 }
 
 .entry-content {
@@ -302,7 +302,7 @@ body.search div#content div.post-content {
 body div.sidebar {
     float: right;
     overflow: hidden;
-    width: 15em;
+    width: 16em;
 }
 
 div.sidebar a,
