@@ -5,8 +5,8 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: {{ site.url }}/sitemap.xml
-Sitemap: {{ site.url }}/feed.xml
+Sitemap: {{ '/sitemap.xml' | absolute_url }}
+Sitemap: {{ '/feed.xml' | absolute_url }}
 
 # Disallow admin-style paths that don't exist but might be crawled
 Disallow: /wp-admin/
