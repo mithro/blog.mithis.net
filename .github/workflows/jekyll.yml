@@ -42,9 +42,11 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+      - name: Setup uv
+        # uv is NOT pre-installed on the GitHub-hosted runner (the lint step
+        # failed with exit 127 "uv: command not found"); install it explicitly.
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
       - name: Lint post content (no hardcoded structural HTML)
-        # uv is pre-installed on ubuntu-latest runners since 2024 (astral-sh/uv shipped in GitHub-hosted runner image).
-        # If this step fails with "uv: command not found", add: run: pip install uv && uv run ...
         run: uv run python -m scripts.fidelity.lint_content _posts --asset-root .
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
