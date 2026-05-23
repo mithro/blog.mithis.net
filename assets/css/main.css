@@ -102,6 +102,7 @@ body div#header {
 .shashinThumbnailImage {
     padding: 3px;
     border: none;
+    display: block;
 }
 
 .shashinThumbnailCaption {
@@ -255,12 +256,14 @@ body.search div#content div.entry-meta {
     overflow: hidden;
     text-align: right;
     width: 7.5em;
+    margin: 0;
 }
 
 body.home div#content div.entry-meta span.entry-date,
 body.archive div#content div.entry-meta span.entry-date,
 body.search div#content div.entry-meta span.entry-date {
     margin-bottom: 1.1em;
+    text-align: right;
 }
 
 body.home div#content div.entry-meta abbr.published,
@@ -513,13 +516,13 @@ div.entry-content pre {
     font: 1em/150% "courier new", courier, monospace;
 }
 
-/* Syntax Highlighting — match live WP-Syntax plugin .wp_syntax container
-   (background #f9f9f9 + silver border + bottom margin). The Rouge outer
-   wrapper .highlighter-rouge corresponds to live's <div class="wp_syntax">. */
+/* Live renders code blocks as plain, undecorated <pre> (no background, no
+   border) in courier — verified element-by-element against the live oracle.
+   (An earlier pass wrongly boxed them like a WP-Syntax .wp_syntax container.) */
 .highlighter-rouge {
     color: #100;
-    background-color: #f9f9f9;
-    border: 1px solid silver;
+    background-color: transparent;
+    border: none;
     margin: 0 0 1.5em 0;
     overflow: auto;
 }
