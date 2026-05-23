@@ -440,6 +440,7 @@ body.page div.archive-meta {
 }
 
 body.archive div.archive-meta,
+body.author div.archive-meta,
 body.page div.author-meta {
     margin: 0 auto 2em;
     width: 50%;
@@ -484,8 +485,14 @@ div.comments abbr.comment-published {
 div#content .page-title {
     font-size: 1.7em;
     margin: 0;
-    padding-bottom: 1em;
     text-align: center;
+}
+
+/* Live pads the bottom of category/tag archive headings by 1em but NOT the
+   author archive heading — scope it so the author page matches live. */
+body.category div#content .page-title,
+body.tag div#content .page-title {
+    padding-bottom: 1em;
 }
 
 /* Content headings - Barthelme exact values */
