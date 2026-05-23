@@ -294,7 +294,7 @@ body.search div#content div.post-content {
 }
 
 .entry-content {
-    margin: 1.5em 0;
+    margin: 0;
 }
 
 /* Sidebar — float:right to match live blog.mithis.net rendering
@@ -1022,5 +1022,39 @@ body div label,
 input#s,
 input#submit {
     cursor: pointer;
+}
+
+/* ---- Live blog.mithis.net customizations (faithful to served wp-content/themes/barthelme/style.css,
+        which my recreation had omitted) ---- */
+
+/* Sidebar Shashin "Me" gallery (#shashinGroup_2_2) shows ONLY its first table row of
+   thumbnails on live; the remaining rows are hidden. Without this, all 14 rows stack
+   (~2000px tall) instead of the single ~150px thumbnail live shows. */
+#shashinGroup_2_2 tbody tr {
+    display: none;
+}
+#shashinGroup_2_2 tbody tr:first-child {
+    display: table-row;
+}
+
+/* Twitter (aktt) sidebar widget: tweets render at 8pt with tight spacing. */
+div.sidebar div.aktt_tweets { font-size: 8pt; }
+div.sidebar div.aktt_tweets ul li { padding-top: 0.5em; }
+div.sidebar div.aktt_tweets a.aktt_tweet_time { width: 100%; text-align: right; display: block; }
+div.sidebar p.aktt_more_updates { font-size: 8pt; text-align: center; }
+
+/* Embedded-content box (e.g. cached tweet/video). */
+div.embedded_content {
+    margin: 1em;
+    border-radius: 15px;
+    background: #000000;
+    float: right;
+    padding: 10px;
+}
+
+/* Blockquote margins per live. */
+div.entry-content blockquote {
+    margin-left: 4px;
+    margin-right: 0;
 }
 
