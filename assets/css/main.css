@@ -405,6 +405,10 @@ body.single div.entry-meta {
 
 body.single .entry-date {
     word-spacing: 0.5em;
+    /* Live's single-post date has no margin; the base .entry-date{margin:1em 0}
+       was leaking 16px top (collapsing through #content) + 16px bottom, shifting
+       all post content down 32px vs live. */
+    margin: 0;
 }
 
 body.single div.entry-meta {
