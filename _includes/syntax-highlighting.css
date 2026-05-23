@@ -18,6 +18,16 @@
     border: none;
 }
 
+/* Code blocks nested inside a blockquote (Markdown `>     code`): live renders
+   these as a tight blockquote>pre (the <pre> margin collapses out, blockquote
+   hugs the code). Rouge instead nests div.highlighter-rouge > div.highlight,
+   trapping ~29px of .highlight margin INSIDE the blockquote. Zero the wrapper
+   margins so the blockquote hugs the code exactly like live. */
+.entry-content blockquote .highlighter-rouge,
+.entry-content blockquote .highlight {
+    margin: 0;
+}
+
 .highlight code {
     background: transparent;
     border: none;
