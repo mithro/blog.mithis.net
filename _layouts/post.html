@@ -35,7 +35,7 @@ layout: default
             {% endif %}
 
             <div class="entry-meta">
-                <span class="entry-published">Posted by <span class="entry-author author vcard"><a class="url fn" href="{{ '/archives/author/mithro' | relative_url }}" title="View all posts by mithro">mithro</a></span> on <abbr class="published" title="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%A, %B %d, %Y,' }}</abbr> at {{ page.date | date: '%-I:%M %P' }}.</span>
+                <span class="entry-published">Posted by <span class="entry-author author vcard"><a class="url fn" href="{{ '/archives/author/mithro' | relative_url }}" title="View all posts by mithro">mithro</a></span> on <abbr class="published" title="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%A, %B %-d, %Y,' }}</abbr> at {{ page.date | date: '%-I:%M %P' }}.</span>
                 
                 {% if page.categories.size > 0 %}
                 <span class="cat-links">
