@@ -57,3 +57,40 @@ preserved content) until the user chooses.
 The comment **rendering** is faithful (P3/P6-A-8 verified the include renders
 `_data` comments correctly with real name/date/message). This finding is about
 the comment DATA SET (which comments exist), not how they render.
+
+---
+
+## CORRECTION (2026-05-23) — live comments are EMPTY STUBS; `_data` is the good source
+
+**The premise above was WRONG.** Deeper inspection (Playwright, full JS render +
+3s wait) shows live's comments are **content-less empty stubs**: every
+`<li id="comment-N">` on live renders as `<span class="comment-author vcard"></span>`
+with NO author, NO date, NO message. Verified on multiple posts incl.
+starhunter (comment-7258): `commentsWithAnyContent: 0`.
+
+The earlier comment-count diff counted these empty `id="comment-N"` SKELETONS
+— not real comments. So:
+
+- **`_data/comments/` PRESERVES the real comment content** (e.g. starhunter's
+  "Amanda" comment; reading-cookies' 4-message thread with full text). Built
+  renders these correctly (P3/P6-A-8 verified).
+- **Live's comments are degraded** — content stripped/not served (broken WP
+  comment rendering on the live site, or bulk-removed leaving stubs).
+
+### Implication: "sync to current live exactly" would DESTROY preserved comments
+
+Matching live exactly means replacing real, content-rich preserved comments
+with empty stubs (or deleting them). That contradicts the core requirement
+"user comments must be preserved" and almost certainly is not the intent —
+the user's "sync to live" choice was made on the (incorrect) premise that
+live had real comments `_data` lacked.
+
+### Corrected recommendation: KEEP `_data/comments/` as-is
+
+`_data` is the authoritative preservation of the real comments. Live's
+comment content is gone/broken. The built site (rendering `_data`) is MORE
+faithful to the blog's actual comment history than the current live site.
+No data change. The "17 mismatches" were a skeleton-counting artifact, not a
+real content divergence to fix.
+
+This correction was surfaced back to the user before any `_data` change.
