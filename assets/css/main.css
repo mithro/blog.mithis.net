@@ -40,10 +40,27 @@ a:active {
     text-decoration: underline;
 }
 
-/* Live underlines body content links (only inside .entry-content; the title,
-   meta column, sidebar and header links stay undecorated — verified against
-   the live oracle). */
-div#content .entry-content a {
+/* Links: faithful to the original Barthelme theme (theme_analysis/barthelme/style.css
+   lines 10-16, verified against the live oracle). The theme keeps the browser-default
+   underline on content-area links, then REMOVES it from titles, the meta column, tag
+   links, archive-meta, page-links and the comment form; single-post entry-meta links
+   (post-a-comment / RSS / categories) and footer links stay underlined. Our base
+   `a{text-decoration:none}` had killed all of these except .entry-content, so the
+   prev/next nav, single-post meta column and footer links were wrongly plain vs live. */
+div#content a,
+div#content a:link {
+    text-decoration: underline;
+}
+div#content .entry-title a,
+div#content .page-title a,
+div#content div.entry-meta a,
+div#content div.entry-content div.page-link a,
+span.tag-links a,
+div#content div.archive-meta a,
+div.comments form#commentform a {
+    text-decoration: none;
+}
+body.single div#content div.entry-meta a {
     text-decoration: underline;
 }
 
@@ -383,11 +400,6 @@ div.sidebar ul li#search form#searchform input#s {
 div#content .entry-title {
     line-height: 150%;
     margin: 0;
-}
-
-div#content .entry-title a,
-div#content .page-title a {
-    text-decoration: none;
 }
 
 div#content a:visited {
