@@ -2,12 +2,13 @@
 /* Based on GitHub theme */
 
 .highlight {
-    background: #f8f8f8;
-    border: 1px solid #e5e5e5;
-    border-radius: 4px;
+    /* Live renders code as a plain, undecorated <pre> (transparent bg, no border,
+       no padding) in courier — not a boxed widget. Match that. */
+    background: transparent;
+    border: none;
     margin: 1em 0;
-    overflow-x: auto;
-    padding: 1em;
+    overflow: visible;
+    padding: 0;
 }
 
 .highlight pre {
