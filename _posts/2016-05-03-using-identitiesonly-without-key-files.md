@@ -31,21 +31,21 @@ I ended up using the following script to dump the public keys to files;
 
 Then I added the following to the ssh_config
 
-> <code>  IdentitiesOnly true<br>
->   IdentityFile ~/.ssh/agent.keyname.pub</code>
+>     IdentitiesOnly true
+>     IdentityFile ~/.ssh/agent.keyname.pub
 
 When running with "ssh -vv" I see the following in the output;
 
-> <code>debug2: set_newkeys: mode 1<br>
-> debug1: SSH2_MSG_NEWKEYS sent<br>
-> debug1: expecting SSH2_MSG_NEWKEYS<br>
-> debug2: set_newkeys: mode 0<br>
-> debug1: SSH2_MSG_NEWKEYS received<br>
-> debug1: SSH2_MSG_SERVICE_REQUEST sent<br>
-> debug2: service_accept: ssh-userauth<br>
-> debug1: SSH2_MSG_SERVICE_ACCEPT received<br>
-> debug2: key: /home/tansell/.ssh/agent.keyb.pub (0x2257da0), explicit<br>
-> debug1: Authentications that can continue: publickey,password<br>
-> debug1: Next authentication method: publickey<br>
-> debug1: Offering ECDSA public key: //home/tansell/.ssh/agent.keyb.pub<br>
-> debug2: we sent a publickey packet, wait for reply</code>
+>     debug2: set_newkeys: mode 1
+>     debug1: SSH2_MSG_NEWKEYS sent
+>     debug1: expecting SSH2_MSG_NEWKEYS
+>     debug2: set_newkeys: mode 0
+>     debug1: SSH2_MSG_NEWKEYS received
+>     debug1: SSH2_MSG_SERVICE_REQUEST sent
+>     debug2: service_accept: ssh-userauth
+>     debug1: SSH2_MSG_SERVICE_ACCEPT received
+>     debug2: key: /home/tansell/.ssh/agent.keyb.pub (0x2257da0), explicit
+>     debug1: Authentications that can continue: publickey,password
+>     debug1: Next authentication method: publickey
+>     debug1: Offering ECDSA public key: //home/tansell/.ssh/agent.keyb.pub
+>     debug2: we sent a publickey packet, wait for reply
