@@ -532,7 +532,7 @@ div.entry-content pre {
 .highlight pre,
 .highlighter-rouge pre.highlight {
     margin: 0;
-    padding: 0.5em;
+    padding: 0;
 }
 
 .highlight code {
