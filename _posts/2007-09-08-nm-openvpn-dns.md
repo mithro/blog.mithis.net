@@ -3,7 +3,7 @@ author: mithro
 categories:
 - ideas
 - ubuntu
-date: 2007-09-08T15:31:41+0000
+date: 2007-09-08T15:31:41+1000
 excerpt: Recovered from Wayback Machine archive
 layout: post
 permalink: /archives/ideas/54-nm-openvpn-dns

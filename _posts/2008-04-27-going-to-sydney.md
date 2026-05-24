@@ -7,7 +7,7 @@ tags:
 - Google
 - moving
 - Sydney
-date: 2008-04-27T22:51:50+0000
+date: 2008-04-27T22:51:50+1000
 excerpt: Recovered from Wayback Machine archive
 layout: post
 permalink: /archives/google/79-going-to-sydney

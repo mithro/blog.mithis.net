@@ -3,7 +3,7 @@
 author: mithro
 categories:
 - ideas
-date: 2007-09-06T12:39:48+1100
+date: 2007-09-06T12:39:48+1000
 excerpt: Recovered from Wayback Machine archive
 layout: post
 permalink: /archives/ideas/51-nm-autovpn

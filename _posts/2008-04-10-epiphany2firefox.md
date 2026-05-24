@@ -8,7 +8,7 @@ tags:
 - firefox
 - gnome
 - web
-date: 2008-04-10T10:04:50+0000
+date: 2008-04-10T10:04:50+1000
 excerpt: Recovered from Wayback Machine archive
 layout: post
 permalink: /archives/uncategorized/77-epiphany2firefox

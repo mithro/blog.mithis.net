@@ -9,7 +9,7 @@ tags:
 - firefox
 - Python
 - snippet
-date: 2009-01-20T09:29:49+1100
+date: 2009-01-20T09:29:49+1000
 excerpt: Recovered from Wayback Machine archive
 layout: post
 permalink: /archives/python/94-reading-cookies-firefox

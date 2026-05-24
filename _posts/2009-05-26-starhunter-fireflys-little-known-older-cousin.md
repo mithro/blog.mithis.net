@@ -8,7 +8,7 @@ tags:
 - scifi
 - starhunter
 - youtube
-date: 2009-05-26T00:05:06+1100
+date: 2009-05-26T00:05:06+1000
 excerpt: Recovered from Wayback Machine archive
 layout: post
 permalink: /archives/sci-fi/102-starhunter-fireflys-little-known-older-cousin
