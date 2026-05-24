@@ -139,36 +139,3 @@ else:
 cookie_jar = cookielib.MozillaCookieJar(cookie_jar)
 ```
 *Edit: The latest version of this code can be found at [http://blog.mithis.com/cgi-bin/gitweb.cgi](http://blog.mithis.com/cgi-bin/gitweb.cgi) and includes numerous fixes and updates.*
-## Comments
-**thegreatgrateful** -     <time datetime="2010-06-08T23:20:35+00:00">2010-06-08</time>
-thanks man!
-**Will** -     <time datetime="2010-08-22T19:09:19+00:00">2010-08-22</time>
-I have the same error as Chris
-NameError: global name 'ret' is not defined
-I am currently using the copy of firefox_finder.py and firefox3_repack.py from your repo.
-**Will** -     <time datetime="2010-08-22T19:17:01+00:00">2010-08-22</time>
-sorry about the previous comment, I went the the site listed in the script:
-[http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/473846](http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/473846)
-I see that it uses on line 68:
-ret = _winreg.QueryValueEx(key, name)
-except WindowsError:
-return None
-else:
-key.Close()
-if ret[1] == _winreg.REG_EXPAND_SZ:
-return expandvars(ret[0])
-else:
-return ret[0]
-which your code closely mirrors :
-result = _winreg.QueryValueEx(key, 'AppData')
-except WindowsError:
-return None
-else:
-key.Close()
-if ret[1] == _winreg.REG_EXPAND_SZ:
-result = win32api.ExpandEnvironmentStrings(ret[0])
-else:
-result = ret[0]
-It's just that you put result = as opposed to ret = on that first line and then used ret further on.
-**mithro** -     <time datetime="2010-08-23T05:49:46+00:00">2010-08-23</time>
-I've updated the code once more, it might work now. As I said I can't actually test this code as I don't have a windows computer.

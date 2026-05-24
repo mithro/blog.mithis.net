@@ -42,8 +42,3 @@ It sounds much simpler now, but it took me over a week of work to boil it down t
 So what now in this area? I want to get a recent version of the compiler working and preferably build all the dependencies ourselves (rather then rely on the cygwin compiled versions). I would ultimately like to see the cygwin compilers being packaged with Ubuntu/Debian in the same way that the mingw32 compilers are. I don’t know if any of that is likely to happen however as I never seem to have enought time. For now I have uploaded a copy of [my cross compiler](http://blog.mithis.net/~tim/crosstool-cygwin-gcc336.tar.bz2) (It needs to be extracted so it is found in /opt/crosstool).
 
 I hope this helps someone!
-## Comments
-**Ikem** -     <time datetime="2014-05-24T14:49:28+00:00">2014-05-24</time>
-The download link is broken.
-I found this alternative one: 
-[http://www.thousandparsec.net/~tim/crosstool-cygwin-gcc336.tar.bz2](http://www.thousandparsec.net/~tim/crosstool-cygwin-gcc336.tar.bz2)

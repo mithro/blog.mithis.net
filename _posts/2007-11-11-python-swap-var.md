@@ -37,6 +37,3 @@ This looks sucky and doesn’t really express very well what you want to do. A m
 Doesn’t that look so much better? And it is very clear to anyone who has used Python before what is going on. To think, I have been using Python for about 7 years now and never thought of doing that.
 
 Just thought I would share this tidbit.
-## Comments
-**Anel** -     <time datetime="2010-10-11T17:26:30+00:00">2010-10-11</time>
-Haha, nice joke, guys&#8230;))

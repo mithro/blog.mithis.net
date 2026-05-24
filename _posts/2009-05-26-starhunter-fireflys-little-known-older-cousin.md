@@ -37,6 +37,3 @@ It has so many of the same elements, the quirky ship mechanic, the captain who d
 You can watch the “second season” (Starhunter 2300), which is closer to a spin off  rather then a second season (most of the characters have changed), on [Youtube](http://www.youtube.com/show?p=I9idlNtiYTs). I would highly recommend people who enjoyed Firefly check it out. Since its free, what have you got to loose?
 
 While the first season is available on Joost, it is apparently horrible mangled. Sadly, the DVD’s are not available here in Australia so I’m going I’m going to have to buy them from [Amazon](http://www.amazon.com/Starhunter/e/B001CG5BH8/ref=ntt_tv_dp_pel).
-## Comments
-**Amanda** -     <time datetime="2011-07-09T07:20:56+00:00">2011-07-09</time>
-Joss as the creators of Starhunter were probably inspired by Blake's 7

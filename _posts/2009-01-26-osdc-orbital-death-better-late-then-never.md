@@ -37,6 +37,3 @@ If there is one thing that any budding game developer (open source or otherwise)
 This fundamental difference in mindset should drive every aspect of your game, website and release process.
 
 *Edit: How could I forget? A big thanks goes out to [Leslie Hawthorn](http://www.hawthornlandings.org/) who helped proof read the paper and making it much easier to read!*
-## Comments
-**Mithro rants about stuff : OSDC & orbital death, better late then never…** -     <time datetime="2010-01-16T09:32:50+00:00">2010-01-16</time>
-[&#8230;] at the conference I had to produce a paper. This paper puts into writing a lot of what I have been talking about. I wasn't going to post it, but after getting a email out of the blue about the topic, [&#8230;]
