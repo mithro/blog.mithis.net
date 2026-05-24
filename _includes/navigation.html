@@ -7,7 +7,6 @@
         {% endunless %}
         
         <!-- Main navigation items matching WordPress site -->
-        <li class="page_item"><a href="{{ '/archives/' | relative_url }}">Archives</a></li>
         <li class="page_item"><a href="{{ '/contact-me/' | relative_url }}">Contact Me</a></li>
         <li class="page_item"><a href="{{ '/archives/category/diary/' | relative_url }}">Diary</a></li>
         <li class="page_item"><a href="{{ '/archives/category/games/' | relative_url }}">Games</a></li>
@@ -18,7 +17,6 @@
         <li class="page_item"><a href="{{ '/archives/category/ideas/' | relative_url }}">Ideas</a></li>
         <li class="page_item"><a href="{{ '/archives/category/lca/' | relative_url }}">linux.conf.au</a></li>
         <li class="page_item"><a href="{{ '/archives/category/pcb/' | relative_url }}">PCB</a></li>
-        <li class="page_item"><a href="{{ '/projects/' | relative_url }}">Projects</a></li>
         <li class="page_item"><a href="{{ '/archives/category/python/' | relative_url }}">Python</a></li>
         <li class="page_item"><a href="{{ '/archives/category/rcs-darcs/' | relative_url }}">RCS</a></li>
         <li class="page_item"><a href="{{ '/archives/category/sci-fi/' | relative_url }}">Sci Fi</a></li>
@@ -26,12 +24,10 @@
         <li class="page_item"><a href="{{ '/archives/category/summer-of-code/' | relative_url }}">Summer of Code</a></li>
         <li class="page_item"><a href="{{ '/archives/category/timvideos-us/' | relative_url }}">TimVideos.us</a></li>
         <li class="page_item"><a href="{{ '/archives/category/tp/' | relative_url }}">Thousand Parsec</a></li>
-        <li class="page_item"><a href="{{ '/tutorials/' | relative_url }}">Tutorials</a></li>
         <li class="page_item"><a href="{{ '/archives/category/ubuntu/' | relative_url }}">Ubuntu</a></li>
         <li class="page_item"><a href="{{ '/archives/category/uncategorized/' | relative_url }}">Uncategorized</a></li>
         <li class="page_item"><a href="{{ '/archives/category/uni/' | relative_url }}">Uni</a></li>
         <li class="page_item"><a href="{{ '/archives/category/useful-bits/' | relative_url }}">Useful Bits</a></li>
-        <li class="page_item"><a href="{{ '/about/' | relative_url }}">About</a></li>
         
         {% assign pages_list = site.pages | sort: 'order' %}
         {% for page in pages_list %}

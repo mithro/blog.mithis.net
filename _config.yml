@@ -51,18 +51,6 @@ paginate: 10
 feed:
   path: "/feed/index.xml"
 
-# Collections
-collections:
-  projects:
-    output: true
-    permalink: /:collection/:name/
-  tutorials:
-    output: true
-    permalink: /:collection/:name/
-  hardware:
-    output: true
-    permalink: /:collection/:name/
-
 # Markdown processor
 markdown: kramdown
 highlighter: rouge
