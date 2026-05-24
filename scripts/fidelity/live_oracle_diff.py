@@ -72,6 +72,12 @@ def _norm_url(u: str) -> str:
     for _ in range(2):  # unwrap nested wayback prefixes first
         u = re.sub(r"^https?://web\.archive\.org/web/\d+\w*/", "", u)
     u = re.sub(r"^https?://blog\.mithis\.net", "", u)
+    u = re.sub(r"^https?://mithro\.github\.io", "", u)  # built staging host (absolute_url)
+    # Strip the staging baseurl path prefix (baseurl: /blog.mithis.net on the
+    # mithro.github.io subpath; empty at the blog.mithis.net production cutover) so a
+    # built `/blog.mithis.net/assets/images/wp-content/X` compares equal to live's
+    # `/wp-content/X` instead of false-flagging the staging prefix on every asset/link.
+    u = re.sub(r"^/blog\.mithis\.net(?=/)", "", u)
     u = u.replace("/assets/images/wp-content/", "/wp-content/")  # local-hosting scheme == live
     return re.sub(r"^http://", "https://", u.rstrip("/"))
 
