@@ -36,25 +36,27 @@ You can check that you have done this correctly in two ways;
 
 - The vpnadmin.cfg will have the `iphone=1` and `xauth_key="your password"` options. See below for a partial example;
 
-  ```
+  <!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
+  <pre>
   ...
     user {
       nameoremail = "xxxx";
       key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
       ip = 192.168.179.201;
       internetaccess = 0;
-      iphone = 1;
-      xauth_key = "xxxxx";
+      <strong>iphone = 1;
+      xauth_key = "xxxxx";</strong>
     }
   ...
-  ```
+  </pre><!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
 - If you export an unencrypted config file (remember this can’t be loaded onto the Fritz!Box – so make sure you also export an encrypted version!), the remoteid section will have a key field and not a fqdn field, use_xauth will be set to yes and an xauth section will exist. See below for a partial example;
 
-  ```
+  <!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
+  <pre>
   ...
     keepalive_ip = 0.0.0.0;
     remoteid {
-      key_id = "qnap";
+      <strong>key_id</strong> = "qnap";
     }
     mode = phase1_mode_aggressive;
     phase1ss = "all/all/all";
@@ -62,15 +64,15 @@ You can check that you have done this correctly in two ways;
     key = "f3e0hcca19ca2a3gaafbI.{1dGe3q8f84";
     cert_do_server_auth = no;
     use_nat_t = yes;
-    use_xauth = yes;
+    <strong>use_xauth = yes;
     xauth {
       valid = yes;
       username = "qnap";
       passwd = "qnappassword";
-    }
+    }</strong>
     use_cfgmode = yes;
   ...
-  ```
+  </pre><!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
 
 ## Configuring vpnc on your Linux box
 
