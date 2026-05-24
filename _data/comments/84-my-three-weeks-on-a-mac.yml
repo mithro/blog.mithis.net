@@ -1,31 +1,32 @@
-- date: 2008-07-09 01:39:00 +0000
-  id: '7023'
-  message: '<p>I won&#8217;t go into a big fanboy rant here (since I&#8217;ve been
-    using my mac for a month or two now and lvoe it) but here is a tip: command-tab
-    (alt-tab) cycles between programs, and command-~ cycles between windows of an
-    application.</p>'
-  name: Ryan Neufeld
-  wordpress_url: https://blog.mithis.net/archives/ubuntu/84-my-three-weeks-on-a-mac#comment-7023
-- date: 2008-07-09 08:48:00 +0000
-  id: '7024'
-  message: <p>Actually that was exactly what I was complaining about. In Windows/Linux
-    I can just use Alt-Tab to get to any window, with Mac I have to use two keys to
-    do the same thing!</p>
-  name: mithro
-  wordpress_url: https://blog.mithis.net/archives/ubuntu/84-my-three-weeks-on-a-mac#comment-7024
-- date: 2008-10-17 05:05:00 +0000
-  id: '7150'
-  message: <p>The sluggishness of the password box is a Google thing. I also occasionally
-    have to switch to a console and kill off the screen saver dialog box on my Linux
-    workstation, because it goes completely dead on occasion. My Google laptop tends
-    to &#8220;beachball&#8221; a lot more than my other Mac, so while I don&#8217;t
-    really know what&#8217;s up, there&#8217;s definitely something fishy.</p> <p>The
-    trash is also idiotic in other ways, like when you empty it, but it tells you
-    a file is in use. Just unlink the damned thing and forget about it, will you?</p>
-    <p>Weirdly enough, a lot of Unix/Linux hackers are annoyed by the way applications
-    are a first-class entity, rather than windows, but I like the Mac way better.
-    I thought of hacking my window manager to simulate that based on the WM_CLASS
-    property more than once, but I tend to be okay. When I use a Linux box, I often
-    end up using workspaces in that way.</p>
-  name: Pierre Phaneuf
-  wordpress_url: https://blog.mithis.net/archives/ubuntu/84-my-three-weeks-on-a-mac#comment-7150
+- id: '7023'
+  type: comment
+  li_class: comment c-y2008 c-m07 c-d09 c-h11 alt c1
+  author: Ryan Neufeld
+  author_url: http://www.hammerofcode.com
+  date_text: July 9, 2008 at 1:39 am
+  date_title: '2008-07-08T14:00:38+1000'
+  avatar: https://secure.gravatar.com/avatar/faa7b7baff8cfa29026695e1c638c1ed?s=32&d=mm&r=pg
+  message: |-
+    <p>I won’t go into a big fanboy rant here (since I’ve been using my mac for a  month or two now and lvoe it) but here is a tip: command-tab (alt-tab) cycles between programs, and command-~ cycles between windows of an application.</p>
+- id: '7024'
+  type: comment
+  li_class: comment byuser commentauthor-mithro bypostauthor c-y2008 c-m07 c-d09 c-h06 c2
+  author: mithro
+  author_url: http://blog.mithis.net/
+  date_text: July 9, 2008 at 8:48 am
+  date_title: '2008-07-08T14:00:38+1000'
+  avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg
+  message: |-
+    <p>Actually that was exactly what I was complaining about. In Windows/Linux I can just use Alt-Tab to get to any window, with Mac I have to use two keys to do the same thing!</p>
+- id: '7150'
+  type: comment
+  li_class: comment c-y2008 c-m10 c-d17 c-h03 alt c3
+  author: Pierre Phaneuf
+  author_url: http://pphaneuf.livejournal.com/
+  date_text: October 17, 2008 at 5:05 am
+  date_title: '2008-07-08T14:00:38+1000'
+  avatar: https://secure.gravatar.com/avatar/9ca8853825f37993dbec533c52178410?s=32&d=mm&r=pg
+  message: |-
+    <p>The sluggishness of the password box is a Google thing. I also occasionally have to switch to a console and kill off the screen saver dialog box on my Linux workstation, because it goes completely dead on occasion. My Google laptop tends to “beachball” a lot more than my other Mac, so while I don’t really know what’s up, there’s definitely something fishy.</p>
+    <p>The trash is also idiotic in other ways, like when you empty it, but it tells you a file is in use. Just unlink the damned thing and forget about it, will you?</p>
+    <p>Weirdly enough, a lot of Unix/Linux hackers are annoyed by the way applications are a first-class entity, rather than windows, but I like the Mac way better. I thought of hacking my window manager to simulate that based on the WM_CLASS property more than once, but I tend to be okay. When I use a Linux box, I often end up using workspaces in that way.</p>

@@ -1,6 +1,8 @@
-- date: 2011-07-09 07:20:56 +0000
-  id: '7258'
-  message: <p>Joss as the creators of Starhunter were probably inspired by Blake&#8217;s
-    7</p>
-  name: Amanda
-  wordpress_url: https://blog.mithis.net/archives/sci-fi/102-starhunter-fireflys-little-known-older-cousin#comment-7258
+- id: '7258'
+  type: comment
+  li_class: comment c-y2011 c-m07 c-d10 c-h03 alt c1
+  author: Amanda
+  date_text: July 9, 2011 at 5:20 pm
+  date_title: '2009-05-26T00:05:06+1000'
+  avatar: https://secure.gravatar.com/avatar/926fa73ce6676cc79a294f1c22c9b93a?s=32&d=mm&r=pg
+  message: <p>Joss as the creators of Starhunter were probably inspired by Blake’s 7</p>

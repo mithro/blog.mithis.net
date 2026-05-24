@@ -1,33 +1,99 @@
-- date: 2010-08-23 05:49:46 +0000
-  id: '7245'
-  message: <p>I&#8217;ve updated the code once more, it might work now. As I said
-    I can&#8217;t actually test this code as I don&#8217;t have a windows computer.</p>
-  name: mithro
-  wordpress_url: https://blog.mithis.net/archives/python/94-reading-cookies-firefox#comment-7245
-- date: 2010-08-22 19:17:01 +0000
-  id: '7244'
-  message: <p>sorry about the previous comment, I went the the site listed in the
-    script:</p> <p><a href="http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/473846"
-    rel="nofollow">http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/473846</a></p>
-    <p>I see that it uses on line 68:</p> <p> ret = _winreg.QueryValueEx(key, name)<br
-    /> except WindowsError:<br /> return None<br /> else:<br /> key.Close()<br />
-    if ret[1] == _winreg.REG_EXPAND_SZ:<br /> return expandvars(ret[0])<br /> else:<br
-    /> return ret[0]</p> <p>which your code closely mirrors :</p> <p> result = _winreg.QueryValueEx(key,
-    &#8216;AppData&#8217;)<br /> except WindowsError:<br /> return None<br /> else:<br
-    /> key.Close()<br /> if ret[1] == _winreg.REG_EXPAND_SZ:<br /> result = win32api.ExpandEnvironmentStrings(ret[0])<br
-    /> else:<br /> result = ret[0]</p> <p>It&#8217;s just that you put result = as
-    opposed to ret = on that first line and then used ret further on.</p>
-  name: Will
-  wordpress_url: https://blog.mithis.net/archives/python/94-reading-cookies-firefox#comment-7244
-- date: 2010-08-22 19:09:19 +0000
-  id: '7243'
-  message: '<p>I have the same error as Chris</p> <p>NameError: global name &#8216;ret&#8217;
-    is not defined</p> <p>I am currently using the copy of firefox_finder.py and firefox3_repack.py
-    from your repo.</p>'
-  name: Will
-  wordpress_url: https://blog.mithis.net/archives/python/94-reading-cookies-firefox#comment-7243
-- date: 2010-06-08 23:20:35 +0000
-  id: '7241'
+- id: '7206'
+  type: comment
+  li_class: comment c-y2009 c-m05 c-d15 c-h08 alt c1
+  author: Paolo Bitta
+  author_url: http://www.gsalcazar.altervista.org
+  date_text: May 14, 2009 at 10:22 pm
+  date_title: '2009-01-20T09:29:49+1000'
+  avatar: https://secure.gravatar.com/avatar/fa511f3517fdbb44d7d157f1b95efea6?s=32&d=mm&r=pg
+  message: <p>That’s a good job, thank you!</p>
+- id: '7207'
+  type: comment
+  li_class: comment byuser commentauthor-mithro bypostauthor c-y2009 c-m05 c-d15 c-h09 c2
+  author: mithro
+  author_url: http://blog.mithis.net/
+  date_text: May 15, 2009 at 11:08 am
+  date_title: '2009-01-20T09:29:49+1000'
+  avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg
+  message: |-
+    <p>You can find the code in an easier to edit format at <a href="http://blog.mithis.net/cgi-bin/gitweb.cgi?p=mub.git;a=tree;f=python/firefox;hb=master" rel="nofollow">Mithro’s Useful Bit repository</a>.</p>
+- id: '7209'
+  type: comment
+  li_class: comment c-y2009 c-m05 c-d19 c-h01 alt c3
+  author: Chris
+  date_text: May 19, 2009 at 3:05 am
+  date_title: '2009-01-20T09:29:49+1000'
+  avatar: https://secure.gravatar.com/avatar/c125f576c3a08c0c1d4330bc565ae28c?s=32&d=mm&r=pg
+  message: |-
+    <p>The windows code doesn’t appear to work at all.</p>
+    <p>NameError: global name ‘ret’ is not defined, line 76</p>
+- id: '7210'
+  type: comment
+  li_class: comment byuser commentauthor-mithro bypostauthor c-y2009 c-m05 c-d19 c-h11 c4
+  author: mithro
+  author_url: http://blog.mithis.net/
+  date_text: May 19, 2009 at 1:44 pm
+  date_title: '2009-01-20T09:29:49+1000'
+  avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg
+  message: |-
+    <p>I updated the code in the repository. I don’t have a Windows computer to actually test against however.</p>
+- id: '7241'
+  type: comment
+  li_class: comment c-y2010 c-m06 c-d09 c-h07 alt c5
+  author: thegreatgrateful
+  date_text: June 9, 2010 at 9:20 am
+  date_title: '2009-01-20T09:29:49+1000'
+  avatar: https://secure.gravatar.com/avatar/a0c394e31c9740376635c8878cf5889e?s=32&d=mm&r=pg
   message: <p>thanks man!</p>
-  name: thegreatgrateful
-  wordpress_url: https://blog.mithis.net/archives/python/94-reading-cookies-firefox#comment-7241
+- id: '7243'
+  type: comment
+  li_class: comment c-y2010 c-m08 c-d23 c-h03 c6
+  author: Will
+  date_text: August 23, 2010 at 5:09 am
+  date_title: '2009-01-20T09:29:49+1000'
+  avatar: https://secure.gravatar.com/avatar/e6edbae69731a270b91c9b33a1a2beb0?s=32&d=mm&r=pg
+  message: |-
+    <p>I have the same error as Chris</p>
+    <p>NameError: global name ‘ret’ is not defined</p>
+    <p>I am currently using the copy of firefox_finder.py and firefox3_repack.py from your repo.</p>
+- id: '7244'
+  type: comment
+  li_class: comment c-y2010 c-m08 c-d23 c-h03 alt c7
+  author: Will
+  date_text: August 23, 2010 at 5:17 am
+  date_title: '2009-01-20T09:29:49+1000'
+  avatar: https://secure.gravatar.com/avatar/e6edbae69731a270b91c9b33a1a2beb0?s=32&d=mm&r=pg
+  message: |-
+    <p>sorry about the previous comment, I went the the site listed in the script:</p>
+    <p><a href="http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/473846" rel="nofollow">http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/473846</a></p>
+    <p>I see that it uses on line 68:</p>
+    <p>        ret = _winreg.QueryValueEx(key, name)<br>
+        except WindowsError:<br>
+            return None<br>
+        else:<br>
+            key.Close()<br>
+            if ret[1] == _winreg.REG_EXPAND_SZ:<br>
+                return expandvars(ret[0])<br>
+            else:<br>
+                return ret[0]</p>
+    <p>which your code closely mirrors :</p>
+    <p>        result = _winreg.QueryValueEx(key, ‘AppData’)<br>
+        except WindowsError:<br>
+            return None<br>
+        else:<br>
+            key.Close()<br>
+            if ret[1] == _winreg.REG_EXPAND_SZ:<br>
+                result = win32api.ExpandEnvironmentStrings(ret[0])<br>
+            else:<br>
+                result = ret[0]</p>
+    <p>It’s just that you put result = as opposed to ret = on that first line and then used ret further on.</p>
+- id: '7245'
+  type: comment
+  li_class: comment byuser commentauthor-mithro bypostauthor c-y2010 c-m08 c-d24 c-h01 c8
+  author: mithro
+  author_url: http://blog.mithis.net/
+  date_text: August 23, 2010 at 3:49 pm
+  date_title: '2009-01-20T09:29:49+1000'
+  avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg
+  message: |-
+    <p>I’ve updated the code once more, it might work now. As I said I can’t actually test this code as I don’t have a windows computer.</p>

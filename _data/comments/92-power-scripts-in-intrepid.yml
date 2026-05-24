@@ -1,19 +1,27 @@
-- date: 2009-01-21 18:55:00 +0000
-  id: '7164'
-  message: <p>Awesome. This was frustrating me too &#8211; thanks for your explanation.</p>
-  name: David Adam
-  wordpress_url: https://blog.mithis.net/archives/uncategorized/92-power-scripts-in-intrepid#comment-7164
-- date: 2009-05-21 05:11:00 +0000
-  id: '7212'
+- id: '7164'
+  type: comment
+  li_class: comment c-y2009 c-m01 c-d22 c-h04 alt c1
+  author: David Adam
+  author_url: http://zanchey.ucc.asn.au/
+  date_text: January 21, 2009 at 6:55 pm
+  date_title: '2009-01-19T15:12:19+1000'
+  avatar: https://secure.gravatar.com/avatar/b8432fe4b545adb5f7db2ab4196f58c3?s=32&d=mm&r=pg
+  message: <p>Awesome. This was frustrating me too – thanks for your explanation.</p>
+- id: '7212'
+  type: comment
+  li_class: comment c-y2009 c-m05 c-d21 c-h03 c2
+  author: paul
+  date_text: May 21, 2009 at 5:11 am
+  date_title: '2009-01-19T15:12:19+1000'
+  avatar: https://secure.gravatar.com/avatar/7d3c78d6ebce4b2c44117ac34d9bb388?s=32&d=mm&r=pg
   message: <p>cheers for this, exactly what i needed.</p>
-  name: paul
-  wordpress_url: https://blog.mithis.net/archives/uncategorized/92-power-scripts-in-intrepid#comment-7212
-- date: 2009-10-28 23:27:00 +0000
-  id: '7224'
-  message: <p>What an absolute pain in the arse this is. Someone had to go and convert
-    the maintainer-supplied stuff in acpi.d across to the pm.d, it would not have
-    been much trouble to put a check in the package postinst script to see if there
-    was stuff lying around and inform the administrator if so, let alone document it
-    in the release notes.</p>
-  name: Jon
-  wordpress_url: https://blog.mithis.net/archives/uncategorized/92-power-scripts-in-intrepid#comment-7224
+- id: '7224'
+  type: comment
+  li_class: comment c-y2009 c-m10 c-d29 c-h09 alt c3
+  author: Jon
+  author_url: http://jmtd.net/
+  date_text: October 28, 2009 at 11:27 pm
+  date_title: '2009-01-19T15:12:19+1000'
+  avatar: https://secure.gravatar.com/avatar/435d87e668bad3d47231db77a313ebe7?s=32&d=mm&r=pg
+  message: |-
+    <p>What an absolute pain in the arse this is. Someone had to go and convert the maintainer-supplied stuff in acpi.d across to the pm.d, it would not have been much trouble to put a check in the package postinst script to see if there was stuff lying around and inform the administrator if so, let alone document it in the release notes.</p>

@@ -1,53 +1,69 @@
 {% comment %}
-Display comments for a post if they exist.
-Usage: {% include comments.html post_slug=page.slug %}
-Faithful to live blog.mithis.net (2026-05-24): live no longer shows a "Post a
-Comment" form on any post (commenting was closed) — it shows only the existing
-comments. So this include renders the preserved comments and NO posting form.
+Display the existing comments for a post, faithful to the live WordPress/Barthelme
+markup at blog.mithis.net (re-scraped 2026-05-24, after the site owner fixed the
+PHP-7.4 ereg() fatal that had been truncating all comment rendering).
+
+Live no longer shows a "Post a Comment" form (commenting was closed), so this include
+renders only the existing comment list and NO posting form.
+
+site.data.comments[slug] is an ORDERED list (one .yml file per commented post) that
+preserves live's exact display order. Each item:
+  id          – numeric comment id (string)
+  type        – "comment" or "pingback"
+  li_class    – the full <li> class string (comment/pingback, c-yYYYY c-mMM c-dDD
+                c-hHH, alt, byuser/commentauthor-*/bypostauthor, cN) — reproduced verbatim
+  author      – display name (for pingbacks: the linking post's title)
+  author_url  – optional; author's URL (wraps the name in an <a>)
+  date_text   – the visible date string, e.g. "May 14, 2009 at 10:22 pm"
+  date_title  – the (theme-bug-constant) abbr title timestamp, reproduced verbatim
+  avatar      – optional gravatar URL (s=32); srcset (s=64 2x) is derived from it
+  message     – the comment body HTML (preserved verbatim, broken links/quirks and all)
+
+WordPress/Barthelme renders pingback-only posts differently from posts with real
+comments: a "{ N } Trackback(s)" heading + <ol id="pingbacks">, versus a
+"{ N } Comments" heading + <ol id="comments">. No post in the corpus mixes the two,
+so we pick the mode from whether any item is a real comment.
 {% endcomment %}
 
 {% assign post_slug = include.post_slug %}
 {% assign comments = site.data.comments[post_slug] %}
 
 {% if comments and comments.size > 0 %}
-{% comment %}
-  site.data.comments[slug] is the directory hash: { "comment-<id>-<YYYYMMDD>-<HHMMSS>" => {date,id,name,message,...} }
-  Iterating a hash in Liquid 4 yields [key, value] pairs, so comment.name etc. would be nil.
-  Collect the value objects, then sort ascending by date (faithful WordPress/Barthelme order).
-{% endcomment %}
-{% assign _comment_objects = "" | split: "" %}
-{% if comments.first[0] %}
-  {%- comment -%}Hash: site.data.comments[slug] is a dir-hash → [key, value] pairs{%- endcomment -%}
-  {% for _pair in comments %}
-    {% assign _comment_objects = _comment_objects | push: _pair[1] %}
-  {% endfor %}
+{% assign real_comments = comments | where: "type", "comment" %}
+{% if real_comments.size > 0 %}
+  {%- assign list_id = "comments" -%}
+  {%- assign head_id = "numcomments" -%}
+  {%- assign head_label = "Comments" -%}
 {% else %}
-  {%- comment -%}List: site.data.comments[slug] is a .yml list → use directly{%- endcomment -%}
-  {% for item in comments %}
-    {% assign _comment_objects = _comment_objects | push: item %}
-  {% endfor %}
+  {%- assign list_id = "pingbacks" -%}
+  {%- assign head_id = "numpingbacks" -%}
+  {%- if comments.size == 1 %}{% assign head_label = "Trackback" %}{% else %}{% assign head_label = "Trackbacks" %}{% endif -%}
 {% endif %}
-{% assign _sorted_comments = _comment_objects | sort: "date" %}
-<div class="comments-section">
-    <h3>Comments ({{ comments.size }})</h3>
+<div class="comments">
 
-    {% for comment in _sorted_comments %}
-    <div class="comment" id="comment-{{ comment.id }}">
-        <div class="comment-header">
-            <strong class="comment-author">{{ comment.name }}</strong>
-            <time class="comment-date" datetime="{{ comment.date | date_to_xmlschema }}">
-                {{ comment.date | date: "%B %d, %Y at %I:%M %p" }}
-            </time>
-        </div>
-        <div class="comment-content">
-            {{ comment.message }}
-        </div>
-        {% if comment.wordpress_url %}
-        <div class="comment-link">
-            <a href="{{ comment.wordpress_url }}" target="_blank" rel="noopener">Original comment</a>
-        </div>
-        {% endif %}
-    </div>
-    {% endfor %}
+	<h3 class="comment-header" id="{{ head_id }}"><span class="comment-count"><span class="meta-sep">{</span> {{ comments.size }} <span class="meta-sep">}</span></span> {{ head_label }}</h3>
+	<ol id="{{ list_id }}" class="commentlist">
+	{% for comment in comments %}
+		<li id="comment-{{ comment.id }}" class="{{ comment.li_class }}">
+			<div class="comment-meta">
+			{% if comment.type == "pingback" %}
+				<span class="pingback-author vcard"><span class="fn n url org">{% if comment.author_url %}<a href="{{ comment.author_url }}" rel="external nofollow" class="url">{{ comment.author }}</a>{% else %}{{ comment.author }}{% endif %}</span></span>
+				<span class="meta-sep">|</span>
+				<span class="pingback-datetime"><abbr class="comment-published" title="{{ comment.date_title }}">{{ comment.date_text }}</abbr></span>
+			{% else %}
+				<span class="comment-author vcard">{% if comment.avatar %}<img alt="" src="{{ comment.avatar }}" srcset="{{ comment.avatar | replace: 's=32', 's=64' }} 2x" class="photo avatar avatar-32 photo" height="32" width="32" /> {% endif %}<span class="fn n">{% if comment.author_url %}<a href="{{ comment.author_url }}" rel="external nofollow" class="url url">{{ comment.author }}</a>{% else %}{{ comment.author }}{% endif %}</span></span>
+				<span class="meta-sep">|</span>
+				<span class="comment-datetime"><abbr class="comment-published" title="{{ comment.date_title }}">{{ comment.date_text }}</abbr></span>
+			{% endif %}
+				<span class="meta-sep">|</span>
+				<span class="comment-permalink"><a href="#comment-{{ comment.id }}" title="Permalink to this comment">Permalink</a></span>
+			</div>
+
+			{{ comment.message }}
+		</li>
+	{% endfor %}
+
+	</ol><!-- #{{ list_id }} .commentlist -->
+
 </div>
 {% endif %}

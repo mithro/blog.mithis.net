@@ -1,0 +1,22 @@
+- id: '6714'
+  type: comment
+  li_class: comment c-y2008 c-m01 c-d05 c-h12 alt c1
+  author: Booker
+  date_text: January 5, 2008 at 2:24 am
+  date_title: '2007-03-07T11:53:32+1000'
+  avatar: https://secure.gravatar.com/avatar/3d727c024fcac6e99beb43efc351bc15?s=32&d=mm&r=pg
+  message: |-
+    <p>Have you found any decent manual for Eagle 4.1?</p>
+    <p>There is just one hang-up I am having with it, and that is adding user-defined components to the library (device manufacturers don’t support Eagle much at all).  Their component editor is a real piece of crap, really bad!  Almost useless.  I have to follow the steps in their tutorial every time I need to add a new device, and even then I risk crapping out the whole library.</p>
+    <p>Does anyone offer a “missing manual” to your knowledge?</p>
+- id: '6715'
+  type: comment
+  li_class: comment byuser commentauthor-mithro bypostauthor c-y2008 c-m01 c-d05 c-h08 c2
+  author: mithro
+  author_url: http://blog.mithis.net/
+  date_text: January 5, 2008 at 10:46 am
+  date_title: '2007-03-07T11:53:32+1000'
+  avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg
+  message: |-
+    <p>I have found the user-defined components stuff quite easy to use myself. There are some really good tutorials on the web for how to do it – just seach for <a href="&quot;http://www.google.com.au/search?source=ig&amp;hl=en&amp;rlz=&amp;q=eagle+tutorial&amp;btnG=Google+Search&amp;meta=" rel="nofollow">eagle tutorial</a>.</p>
+    <p>Sorry I couldn’t be more help.</p>

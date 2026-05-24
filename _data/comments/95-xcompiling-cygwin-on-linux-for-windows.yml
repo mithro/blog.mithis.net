@@ -1,7 +1,12 @@
-- date: 2014-05-24 14:49:28 +0000
-  id: '7628'
-  message: '<p>The download link is broken.</p> <p>I found this alternative one: </p>
-    <p><a href="http://www.thousandparsec.net/~tim/crosstool-cygwin-gcc336.tar.bz2"
-    rel="nofollow">http://www.thousandparsec.net/~tim/crosstool-cygwin-gcc336.tar.bz2</a></p>'
-  name: Ikem
-  wordpress_url: https://blog.mithis.net/archives/tp/95-xcompiling-cygwin-on-linux-for-windows#comment-7628
+- id: '7628'
+  type: comment
+  li_class: comment c-y2014 c-m05 c-d25 c-h10 alt c1
+  author: Ikem
+  author_url: http://linux-workers.tumblr.com/
+  date_text: May 25, 2014 at 12:49 am
+  date_title: '2009-01-27T16:22:22+1000'
+  avatar: https://secure.gravatar.com/avatar/0dd75f6c744e02e634a79a7bd7bbdbdc?s=32&d=mm&r=pg
+  message: |-
+    <p>The download link is broken.</p>
+    <p>I found this alternative one: </p>
+    <p><a href="http://www.thousandparsec.net/~tim/crosstool-cygwin-gcc336.tar.bz2" rel="nofollow">http://www.thousandparsec.net/~tim/crosstool-cygwin-gcc336.tar.bz2</a></p>

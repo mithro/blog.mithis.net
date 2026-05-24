@@ -1,0 +1,54 @@
+- id: '3'
+  type: comment
+  li_class: comment c-y2007 c-m02 c-d25 c-h12 alt c1
+  author: Jure Repinc
+  author_url: http://jlp.holodeck1.com/blog/
+  date_text: February 24, 2007 at 2:37 pm
+  date_title: '2007-02-23T01:21:13+1000'
+  avatar: https://secure.gravatar.com/avatar/5961cf5a1c740d8df01832cd65bed9cb?s=32&d=mm&r=pg
+  message: |-
+    <p>Great to see this charter, any estimates about when each version will be released?</p>
+    <p>Is there a typo in second point for TP03, where you are mentioning TP04?</p>
+    <p>Oh and about diplomacy. You say that if a player says she will not attack another one server will prevent this happening. Will this also be managed by each game separately? Because this can be a tactical trick, you say you will not attack and ten attack anyways the unprepared victim.<br>
+    Maybe this could be a setting in each game so that you can force game to be fair or not force that.</p>
+- id: '5'
+  type: comment
+  li_class: comment byuser commentauthor-mithro bypostauthor c-y2007 c-m02 c-d26 c-h12 c2
+  author: mithro
+  author_url: http://blog.mithis.com/
+  date_text: February 25, 2007 at 2:42 pm
+  date_title: '2007-02-23T01:21:13+1000'
+  avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg
+  message: <p>I’ve updated the text to read correctly now.</p>
+- id: '4'
+  type: comment
+  li_class: comment c-y2007 c-m02 c-d25 c-h07 alt c3
+  author: nash
+  author_url: http://nash.id.au/
+  date_text: February 24, 2007 at 9:28 pm
+  date_title: '2007-02-23T01:21:13+1000'
+  avatar: https://secure.gravatar.com/avatar/8dfcd241543368b190b43a07f95a2975?s=32&d=mm&r=pg
+  message: |-
+    <p>Actually I hope diplomacy is never forced.   Deception, breaking of agreements – the backstab – is part of the game.  </p>
+    <p>One thing to remember – if someone backstabs you, there trustworthiness in later games is reduced – so there are long term consequences – but it should be there as an option.</p>
+- id: '6'
+  type: comment
+  li_class: comment byuser commentauthor-mithro bypostauthor c-y2007 c-m02 c-d26 c-h02 c4
+  author: mithro
+  author_url: http://blog.mithis.com/
+  date_text: February 25, 2007 at 4:00 pm
+  date_title: '2007-02-23T01:21:13+1000'
+  avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg
+  message: |-
+    <p>I like this too. I think it will end up being ruleset specific.</p>
+    <p>There should however be support in the protocol for changing settings like alliances and such incase the ruleset developers think otherwise.</p>
+- id: '44'
+  type: comment
+  li_class: comment c-y2007 c-m06 c-d11 c-h06 alt c5
+  author: Jure Repinc
+  author_url: http://jlp.holodeck1.com/blog/
+  date_text: June 10, 2007 at 8:39 pm
+  date_title: '2007-02-23T01:21:13+1000'
+  avatar: https://secure.gravatar.com/avatar/5961cf5a1c740d8df01832cd65bed9cb?s=32&d=mm&r=pg
+  message: |-
+    <p>I’ve copied the plans for TP04 into <a href="//www.thousandparsec.net/wiki/TP04" rel="nofollow">Thousand Parsec Wiki</a>.</p>

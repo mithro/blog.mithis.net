@@ -1,0 +1,22 @@
+- id: '7088'
+  type: comment
+  li_class: comment c-y2008 c-m07 c-d17 c-h02 alt c1
+  author: andrew
+  date_text: July 17, 2008 at 4:22 am
+  date_title: '2007-03-07T14:09:50+1000'
+  avatar: https://secure.gravatar.com/avatar/546e71e171bd5df0fbe030cb016b5905?s=32&d=mm&r=pg
+  message: |-
+    <p>Hi Mithro,</p>
+    <p>  I was very impressed to see your eagle2geda converter.  I can’t get it to work though,  I get the error that the symbol “S” is not found.  Is this because I am running the script in the wrong window?</p>
+    <p>A</p>
+- id: '7090'
+  type: comment
+  li_class: comment byuser commentauthor-mithro bypostauthor c-y2008 c-m07 c-d17 c-h07 c2
+  author: mithro
+  author_url: http://blog.mithis.net/
+  date_text: July 17, 2008 at 9:09 am
+  date_title: '2007-03-07T14:09:50+1000'
+  avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg
+  message: |-
+    <p>There is a typo in the version that is uploaded it should be “P.name” not “S.name”.</p>
+    <p>I have however mostly abandoned this converter. I don’t have time to work on it and have used neither eagle or gEDA is over a year. Feel free to do what you want with it.</p>

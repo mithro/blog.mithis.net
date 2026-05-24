@@ -1,0 +1,44 @@
+- id: '9'
+  type: comment
+  li_class: comment c-y2007 c-m04 c-d22 c-h01 alt c1
+  author: Jure Repinc
+  author_url: http://jlp.holodeck1.com/blog/
+  date_text: April 22, 2007 at 3:11 am
+  date_title: '2007-04-21T08:17:42+1000'
+  avatar: https://secure.gravatar.com/avatar/5961cf5a1c740d8df01832cd65bed9cb?s=32&d=mm&r=pg
+  message: |-
+    <p>Nice, another revision system to learn 😛 Can’t hurt to know a couple of them. Darcs was also hurting my poor laptop, from tim to time it started to use so much swap that all started to go very slow and I had to restart the laptop. It is also nice to see that Git is so space efficient and probably it is also more supported by various web services like ohloh. All in all I think switching to Git was the right thing to do.</p>
+- id: '10'
+  type: comment
+  li_class: comment byuser commentauthor-mithro bypostauthor c-y2007 c-m04 c-d22 c-h01 c2
+  author: mithro
+  author_url: http://blog.mithis.net/
+  date_text: April 22, 2007 at 3:51 am
+  date_title: '2007-04-21T08:17:42+1000'
+  avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg
+  message: |-
+    <p>The <a href="http://www.thousandparsec.net/tp/dev/rcs.php" rel="nofollow">RCS page</a> has been updated to help you with learning git.</p>
+    <p>Hopefully that page will get even better over the next few days.</p>
+    <p>Thanks to <a href="http://www.kernel.org/pub/software/scm/git/docs/git-cvsserver.html" rel="nofollow">git-cvsserver</a>, we also have a bi-directional commit access via all CVS tools.</p>
+- id: '6940'
+  type: comment
+  li_class: comment c-y2008 c-m04 c-d04 c-h07 alt c3
+  author: Lele Gaifax
+  date_text: April 3, 2008 at 9:17 pm
+  date_title: '2007-04-21T08:17:42+1000'
+  avatar: https://secure.gravatar.com/avatar/a8bf10390488eb48627ccb3f4bcc7434?s=32&d=mm&r=pg
+  message: |-
+    <p>Thank you for you nice comments about Tailor. I tried to access to the configuration, but the URL is wrong. I’d like to hear any proposal about making the process “less tricky”, even if I’m afraid its almost impossible to cover every single situation…<br>
+    ciao, lele.</p>
+- id: '6942'
+  type: comment
+  li_class: comment byuser commentauthor-mithro bypostauthor c-y2008 c-m04 c-d04 c-h09 c4
+  author: mithro
+  author_url: http://blog.mithis.net/
+  date_text: April 3, 2008 at 11:49 pm
+  date_title: '2007-04-21T08:17:42+1000'
+  avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg
+  message: |-
+    <p>I’m afraid that I lost the scripts when this blog moved around a bit (after the original server got hacked).</p>
+    <p>I also have not used Tailor in about a year now as we have been very happy with git (and the git-cvsserver gives us all the compatibility we need). If I ever need to move repository formats again, I may relook into the tool.</p>
+    <p>Thanks for taking the time to comment on my blog! It’s really cool to know that Tailor is still making progress and trying to be even easier to use.</p>

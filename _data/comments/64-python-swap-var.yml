@@ -1,5 +1,19 @@
-- date: 2010-10-11 17:26:30 +0000
-  id: '7246'
-  message: <p>Haha, nice joke, guys&#8230;))</p>
-  name: Anel
-  wordpress_url: https://blog.mithis.net/archives/ideas/64-python-swap-var#comment-7246
+- id: '7020'
+  type: comment
+  li_class: comment c-y2008 c-m07 c-d08 c-h08 alt c1
+  author: Evan
+  author_url: http://www.evanfosmark.com/
+  date_text: July 8, 2008 at 10:50 am
+  date_title: '2007-11-11T00:37:39+1000'
+  avatar: https://secure.gravatar.com/avatar/6a54e35109e677aa8020eb825fa98b4f?s=32&d=mm&r=pg
+  message: |-
+    <p>Hah, yeah I love  that trick.</p>
+    <p>I’ve heard that it isn’t uncommon in interviews for them to ask a you do do something like “Swap the values of 2 variables without using a temporary variable.” I’d love to see their reaction if someone just wrote that down.</p>
+- id: '7246'
+  type: comment
+  li_class: comment c-y2010 c-m10 c-d12 c-h01 c2
+  author: Anel
+  date_text: October 12, 2010 at 3:26 am
+  date_title: '2007-11-11T00:37:39+1000'
+  avatar: https://secure.gravatar.com/avatar/4e25ce3d4a69e175f253efc19cd2cfd6?s=32&d=mm&r=pg
+  message: <p>Haha, nice joke, guys…))</p>

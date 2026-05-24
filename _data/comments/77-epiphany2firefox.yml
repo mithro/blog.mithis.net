@@ -1,0 +1,23 @@
+- id: '6952'
+  type: comment
+  li_class: comment c-y2008 c-m04 c-d10 c-h10 alt c1
+  author: shenki
+  date_text: April 10, 2008 at 12:28 pm
+  date_title: '2008-04-10T10:04:50+1000'
+  avatar: https://secure.gravatar.com/avatar/6e7c25874123067a6284e376e017c4de?s=32&d=mm&r=pg
+  message: |-
+    <p>&gt;  I also installed two extensions that have no equivalent under Epiphany, they are<br>
+    &gt;<br>
+    &gt;     * Greasemonkey, the extension for making websites the way you like them.</p>
+    <p>Huh? A Greasemonkey extension is part of Epiphany.</p>
+    <p>As a fellow ephy -&gt; firefox convert, I look forward to your url bar extension.</p>
+- id: '6953'
+  type: comment
+  li_class: comment byuser commentauthor-mithro bypostauthor c-y2008 c-m04 c-d10 c-h11 c2
+  author: mithro
+  author_url: http://blog.mithis.net/
+  date_text: April 10, 2008 at 1:27 pm
+  date_title: '2008-04-10T10:04:50+1000'
+  avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg
+  message: |-
+    <p>90% of scripts are not compatible and last time I looked it didn’t even have a UI which allows you to select scripts.</p>

@@ -1,0 +1,28 @@
+- id: '85'
+  type: comment
+  li_class: comment c-y2007 c-m09 c-d09 c-h02 alt c1
+  author: Joel Williams
+  date_text: September 8, 2007 at 4:23 pm
+  date_title: '2007-09-08T15:31:41+1000'
+  avatar: https://secure.gravatar.com/avatar/6dd0189a125b6cf026367dda06a61117?s=32&d=mm&r=pg
+  message: |-
+    <p>If you’ve ever found resolv.conf to be too simplistic, check out the <a href="//tristesse.org/~joel/tmp/abortion.txt" rel="nofollow">script</a> that I once wrote. It gives you a way to set name servers and search domains based on (in my examples) the host specified in the command line or user, but could easily be made to check for the presence of a VPN. It’s delightfully evil.</p>
+- id: '131'
+  type: comment
+  li_class: comment c-y2007 c-m10 c-d13 c-h09 c2
+  author: David
+  date_text: October 12, 2007 at 11:30 pm
+  date_title: '2007-09-08T15:31:41+1000'
+  avatar: https://secure.gravatar.com/avatar/71f124bd738af4a92a1a7cd8c3425f4b?s=32&d=mm&r=pg
+  message: |-
+    <p>This is the first attempt I’ve come across that even attempts to correct this glaring shortcoming.  I’ve been trying to achieve this behavior with the pptp NetworkManager plugin, which I understand is, at least loosely, based on the OpenVPN plugin for NM.  I don’t have the programming skills to transpose this patch and apply it to the pptp plugin source.  Would this be a simple thing for you to do?  Do you know if anyone else has already done this?</p>
+- id: '132'
+  type: comment
+  li_class: comment byuser commentauthor-mithro bypostauthor c-y2007 c-m10 c-d16 c-h12 alt c3
+  author: mithro
+  author_url: http://blog.mithis.net/
+  date_text: October 15, 2007 at 2:29 pm
+  date_title: '2007-09-08T15:31:41+1000'
+  avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg
+  message: |-
+    <p>Sorry, I don’t have the time to try and fix this for you (plus I don’t have access to a PPTP server). I would recommend logging a bug report <a href="&quot;http://bugzilla.gnome.org/enter_bug.cgi?product=NetworkManager" rel="nofollow">here</a>, the bug shouldn’t be all that hard for them to fix.</p>

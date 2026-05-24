@@ -1,45 +1,172 @@
-- date: 2011-12-06 21:16:11 +0000
-  id: '7284'
-  message: '<p>For stock installation of Ubuntu 10.04 (Lucid Lynx) users, Network
-    Manager version 0.8.0, so nmcli is not available and since there may be others
-    like me who like to stick to the LTS, here is a solution.</p> <p>Visit <a href="http://cgit.freedesktop.org/NetworkManager/NetworkManager/tree/examples/python?h=NM_0_8"
-    rel="nofollow">http://cgit.freedesktop.org/NetworkManager/NetworkManager/tree/examples/python?h=NM_0_8</a>
-    and download list-connections.py. Mark it as executable and run it to find the
-    UUID of your VPN connection.</p> <p>Also, download vpn.py from the same link.
-    This script is written to connect to VPN over wifi only. So, if you want to connect
-    to VPN over your wireless network then simply execute the script.</p> <p>However,
-    for wired a minor modification in vpn.py is required . Below is the patch for
-    the same.</p> <p>*** vpn.py 2011-12-07 02:38:06.205855632 +0530<br /> &#8212;
-    vpn1.py 2011-12-07 02:39:49.861855276 +0530<br /> ***************<br /> *** 86,92
-    ****<br /> return None</p> <p>! def get_wifi_device_path():<br /> bus = dbus.SystemBus()<br
-    /> proxy = bus.get_object(&#8216;org.freedesktop.NetworkManager&#8217;, &#8216;/org/freedesktop/NetworkManager&#8217;)<br
-    /> iface = dbus.Interface(proxy, dbus_interface=&#8217;org.freedesktop.NetworkManager&#8217;)<br
-    /> &#8212; 86,92 &#8212;-<br /> return None</p> <p>! def get_device_path(reqDevType):<br
-    /> bus = dbus.SystemBus()<br /> proxy = bus.get_object(&#8216;org.freedesktop.NetworkManager&#8217;,
-    &#8216;/org/freedesktop/NetworkManager&#8217;)<br /> iface = dbus.Interface(proxy,
-    dbus_interface=&#8217;org.freedesktop.NetworkManager&#8217;)<br /> ***************<br
-    /> *** 95,101 ****<br /> proxy = bus.get_object(&#8216;org.freedesktop.NetworkManager&#8217;,
-    d)<br /> iface = dbus.Interface(proxy, dbus_interface=&#8217;org.freedesktop.DBus.Properties&#8217;)<br
-    /> devtype = iface.Get(&#8216;org.freedesktop.NetworkManager.Device&#8217;, &#8216;DeviceType&#8217;)<br
-    /> ! if devtype == 2:<br /> return d<br /> return None</p> <p>&#8212; 95,101 &#8212;-<br
-    /> proxy = bus.get_object(&#8216;org.freedesktop.NetworkManager&#8217;, d)<br
-    /> iface = dbus.Interface(proxy, dbus_interface=&#8217;org.freedesktop.DBus.Properties&#8217;)<br
-    /> devtype = iface.Get(&#8216;org.freedesktop.NetworkManager.Device&#8217;, &#8216;DeviceType&#8217;)<br
-    /> ! if devtype == reqDevType:<br /> return d<br /> return None</p> <p>***************<br
-    /> *** 135,143 ****<br /> print &#8220;couldn&#8217;t find the connection&#8221;<br
-    /> sys.exit(1)</p> <p>! device_path = get_wifi_device_path()<br /> if not device_path:<br
-    /> ! print &#8220;no wifi device found&#8221;<br /> sys.exit(1)</p> <p> # Is it
-    already activated?<br /> &#8212; 135,143 &#8212;-<br /> print &#8220;couldn&#8217;t
-    find the connection&#8221;<br /> sys.exit(1)</p> <p>! device_path = get_device_path(1)
-    #Pass 2 for wifi<br /> if not device_path:<br /> ! print &#8220;no wired device
-    found&#8221;<br /> sys.exit(1)</p> <p> # Is it already activated?</p>'
-  name: Mahavir
-  wordpress_url: https://blog.mithis.net/archives/ideas/51-nm-autovpn#comment-7284
-- date: 2011-05-11 09:21:29 +0000
-  id: '7248'
-  message: <p>Since this page has a high google rank for this topic, here is a more
-    elegant solution possible from NetworkManager 0.8.1 on:</p> <p>There is now a
-    command line tool nmcli which can interact with the nm-applet and NM directly.<br
-    /> So connecting to a VPN is as easy as this:</p> <p>nmcli con up id NAME_OF_THE_VPN</p>
-  name: Dorian Scholz
-  wordpress_url: https://blog.mithis.net/archives/ideas/51-nm-autovpn#comment-7248
+- id: '128'
+  type: comment
+  li_class: comment c-y2007 c-m09 c-d25 c-h11 alt c1
+  author: Robin
+  date_text: September 25, 2007 at 1:26 pm
+  date_title: '2007-09-06T12:39:48+1000'
+  avatar: https://secure.gravatar.com/avatar/8d0cced67365cb4a2f5fae15d4c21001?s=32&d=mm&r=pg
+  message: |-
+    <p>I was pretty excited to find your blog posting – unfortunately it doesn’t work on my ubuntu feisty system.  More specifically the python script causes nm-applet to crash and I get this feedback:</p>
+    <p>Starting ‘VPN_Name’ VPN<br>
+    dbus.Array([dbus.String(u’VPN_Name’)], signature=dbus.Signature(‘s’))<br>
+    (dbus.String(u’VPN_Name’), dbus.String(u’username’), dbus.String(u’org.freedesktop.NetworkManager.vpnc’), dbus.UInt32(1L))<br>
+    None</p>
+    <p>I can’t restart the script manually afterwards.  Not sure if that help to identify the problem.</p>
+- id: '147'
+  type: comment
+  li_class: comment c-y2007 c-m10 c-d27 c-h06 c2
+  author: Mathijs
+  date_text: October 26, 2007 at 8:33 pm
+  date_title: '2007-09-06T12:39:48+1000'
+  avatar: https://secure.gravatar.com/avatar/868991d5147b3e1e124dd8b5de07fcba?s=32&d=mm&r=pg
+  message: |-
+    <p>I have tried the script as Robin did and I get the exact same result.</p>
+    <p>(To help Robin out: you can restart nm-applet by restarting NetworkManager and NetworkManagerDispatcher sevices if those should have bailed out as well (happende to me once while testing), in a terminal type:<br>
+    <code><br>
+    ps -A |grep -i Network<br>
+    # With the pid numbers you can now do:<br>
+    sudo kill #PIDNRS<br>
+    </code><br>
+    Do the same for nm-applet (grep -i nm)<br>
+    Then restart NetworkManager and NetworkManagerDispatcher as root and start nm-applet using ctrl+F2)</p>
+    <p>I have taken a look at the source code of the networkmanager vpn dbus interface and I could not find any error’s in the code you used (then again, this was my first time I took a look at a phython script :p )</p>
+    <p>However we should get an output from the nm-applet (when running inside the console) saying it is connection to the VPN. (Don’t know the exact message, but run nm-applet inside the terminal and break the VPN cpnnection and set it up again, you’ll see what I mean)</p>
+    <p>I believe the script works for you Mithro? Are you running it as root, have got anything special configured? (eg inside your keyring) Anyhting that might explain the script to fail us?</p>
+    <p>I have been trying to autoconnect my vpn for a long time and basicly gave up because I didn’t feel like ‘hacking’ a script together, but this is reeeaaal close to a solution…</p>
+    <p>I hope I’ll hearing from you,<br>
+    Mathijs</p>
+- id: '150'
+  type: comment
+  li_class: comment byuser commentauthor-mithro bypostauthor c-y2007 c-m10 c-d27 c-h10 alt c3
+  author: mithro
+  author_url: http://blog.mithis.net/
+  date_text: October 27, 2007 at 12:18 pm
+  date_title: '2007-09-06T12:39:48+1000'
+  avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg
+  message: |-
+    <p>What version of Ubuntu are you using? It <b>does not work on Feisty</b>. It works fine for both me and another person on Gusty.</p>
+    <p>I have not tested with any other VPN connection apart from openvpn as well.</p>
+- id: '160'
+  type: comment
+  li_class: comment c-y2007 c-m10 c-d30 c-h07 c4
+  author: Philip Peitsch
+  date_text: October 30, 2007 at 9:56 am
+  date_title: '2007-09-06T12:39:48+1000'
+  avatar: https://secure.gravatar.com/avatar/5a1d94f578d2ccc801a9f0fb6475a249?s=32&d=mm&r=pg
+  message: |-
+    <p>Ahh… Gutsy only.  Would explain why it crashes on my Feisty install too 🙂</p>
+    <p>Might be good to update the earlier parts of the page to make this more explicit.  Just out of interest, how did you find the details to write your script?</p>
+- id: '162'
+  type: comment
+  li_class: comment byuser commentauthor-mithro bypostauthor c-y2007 c-m10 c-d30 c-h11 alt c5
+  author: mithro
+  author_url: http://blog.mithis.net/
+  date_text: October 30, 2007 at 1:08 pm
+  date_title: '2007-09-06T12:39:48+1000'
+  avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg
+  message: |-
+    <p>I donâ€™t have any Feisty of Edgy installs to test with, hence why I didnâ€™t comment initially. It seems to be a problem with either the older NetworkManager or the older python-dbus binding.</p>
+    <p>I found out what had to be done through reading the source code and much trial and error. Took me about 6 hours to figure out that tiny script!</p>
+- id: '6718'
+  type: comment
+  li_class: comment c-y2008 c-m01 c-d07 c-h08 c6
+  author: Quail
+  author_url: http://quail.southernvaleslug.org/webblog/
+  date_text: January 7, 2008 at 10:07 am
+  date_title: '2007-09-06T12:39:48+1000'
+  avatar: https://secure.gravatar.com/avatar/40417359d15710847aecff268ac21578?s=32&d=mm&r=pg
+  message: |-
+    <p>Hi Mithro,</p>
+    <p>Thanks for the scripts I have implemented them for my home vpn connection I run over wireless.  The only prob I have is that it fail to make the initial connection when you login after reboot or boot up and you get the pop up error saying it can’t establish the openvpn connection and you have to manually start it.  Do you have the same problem? if not how have you got it to auto connect on login?</p>
+    <p>Nice scripts to by the way</p>
+    <p>Regards<br>
+    Quail</p>
+- id: '6758'
+  type: comment
+  li_class: comment c-y2008 c-m02 c-d19 c-h12 alt c7
+  author: raporu78
+  date_text: February 19, 2008 at 2:27 am
+  date_title: '2007-09-06T12:39:48+1000'
+  avatar: https://secure.gravatar.com/avatar/368f9beff4c7770bfc4ba42dc4ad507d?s=32&d=mm&r=pg
+  message: |-
+    <p>thx for this little piece of goodness</p>
+    <p>but since i tested it an my configuration I think there is a problem in the sed command</p>
+    <p>your iwconfig $IFACE 2&gt;&amp;1 | grep ESSID | sed -e’s/.*ESSID:”\(.*\)”/\1/’ -e’s/ //g’<br>
+    give me<br>
+    802.1X”Nickname:”</p>
+    <p>so I changed it a little bit to<br>
+    iwconfig $IFACE 2&gt;&amp;1 | grep ESSID | sed -e’s/.*ESSID:”\(.*\)”.*”.*”/\1/’ -e’s/ //g’</p>
+    <p>thx anyway<br>
+    raporu</p>
+- id: '6759'
+  type: comment
+  li_class: comment byuser commentauthor-mithro bypostauthor c-y2008 c-m02 c-d19 c-h06 c8
+  author: mithro
+  author_url: http://blog.mithis.net/
+  date_text: February 19, 2008 at 8:41 am
+  date_title: '2007-09-06T12:39:48+1000'
+  avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg
+  message: |-
+    <p>You are correct. For newer versions of ubuntu this change appears to be needed (I just recently upgraded to Hardy Heron and needed to make this change also).</p>
+- id: '7147'
+  type: comment
+  li_class: comment c-y2008 c-m08 c-d27 c-h05 alt c9
+  author: Cougar
+  author_url: http://wiki.version6.net
+  date_text: August 27, 2008 at 7:07 am
+  date_title: '2007-09-06T12:39:48+1000'
+  avatar: https://secure.gravatar.com/avatar/41516cd429adc65e8d7740218c6074a5?s=32&d=mm&r=pg
+  message: |-
+    <p>I couldn’t get nm-startvpn running under opensuse 11.0. It gives me error:</p>
+    <p>Traceback (most recent call last):<br>
+      File “/usr/local/bin/nm-startvpn”, line 29, in<br>
+        print interface.getVPNConnections()<br>
+      File “/usr/lib/python2.5/site-packages/dbus/proxies.py”, line 68, in __call__<br>
+        return self._proxy_method(*args, **keywords)<br>
+      File “/usr/lib/python2.5/site-packages/dbus/proxies.py”, line 140, in __call__<br>
+        **keywords)<br>
+      File “/usr/lib/python2.5/site-packages/dbus/connection.py”, line 607, in call_blocking<br>
+        message, timeout)<br>
+    dbus.exceptions.DBusException: org.freedesktop.DBus.Error.UnknownMethod: Method “getVPNConnections” with signature “” on interface “org.freedesktop.NetworkManager.VPNConnections” doesn’t exist</p>
+    <p>However, I changed 02runcmd so that is just starts/stops openvpn and this works fine</p>
+    <p>#! /bin/sh</p>
+    <p>case “$2” in<br>
+            up)<br>
+                    /usr/sbin/rcopenvpn start<br>
+                    ;;<br>
+            down)<br>
+                    /usr/sbin/rcopenvpn stop<br>
+                    ;;<br>
+    esac</p>
+    <p>exit 0</p>
+- id: '7153'
+  type: comment
+  li_class: comment c-y2008 c-m11 c-d12 c-h06 c10
+  author: sam
+  author_url: http://sam.com
+  date_text: November 12, 2008 at 8:37 am
+  date_title: '2007-09-06T12:39:48+1000'
+  avatar: https://secure.gravatar.com/avatar/eed725e178083546c2530ae194c8f5f7?s=32&d=mm&r=pg
+  message: |-
+    <p>Not really hard:</p>
+    <p><a href="http://www.linuxquestions.org/questions/linux-networking-3/openvpn-client-682343/" rel="nofollow">http://www.linuxquestions.org/questions/linux-networking-3/openvpn-client-682343/</a></p>
+- id: '7248'
+  type: comment
+  li_class: comment c-y2011 c-m05 c-d12 c-h05 alt c11
+  author: Dorian Scholz
+  date_text: May 11, 2011 at 7:21 pm
+  date_title: '2007-09-06T12:39:48+1000'
+  avatar: https://secure.gravatar.com/avatar/53dc25775bca05e98ad0b4dc28711191?s=32&d=mm&r=pg
+  message: |-
+    <p>Since this page has a high google rank for this topic, here is a more elegant solution possible from NetworkManager 0.8.1 on:</p>
+    <p>There is now a command line tool nmcli which can interact with the nm-applet and NM directly.<br>
+    So connecting to a VPN is as easy as this:</p>
+    <p>nmcli con up id NAME_OF_THE_VPN</p>
+- id: '7284'
+  type: comment
+  li_class: comment c-y2011 c-m12 c-d07 c-h05 c12
+  author: Mahavir
+  date_text: December 7, 2011 at 7:16 am
+  date_title: '2007-09-06T12:39:48+1000'
+  avatar: https://secure.gravatar.com/avatar/aad0d34d2753fa68c5996d2c10495540?s=32&d=mm&r=pg
+  message: "<p>For stock installation of Ubuntu 10.04 (Lucid Lynx) users, Network Manager version 0.8.0, so nmcli is not available and since there may be others like me who like to stick to the LTS, here is a solution.</p>\n<p>Visit <a href=\"http://cgit.freedesktop.org/NetworkManager/NetworkManager/tree/examples/python?h=NM_0_8\" rel=\"nofollow\">http://cgit.freedesktop.org/NetworkManager/NetworkManager/tree/examples/python?h=NM_0_8</a> and download list-connections.py.  Mark it as executable and run it to find the UUID of your VPN connection.</p>\n<p>Also, download vpn.py from the same link. This script is written to connect to VPN over wifi only. So, if you want to connect to VPN over your wireless network then simply execute the script.</p>\n<p>However, for wired a minor modification in vpn.py is required .  Below is the patch for the same.</p>\n<p>*** vpn.py\t2011-12-07 02:38:06.205855632 +0530<br>\n— vpn1.py\t2011-12-07 02:39:49.861855276 +0530<br>\n***************<br>\n*** 86,92 ****<br>\n      return None</p>\n<p>! def get_wifi_device_path():<br>\n      bus = dbus.SystemBus()<br>\n      proxy = bus.get_object(‘org.freedesktop.NetworkManager’, ‘/org/freedesktop/NetworkManager’)<br>\n      iface = dbus.Interface(proxy, dbus_interface=’org.freedesktop.NetworkManager’)<br>\n— 86,92 —-<br>\n      return None</p>\n<p>! def get_device_path(reqDevType):<br>\n      bus = dbus.SystemBus()<br>\n      proxy = bus.get_object(‘org.freedesktop.NetworkManager’, ‘/org/freedesktop/NetworkManager’)<br>\n      iface = dbus.Interface(proxy, dbus_interface=’org.freedesktop.NetworkManager’)<br>\n***************<br>\n*** 95,101 ****<br>\n          proxy = bus.get_object(‘org.freedesktop.NetworkManager’, d)<br>\n          iface = dbus.Interface(proxy, dbus_interface=’org.freedesktop.DBus.Properties’)<br>\n          devtype = iface.Get(‘org.freedesktop.NetworkManager.Device’, ‘DeviceType’)<br>\n!         if devtype == 2:<br>\n              return d<br>\n      return None</p>\n<p>— 95,101 —-<br>\n          proxy = bus.get_object(‘org.freedesktop.NetworkManager’, d)<br>\n          iface = dbus.Interface(proxy, dbus_interface=’org.freedesktop.DBus.Properties’)<br>\n          devtype = iface.Get(‘org.freedesktop.NetworkManager.Device’, ‘DeviceType’)<br>\n!         if devtype == reqDevType:<br>\n              return d<br>\n      return None</p>\n<p>***************<br>\n*** 135,143 ****<br>\n      print “couldn’t find the connection”<br>\n      sys.exit(1)</p>\n<p>! device_path = get_wifi_device_path()<br>\n  if not device_path:<br>\n!     print “no wifi device found”<br>\n      sys.exit(1)</p>\n<p>  # Is it already activated?<br>\n— 135,143 —-<br>\n      print “couldn’t find the connection”<br>\n      sys.exit(1)</p>\n<p>! device_path = get_device_path(1) #Pass 2 for wifi<br>\n  if not device_path:<br>\n!     print “no wired device found”<br>\n      sys.exit(1)</p>\n<p>  # Is it already activated?</p>"

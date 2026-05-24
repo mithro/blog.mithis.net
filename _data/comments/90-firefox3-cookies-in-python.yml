@@ -1,0 +1,28 @@
+- id: '7208'
+  type: comment
+  li_class: comment byuser commentauthor-mithro bypostauthor c-y2009 c-m05 c-d15 c-h09 alt c1
+  author: mithro
+  author_url: http://blog.mithis.net/
+  date_text: May 15, 2009 at 11:09 am
+  date_title: '2009-01-19T12:58:28+1000'
+  avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg
+  message: |-
+    <p>You can find the code in an easier to edit format at <a href="http://blog.mithis.net/cgi-bin/gitweb.cgi?p=mub.git;a=tree;f=python/firefox;hb=master" rel="nofollow">Mithro’s Useful Bit repository</a>.</p>
+    <p>There is also code for compressing your sqlite databases and other useful tools.</p>
+- id: '7213'
+  type: comment
+  li_class: comment c-y2009 c-m05 c-d28 c-h09 c2
+  author: jake
+  date_text: May 27, 2009 at 11:24 pm
+  date_title: '2009-01-19T12:58:28+1000'
+  avatar: https://secure.gravatar.com/avatar/721d6b5c0b5345637b76ea17318a447c?s=32&d=mm&r=pg
+  message: <p>is the firefox3 sqlite cookie file located in  ~/.mozilla/firefox  ?</p>
+- id: '7221'
+  type: comment
+  li_class: comment c-y2009 c-m09 c-d21 c-h11 alt c3
+  author: Chris
+  date_text: September 21, 2009 at 1:28 pm
+  date_title: '2009-01-19T12:58:28+1000'
+  avatar: https://secure.gravatar.com/avatar/c125f576c3a08c0c1d4330bc565ae28c?s=32&d=mm&r=pg
+  message: |-
+    <p>This code is neat and all, but it doesn’t technically show how to read Firefox cookies…</p>

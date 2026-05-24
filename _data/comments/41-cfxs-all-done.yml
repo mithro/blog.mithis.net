@@ -1,0 +1,46 @@
+- id: '39'
+  type: comment
+  li_class: comment c-y2007 c-m06 c-d08 c-h05 alt c1
+  author: yang yong
+  date_text: June 7, 2007 at 7:50 pm
+  date_title: '2007-05-19T16:26:06+1000'
+  avatar: https://secure.gravatar.com/avatar/441668907dfdb220cc91c1de2dbffc9d?s=32&d=mm&r=pg
+  message: |-
+    <p>hello</p>
+    <p>this is  Yang  in Prague. I have tried some USB channel bank  in my asterisk. it doesnot work great. </p>
+    <p>If yours works with Asterisk, please let me know</p>
+    <p>Thanks</p>
+    <p>Yang</p>
+- id: '41'
+  type: comment
+  li_class: comment byuser commentauthor-mithro bypostauthor c-y2007 c-m06 c-d08 c-h08 c2
+  author: mithro
+  author_url: http://blog.mithis.net/
+  date_text: June 8, 2007 at 10:40 am
+  date_title: '2007-05-19T16:26:06+1000'
+  avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg
+  message: |-
+    <p>I have yet to finish the PC driver, but there is no reason that the channel bank shouldn’t work as well as a PCI device.</p>
+    <p>Keep an eye on the blog, I will post more as I get further.</p>
+- id: '73'
+  type: comment
+  li_class: comment c-y2007 c-m09 c-d04 c-h04 alt c3
+  author: chickenrob
+  author_url: http://www.888voipstore.com/grandstream-gxw4008-pr-18541.html
+  date_text: September 4, 2007 at 6:17 am
+  date_title: '2007-05-19T16:26:06+1000'
+  avatar: https://secure.gravatar.com/avatar/0fdedc18948cc6215ee3285af8591d0a?s=32&d=mm&r=pg
+  message: |-
+    <p>So I know technically there is a difference but operationally, what is the difference from your project and this <a href="http://www.888voipstore.com/grandstream-gxw4008-pr-18541.html" rel="nofollow">http://www.888voipstore.com/grandstream-gxw4008-pr-18541.html</a> ?  I am about to test these out for a multi line asterisk system, perhaps I will understand more soon.  </p>
+    <p>-rob</p>
+- id: '74'
+  type: comment
+  li_class: comment byuser commentauthor-mithro bypostauthor c-y2007 c-m09 c-d04 c-h06 c4
+  author: mithro
+  author_url: http://blog.mithis.net/
+  date_text: September 4, 2007 at 8:55 am
+  date_title: '2007-05-19T16:26:06+1000'
+  avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg
+  message: |-
+    <p>Not a huge amount. When I started this project that device wasn’t available. My device is simpler so should be a bit cheaper if it went into mass production.</p>
+    <p>I am however working with <a href="&quot;http://www.rowetel.com/" rel="nofollow">David Rowe</a> to convert the design to use only “easy to source” components, thus making it buildable by anyone.</p>
