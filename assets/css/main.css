@@ -793,6 +793,13 @@ div.formcontainer div.form-submit {
 
 div.formcontainer div.form-textarea textarea#comment {
     overflow: auto;
+    /* The explicit georgia font-family above (needed so 0.9em → live's 14.4px
+       field height) shifts the inline-block baseline; with overflow:auto the
+       textarea is aligned by its bottom-margin-edge, leaving a ~7px line-box
+       descent gap below it. That made .form-textarea 168px vs live's 161px,
+       pushing the reCAPTCHA/submit/nav/footer 7px low. top-align removes the
+       baseline-dependent gap without changing the font (heights stay correct). */
+    vertical-align: top;
 }
 
 div.formcontainer form#commentform span.req-field {
