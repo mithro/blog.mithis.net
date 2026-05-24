@@ -1,41 +1,37 @@
 ---
-layout: default
+layout: page
 title: Contact Me
-permalink: /contact/
+permalink: /contact-me/
 ---
 
-# Contact Me
-
-If you'd like to get in touch with me, here are the best ways to reach me:
-
-## Email
-- **Primary**: blog@mithis.com
-- **Personal**: tim@mithis.net
-
-## Phone
-- **Mobile**: +61 421 968 221
-
-## Social Media
-- **Twitter**: [@mithro](https://twitter.com/mithro)
-- **GitHub**: [mithro](https://github.com/mithro)
-
-## Projects and Code
-- **GitHub**: [github.com/mithro](https://github.com/mithro)
-- **Personal Git**: [blog.mithis.net/cgi-bin/gitweb.cgi](http://blog.mithis.net/cgi-bin/gitweb.cgi)
-
-## Other Links
-- **Launchpad**: [My Packages](https://launchpad.net/~mithro/+archive/ppa)
-- **YouTube**: [My Videos](http://www.youtube.com/mithro)
-
----
-
-Feel free to leave a comment on any of my blog posts as well - I read them all and try to respond promptly.
-
-This blog focuses on open source hardware, software development, and technical projects. I particularly enjoy working on:
-
-- **HDMI2USB** - Open source HDMI capture hardware
-- **TimVideos.us** - Conference recording infrastructure
-- **FPGA Development** - Digital logic design and implementation
-- **Open Source Hardware** - PCB design and embedded systems
-
-Feel free to reach out if you have questions about any of my projects or want to collaborate on open source hardware/software initiatives!
+<div style="text-align: center; width: 100%;">
+<table style="text-align: center; margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td colspan="2">
+<div>
+[srandom=1,200,1,1,0,center,none]
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<h3>Email Address</h3>
+<blockquote><p><a href="mailto:blog@mithis.com">blog@mithis.com</a></p></blockquote>
+<h3>Twitter</h3>
+<blockquote><p><a href="http://twitter.com/mithro">mithro</a></p></blockquote>
+<h3>Phone Number</h3>
+<blockquote><p><a href="tel:+61 421 968 221">+61 421 968 221</a></p></blockquote>
+</td>
+<td style="vertical-align: top;">
+<h3>Current Address</h3>
+<blockquote style="text-align: left;"><p>709/243 Pyrmont St<br />
+Pyrmont<br />
+NSW, 2009<br />
+Australia</p></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Don&#8217;t forget you can always post a comment!</h3>
+</div>
