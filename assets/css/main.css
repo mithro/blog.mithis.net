@@ -555,7 +555,8 @@ div.entry-content pre {
    plugin, vs the theme's 1em/150% used by fritzbox (16px) and plain <pre>
    (14.4px). Target only .language-python so those two match live without
    touching any other code block. */
-div.entry-content .language-python pre {
+div.entry-content .language-python pre,
+div.entry-content .language-python pre code {
     font-size: 12px;
     line-height: 16px;
 }
