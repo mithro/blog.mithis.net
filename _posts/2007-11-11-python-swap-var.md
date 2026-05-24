@@ -25,8 +25,8 @@ Some people say “you learn something new everyday” or something like that. T
 Often there is a time when you want to swap the contents of two variables. The most popular way to do this is using a third variable as shown below:
 
 >
-> temp = a
-> a = b
+> temp = a<br>
+> a = b<br>
 > b = temp
 
 This looks sucky and doesn’t really express very well what you want to do. A much better way to do this in Python is with the following magic line:

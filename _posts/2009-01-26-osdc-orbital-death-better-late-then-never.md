@@ -31,8 +31,8 @@ As part of speaking at the conference I had to produce a paper. This paper puts 
 
 If there is one thing that any budding game developer (open source or otherwise) should take away from this talk, it is the following:
 
-> When a person is looking for normal software, they have an issue to solve.
-> When looking for computer games, they are looking to be entertained.
+> When a person is looking for normal software, <span style="color: #ff0000;">they have an issue to solve.</span><br>
+> When looking for computer games, <span style="color: #ff0000;">they are looking to be entertained.</span>
 
 This fundamental difference in mindset should drive every aspect of your game, website and release process.
 
