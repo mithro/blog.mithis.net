@@ -78,21 +78,22 @@ The Fritz!Box needs both draft-ietf-ipsec-nat-t-ike-03 support and the client to
 
 Create the vpnc config in `/etc/vpnc/fritzbox.conf` using the following as a template (replace the parts in bold/brackets):
 
-```
-IPSec gateway ip address or DNS name of your FritzBox
+<!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
+<pre>
+IPSec gateway <strong>ip address or DNS name of your FritzBox</strong>
 
 IKE DH Group dh2
 Perfect Forward Secrecy nopfs
 
-IPSec ID [username entered into the "Enter the user's email address" screen]
+IPSec ID <strong>[username entered into the "Enter the user's email address" screen]</strong>
 # "key" from the Fritz!Box VPN configuration
-IPSec secret [shared secret key from the "Key for the connection" screen]
+IPSec secret <strong>[shared secret key from the "Key for the connection" screen]</strong>
 
 NAT Traversal Mode force-natt
 
-Xauth username [username entered into the "Enter the user's email address" screen]
-Xauth password [password entered into the "Key for the connection" screen - Not the password use to encrypt the vpnc configuration!]
-```
+Xauth username <strong>[username entered into the "Enter the user's email address" screen]</strong>
+Xauth password <strong>[password entered into the "Key for the connection" screen - Not the password use to encrypt the vpnc configuration!]</strong>
+</pre><!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
 
 As this file contains usernames and password, the config file should be owned by root and only readable by the owner.
 
