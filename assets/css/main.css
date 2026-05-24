@@ -1076,15 +1076,9 @@ input#submit {
 /* ---- Live blog.mithis.net customizations (faithful to served wp-content/themes/barthelme/style.css,
         which my recreation had omitted) ---- */
 
-/* Sidebar Shashin "Me" gallery (#shashinGroup_2_2) shows ONLY its first table row of
-   thumbnails on live; the remaining rows are hidden. Without this, all 14 rows stack
-   (~2000px tall) instead of the single ~150px thumbnail live shows. */
-#shashinGroup_2_2 tbody tr {
-    display: none;
-}
-#shashinGroup_2_2 tbody tr:first-child {
-    display: table-row;
-}
+/* Sidebar Shashin "Me" gallery (#shashinGroup_2_2): live now pins this album to a
+   single photo (order=source, limit=1), so the widget markup itself has exactly one
+   row — no row-hiding hack is needed anymore (removed 2026-05-24). */
 
 /* Twitter (aktt) sidebar widget: tweets render at 8pt with tight spacing. */
 div.sidebar div.aktt_tweets { font-size: 8pt; }
