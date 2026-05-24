@@ -157,4 +157,5 @@ if cookie_jar.endswith('.sqlite'):
 else:
     cookie_jar = cookielib.MozillaCookieJar(cookie_jar)
 ```
+
 *Edit: The latest version of this code can be found at [http://blog.mithis.com/cgi-bin/gitweb.cgi](http://blog.mithis.com/cgi-bin/gitweb.cgi) and includes numerous fixes and updates.*
