@@ -1,6 +1,11 @@
 <div id="primary" class="sidebar">
     <ul>
 
+{% unless page.url == '/' %}
+<!-- Home link widget - faithful to live (shown on non-home pages only, first in the sidebar) -->
+<li id="home_link" class="widget widget_home_link"><h3 class="widgettitle"><a href="{{ '/' | relative_url }}" title="{{ site.title | escape }}" rel="home">Home</a></h3></li>
+{% endunless %}
+
 <!-- Twitter/aktt widget - faithful to live WP aktt-widget (Auto-Keet Tweet) -->
 <li id="aktt-widget-3" class="widget aktt-widget"><h3 class='widgettitle'></h3>
 <div class="aktt_tweets">
