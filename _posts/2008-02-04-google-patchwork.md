@@ -15,10 +15,10 @@ wordpress_url: https://blog.mithis.net/archives/google/67-google-patchwork
 ---
 I live in Adelaide and have been playing around with Google maps recently. I have no sense of direction which makes Google quite useful for getting to places. It appears that Google has some problems with satellite images for South Australia. If you take a look at the map below, you should see that it is built out of three totally different captures, you can even see a few clouds.
 
-[![Google patchwork.](/assets/images/wp-content/uploads/2008/02/map-patchwork.png)](/assets/images/wp-content/uploads/2008/02/map-patchwork.png)
+[![Google patchwork.](/assets/images/wp-content/uploads/2008/02/map-patchwork.png)](/assets/images/wp-content/uploads/2008/02/map-patchwork.png "Google patchwork.")
 
 If you zoom out one more level, the map data totally change,
 
-[![Google Transsision](/assets/images/wp-content/uploads/2008/02/map-change.png)](/assets/images/wp-content/uploads/2008/02/map-change.png)
+[![Google Transsision](/assets/images/wp-content/uploads/2008/02/map-change.png)](/assets/images/wp-content/uploads/2008/02/map-change.png "Google Transsision")
 
 I wonder how they decided what data to use?
