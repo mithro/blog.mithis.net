@@ -14,6 +14,22 @@ wordpress_category: ubuntu
 wordpress_id: 1833
 wordpress_url: https://blog.mithis.net/archives/ubuntu/1833-connecting-to-a-fritzbox-under-linux-using-vpnc
 ---
+<!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
+<style>
+pre {
+  display: block;
+  border: 1px solid black;
+  padding: 4px;
+  margin: 4px;
+}
+h2 {
+  text-align: center;
+  padding-bottom: 1em;
+}
+li {
+  padding-bottom: 0.5em;
+}
+</style><!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
 I have two [Fritz!Box 7390](http://fritzbox.com.au/product-fritz-wlan7390.html) (one at my place and one at my parents primary residence) and one [Fritz!Box 7270 devices](http://fritzbox.com.au/product-fritz-wlan7270.html) (the house they are building). They are pretty reasonable “high end” ADSL routers and a cool feature is they integrated VPN support. I use this functionality to connect the three networks securely together (but that is not what this post is about). This VPN functionality can also be used to connect to your home network while not at home, but information on how to do this from Linux is very sparse (specially if you only want to use FOSS tools to do the connection), so here is how I did it.
 
 ## Configuring your Fritz!Box
@@ -124,7 +140,8 @@ However, if you just want to be able to access the hosts on your home network, y
 
 I created the following script in `/etc/vpnc/fritzbox-script`, marked it as executable (`chmod a+x /etc/vpnc/fritzbox-script`) and then added “`Script /etc/vpnc/fritzbox-script`” to my `/etc/vpnc/fritzbox.conf` file.
 
-```
+<!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
+<pre>
 #!/bin/sh
 
 IPROUTE=/sbin/ip
@@ -144,12 +161,12 @@ case "$reason" in
     $IPROUTE link set dev "$TUNDEV" down
     ;;
   *)
-    echo "unknown reason '$reason'. Maybe vpnc-script is out of date" 1>&2
+    echo "unknown reason '$reason'. Maybe vpnc-script is out of date" 1>&amp;2
     exit 1
     ;;
 esac
 exit 0
-```
+</pre><!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
 
 <!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
 <blockquote>
