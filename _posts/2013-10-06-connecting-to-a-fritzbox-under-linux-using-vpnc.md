@@ -29,6 +29,14 @@ h2 {
 li {
   padding-bottom: 0.5em;
 }
+/* Kramdown renders the two partial-example list items as a "loose" list,
+   wrapping each item lead sentence in a paragraph (16px top margin). Live
+   serves the sentence bare in the list item followed by a line break, with no
+   such gap. This rule (not present in live styles) zeroes that margin so the
+   deployed list matches live spacing; entry-content specificity beats theme. */
+div.entry-content li p {
+  margin-top: 0;
+}
 </style><!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
 I have two [Fritz!Box 7390](http://fritzbox.com.au/product-fritz-wlan7390.html) (one at my place and one at my parents primary residence) and one [Fritz!Box 7270 devices](http://fritzbox.com.au/product-fritz-wlan7270.html) (the house they are building). They are pretty reasonable “high end” ADSL routers and a cool feature is they integrated VPN support. I use this functionality to connect the three networks securely together (but that is not what this post is about). This VPN functionality can also be used to connect to your home network while not at home, but information on how to do this from Linux is very sparse (specially if you only want to use FOSS tools to do the connection), so here is how I did it.
 
