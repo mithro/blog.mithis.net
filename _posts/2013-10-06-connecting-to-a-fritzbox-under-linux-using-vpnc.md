@@ -113,24 +113,21 @@ Xauth username <strong>[username entered into the "Enter the user's email addres
 Xauth password <strong>[password entered into the "Key for the connection" screen - Not the password use to encrypt the vpnc configuration!]</strong>
 </pre><!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
 
-As this file contains usernames and password, the config file should be owned by root and only readable by the owner.
+As this file contains usernames and password, the config file should be owned by root and only readable by the owner.<br>
+<code><br>
+sudo chown root /etc/vpnc/fritzbox.conf<br>
+sudo chmod 0600 /etc/vpnc/fritzbox.conf<br>
+</code>
 
-`
-sudo chown root /etc/vpnc/fritzbox.conf
-sudo chmod 0600 /etc/vpnc/fritzbox.conf
-`
+You should now be able to connect to your home internet using:<br>
+<code><br>
+sudo vpnc-connect fritzbox<br>
+</code>
 
-You should now be able to connect to your home internet using:
-
-`
-sudo vpnc-connect fritzbox
-`
-
-When you are finished, use:
-
-`
-sudo vpnc-disconnect fritzbox
-`
+When you are finished, use:<br>
+<code><br>
+sudo vpnc-disconnect fritzbox<br>
+</code>
 
 ## Internet Access while using vpnc
 
