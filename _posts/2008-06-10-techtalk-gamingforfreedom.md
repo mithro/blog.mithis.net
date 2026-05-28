@@ -33,4 +33,6 @@ The real reason for this post is to [upload the slides for the tech talk](/asset
 *Edit: The talk has now been uploaded, you can access it via the following [link](http://www.youtube.com/watch?v=8Ct36u8RPIU) or see it below,*
 
 <!-- fidelity-allow: BLOCK_HTML necessary-embed - original YouTube Flash player; Markdown cannot express this -->
-<object width="425" height="349"><param name="movie" value="https://www.youtube.com/v/8Ct36u8RPIU&#038;hl=en&#038;rel=0&#038;border=1"></param><embed src="https://www.youtube.com/v/8Ct36u8RPIU&#038;hl=en&#038;rel=0&#038;border=1" type="application/x-shockwave-flash" width="425" height="349"></embed></object>
+{::nomarkdown}
+<p><object width="425" height="349"><param name="movie" value="https://www.youtube.com/v/8Ct36u8RPIU&#038;hl=en&#038;rel=0&#038;border=1"></param><embed src="https://www.youtube.com/v/8Ct36u8RPIU&#038;hl=en&#038;rel=0&#038;border=1" type="application/x-shockwave-flash" width="425" height="349"></embed></object></p>
+{:/nomarkdown}
