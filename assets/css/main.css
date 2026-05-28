@@ -620,8 +620,13 @@ div.entry-content .language-python .highlight pre,
 div.entry-content .language-python pre.highlight,
 div.entry-content .language-bash .highlight pre,
 div.entry-content .language-bash pre.highlight {
-    margin: 0;
-    padding: 0 4px;
+    /* Live's wp_syntax pre sets these with !important. Without it, the
+       fritzbox `body:has(#post-1833) pre { ... }` rule (specificity 1 ID
+       via :has) on listing pages overrides our class-only selector and
+       bleeds borders/padding onto wp-syntax-boxed code blocks. */
+    margin: 0 !important;
+    padding: 0 4px !important;
+    border: none !important;
 }
 
 /* Python WP-Syntax token colors: live's GeSHi emits per-token inline `color:`
