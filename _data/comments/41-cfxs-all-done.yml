@@ -44,3 +44,21 @@
   message: |-
     <p>Not a huge amount. When I started this project that device wasn’t available. My device is simpler so should be a bit cheaper if it went into mass production.</p>
     <p>I am however working with <a href="&quot;http://www.rowetel.com/" rel="nofollow">David Rowe</a> to convert the design to use only “easy to source” components, thus making it buildable by anyone.</p>
+- id: '26'
+  type: pingback
+  li_class: pingback c-y2007 c-m05 c-d22 c-h02 alt c1
+  author: Beer, Coffee, and a little DSP &raquo; Blog Archive &raquo; 8 Port Low Cost FXS USB Channel Bank
+  author_url: http://www.rowetel.com/blog/?p=32
+  date_text: May 21, 2007 at 4:48 pm
+  date_title: '2007-05-19T16:26:06+1000'
+  message: |-
+    <p>[&#8230;] at Adelaide University by a student named Tim Ansell. For his honors project Tim has developed an 8 channel FXS channel bank that connects to a host PC via USB, not unlike the Xorcom Astribank [&#8230;]</p>
+- id: '7234'
+  type: pingback
+  li_class: pingback c-y2010 c-m01 c-d17 c-h05 c2
+  author: 'Mithro rants about stuff : CFXS free at last!'
+  author_url: http://blog.mithis.net/archives/ideas/72-cfxs-free
+  date_text: January 16, 2010 at 7:30 pm
+  date_title: '2007-05-19T16:26:06+1000'
+  message: |-
+    <p>[&#8230;] who either know me personally, or have read more of my blog might remember my final year honours project. The project was to build a budget 8 line USB channel bank. Originally, I had hope to commercialise [&#8230;]</p>

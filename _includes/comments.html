@@ -30,31 +30,18 @@ so we pick the mode from whether any item is a real comment.
 
 {% if comments and comments.size > 0 %}
 {% assign real_comments = comments | where: "type", "comment" %}
-{% if real_comments.size > 0 %}
-  {%- assign list_id = "comments" -%}
-  {%- assign head_id = "numcomments" -%}
-  {%- assign head_label = "Comments" -%}
-{% else %}
-  {%- assign list_id = "pingbacks" -%}
-  {%- assign head_id = "numpingbacks" -%}
-  {%- if comments.size == 1 %}{% assign head_label = "Trackback" %}{% else %}{% assign head_label = "Trackbacks" %}{% endif -%}
-{% endif %}
+{% assign pingbacks = comments | where: "type", "pingback" %}
 <div class="comments">
 
-	<h3 class="comment-header" id="{{ head_id }}"><span class="comment-count"><span class="meta-sep">{</span> {{ comments.size }} <span class="meta-sep">}</span></span> {{ head_label }}</h3>
-	<ol id="{{ list_id }}" class="commentlist">
-	{% for comment in comments %}
+{% if real_comments.size > 0 %}
+	<h3 class="comment-header" id="numcomments"><span class="comment-count"><span class="meta-sep">{</span> {{ real_comments.size }} <span class="meta-sep">}</span></span> Comments</h3>
+	<ol id="comments" class="commentlist">
+	{% for comment in real_comments %}
 		<li id="comment-{{ comment.id }}" class="{{ comment.li_class }}">
 			<div class="comment-meta">
-			{% if comment.type == "pingback" %}
-				<span class="pingback-author vcard"><span class="fn n url org">{% if comment.author_url %}<a href="{{ comment.author_url }}" rel="external nofollow" class="url">{{ comment.author }}</a>{% else %}{{ comment.author }}{% endif %}</span></span>
-				<span class="meta-sep">|</span>
-				<span class="pingback-datetime"><abbr class="comment-published" title="{{ comment.date_title }}">{{ comment.date_text }}</abbr></span>
-			{% else %}
 				<span class="comment-author vcard">{% if comment.avatar %}<img alt="" src="{{ comment.avatar }}" srcset="{{ comment.avatar | replace: 's=32', 's=64' }} 2x" class="photo avatar avatar-32 photo" height="32" width="32" /> {% endif %}<span class="fn n">{% if comment.author_url %}<a href="{{ comment.author_url }}" rel="external nofollow" class="url url">{{ comment.author }}</a>{% else %}{{ comment.author }}{% endif %}</span></span>
 				<span class="meta-sep">|</span>
 				<span class="comment-datetime"><abbr class="comment-published" title="{{ comment.date_title }}">{{ comment.date_text }}</abbr></span>
-			{% endif %}
 				<span class="meta-sep">|</span>
 				<span class="comment-permalink"><a href="#comment-{{ comment.id }}" title="Permalink to this comment">Permalink</a></span>
 			</div>
@@ -63,7 +50,28 @@ so we pick the mode from whether any item is a real comment.
 		</li>
 	{% endfor %}
 
-	</ol><!-- #{{ list_id }} .commentlist -->
+	</ol><!-- end #comments .commentlist -->
+{% endif %}
+{% if pingbacks.size > 0 %}
+	{%- if pingbacks.size == 1 %}{% assign pb_label = "Trackback" %}{% else %}{% assign pb_label = "Trackbacks" %}{% endif -%}
+	<h3 class="comment-header" id="numpingbacks"><span class="comment-count"><span class="meta-sep">{</span> {{ pingbacks.size }} <span class="meta-sep">}</span></span> {{ pb_label }}</h3>
+	<ol id="pingbacks" class="commentlist">
+	{% for comment in pingbacks %}
+		<li id="comment-{{ comment.id }}" class="{{ comment.li_class }}">
+			<div class="comment-meta">
+				<span class="pingback-author vcard"><span class="fn n url org">{% if comment.author_url %}<a href='{{ comment.author_url }}' rel='external nofollow' class='url'>{{ comment.author }}</a>{% else %}{{ comment.author }}{% endif %}</span></span>
+				<span class="meta-sep">|</span>
+				<span class="pingback-datetime"><abbr class="comment-published" title="{{ comment.date_title }}">{{ comment.date_text }}</abbr></span>
+				<span class="meta-sep">|</span>
+				<span class="comment-permalink"><a href="#comment-{{ comment.id }}" title="Permalink to this comment">Permalink</a></span>
+			</div>
+
+			{{ comment.message }}
+		</li>
+	{% endfor %}
+
+	</ol><!-- #pingbacks .commentlist -->
+{% endif %}
 
 </div>
 {% endif %}
