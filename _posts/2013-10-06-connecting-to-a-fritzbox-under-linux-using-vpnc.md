@@ -50,6 +50,7 @@ You can check that you have done this correctly in two ways;
     }
   ...
   </pre><!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
+  <p></p><!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
 - If you export an unencrypted config file (remember this can’t be loaded onto the Fritz!Box – so make sure you also export an encrypted version!), the remoteid section will have a key field and not a fqdn field, use_xauth will be set to yes and an xauth section will exist. See below for a partial example;
 
   <!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
@@ -73,6 +74,7 @@ You can check that you have done this correctly in two ways;
     }</strong>
     use_cfgmode = yes;
   ...</pre><!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
+  <p></p><!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
 
 ## Configuring vpnc on your Linux box
 
