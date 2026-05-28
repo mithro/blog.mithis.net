@@ -888,10 +888,17 @@ div.entry-content img {
    - `<p style="text-align: center">` IN blockquote (day-4 two-image display):
      descent present. va: baseline (override).
    - Layout-table <td> images (eagle-for-pcb): va: bottom.
+   - Image-only paragraphs `<p><img></p>` or `<p><a><img></a></p>`: no descent
+     (google-pw, etc). Live's XHTML Transitional doctype triggers "almost
+     standards" mode which suppresses the line-box strut; we render under
+     HTML5 doctype (full standards) so the strut adds ~7px descent unless
+     va is set explicitly.
    Scope these cases rather than the broad `div.entry-content img`. */
 div.entry-content p[align="center"] img,
 div.entry-content p[style*="text-align: center"] img,
-div.entry-content .wp-caption img {
+div.entry-content .wp-caption img,
+div.entry-content p > img:only-child,
+div.entry-content p > a:only-child > img:only-child {
     vertical-align: bottom;
 }
 /* Layout-table images (eagle-for-pcb's two-col include) AND Shashin gallery
