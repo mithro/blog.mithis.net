@@ -156,11 +156,10 @@ exit 0
 
 ## Fritz!Box encrypted VPN configuration files
 
-Fritz!Boxes will <span style="color: #ff0000;">only accept VPN configurations which are encrypted</span>. Otherwise when try to import the file you will get the cryptic &quot;Error: Import of the VPN settings failed.&quot; as seen below;
-
+Fritz!Boxes will <span style="color: #ff0000;">only accept VPN configurations which are encrypted</span>. Otherwise when try to import the file you will get the cryptic &quot;Error: Import of the VPN settings failed.&quot; as seen below;<br>
 <img alt="Error: Import of the VPN settings failed." class="alignnone size-full wp-image-1835" height="265" sizes="(max-width: 745px) 100vw, 745px" src="/assets/images/wp-content/uploads/2013/10/VPN-error.png" srcset="/assets/images/wp-content/uploads/2013/10/VPN-error.png 745w" width="745"/>
 
-To create an encrypted file you must use the FRITZ!Box VPN Connection tool. Then when exporting, select "Save VPN settings in a file under" option, check the "Encrypt VPN settings" check box (the file type should change to .eff), and enter your chosen password twice.
+To create an encrypted file you must use the FRITZ!Box VPN Connection tool. Then when exporting, select &quot;Save VPN settings in a file under&quot; option, check the &quot;Encrypt VPN settings&quot; check box (the file type should change to .eff), and enter your chosen password twice.
 
 <img alt="Export VPN settings" class="alignnone size-full wp-image-1836" height="306" sizes="(max-width: 442px) 100vw, 442px" src="/assets/images/wp-content/uploads/2013/10/VPN-encrypt.png" srcset="/assets/images/wp-content/uploads/2013/10/VPN-encrypt.png 442w" width="442"/>
 
