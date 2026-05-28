@@ -19,15 +19,14 @@ Generally slow progress today, but some success.
 - Wrote a test firmware based on http://hamsterworks.co.nz/mediawiki/index.php/DVI-D_Serdes to transmit 720p output from both the TX ports.
   - Images are successfully received on both devices but there is a weird artifact in the image.
 
-<!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
-<blockquote><p style="text-align: center;"><a href="/assets/images/wp-content/uploads/2014/07/IMG_20140725_0029322.jpg"><img class="alignnone wp-image-1997 size-medium" alt="Numato HDMI2USB Prototype driving 2 screens" height="300" sizes="(max-width: 225px) 100vw, 225px" src="/assets/images/wp-content/uploads/2014/07/IMG_20140725_0029322-225x300.jpg" srcset="/assets/images/wp-content/uploads/2014/07/IMG_20140725_0029322-225x300.jpg 225w" width="225"/>  <img class="alignnone wp-image-1998" alt="HDMI2USB weird image artifact" height="300" sizes="(max-width: 400px) 100vw, 400px" src="/assets/images/wp-content/uploads/2014/07/IMG_20140725_003008-300x225.jpg" srcset="/assets/images/wp-content/uploads/2014/07/IMG_20140725_003008-300x225.jpg 300w" width="400"/></a></p></blockquote>
-
-<!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
-<p>&nbsp;</p>
+> &nbsp;[![Numato HDMI2USB Prototype driving 2 screens](/assets/images/wp-content/uploads/2014/07/IMG_20140725_0029322-225x300.jpg){:width="225" height="300" .alignnone .wp-image-1997 .size-medium srcset="/assets/images/wp-content/uploads/2014/07/IMG_20140725_0029322-225x300.jpg 225w" sizes="(max-width: 225px) 100vw, 225px"}&nbsp;&nbsp;![HDMI2USB weird image artifact](/assets/images/wp-content/uploads/2014/07/IMG_20140725_003008-300x225.jpg){:width="400" height="300" .alignnone .wp-image-1998 srcset="/assets/images/wp-content/uploads/2014/07/IMG_20140725_003008-300x225.jpg 300w, /assets/images/wp-content/uploads/2014/07/IMG_20140725_003008-900x675.jpg 900w" sizes="(max-width: 400px) 100vw, 400px"}](/assets/images/wp-content/uploads/2014/07/IMG_20140725_0029322.jpg)
+> {:style="text-align: center;"}
 
 - [Rohit’s VGA expansion board](http://dreamsxtrinsic.blogspot.com.au/) was received, but yet to turn it on. Looking forward to seeing that working live!
 
-<a href="/assets/images/wp-content/uploads/2014/07/IMG_20140725_010725.jpg"><img alt="HDMI2USB - Rohit's VGA Capture board" class="aligncenter wp-image-2000 size-medium" height="300" sizes="(max-width: 225px) 100vw, 225px" src="/assets/images/wp-content/uploads/2014/07/IMG_20140725_010725-225x300.jpg" srcset="/assets/images/wp-content/uploads/2014/07/IMG_20140725_010725-225x300.jpg 225w" width="225"/></a>
+[![HDMI2USB - Rohit's VGA Capture board](/assets/images/wp-content/uploads/2014/07/IMG_20140725_010725-225x300.jpg){:width="225" height="300" .aligncenter .wp-image-2000 .size-medium srcset="/assets/images/wp-content/uploads/2014/07/IMG_20140725_010725-225x300.jpg 225w" sizes="(max-width: 225px) 100vw, 225px"}](/assets/images/wp-content/uploads/2014/07/IMG_20140725_010725.jpg)
+
+&nbsp;
 
 - Set up the streaming system for [Carl](http://nextdayvideo.com) and [PyOhio](http://www.pyohio.org/)
   - Tried to figure out where www.timvideos.us was hosted.
