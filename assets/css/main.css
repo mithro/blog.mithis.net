@@ -581,6 +581,14 @@ div.entry-content .language-python pre.highlight {
     padding: 0 4px;
 }
 
+/* day-3 post-pre list: live's WP wpautop emits the post-<pre> list inside a
+   <ul><ul> double-open (no <li> between), which visually indents that list
+   one extra <ul> level. Kramdown can't reproduce invalid HTML, so we add
+   the equivalent visual indent via this class set in the post via IAL. */
+ul.day3-postpre-list {
+    padding-left: 80px;
+}
+
 /* Other code blocks render as plain, undecorated <pre> (no background, no
    border) in courier — verified element-by-element against the live oracle. */
 .highlighter-rouge {

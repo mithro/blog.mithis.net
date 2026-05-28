@@ -39,19 +39,15 @@ wordpress_url: https://blog.mithis.net/archives/timvideos-us/1988-hdmi2usb-produ
 - Made generate_ucf.py generate a file for Atlys functionally identical to existing HDMI2USB.ucf file. Was able to successfully build the firmware with generate HDMI2USB.ucf file for the Atlys board.
 - Started trying to get firmware to compile with the Numato HDMI2USB.ucf file, ran into the following issue
 
-> ~~~
-> Phase 4.2 Initial Placement for Architecture Specific Features
-> ERROR:Place - ConstraintResolved NO placeable site for
->  hdmiMatri_Comp/dvi_rx1/ioclk_buf
-> ~~~
->
-> ~~~
-> ERROR:Place - SIO has over-constrained componet hdmiMatri_Comp/dvi_rx1/ioclk_buf
->  to have to placeable sites. Constraints come from driver constraints AND load
->  IO constraints
-> /bin/sh: line 16: 28981 Segmentation fault (core dumped) map -filter "../ise/iseconfig/filter.filter" -intstyle ise -p xc6slx45-csg324-3 -w -logic_opt off -ol high -xe n -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr b -lc off -power off -o hdmi2usb_map.ncd hdmi2usb.ngd hdmi2usb.pcf
-> make: *** [map] Error 139
-> ~~~
+{% capture day2_log1 %}Phase 4.2 Initial Placement for Architecture Specific Features
+ERROR:Place - ConstraintResolved NO placeable site for
+ hdmiMatri_Comp/dvi_rx1/ioclk_buf{% endcapture %}
+{% capture day2_log2 %}ERROR:Place - SIO has over-constrained componet hdmiMatri_Comp/dvi_rx1/ioclk_buf
+ to have to placeable sites. Constraints come from driver constraints AND load
+ IO constraints
+/bin/sh: line 16: 28981 Segmentation fault (core dumped) map -filter "../ise/iseconfig/filter.filter" -intstyle ise -p xc6slx45-csg324-3 -w -logic_opt off -ol high -xe n -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr b -lc off -power off -o hdmi2usb_map.ncd hdmi2usb.ngd hdmi2usb.pcf
+make: *** [map] Error 139{% endcapture %}
+{% include bare-pre.html blockquote=true style="padding-left: 30px;" content1=day2_log1 content2=day2_log2 %}
 
 - Rohit GSoC mentoring;
     - Emailed Rohit about reimbursement for VGA Board hardware parts.

@@ -19,14 +19,27 @@ Params:
   content     single block (use this OR content1..content5)
   content1..content5  up to 5 blocks, each emitted as its own pre
 
-Wrapped in nomarkdown so Kramdown does not parse-block-html the literal
-pre / blockquote structure.
+The {::nomarkdown} ... {:/nomarkdown} markers MUST be on their own lines
+so Kramdown recognizes them as block-level extension markers. Otherwise
+Kramdown wraps them in p tags and emits literal text.
 {%- endcomment -%}
-{::nomarkdown}{% if include.blockquote %}<blockquote>
-{% endif %}{% if include.content %}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content }}</pre>
-{% endif %}{% if include.content1 %}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content1 }}</pre>
-{% endif %}{% if include.content2 %}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content2 }}</pre>
-{% endif %}{% if include.content3 %}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content3 }}</pre>
-{% endif %}{% if include.content4 %}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content4 }}</pre>
-{% endif %}{% if include.content5 %}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content5 }}</pre>
-{% endif %}{% if include.blockquote %}</blockquote>{% endif %}{:/nomarkdown}
+{%- if include.inline -%}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content }}</pre>{%- else -%}
+{::nomarkdown}
+{% if include.blockquote %}<blockquote>
+{% endif -%}
+{%- if include.content %}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content }}</pre>
+{% endif -%}
+{%- if include.content1 %}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content1 }}</pre>
+{% endif -%}
+{%- if include.content2 %}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content2 }}</pre>
+{% endif -%}
+{%- if include.content3 %}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content3 }}</pre>
+{% endif -%}
+{%- if include.content4 %}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content4 }}</pre>
+{% endif -%}
+{%- if include.content5 %}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content5 }}</pre>
+{% endif -%}
+{%- if include.blockquote %}</blockquote>
+{% endif -%}
+{:/nomarkdown}
+{%- endif -%}

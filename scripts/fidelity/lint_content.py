@@ -44,8 +44,14 @@ _LIQUID_INCLUDE_OK = re.compile(r"^\{%-?\s*include\s+[\w./-]+.*?-?%\}$")
 # Intentional Liquid block tags: {% capture VAR %} / {% endcapture %}. Used to
 # pass multi-line markdown text into includes (e.g. two-col.html, bare-pre.html).
 # These render at build time; only stray output expressions ({{ ... }}) should
-# leak. Allow each as a sole-line tag.
-_LIQUID_CAPTURE_OK = re.compile(r"^\{%-?\s*(?:capture\s+\w+|endcapture)\s*-?%\}$")
+# leak. Allow on any line as long as the line has no {{ ... }} output AND no
+# other unknown {% ... %} tags. Content text appearing on the SAME line as the
+# capture/endcapture (e.g. `{% capture x %}content here{% endcapture %}`) is
+# intentional — that content is captured and rendered via the include, never
+# leaked as raw Liquid.
+_LIQUID_CAPTURE_TAG = re.compile(r"\{%-?\s*(?:capture\s+\w+|endcapture)\s*-?%\}")
+_LIQUID_OUTPUT = re.compile(r"\{\{")
+_LIQUID_OTHER_TAG = re.compile(r"\{%(?!-?\s*(?:capture\s+\w+|endcapture|include)\s)")
 _MD_IMG = re.compile(r"!\[[^\]]*\]\(\s*([^)\s]+)")
 _HTML_IMG = re.compile(r"<img[^>]+src=[\"']([^\"']+)[\"']", re.IGNORECASE)
 _FIDELITY_ALLOW_BLOCK_HTML = re.compile(
@@ -93,7 +99,17 @@ def lint_text(path: str, text: str, *, asset_root: Path | None = None) -> list[F
             continue
         if _LIQUID.search(raw):
             stripped = raw.strip()
-            if not (_LIQUID_INCLUDE_OK.match(stripped) or _LIQUID_CAPTURE_OK.match(stripped)):
+            # A line is OK iff it has no {{ output expression AND either:
+            #   (a) it is a sole-line {% include ... %} tag, OR
+            #   (b) it contains a {% capture VAR %} or {% endcapture %} tag and
+            #       no other (non-include) {% ... %} tag (content text alongside
+            #       capture/endcapture is intentional — it gets captured, not leaked).
+            has_output = bool(_LIQUID_OUTPUT.search(raw))
+            sole_include = bool(_LIQUID_INCLUDE_OK.match(stripped))
+            has_capture = bool(_LIQUID_CAPTURE_TAG.search(raw))
+            has_other = bool(_LIQUID_OTHER_TAG.search(raw))
+            ok = (not has_output) and (sole_include or (has_capture and not has_other))
+            if not ok:
                 out.append(Finding(path, lineno, "LIQUID_LEAK",
                                    "Unrendered Liquid ({{ or {%) in committed content"))
         if _BLOCK_HTML.search(raw):

@@ -26,6 +26,8 @@ The following snippets are for the preparation work I did before the week;
 - Organised with [Rohit](http://dreamsxtrinsic.blogspot.com.au/) to get a [VGA capture board](https://github.com/rohit91/HDMI2USB-vmodvga) during this time.
 - Probably a bunch of other stuff I have totally forgotten.
 
+&nbsp;
+
 ## Friday – 18th July
 
 - Finished a bunch of [paid work](https://codereview.chromium.org/user/mithro).
@@ -36,9 +38,13 @@ The following snippets are for the preparation work I did before the week;
 - Started up the [slidelint website](http://github.com/mithro/slidelint_site) VM and got it a working public IPv6 address.
 - Set up a Ubuntu Precise VM to help test [aps-sids flumotion porting work](http://aps-sids.github.io/porting-flumotion/).
 
+&nbsp;
+
 ## Saturday – 19th July
 
 - Day off. Spent day playing DOTA 2 and StarCraft 2 with Joel’s mates.
+
+&nbsp;
 
 ## Sunday – 20th
 
@@ -50,3 +56,5 @@ The following snippets are for the preparation work I did before the week;
     - Turns out it doesn’t work under Python 3 as torandio2 is unmaintained.
     - Ported circus-web to sockjs-torando.
     - Found the tests don’t work.
+
+&nbsp;

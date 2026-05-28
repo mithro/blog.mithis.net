@@ -36,19 +36,19 @@ wordpress_url: https://blog.mithis.net/archives/timvideos-us/1993-hdmi2usb-produ
     - Next setup_pcusb didn’t ask me to install fxload, so I needed to install it with apt-get install fxload
     - Next the rules that were installed to /etc/udev/rules.d/xusbdfwu.rules were invalid; they caused the following errors in /var/log/daemon.log
 
-```
-Jul 23 16:40:29 laptop udevd[841]: unknown key 'SYSFS{idVendor}' in /etc/udev/rules.d/xusbdfwu.rules:2
-Jul 23 16:40:29 laptop udevd[841]: invalid rule '/etc/udev/rules.d/xusbdfwu.rules:2'
+{% capture day3_udev_log %}Jul 23 16:40:29 laptop udevd[841]: unknown key 'SYSFS{idVendor}' in /etc/udev/rules.d/xusbdfwu.rules:2
+Jul 23 16:40:29 laptop udevd[841]: invalid rule '/etc/udev/rules.d/xusbdfwu.rules:2'
 Jul 23 16:46:11 laptop udevd[841]: unknown key 'SYSFS{idVendor}' in /etc/udev/rules.d/xusbdfwu.rules:3
-Jul 23 16:46:11 laptop udevd[841]: invalid rule '/etc/udev/rules.d/xusbdfwu.rules:3'
-```
+Jul 23 16:46:11 laptop udevd[841]: invalid rule '/etc/udev/rules.d/xusbdfwu.rules:3'{% endcapture %}
+{% include bare-pre.html style="padding-left: 90px;" content=day3_udev_log %}
 
 - This was fixed with;
-    - Changing SYSFS to ATTRS
+    - Changing SYSFS to ATTRS
     - Changing BUS to SUBSYSTEM
     - Changing $TEMPNODE to $tempnode
 - The little status light then turned on red! Yay!
 - Was able to do a boundary scan in iMPACT on a Zybo development board after soldering a header onto it.
+{:.day3-postpre-list}
 
 - Received the HDMI2USB production boards created by [Numato](http://numato.com/)!
     - Started with bunch of stuff to do with LEDs;
@@ -68,3 +68,5 @@ Jul 23 16:46:11 laptop udevd[841]: invalid rule '/etc/udev/rules.d/xusbdfwu.rul
 
 - Tried to figure out why my home router has decided that it wants to hand out address in the 2001:44b8:31dc:8d01::/64 rather than the 2001:44b8:31dc:8d00::/64 range it use too.
 - Found a bunch of issues with domains served of ns1.mithis.com as the secondary servers where disabled. Root cause was an old version of PowerDNS failing on TCP zone transfers causing domains to become stale and get dropped from the secondaries. Enabled email notification when secondary disables the zones.
+
+&nbsp;
