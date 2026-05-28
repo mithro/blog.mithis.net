@@ -250,6 +250,16 @@ blockquote,
 input#s {
     font-family: georgia, times, serif;
 }
+/* Live's archive listings render tag-links in georgia (matches the
+   .entry-meta serif scheme inside posts). Without this explicit rule,
+   tag-links would inherit arial from body on listing pages. */
+body.archive span.tag-links,
+body.tag span.tag-links,
+body.category span.tag-links,
+body.author span.tag-links,
+body.home span.tag-links {
+    font-family: georgia, times, serif;
+}
 
 /* Posts — listing/home title. Barthelme scopes the 1.7em + centered styling to
    body.single / body.page (see "Post Titles" below); the home/archive listing title
