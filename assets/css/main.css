@@ -953,6 +953,17 @@ body h2.page-title span.archive-meta {
     word-spacing: 0.2em;
 }
 
+/* Live's WP/Barthelme sets the "{" / "}" meta-sep characters to weight 400
+   while the inner content (the comment count digit, the archive-meta count)
+   stays at weight 700 from the parent .comment-count rule above. The contrast
+   makes the count digit visibly bolder than the curly braces -- without this
+   rule the meta-sep inherits 700 and the whole "{ N }" renders uniformly bold. */
+div.comments h3.comment-header span.comment-count span.meta-sep,
+body h2.page-title span.archive-meta span.meta-sep,
+body div.entry-date span.meta-sep {
+    font-weight: 400;
+}
+
 div.comments ol.commentlist li {
     background: #f6f7f9;
     margin: 1em 3em;
