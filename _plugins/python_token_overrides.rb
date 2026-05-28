@@ -57,26 +57,54 @@ PY_TOKEN_OVERRIDES = {
 STRING_ESCAPE_RE = %r{(<span class="(?:s|s1|s2)">)([^<]*)(</span>)}.freeze
 ESCAPE_CHAR_RE = %r{(\\[A-Za-z])}.freeze
 
+# Bash-specific token overrides — live's GeSHi colored these but Rouge
+# either leaves them plain or tags them as generic .p punctuation:
+#   `/` (path separator)  → #000 bold (in plain text, not in strings)
+#   `;;` (case end)       → #000 bold
+BASH_TOKEN_OVERRIDES = {
+  # `;;` is plain `.p` punctuation but live colored it bold black
+  %r{<span class="p">;;</span>} =>
+    '<span class="p" style="color: #000; font-weight: bold;">;;</span>',
+}.freeze
+
+# `/` chars appear as plain text inside `<code>...</code>` of bash
+# blocks. Live wraps each `/` in a bold-black span. We need to wrap them
+# without affecting `/` inside string spans (where they're part of the
+# string content). Match plain text segments between </span> or <code>
+# and <span> or </code>, wrap `/` chars inside those segments.
+BASH_PLAIN_SEGMENT_RE = %r{
+  (>)                       # close of preceding tag (</span> or <code>)
+  ([^<]*?/[^<]*?)           # plain text containing at least one /
+  (?=<)                     # next opening tag
+}x.freeze
+SLASH_RE = %r{(/)}.freeze
+
 Jekyll::Hooks.register %i[documents pages], :post_render do |item|
   next if item.output.nil?
   next unless item.output_ext == ".html"
-  # Quick bail-out if no python code block on the page
-  next unless item.output.include?("language-python")
 
-  PY_TOKEN_OVERRIDES.each do |pattern, replacement|
-    item.output = item.output.gsub(pattern, replacement)
+  if item.output.include?("language-python")
+    PY_TOKEN_OVERRIDES.each do |pattern, replacement|
+      item.output = item.output.gsub(pattern, replacement)
+    end
+
+    # Wrap `\X` (backslash+letter) inside .s strings with .se spans —
+    # matches live's escape highlighting even in raw strings.
+    item.output = item.output.gsub(STRING_ESCAPE_RE) do
+      open_tag = Regexp.last_match(1)
+      content = Regexp.last_match(2)
+      close_tag = Regexp.last_match(3)
+      new_content = content.gsub(ESCAPE_CHAR_RE) do
+        esc = Regexp.last_match(1)
+        "</span><span class=\"se\" style=\"color: #000099; font-weight: bold;\">#{esc}</span>#{open_tag}"
+      end
+      "#{open_tag}#{new_content}#{close_tag}"
+    end
   end
 
-  # Wrap `\X` (backslash+letter) inside .s strings with .se spans —
-  # matches live's escape highlighting even in raw strings.
-  item.output = item.output.gsub(STRING_ESCAPE_RE) do
-    open_tag = Regexp.last_match(1)
-    content = Regexp.last_match(2)
-    close_tag = Regexp.last_match(3)
-    new_content = content.gsub(ESCAPE_CHAR_RE) do
-      esc = Regexp.last_match(1)
-      "</span><span class=\"se\" style=\"color: #000099; font-weight: bold;\">#{esc}</span>#{open_tag}"
+  if item.output.include?("language-bash")
+    BASH_TOKEN_OVERRIDES.each do |pattern, replacement|
+      item.output = item.output.gsub(pattern, replacement)
     end
-    "#{open_tag}#{new_content}#{close_tag}"
   end
 end
