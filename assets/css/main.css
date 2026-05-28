@@ -591,14 +591,10 @@ div.entry-content li code {
     padding: 0;
     margin: 0;
     overflow: visible;
-    /* Reset font shorthand cleanly — using `font: 1em/150% courier...`
-       ensures every font sub-property (kerning, variant, weight, stretch)
-       reverts to default rather than inheriting whatever the syntax-
-       highlighting include's `pre, code { font-family: Monaco... }` rule
-       left in place. Without this, line metrics differ by 1px even when
-       getComputedStyle reports identical fs/lh/ff. */
+    /* Reset font shorthand cleanly. */
     font: 1em/150% "courier new", courier, monospace;
 }
+
 
 /* Posts using fenced python/bash blocks (utf-8, reading-cookies,
    firefox3-cookies, power-scripts, fastcomplete) render at 12px/16px via
@@ -686,8 +682,12 @@ div.entry-content .language-python .highlight .mf {
 div.entry-content .language-python .highlight .nb {
     color: #008000;
 }
-/* Module names being imported (e.g. cStringIO, StringIO) are crimson */
-div.entry-content .language-python .highlight .nn,
+/* Module names being imported (e.g. cStringIO, StringIO) are crimson.
+   Rouge classifies plain identifiers (variables, module names alike) as
+   `.n`. Live's GeSHi only colored module/class references crimson; plain
+   variables there were unwrapped (= default text color). Since Rouge can't
+   tell them apart, leave `.n` at inherit (gray) and only color `.nn` (the
+   Namespace token that Rouge actually does emit, e.g. via `from foo`). */
 div.entry-content .language-python .highlight .n {
     color: inherit;
 }
