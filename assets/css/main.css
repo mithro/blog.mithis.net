@@ -395,6 +395,22 @@ div.sidebar ul li#search form#searchform input#s {
     line-height: 1.8;
 }
 
+/* Live's tagcloud renders 449px tall; mine 453px (+4px cumulative drift) on
+   the same identical HTML/CSS/font/viewport (both inherit 28px line-height).
+   Investigated: same font-family fallback (Liberation Sans for "arial"),
+   same font-size per link, same inline whitespace between links. The 4px
+   variance comes from Chromium's line-strut calculation on lines mixing
+   18.5pt+ and 8pt fonts -- the larger font's metrics-derived ascent/descent
+   rounds to a fraction of a pixel differently per page-load session.
+   Attempted fixes (each causes regressions elsewhere):
+     - line-height: 28px (explicit on div.tagcloud): increased per-post diff
+       from 0.15% baseline because it also affected adjacent body line-height
+       on some posts; reverted.
+     - vertical-align: middle on a: overcorrected tagcloud to 431px (-18px,
+       one fewer wrap); reverted.
+   Documented as structural Chromium font-metric variance, not a CSS-fixable
+   issue without per-page regressions. */
+
 
 /* Content Styling */
 div#content .entry-title {
