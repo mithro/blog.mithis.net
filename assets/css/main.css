@@ -561,9 +561,28 @@ div.entry-content .language-python pre code {
     line-height: 16px;
 }
 
-/* Live renders code blocks as plain, undecorated <pre> (no background, no
-   border) in courier — verified element-by-element against the live oracle.
-   (An earlier pass wrongly boxed them like a WP-Syntax .wp_syntax container.) */
+/* The two WP-Syntax python posts (reading-cookies, firefox3-cookies) DO have a
+   boxed code block on live: a #f9f9f9 wrapper with a 1px #c0c0c0 border, a #eee
+   code area, and 4px horizontal pre padding (12px/16px font set above), margin
+   1.35em below. Only .language-python matches these; the plain-<pre> posts
+   (fritzbox) stay undecorated via the rule below. */
+div.entry-content .language-python.highlighter-rouge {
+    background-color: #f9f9f9;
+    border: 1px solid #c0c0c0;
+    margin: 0 0 21.6px 0;
+    overflow-x: auto;
+}
+div.entry-content .language-python .highlight {
+    background-color: #eee;
+}
+div.entry-content .language-python .highlight pre,
+div.entry-content .language-python pre.highlight {
+    margin: 0;
+    padding: 0 4px;
+}
+
+/* Other code blocks render as plain, undecorated <pre> (no background, no
+   border) in courier — verified element-by-element against the live oracle. */
 .highlighter-rouge {
     color: #444;
     background-color: transparent;
