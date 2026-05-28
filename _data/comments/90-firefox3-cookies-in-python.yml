@@ -26,3 +26,21 @@
   avatar: https://secure.gravatar.com/avatar/c125f576c3a08c0c1d4330bc565ae28c?s=32&d=mm&r=pg
   message: |-
     <p>This code is neat and all, but it doesn’t technically show how to read Firefox cookies…</p>
+- id: '7193'
+  type: pingback
+  li_class: pingback c-y2009 c-m02 c-d15 c-h01 alt c1
+  author: 'Free Mind » ç»Ÿè®¡è®ºæ–‡è¢«å¼•ç”¨çš„æƒ…å†µ'
+  author_url: http://blog.pluskid.org/?p=260
+  date_text: February 15, 2009 at 3:56 am
+  date_title: '2009-01-19T12:58:28+1000'
+  message: |-
+    <p>[…] Python ä¸­è¯»å– Firefox 3 çš„ cookie çš„ä»£ç&nbsp;ï¼Œåœ¨ Google Reader é‡Œå¾ˆå¿«å°±æ‰¾åˆ°äº†ï¼šReading Firefox 3.x cookies in Python ã€‚ä¸è¿‡åœ¨é‚£ä¹‹å‰æˆ‘æ‰‹å·¥æŠŠ Firefox çš„ Cookie å¤åˆ¶å‡ºæ¥åŠ&nbsp;åˆ° Python çš„ urllib2 çš„ […]</p>
+- id: '7235'
+  type: pingback
+  li_class: pingback c-y2010 c-m01 c-d17 c-h05 c2
+  author: 'Mithro rants about stuff : Reading cookies from most Firefox versions…'
+  author_url: http://blog.mithis.net/archives/python/94-reading-cookies-firefox
+  date_text: January 16, 2010 at 7:32 pm
+  date_title: '2009-01-19T12:58:28+1000'
+  message: |-
+    <p>[…] I wrote about how to reading the cookies from Firefox 3.0 from Python. This code snippet extends the previous example by adding code which finds the cookie […]</p>

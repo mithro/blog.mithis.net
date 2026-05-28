@@ -591,7 +591,13 @@ div.entry-content li code {
     padding: 0;
     margin: 0;
     overflow: visible;
-    font-size: inherit;
+    /* Reset font shorthand cleanly — using `font: 1em/150% courier...`
+       ensures every font sub-property (kerning, variant, weight, stretch)
+       reverts to default rather than inheriting whatever the syntax-
+       highlighting include's `pre, code { font-family: Monaco... }` rule
+       left in place. Without this, line metrics differ by 1px even when
+       getComputedStyle reports identical fs/lh/ff. */
+    font: 1em/150% "courier new", courier, monospace;
 }
 
 /* Posts using fenced python/bash blocks (utf-8, reading-cookies,
@@ -914,7 +920,9 @@ div.entry-content p[align="center"] img,
 div.entry-content p[style*="text-align: center"] img,
 div.entry-content .wp-caption img,
 div.entry-content p > img:only-child,
-div.entry-content p > a:only-child > img:only-child {
+div.entry-content p > a:only-child > img:only-child,
+div.entry-content p > object:only-child,
+div.entry-content p > object:only-child > embed {
     vertical-align: bottom;
 }
 /* Layout-table images (eagle-for-pcb's two-col include) AND Shashin gallery
