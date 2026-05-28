@@ -660,6 +660,20 @@ div.entry-content .wp-caption-text {
     text-align: center;
 }
 
+/* Sidebar form controls (search submit, categories select) sit on their own
+   line; the container's 28px line-height strut leaves ~5px leading above/below
+   each control that live does not show (~20px over the sidebar). Collapse the
+   container line-height so the control's text-less line has no strut leading,
+   and restore 28px on the heading/label text lines. */
+#search form,
+#categories-3 {
+    line-height: 0;
+}
+#categories-3 h3,
+#categories-3 label {
+    line-height: 28px;
+}
+
 /* Images */
 body img {
     border: none;
