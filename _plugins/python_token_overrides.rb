@@ -106,5 +106,32 @@ Jekyll::Hooks.register %i[documents pages], :post_render do |item|
     BASH_TOKEN_OVERRIDES.each do |pattern, replacement|
       item.output = item.output.gsub(pattern, replacement)
     end
+
+    # Wrap `/` chars in plain-text segments of .language-bash code
+    # blocks. The whole block: `<div class="language-bash highlighter-
+    # rouge"><div class="highlight"><pre class="highlight"><code>...
+    # </code></pre></div></div>`. Inside the `<code>...</code>` body,
+    # tokens are wrapped in `<span class="...">...</span>` and plain
+    # text (whitespace, paths, etc) sits between them. Only those plain
+    # segments need the `/` wrap.
+    item.output = item.output.gsub(
+      %r{<div class="language-bash highlighter-rouge">.*?</div>\s*</div>}m
+    ) do |bash_block|
+      # Within each bash block, find plain-text segments OUTSIDE any
+      # span. Use `</span>` (close of previous span) or `<code>` as the
+      # prefix anchor, so we don't accidentally process text INSIDE
+      # `<span class="c">comment text</span>` (where live didn't wrap
+      # the path slashes).
+      bash_block.gsub(%r{(</span>|<code>)([^<]+?)(?=<|</code>)}) do
+        prefix = Regexp.last_match(1)
+        segment = Regexp.last_match(2)
+        # Wrap every `/` in the segment with the styled span
+        wrapped = segment.gsub(
+          '/',
+          '<span style="color: #000; font-weight: bold;">/</span>'
+        )
+        "#{prefix}#{wrapped}"
+      end
+    end
   end
 end
