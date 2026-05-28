@@ -13,6 +13,8 @@ tags:
 - lguest
 - linux
 - linux.conf.au
+tag_slug_overrides:
+  linux.conf.au: lca
 date: 2010-01-03 13:05:37 +1000
 excerpt: As it’s only a couple of weeks till another Linux.conf.au is underway, I
   thought I better post this draft from the last one! This year LCA is in Wellington,

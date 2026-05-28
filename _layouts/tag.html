@@ -14,11 +14,18 @@ layout: default
         {% for post in site.posts %}
           {% assign _matched = false %}
           {% for tag in post.tags %}
-            {% if tag == tag_display %}
-              {% assign _matched = true %}
-              {% break %}
-            {% endif %}
-            {% assign _tag_slug = tag | remove: '.' | slugify %}
+            {%- comment -%}
+              Compute effective slug for this tag: check post.tag_slug_overrides
+              (per-post map of display→slug) first, otherwise derive from the
+              tag string. This handles the case where the same display name
+              maps to different slugs in different WP posts (e.g. "linux.conf.au"
+              → "lca" on one post, "linuxconfau" on another).
+            {%- endcomment -%}
+            {%- if post.tag_slug_overrides[tag] -%}
+              {% assign _tag_slug = post.tag_slug_overrides[tag] %}
+            {%- else -%}
+              {% assign _tag_slug = tag | remove: '.' | slugify %}
+            {%- endif -%}
             {% if _tag_slug == tag_slug %}
               {% assign _matched = true %}
               {% break %}
