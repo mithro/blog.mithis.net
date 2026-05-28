@@ -13,7 +13,7 @@ wordpress_category: tp
 wordpress_id: 60
 wordpress_url: https://blog.mithis.net/archives/tp/60-gsoc-results
 ---
-If you read my blog but not the [Thousand Parsec](http://www.thousandparsec.net/)[news feed](http://www.thousandparsec.net/tp/rss.php), you might have missed my wrap up of our [Summer of Code](http://code.google.com/soc/). You can find the complete post [here](http://www.thousandparsec.net/tp/news.php/2007-10-20-1302), some highlights include;
+If you read my blog but not the [Thousand Parsec](http://www.thousandparsec.net/) [news feed](http://www.thousandparsec.net/tp/rss.php), you might have missed my wrap up of our [Summer of Code](http://code.google.com/soc/). You can find the complete post [here](http://www.thousandparsec.net/tp/news.php/2007-10-20-1302), some highlights include;
 
 >  According to [Oholo](http://www.ohloh.net/), over the summer the students made a total of **371** commits to our public repository, changing a total of **39,050** lines of code.
 

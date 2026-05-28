@@ -25,7 +25,7 @@ wordpress_url: https://blog.mithis.net/archives/tp/93-in-the-land-of-the-sheep
 ---
 *I wrote this post while in New Zealand but never posted it, now I’m at Linux.conf.au I have time to finish it up.*
 
-Well its been a long time since I have posted on my blog. As I lasted mentioned I now work at Google, which has been going well but keeping me fairly busy. For the last month (October, 2009) I have been back in Mountain View, California. While I was there for mainly work purposes, I did get the chance to go to both the [Summer of Code](http://code.google.com/soc)[Mentor Summit](https://gsoc-wiki.osuosl.org/index.php/Main_Page) and the [GitTogether](http://git.or.cz/gitwiki/GitTogether). Both where a lot of fun but tiering.
+Well its been a long time since I have posted on my blog. As I lasted mentioned I now work at Google, which has been going well but keeping me fairly busy. For the last month (October, 2009) I have been back in Mountain View, California. While I was there for mainly work purposes, I did get the chance to go to both the [Summer of Code](http://code.google.com/soc) [Mentor Summit](https://gsoc-wiki.osuosl.org/index.php/Main_Page) and the [GitTogether](http://git.or.cz/gitwiki/GitTogether). Both where a lot of fun but tiering.
 
 It was good to see the [BZFlag](http://bzflag.org) guys again – they even had cool t-shirts this year. Not as cool as our [Thousand Parsec shirts](http://www.cafepress.com/thousandparsec.123836466), however. 🙂 I was finally able to meet kblin who I had know through the [WorldForge](http://www.worldforge.org) project for many years. As always he looked nothing like I expected.
 
