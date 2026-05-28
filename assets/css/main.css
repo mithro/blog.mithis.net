@@ -615,6 +615,48 @@ div.entry-content .language-bash pre.highlight {
     padding: 0 4px;
 }
 
+/* Python WP-Syntax token colors: live's GeSHi emits per-token inline `color:`
+   styles that Rouge doesn't match by default. Scoped to .language-python so
+   only fenced ```python blocks (utf-8, reading-cookies, firefox3) get these
+   overrides; other code blocks keep the default GitHub-style Rouge palette.
+   Observed live colors:
+     comment:  #808080 italic   (Rouge default .c: #998 italic)
+     keyword:  #ff7700 bold     (Rouge default .k: bold, no color)
+     string:   #483d8b          (Rouge default .s: #d14)
+     number:   #483d8b          (Rouge default .m: #099)
+     builtin:  #008000          (Rouge default .nb: #0086B3)
+     name:     no override
+*/
+div.entry-content .language-python .highlight .c,
+div.entry-content .language-python .highlight .c1,
+div.entry-content .language-python .highlight .cm {
+    color: #808080;
+    font-style: italic;
+}
+div.entry-content .language-python .highlight .k,
+div.entry-content .language-python .highlight .kn,
+div.entry-content .language-python .highlight .kc,
+div.entry-content .language-python .highlight .kd,
+div.entry-content .language-python .highlight .kp,
+div.entry-content .language-python .highlight .kr {
+    color: #ff7700;
+    font-weight: bold;
+}
+div.entry-content .language-python .highlight .s,
+div.entry-content .language-python .highlight .s1,
+div.entry-content .language-python .highlight .s2,
+div.entry-content .language-python .highlight .sa,
+div.entry-content .language-python .highlight .sh,
+div.entry-content .language-python .highlight .se,
+div.entry-content .language-python .highlight .m,
+div.entry-content .language-python .highlight .mi,
+div.entry-content .language-python .highlight .mf {
+    color: #483d8b;
+}
+div.entry-content .language-python .highlight .nb {
+    color: #008000;
+}
+
 /* day-3 post-pre list: live's WP wpautop emits the post-<pre> list inside a
    <ul><ul> double-open (no <li> between), which visually indents that list
    one extra <ul> level. Kramdown can't reproduce invalid HTML, so we add
