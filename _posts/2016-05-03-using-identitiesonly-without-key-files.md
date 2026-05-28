@@ -8,7 +8,7 @@ excerpt: If you want to restrict the keys that ssh tries when connecting to a se
   ssh_config. However, a...
 layout: post
 permalink: /archives/useful-bits/2172-using-identitiesonly-without-key-files
-title: Using "IdentitiesOnly" without key files
+title: Using “IdentitiesOnly” without key files
 wordpress_category: useful-bits
 wordpress_id: 2172
 wordpress_url: https://blog.mithis.net/archives/useful-bits/2172-using-identitiesonly-without-key-files
