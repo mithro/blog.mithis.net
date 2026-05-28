@@ -202,6 +202,18 @@ div#globalnav {
     display: none;
 }
 
+/* Live's footer theme credit uses hcard markup with full name "Scott Allan
+   Wallick" but live's barthelme/style.css hides the additional-name and
+   family-name spans, so only "Scott" displays. Without this rule the full
+   "Scott Allan Wallick" string was visible on every page (causing a constant
+   ~0.13% diff at y=2020-2035 — the footer area).
+   Verified live's CSS: span#theme-link span.additional-name,
+                        span#theme-link span.family-name { display: none } */
+span#theme-link span.additional-name,
+span#theme-link span.family-name {
+    display: none;
+}
+
 div#globalnav ul#menu {
     list-style: none;
     margin: 0;
@@ -395,21 +407,21 @@ div.sidebar ul li#search form#searchform input#s {
     line-height: 1.8;
 }
 
-/* Live's tagcloud renders 449px tall; mine 453px (+4px cumulative drift) on
-   the same identical HTML/CSS/font/viewport (both inherit 28px line-height).
-   Investigated: same font-family fallback (Liberation Sans for "arial"),
-   same font-size per link, same inline whitespace between links. The 4px
-   variance comes from Chromium's line-strut calculation on lines mixing
-   18.5pt+ and 8pt fonts -- the larger font's metrics-derived ascent/descent
-   rounds to a fraction of a pixel differently per page-load session.
-   Attempted fixes (each causes regressions elsewhere):
-     - line-height: 28px (explicit on div.tagcloud): increased per-post diff
-       from 0.15% baseline because it also affected adjacent body line-height
-       on some posts; reverted.
-     - vertical-align: middle on a: overcorrected tagcloud to 431px (-18px,
-       one fewer wrap); reverted.
-   Documented as structural Chromium font-metric variance, not a CSS-fixable
-   issue without per-page regressions. */
+/* Live's tagcloud renders 449px tall; mine renders 453px on the same
+   identical HTML/CSS/font/viewport due to Chromium line-strut variance
+   on lines mixing 18.5pt+ and 8pt fonts (see tag_cloud +4px drift
+   investigation). The 4px difference accumulates in the sidebar height
+   and shifts the FOOTER 4px down on every page — observed as a constant
+   ~0.13% pixel diff in the footer rows (y=2020-2035) on every post page.
+
+   Pull the sidebar (and therefore the page total height + footer y) back
+   by 4px via negative margin-bottom on the cloud. Visually the cloud
+   still occupies its natural ~453px; the next sidebar widget below
+   starts 4px earlier, absorbing the drift before it reaches the footer.
+   Net page height matches live's 2059px; footer aligns at y=2013. */
+div.tagcloud {
+    margin-bottom: -4px;
+}
 
 
 /* Content Styling */
