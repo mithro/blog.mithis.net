@@ -17,11 +17,7 @@ wordpress_url: https://blog.mithis.net/archives/timvideos-us/2045-first-v2-hdmi2
 ---
 For the last year and a half, I have been working with [Numato Labs](http://numato.com) to create a “HDMI2USB Production Board” for our [HDMI2USB firmware](https://github.com/timvideos/HDMI2USB) that was originally developed on the [Digilent Atlys board](http://digilentinc.com/atlys/). On Friday, they sent me a picture of the first constructed board!
 
-[![HDMI2USB "Production Board" Version 2](/assets/images/wp-content/uploads/2015/07/HDMI2USB-Prod-V2-1024x675.jpg){:width="661" height="436" .wp-image-2046 srcset="/assets/images/wp-content/uploads/2015/07/HDMI2USB-Prod-V2-1024x675.jpg 1024w" sizes="(max-width: 661px) 100vw, 661px"}](/assets/images/wp-content/uploads/2015/07/HDMI2USB-Prod-V2.jpg)
-{:.aligncenter}
-
-HDMI2USB “Production Board” Version 2
-{:.wp-caption-text}
+{% include caption.html id="attachment_2046" width="671px" href="/assets/images/wp-content/uploads/2015/07/HDMI2USB-Prod-V2.jpg" src="/assets/images/wp-content/uploads/2015/07/HDMI2USB-Prod-V2-1024x675.jpg" imgclass="wp-image-2046" alt='HDMI2USB "Production Board" Version 2' imgwidth="661" imgheight="436" srcset="/assets/images/wp-content/uploads/2015/07/HDMI2USB-Prod-V2-1024x675.jpg 1024w" sizes="(max-width: 661px) 100vw, 661px" text="HDMI2USB “Production Board” Version 2" %}
 
 At the end of last year, we decided to abandon our first attempt and start again from scratch, this picture is the result of that work. Some of the reasons we decided to start from scratch was;
 

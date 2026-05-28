@@ -37,6 +37,10 @@ _BLOCK_HTML = re.compile(
     re.IGNORECASE,
 )
 _LIQUID = re.compile(r"\{\{|\{%")
+# Intentional, supported Liquid: a line that is solely a {% include ... %} tag
+# (e.g. the caption.html component). These render at build time, so they are not
+# "leaks"; only stray {{ vars }} / broken tags should trip LIQUID_LEAK.
+_LIQUID_INCLUDE_OK = re.compile(r"^\{%-?\s*include\s+[\w./-]+.*?-?%\}$")
 _MD_IMG = re.compile(r"!\[[^\]]*\]\(\s*([^)\s]+)")
 _HTML_IMG = re.compile(r"<img[^>]+src=[\"']([^\"']+)[\"']", re.IGNORECASE)
 _FIDELITY_ALLOW_BLOCK_HTML = re.compile(
@@ -82,7 +86,7 @@ def lint_text(path: str, text: str, *, asset_root: Path | None = None) -> list[F
             continue
         if in_fence:
             continue
-        if _LIQUID.search(raw):
+        if _LIQUID.search(raw) and not _LIQUID_INCLUDE_OK.match(raw.strip()):
             out.append(Finding(path, lineno, "LIQUID_LEAK",
                                "Unrendered Liquid ({{ or {%) in committed content"))
         if _BLOCK_HTML.search(raw):

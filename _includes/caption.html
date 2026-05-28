@@ -1,0 +1,26 @@
+{%- comment -%}
+WordPress [caption] shortcode equivalent. Reproduces live's exact wp-caption
+markup so post Markdown stays free of hand-written raw HTML.
+
+Params:
+  id        optional, e.g. "attachment_2046" -> id attribute
+  width     caption box width incl. WP's +10px, e.g. "671px"
+  href      full-size image link target (under /assets/...)
+  src       displayed image src (under /assets/...)
+  imgclass  e.g. "wp-image-2046"
+  alt       img alt text (double quotes get escaped to &quot;)
+  imgwidth  / imgheight   intrinsic display dimensions
+  srcset    optional srcset string (only reference variants that exist on disk)
+  sizes     optional sizes string
+  text      caption text shown below the image (kept verbatim)
+
+Wrapped in {::nomarkdown}..{:/nomarkdown} because the site sets
+kramdown.parse_block_html: true, which would otherwise parse inside the <div>
+and wrap the <a> in a stray <p>. nomarkdown passes the block through verbatim,
+matching live's <div><a><img></a><p class="wp-caption-text"> structure exactly.
+Asset paths emitted as /assets/... are baseurl-prefixed at post_render by
+_plugins/baseurl_asset_paths.rb.
+{%- endcomment -%}
+{::nomarkdown}
+<div{% if include.id %} id="{{ include.id }}"{% endif %} style="width: {{ include.width }}" class="wp-caption aligncenter"><a href="{{ include.href }}"><img class="{{ include.imgclass }}" src="{{ include.src }}" alt="{{ include.alt | escape }}" width="{{ include.imgwidth }}" height="{{ include.imgheight }}"{% if include.srcset %} srcset="{{ include.srcset }}"{% endif %}{% if include.sizes %} sizes="{{ include.sizes }}"{% endif %} /></a><p class="wp-caption-text">{{ include.text }}</p></div>
+{:/nomarkdown}
