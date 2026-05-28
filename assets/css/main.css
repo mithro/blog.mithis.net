@@ -268,14 +268,35 @@ blockquote,
 input#s {
     font-family: georgia, times, serif;
 }
-/* Live's archive listings render tag-links in georgia (matches the
-   .entry-meta serif scheme inside posts). Without this explicit rule,
-   tag-links would inherit arial from body on listing pages. */
+/* Live's archive listings render `.entry-meta` itself in arial (inherits
+   from body), but the sub-elements `.entry-date`, `.entry-category`,
+   `.tag-links` are explicitly georgia. The bare `.entry-meta` georgia rule
+   above applies to POST pages (body.single/page) where live IS georgia.
+   On listing pages, REVERT entry-meta to arial but keep the sub-elements
+   georgia. */
+body.archive div.entry-meta,
+body.tag div.entry-meta,
+body.category div.entry-meta,
+body.author div.entry-meta,
+body.home div.entry-meta,
+body.search div.entry-meta {
+    font-family: arial, helvetica, sans-serif;
+}
+/* Live's listing pages render `.entry-meta` itself in arial (the rule
+   above), but ALL its child spans (date/author/category/comments/permalink)
+   AND `.tag-links` in georgia. Reset font-family on each child explicitly. */
+body.archive .entry-meta > span,
 body.archive span.tag-links,
+body.tag .entry-meta > span,
 body.tag span.tag-links,
+body.category .entry-meta > span,
 body.category span.tag-links,
+body.author .entry-meta > span,
 body.author span.tag-links,
-body.home span.tag-links {
+body.home .entry-meta > span,
+body.home span.tag-links,
+body.search .entry-meta > span,
+body.search span.tag-links {
     font-family: georgia, times, serif;
 }
 
