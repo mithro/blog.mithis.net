@@ -32,7 +32,23 @@ PY_TOKEN_OVERRIDES = {
   # `dbapi2` known.
   %r{<span class="n">(pysqlite2|dbapi2)</span>} =>
     '<span class="n" style="color: inherit;">\1</span>',
+
+  # Known stdlib class names that live's GeSHi colored crimson when used
+  # as `module.ClassName` constructor calls. Rouge tags as `.nc` and my
+  # default `.nc { color: #000 }` makes them black. List explicit names
+  # to differentiate from method calls like `winreg.OpenKey(...)` where
+  # live colored OpenKey BLACK (not in GeSHi's class list).
+  %r{<span class="nc">(ConfigParser|StringIO)</span>} =>
+    '<span class="nc" style="color: #dc143c;">\1</span>',
 }.freeze
+
+# Live's GeSHi highlights `\X` (backslash + letter) inside ALL strings —
+# even raw strings (`r'...'`) where Python skips escape interpretation.
+# Rouge correctly skips these in raw strings, so we have to inject the
+# .se highlighting inside `.s` (and .s1, .s2) spans manually. Live's
+# color: #000099 bold.
+STRING_ESCAPE_RE = %r{(<span class="(?:s|s1|s2)">)([^<]*)(</span>)}.freeze
+ESCAPE_CHAR_RE = %r{(\\[A-Za-z])}.freeze
 
 Jekyll::Hooks.register %i[documents pages], :post_render do |item|
   next if item.output.nil?
@@ -42,5 +58,18 @@ Jekyll::Hooks.register %i[documents pages], :post_render do |item|
 
   PY_TOKEN_OVERRIDES.each do |pattern, replacement|
     item.output = item.output.gsub(pattern, replacement)
+  end
+
+  # Wrap `\X` (backslash+letter) inside .s strings with .se spans —
+  # matches live's escape highlighting even in raw strings.
+  item.output = item.output.gsub(STRING_ESCAPE_RE) do
+    open_tag = Regexp.last_match(1)
+    content = Regexp.last_match(2)
+    close_tag = Regexp.last_match(3)
+    new_content = content.gsub(ESCAPE_CHAR_RE) do
+      esc = Regexp.last_match(1)
+      "</span><span class=\"se\" style=\"color: #000099; font-weight: bold;\">#{esc}</span>#{open_tag}"
+    end
+    "#{open_tag}#{new_content}#{close_tag}"
   end
 end
