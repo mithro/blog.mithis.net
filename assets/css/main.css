@@ -407,21 +407,12 @@ div.sidebar ul li#search form#searchform input#s {
     line-height: 1.8;
 }
 
-/* Live's tagcloud renders 449px tall; mine renders 453px on the same
-   identical HTML/CSS/font/viewport due to Chromium line-strut variance
-   on lines mixing 18.5pt+ and 8pt fonts (see tag_cloud +4px drift
-   investigation). The 4px difference accumulates in the sidebar height
-   and shifts the FOOTER 4px down on every page — observed as a constant
-   ~0.13% pixel diff in the footer rows (y=2020-2035) on every post page.
-
-   Pull the sidebar (and therefore the page total height + footer y) back
-   by 4px via negative margin-bottom on the cloud. Visually the cloud
-   still occupies its natural ~453px; the next sidebar widget below
-   starts 4px earlier, absorbing the drift before it reaches the footer.
-   Net page height matches live's 2059px; footer aligns at y=2013. */
-div.tagcloud {
-    margin-bottom: -4px;
-}
+/* Tagcloud height previously needed margin-bottom: -4px to compensate for
+   a Chromium line-strut variance under FULL standards mode (HTML5 doctype)
+   that made the cloud ~4px taller than live. With the doctype now matching
+   live's XHTML 1.0 Transitional (= almost standards mode), Chrome's strut
+   matches live's exactly and the cloud renders at the same 449px height,
+   so no compensation is needed. */
 
 
 /* Content Styling */

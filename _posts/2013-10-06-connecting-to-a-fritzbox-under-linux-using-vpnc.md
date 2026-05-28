@@ -156,7 +156,7 @@ exit 0
 
 ## Fritz!Box encrypted VPN configuration files
 
-Fritz!Boxes will only accept VPN configurations which are encrypted. Otherwise when try to import the file you will get the cryptic "Error: Import of the VPN settings failed." as seen below;
+Fritz!Boxes will <span style="color: #ff0000;">only accept VPN configurations which are encrypted</span>. Otherwise when try to import the file you will get the cryptic &quot;Error: Import of the VPN settings failed.&quot; as seen below;
 
 <img alt="Error: Import of the VPN settings failed." class="alignnone size-full wp-image-1835" height="265" sizes="(max-width: 745px) 100vw, 745px" src="/assets/images/wp-content/uploads/2013/10/VPN-error.png" srcset="/assets/images/wp-content/uploads/2013/10/VPN-error.png 745w" width="745"/>
 
