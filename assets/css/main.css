@@ -24,6 +24,24 @@ body {
     font-size: 100%;
 }
 
+/* Accessibility helper for visually-hidden labels — scoped to
+   .entry-comments (the "Comments Off on TITLE" pattern) only. Live's
+   sidebar Categories widget has the same class on its `<label>` but
+   renders it visibly (no global screen-reader-text rule). Scope to avoid
+   accidentally hiding the sidebar label. */
+.entry-comments .screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal !important;
+}
+
 /* Links */
 a {
     color: #546188;
