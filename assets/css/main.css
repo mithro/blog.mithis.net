@@ -746,13 +746,19 @@ div.entry-content .language-python .highlight .n {
 div.entry-content .language-python .highlight .nn {
     color: #dc143c;
 }
-/* Live's GeSHi colored module/class identifiers that follow a keyword
-   (`from cStringIO`, `import StringIO`) crimson while leaving variables
-   (`con = ...`) plain. Rouge classifies both as `.n`. The adjacent-
-   sibling `.kn + .n` catches names directly following an import keyword.
-   (Tried `.n:has(+ .p)` for `cookielib.X` style usages but it also caught
-   variables like `con.cursor()` → net regress; reverted.) */
-div.entry-content .language-python .highlight .kn + .n {
+/* Live's GeSHi colored module/class identifiers crimson — catch two
+   Rouge patterns:
+   1. `.kn + .n` — name DIRECTLY after an import keyword
+      (e.g. `from cStringIO`, `import StringIO` → cStringIO/StringIO)
+   2. `.n:has(+ .p + .nc)` — name followed by `.` then a Class name
+      (e.g. `cookielib.MozillaCookieJar`, `ConfigParser.ConfigParser`)
+
+   The `:has` chain matches ONLY `name.ClassName` (Rouge classifies
+   `ClassName` as `.nc`) — NOT `name.method()` (where method is `.nf`)
+   or `var.method()`. Variables don't get crimson because they aren't
+   preceded by `.kn` AND aren't followed by `.p`+`.nc`. */
+div.entry-content .language-python .highlight .kn + .n,
+div.entry-content .language-python .highlight .n:has(+ .p + .nc) {
     color: #dc143c;
 }
 /* Function names and class references default to plain black in live's
