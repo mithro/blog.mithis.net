@@ -717,6 +717,10 @@ div.entry-content .language-bash .highlight .s1,
 div.entry-content .language-bash .highlight .s2 {
     color: #ff0000;
 }
+/* Option flags like --rebuild rendered in dark purple by GeSHi */
+div.entry-content .language-bash .highlight .nt {
+    color: #660033;
+}
 
 /* day-3 post-pre list: live's WP wpautop emits the post-<pre> list inside a
    <ul><ul> double-open (no <li> between), which visually indents that list
