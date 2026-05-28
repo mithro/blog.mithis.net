@@ -672,6 +672,12 @@ div.entry-content .language-python .highlight .n {
 div.entry-content .language-python .highlight .nn {
     color: #dc143c;
 }
+/* Function names (def NAME) and called methods are plain black, not bold */
+div.entry-content .language-python .highlight .nf,
+div.entry-content .language-python .highlight .nc {
+    color: inherit;
+    font-weight: normal;
+}
 /* Live's GeSHi colors the = operator and , p punctuation in green/dim;
    also commas, parens, and dots are colored. Map to Rouge classes. */
 div.entry-content .language-python .highlight .o {
