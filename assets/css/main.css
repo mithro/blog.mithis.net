@@ -881,11 +881,20 @@ div.entry-content img {
     max-width: 99%;
 }
 
-/* A baseline-aligned replaced element leaves the line's descent (~7px) below
-   it; live renders every content image without that gap (its image paragraphs
-   are exactly the image height). Aligning content images to the line-box bottom
-   removes the descent so standalone images and wp-caption boxes match live. */
-div.entry-content img {
+/* Live's behavior varies by image-paragraph context:
+   - `<p align="center">` (deprecated HTML attr, used on WP single thumbnails
+     like almost-there's PCB photo): live <p> matches image height exactly
+     (no descent). Apply vertical-align: bottom to match.
+   - `<p style="text-align: center">` inside blockquote (day-4's two-image
+     centered display): live shows the descent (image + ~7px). Leave at
+     baseline default.
+   - Layout-table <td> images (eagle-for-pcb's small thumbnail): aligned
+     differently in live (3-4px higher than mine without override). The
+     bottom-align positions the image at line-box bottom, restoring live's
+     placement.
+   Scope to these specific cases rather than the broad `div.entry-content img`. */
+div.entry-content p[align="center"] img,
+div.entry-content table td img {
     vertical-align: bottom;
 }
 
