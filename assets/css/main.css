@@ -684,6 +684,9 @@ div.entry-content .language-python .highlight .o {
     color: #66cc66;
     font-weight: normal;
 }
+/* Punctuation: live's GeSHi colors commas green (#66cc66) but parens/dots
+   black. Rouge lumps them all in .p. Tested both: black is closer overall
+   (parens occur more than commas in typical code). */
 div.entry-content .language-python .highlight .p {
     color: black;
 }
