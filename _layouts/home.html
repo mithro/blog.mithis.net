@@ -11,9 +11,7 @@ layout: default
         <div id="post-{% if post.wordpress_id %}{{ post.wordpress_id }}{% else %}{{ post.slug }}{% endif %}" class="hentry p{{ post_number }} post publish author-mithro {% for category in post.categories %}category-{{ category | slugify }} {% endfor %}y{{ post.date | date: '%Y' }} m{{ post.date | date: '%m' }} d{{ post.date | date: '%d' }} h{{ post.date | date: '%H' }}{% cycle '', ' alt' %}">
             <div class="post-container">
                 <div class="post-content">
-                    <h2 class="entry-title">
-                        <a href="{{ post.url | relative_url }}" rel="bookmark">{{ post.title | smartify }}</a>
-                    </h2>
+                    <h2 class="entry-title"><a href="{{ post.url | relative_url }}" title="Permalink to {{ post.title | escape }}" rel="bookmark">{{ post.title | smartify }}</a></h2>
                     
                     <div class="entry-content">
                     {{ post.content }}
