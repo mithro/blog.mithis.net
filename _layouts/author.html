@@ -29,7 +29,11 @@ layout: default
             <div class="entry-meta">
                 <span class="entry-date"><abbr class="published" title="{{ post.date | date: '%Y-%m-%dT%H:%M:%S%z' }}">{{ post.date | date: '%Y %m %d' }}</abbr></span>
                 <span class="entry-category">{% include sorted-categories.html cats=post.categories separator="<br/>" %}</span>
-                <span class="entry-comments"><a href="{{ post.url | relative_url }}#respond">Comments (0)</a></span>
+                {%- assign post_slug = post.wordpress_url | split: '/' | last -%}
+                {%- assign post_data = site.data.comments[post_slug] -%}
+                {%- assign comment_count = 0 -%}
+                {%- if post_data -%}{%- assign post_comments = post_data | where: "type", "comment" -%}{%- assign comment_count = post_comments.size -%}{%- endif -%}
+                <span class="entry-comments"><a href="{{ post.url | relative_url }}#respond">Comments ({{ comment_count }})</a></span>
             </div>
         </div><!-- .post -->
         {% else %}

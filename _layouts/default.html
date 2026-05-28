@@ -43,7 +43,7 @@
 {%- assign body_extra = '' -%}
 {%- case page.layout -%}
     {%- when 'post' -%}{%- assign body_extra = 'single' -%}
-    {%- when 'category' -%}{%- assign body_extra = 'archive' -%}
+    {%- when 'category' or 'tag' or 'author' -%}{%- assign body_extra = 'archive' -%}
     {%- when 'hardware' or 'project' or 'tutorial' -%}{%- assign body_extra = 'single' -%}
 {%- endcase -%}
 {%- assign body_search = '' -%}
