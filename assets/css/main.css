@@ -882,20 +882,27 @@ div.entry-content img {
 }
 
 /* Live's behavior varies by image-paragraph context:
-   - `<p align="center">` (deprecated HTML attr, used on WP single thumbnails
-     like almost-there's PCB photo): live <p> matches image height exactly
-     (no descent). Apply vertical-align: bottom to match.
-   - `<p style="text-align: center">` inside blockquote (day-4's two-image
-     centered display): live shows the descent (image + ~7px). Leave at
-     baseline default.
-   - Layout-table <td> images (eagle-for-pcb's small thumbnail): aligned
-     differently in live (3-4px higher than mine without override). The
-     bottom-align positions the image at line-box bottom, restoring live's
-     placement.
-   Scope to these specific cases rather than the broad `div.entry-content img`. */
+   - `<p align="center">` (deprecated HTML attr): no descent. va: bottom.
+   - `<p style="text-align: center">` NOT in blockquote (epiphany screenshot):
+     no descent. va: bottom.
+   - `<p style="text-align: center">` IN blockquote (day-4 two-image display):
+     descent present. va: baseline (override).
+   - Layout-table <td> images (eagle-for-pcb): va: bottom.
+   Scope these cases rather than the broad `div.entry-content img`. */
 div.entry-content p[align="center"] img,
+div.entry-content p[style*="text-align: center"] img,
+div.entry-content .wp-caption img {
+    vertical-align: bottom;
+}
+/* Layout-table images (eagle-for-pcb's two-col include) AND Shashin gallery
+   thumbnails — both need va: bottom (matches live). */
 div.entry-content table td img {
     vertical-align: bottom;
+}
+/* Restore baseline for images inside blockquote-paragraph (higher specificity
+   than the centered-p rule above because that uses an attribute selector). */
+div.entry-content blockquote p[style*="text-align: center"] img {
+    vertical-align: baseline;
 }
 
 /* In a "loose" list (an item contains a block, e.g. an explanation paragraph or
