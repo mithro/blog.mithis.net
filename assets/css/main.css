@@ -685,10 +685,14 @@ div.entry-content .language-python .highlight .n {
 div.entry-content .language-python .highlight .nn {
     color: #dc143c;
 }
-/* Function names (def NAME) and called methods are plain black, not bold */
+/* Function names (def NAME) and called methods are plain black, not bold.
+   Live's GeSHi rendered `connect`/`cursor`/`execute` (method calls) and
+   class definitions in straight black (#000), not the surrounding gray
+   text color (#444). Override Rouge's `.nf` (Name.Function) and `.nc`
+   (Name.Class) explicitly. */
 div.entry-content .language-python .highlight .nf,
 div.entry-content .language-python .highlight .nc {
-    color: inherit;
+    color: #000;
     font-weight: normal;
 }
 /* Live's GeSHi colors the = operator and , p punctuation in green/dim;

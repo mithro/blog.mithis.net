@@ -122,17 +122,30 @@ blockquote pre code,
 }
 
 /* GeSHi palette override — match live wp-syntax (GeSHi) Python token colors.
-   Mapped from live blog.mithis.net inline span colors. This block is LAST in
-   the last-loaded stylesheet so it wins over the Rouge defaults above. */
-.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm,
-.highlight .c1, .highlight .cs, .highlight .cpf { color: #808080; font-style: italic } /* comments */
-.highlight .k, .highlight .kc, .highlight .kd, .highlight .kn,
-.highlight .kp, .highlight .kr, .highlight .kt { color: #ff7700; font-weight: bold } /* keywords */
-.highlight .nb, .highlight .bp, .highlight .ne { color: #008000 } /* builtins / exceptions */
-.highlight .n, .highlight .na, .highlight .nl, .highlight .nn,
-.highlight .nx, .highlight .py, .highlight .nv { color: #dc143c } /* names */
-.highlight .s, .highlight .s1, .highlight .s2, .highlight .sa, .highlight .sb,
-.highlight .sc, .highlight .dl, .highlight .sd, .highlight .sh, .highlight .si,
-.highlight .sx, .highlight .sr, .highlight .ss { color: #483d8b } /* strings */
-.highlight .se { color: #000099; font-weight: bold } /* string escape */
-.highlight .o, .highlight .ow, .highlight .p { color: #66cc66 } /* operators / punctuation */
+   Mapped from live blog.mithis.net inline span colors. Scoped to
+   `.language-python` so bash/other languages can use their own per-language
+   overrides in assets/css/main.css. */
+.language-python .highlight .c, .language-python .highlight .ch,
+.language-python .highlight .cd, .language-python .highlight .cm,
+.language-python .highlight .c1, .language-python .highlight .cs,
+.language-python .highlight .cpf { color: #808080; font-style: italic } /* comments */
+.language-python .highlight .k, .language-python .highlight .kc,
+.language-python .highlight .kd, .language-python .highlight .kn,
+.language-python .highlight .kp, .language-python .highlight .kr,
+.language-python .highlight .kt { color: #ff7700; font-weight: bold } /* keywords */
+.language-python .highlight .nb, .language-python .highlight .bp,
+.language-python .highlight .ne { color: #008000 } /* builtins / exceptions */
+.language-python .highlight .n, .language-python .highlight .na,
+.language-python .highlight .nl, .language-python .highlight .nn,
+.language-python .highlight .nx, .language-python .highlight .py,
+.language-python .highlight .nv { color: #dc143c } /* names */
+.language-python .highlight .s, .language-python .highlight .s1,
+.language-python .highlight .s2, .language-python .highlight .sa,
+.language-python .highlight .sb, .language-python .highlight .sc,
+.language-python .highlight .dl, .language-python .highlight .sd,
+.language-python .highlight .sh, .language-python .highlight .si,
+.language-python .highlight .sx, .language-python .highlight .sr,
+.language-python .highlight .ss { color: #483d8b } /* strings */
+.language-python .highlight .se { color: #000099; font-weight: bold } /* string escape */
+.language-python .highlight .o, .language-python .highlight .ow,
+.language-python .highlight .p { color: #66cc66 } /* operators / punctuation */
