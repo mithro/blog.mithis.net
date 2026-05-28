@@ -21,3 +21,4 @@ For those who don’t know, my project is to build a [budget 8 line computer to 
 I have built a prototype board which is working a lot better then expected, you can see it below. I will however be glad when I can get back to just working on the board instead of writing all this documentation. Anyway, I should get back to it.
 
 [![CFXS Try2 PCB Board](/assets/images/wp-content/uploads/2007/05/cfxs-try2.thumbnail.jpg)](/assets/images/wp-content/uploads/2007/05/cfxs-try2.jpg "CFXS Try2 PCB Board")
+{:style="text-align: center" align="center"}
