@@ -550,33 +550,39 @@ div.entry-content pre {
     font: 1em/150% "courier new", courier, monospace;
 }
 
-/* The two 2009 posts (reading-cookies, firefox3-cookies) are the only fenced
-   python blocks; live renders their code at 12px/16px via the old WP-Syntax
-   plugin, vs the theme's 1em/150% used by fritzbox (16px) and plain <pre>
-   (14.4px). Target only .language-python so those two match live without
-   touching any other code block. */
+/* Posts using fenced python/bash blocks (utf-8, reading-cookies,
+   firefox3-cookies, power-scripts, fastcomplete) render at 12px/16px via
+   live's old WP-Syntax plugin, vs the theme's 1em/150% used by fritzbox
+   (16px) and plain <pre> (14.4px). Target .language-python and .language-bash
+   so those match live without touching any other code block. */
 div.entry-content .language-python pre,
-div.entry-content .language-python pre code {
+div.entry-content .language-python pre code,
+div.entry-content .language-bash pre,
+div.entry-content .language-bash pre code {
     font-size: 12px;
     line-height: 16px;
 }
 
-/* The two WP-Syntax python posts (reading-cookies, firefox3-cookies) DO have a
-   boxed code block on live: a #f9f9f9 wrapper with a 1px #c0c0c0 border, a #eee
-   code area, and 4px horizontal pre padding (12px/16px font set above), margin
-   1.35em below. Only .language-python matches these; the plain-<pre> posts
-   (fritzbox) stay undecorated via the rule below. */
-div.entry-content .language-python.highlighter-rouge {
+/* WP-Syntax python AND bash posts have a boxed code block on live: a #f9f9f9
+   wrapper with a 1px #c0c0c0 border, a #eee code area, and 4px horizontal pre
+   padding (12px/16px font set above), margin 1.35em below. Apply to both
+   .language-python and .language-bash; the plain-<pre> posts (fritzbox) stay
+   undecorated via the .highlighter-rouge rule below. */
+div.entry-content .language-python.highlighter-rouge,
+div.entry-content .language-bash.highlighter-rouge {
     background-color: #f9f9f9;
     border: 1px solid #c0c0c0;
     margin: 0 0 21.6px 0;
     overflow-x: auto;
 }
-div.entry-content .language-python .highlight {
+div.entry-content .language-python .highlight,
+div.entry-content .language-bash .highlight {
     background-color: #eee;
 }
 div.entry-content .language-python .highlight pre,
-div.entry-content .language-python pre.highlight {
+div.entry-content .language-python pre.highlight,
+div.entry-content .language-bash .highlight pre,
+div.entry-content .language-bash pre.highlight {
     margin: 0;
     padding: 0 4px;
 }
