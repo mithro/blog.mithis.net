@@ -22,7 +22,7 @@ I’m sure most people are wondering what he hell “[quotidian](http://dictiona
 
 For thoses who don’t know, Epiphany is generally described as “the closest thing to Gnome’s official web browser”. It has lots of nifty features and use to have much better intergration with the Gnome desktop (things like actually using the Gnome print dialog). I use to advocate that Gnome should push Epiphany instead of Firefox.
 
-So why have I given up? I’m tired of my browser being broken.
+So why have I given up? **I’m tired of my browser being broken**.
 
 The developers of Epiphany decided to make some huge changes in the latest version, they started adding support for the [WebKit](http://webkit.org/) (the render behind Safari) instead of just being dependent on [Gecko](http://en.wikipedia.org/wiki/Gecko_(layout_engine)) (the same render Firefox uses). This is actually a very good goal, being able to have a choice of renders in my browser would be great. However, in the process of doing this change they broke everything! Things like the vitally important Adblock extension no longer work and the password manager is totally broken in a number of ways – for a long time they didn’t even show up in the dialog.
 
