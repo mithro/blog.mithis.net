@@ -26,22 +26,24 @@ Python dutifully respects the $LANG environment variable on the terminal. It tur
 
 The problem is that there is no easy way to change a file’s encoding after it’s open, well until this horrible hack! The following code will force the output encoding of stdout to UTF-8 even if started with LANG=C.
 
->     # License: MIT
->     try:
->         print u"\u263A"
->     except Exception, e:
->         print e
->
->     import sys
->     print sys.stdout.encoding
->
->     from ctypes import pythonapi, py_object, c_char_p
->     PyFile_SetEncoding = pythonapi.PyFile_SetEncoding
->     PyFile_SetEncoding.argtypes = (py_object, c_char_p)
->     if not PyFile_SetEncoding(sys.stdout, "UTF-8"):
->         raise ValueError
->
->     try:
->         print u"\u263A"
->     except Exception, e:
->         print e
+> ```python
+> # License: MIT
+> try:
+>     print u"\u263A"
+> except Exception, e:
+>     print e
+> 
+> import sys
+> print sys.stdout.encoding
+> 
+> from ctypes import pythonapi, py_object, c_char_p
+> PyFile_SetEncoding = pythonapi.PyFile_SetEncoding
+> PyFile_SetEncoding.argtypes = (py_object, c_char_p)
+> if not PyFile_SetEncoding(sys.stdout, "UTF-8"):
+>     raise ValueError
+> 
+> try:
+>     print u"\u263A"
+> except Exception, e:
+>     print e
+> ```
