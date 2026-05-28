@@ -657,6 +657,33 @@ div.entry-content .language-python .highlight .nb {
     color: #008000;
 }
 
+/* Bash WP-Syntax token colors (live's GeSHi observed on power-scripts +
+   fastcomplete posts):
+     comment:   #666666 italic
+     builtin (echo):  #7a0874 bold
+     variable (PATH): #007800
+     string ("$1"):   #ff0000
+     keyword (case, in, esac, ;;): #000 bold (default ok)
+     operator (>, /):  #000 bold (default ok) */
+div.entry-content .language-bash .highlight .c,
+div.entry-content .language-bash .highlight .c1,
+div.entry-content .language-bash .highlight .cm {
+    color: #666666;
+    font-style: italic;
+}
+div.entry-content .language-bash .highlight .nb {
+    color: #7a0874;
+    font-weight: bold;
+}
+div.entry-content .language-bash .highlight .nv {
+    color: #007800;
+}
+div.entry-content .language-bash .highlight .s,
+div.entry-content .language-bash .highlight .s1,
+div.entry-content .language-bash .highlight .s2 {
+    color: #ff0000;
+}
+
 /* day-3 post-pre list: live's WP wpautop emits the post-<pre> list inside a
    <ul><ul> double-open (no <li> between), which visually indents that list
    one extra <ul> level. Kramdown can't reproduce invalid HTML, so we add
