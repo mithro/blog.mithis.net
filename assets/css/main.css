@@ -625,7 +625,9 @@ div.entry-content pre {
    padding:2px 4px; ... }` for GitHub-style badges, but that's not how WP
    rendered inline code. Zero out for the WP corpus zone. */
 div.entry-content p code,
-div.entry-content li code {
+div.entry-content li code,
+div.comments ol.commentlist li p code,
+div.comments ol.commentlist li code {
     background: transparent;
     border: none;
     border-radius: 0;
