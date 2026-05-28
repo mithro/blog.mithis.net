@@ -1,0 +1,45 @@
+{%- comment -%}
+WordPress two-column layout-table equivalent. Reproduces live's exact
+<table><tr><td>...</td><td>...</td></tr></table> markup so post Markdown
+stays free of hand-written raw HTML.
+
+Each column can be EITHER an image (pass colN_href/colN_src/colN_alt etc.)
+OR markdown text (pass colN_md, typically a captured variable).
+Spacing is matched to live: when col2 is image and col1 is prose, col1
+gets padding-right 15px; when col1 is image and col2 is prose, col2 gets
+padding-left 15px. Override with colN_style for any other inline style.
+
+Params (each column N=1 or 2):
+  colN_md       captured markdown to render in this column (auto-markdownified)
+  colN_href     image link target (if column is image)
+  colN_src      image src
+  colN_alt      img alt text
+  colN_title    optional title tooltip on the link
+  colN_width    intrinsic width attribute
+  colN_height   intrinsic height attribute
+  colN_style    optional inline style
+
+Wrapped in nomarkdown because parse_block_html: true would otherwise wrap
+the table in a paragraph. markdownify still runs Kramdown on the captured md.
+{%- endcomment -%}
+{%- assign col1_is_img = include.col1_src -%}
+{%- assign col2_is_img = include.col2_src -%}
+{%- if include.col1_style -%}{%- assign col1_style = include.col1_style -%}
+{%- elsif col2_is_img and include.col1_md -%}{%- assign col1_style = "padding-right: 15px" -%}
+{%- endif -%}
+{%- if include.col2_style -%}{%- assign col2_style = include.col2_style -%}
+{%- elsif col1_is_img and include.col2_md -%}{%- assign col2_style = "padding-left: 15px" -%}
+{%- endif -%}
+{%- comment -%} When unwrap_p is set, strip the wrapping <p>...</p> markdownify adds around single-paragraph content (matches live's "text directly in <td>" rendering). {%- endcomment -%}
+{%- if include.col1_md -%}{%- capture col1_html -%}{{ include.col1_md | markdownify | strip }}{%- endcapture -%}{%- if include.col1_unwrap_p -%}{%- assign col1_html = col1_html | remove_first: "<p>" | replace: "</p>", "" -%}{%- endif -%}{%- endif -%}
+{%- if include.col2_md -%}{%- capture col2_html -%}{{ include.col2_md | markdownify | strip }}{%- endcapture -%}{%- if include.col2_unwrap_p -%}{%- assign col2_html = col2_html | remove_first: "<p>" | replace: "</p>", "" -%}{%- endif -%}{%- endif -%}
+{::nomarkdown}
+<table>
+<tr>
+<td{% if col1_style %} style="{{ col1_style }}"{% endif %}>{% if col1_is_img %}<a href='{{ include.col1_href }}'{% if include.col1_title %} title='{{ include.col1_title | escape }}'{% endif %}><img src='{{ include.col1_src }}' alt='{{ include.col1_alt | escape }}' height="{{ include.col1_height }}" width="{{ include.col1_width }}" /></a>{% else %}{% unless include.col1_unwrap_p %}
+{% endunless %}{{ col1_html }}{% endif %}</td>
+<td{% if col2_style %} style="{{ col2_style }}"{% endif %}>{% if col2_is_img %}<a href='{{ include.col2_href }}'{% if include.col2_title %} title='{{ include.col2_title | escape }}'{% endif %}><img src='{{ include.col2_src }}' alt='{{ include.col2_alt | escape }}' height="{{ include.col2_height }}" width="{{ include.col2_width }}" /></a>{% else %}{% unless include.col2_unwrap_p %}
+{% endunless %}{{ col2_html }}{% endif %}</td>
+</tr>
+</table>
+{:/nomarkdown}

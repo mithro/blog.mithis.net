@@ -41,6 +41,11 @@ _LIQUID = re.compile(r"\{\{|\{%")
 # (e.g. the caption.html component). These render at build time, so they are not
 # "leaks"; only stray {{ vars }} / broken tags should trip LIQUID_LEAK.
 _LIQUID_INCLUDE_OK = re.compile(r"^\{%-?\s*include\s+[\w./-]+.*?-?%\}$")
+# Intentional Liquid block tags: {% capture VAR %} / {% endcapture %}. Used to
+# pass multi-line markdown text into includes (e.g. two-col.html, bare-pre.html).
+# These render at build time; only stray output expressions ({{ ... }}) should
+# leak. Allow each as a sole-line tag.
+_LIQUID_CAPTURE_OK = re.compile(r"^\{%-?\s*(?:capture\s+\w+|endcapture)\s*-?%\}$")
 _MD_IMG = re.compile(r"!\[[^\]]*\]\(\s*([^)\s]+)")
 _HTML_IMG = re.compile(r"<img[^>]+src=[\"']([^\"']+)[\"']", re.IGNORECASE)
 _FIDELITY_ALLOW_BLOCK_HTML = re.compile(
@@ -86,9 +91,11 @@ def lint_text(path: str, text: str, *, asset_root: Path | None = None) -> list[F
             continue
         if in_fence:
             continue
-        if _LIQUID.search(raw) and not _LIQUID_INCLUDE_OK.match(raw.strip()):
-            out.append(Finding(path, lineno, "LIQUID_LEAK",
-                               "Unrendered Liquid ({{ or {%) in committed content"))
+        if _LIQUID.search(raw):
+            stripped = raw.strip()
+            if not (_LIQUID_INCLUDE_OK.match(stripped) or _LIQUID_CAPTURE_OK.match(stripped)):
+                out.append(Finding(path, lineno, "LIQUID_LEAK",
+                                   "Unrendered Liquid ({{ or {%) in committed content"))
         if _BLOCK_HTML.search(raw):
             prev_line = lines[i - 1] if i > 0 else ""  # fence predecessors are harmless (closing ``` is not BLOCK_HTML)
             allowed = (

@@ -1,0 +1,17 @@
+{%- comment -%}
+pre block with selectable strong ranges inline. Reproduces live's fritzbox
+config snippets where WordPress emits pre containing literal strong tags.
+
+Kramdown cannot emit strong inside a fenced code block (the asterisk markup
+appears literal). This include is the no-raw-HTML alternative -- pass the
+already-bolded text as a single string via a captured variable; literal
+strong tags in the captured value pass through.
+
+Params:
+  style    optional inline style for the pre
+  content  pre-bolded HTML string (literal strong tags are emitted verbatim)
+
+Wrapped in nomarkdown because parse_block_html:true would re-parse and wrap
+the pre in a paragraph.
+{%- endcomment -%}
+{::nomarkdown}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content }}</pre>{:/nomarkdown}

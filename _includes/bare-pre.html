@@ -1,0 +1,32 @@
+{%- comment -%}
+Bare pre block (no Rouge wrappers, no inner code element), optionally
+wrapped in a blockquote. Reproduces live's WP-rendered code-in-blockquote
+markup where WordPress emits bare pre style="..." tags inside a blockquote.
+
+Kramdown's fenced/indented code emits .language-plaintext.highlighter-rouge
+wrappers with an inner code tag, which renders at a slightly different font
+weight and lacks the inline padding-left, so it cannot byte-match live's
+bare pre. This include is the no-raw-HTML alternative.
+
+Usage: capture each content block into a variable, then call this include
+with content1=.., content2=.., (up to content5), blockquote=true to wrap
+all the pre blocks in a blockquote, and style="..." to apply an inline
+style to every pre (e.g. "padding-left: 30px;").
+
+Params:
+  blockquote  truthy -> wrap output in a blockquote
+  style       inline style applied to every pre
+  content     single block (use this OR content1..content5)
+  content1..content5  up to 5 blocks, each emitted as its own pre
+
+Wrapped in nomarkdown so Kramdown does not parse-block-html the literal
+pre / blockquote structure.
+{%- endcomment -%}
+{::nomarkdown}{% if include.blockquote %}<blockquote>
+{% endif %}{% if include.content %}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content }}</pre>
+{% endif %}{% if include.content1 %}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content1 }}</pre>
+{% endif %}{% if include.content2 %}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content2 }}</pre>
+{% endif %}{% if include.content3 %}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content3 }}</pre>
+{% endif %}{% if include.content4 %}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content4 }}</pre>
+{% endif %}{% if include.content5 %}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content5 }}</pre>
+{% endif %}{% if include.blockquote %}</blockquote>{% endif %}{:/nomarkdown}
