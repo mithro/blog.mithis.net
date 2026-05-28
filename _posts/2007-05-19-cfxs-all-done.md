@@ -6,7 +6,7 @@ date: 2007-05-19T16:26:06+1000
 excerpt: Recovered from Wayback Machine archive
 layout: post
 permalink: /archives/uni/41-cfxs-all-done
-title: My Honours Project &#8211; All done!
+title: My Honours Project – All done!
 wayback_recovered: true
 wordpress_category: uni
 wordpress_id: 41
