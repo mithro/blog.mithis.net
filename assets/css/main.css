@@ -462,6 +462,7 @@ body.page div.hentry h2.entry-title {
 body.attachment div#content h3.page-title,
 body.archive div.archive-meta,
 body.page div.archive-meta {
+    font-family: georgia, times, serif;
     font-size: 1em;
     font-style: italic;
     font-weight: 400;
