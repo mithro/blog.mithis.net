@@ -786,6 +786,28 @@ body:has(#post-1833) pre {
     padding: 4px;
     margin: 4px;
 }
+/* Rouge BLOCK-LEVEL wrappers (`.highlighter-rouge` containing `.highlight`,
+   i.e. a fenced code block — NOT inline `<code class="...rouge">`) on
+   fritzbox-style pages: live had plain <pre> (no wrapper) so its
+   border+padding+margin contribute directly to layout. Local's rouge
+   wrapper with overflow:auto CONTAINS the pre's margin — adding 8px
+   extra to listing height (4 above + 4 below).
+
+   Shift styling from inner pre to rouge wrapper; zero pre's margin to
+   prevent double-counting. Use `:has(> .highlight)` to scope to block
+   rouge only (inline `<code class="...rouge">` doesn't have a .highlight
+   child). Exclude language-bash/python which have their own wp-syntax
+   styling. */
+body:has(#post-1833) .highlighter-rouge:has(> .highlight):not(.language-bash):not(.language-python) {
+    border: 1px solid black;
+    padding: 4px;
+    margin: 4px;
+}
+body:has(#post-1833) .highlighter-rouge:has(> .highlight):not(.language-bash):not(.language-python) pre {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
 body.postid-1833 h2,
 body:has(#post-1833) h2 {
     text-align: center;
