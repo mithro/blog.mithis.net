@@ -46,7 +46,7 @@ It took me forever to figure out what was going on. I had seen similar problems 
 
 After much searching I came across some reference to problems with region coding. It turns out thatÂ  MATSHITA drives won’t let you read a dvd unless they they have a region set. As I had never played a DVD video before the region on the drive had never been set.
 
-There is a tool in Linux which can be used to do the region setting, it is helpfully called regionset. After setting the region to “Region 4″ I am now able to play my new DVDs! I wonder if I will be able to read my discs from the US and the UK. The libdvdcss2 should be able to decode the data if it can be read, hopefully the drive will still let that occurring. I will report back in comments here when I find out for sure.
+There is a tool in Linux which can be used to do the region setting, it is helpfully called regionset. After setting the region to “Region 4” I am now able to play my new DVDs! I wonder if I will be able to read my discs from the US and the UK. The libdvdcss2 should be able to decode the data if it can be read, hopefully the drive will still let that occurring. I will report back in comments here when I find out for sure.
 
 It has been repetitively found that region encoding is anticompetitive and hence un-unenforceable in Australia. I have included a quote from the [*Stevens v Kabushiki Kaisha Sony Computer Entertainment* case from 2005](http://www.austlii.edu.au/au/cases/cth/high_ct/2005/58.html)*.
 
