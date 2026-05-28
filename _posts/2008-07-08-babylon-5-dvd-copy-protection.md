@@ -24,22 +24,22 @@ I still have not found an apartment so as I have no internet to entertain me on 
 
 Anyway when I put the DVD video in the drive in my Sony Vaio Laptop running Ubuntu Hardy all I got where I/O errors, some examples are below;
 
-> [ 2283.614887] end_request: I/O error, dev sr0, sector 418256
-> [ 2283.620351] end_request: I/O error, dev sr0, sector 418264
-> [ 2283.626273] end_request: I/O error, dev sr0, sector 418264
-> [ 2283.631766] end_request: I/O error, dev sr0, sector 418272
-> [ 2283.637013] end_request: I/O error, dev sr0, sector 418272
+> [ 2283.614887] end_request: I/O error, dev sr0, sector 418256<br>
+> [ 2283.620351] end_request: I/O error, dev sr0, sector 418264<br>
+> [ 2283.626273] end_request: I/O error, dev sr0, sector 418264<br>
+> [ 2283.631766] end_request: I/O error, dev sr0, sector 418272<br>
+> [ 2283.637013] end_request: I/O error, dev sr0, sector 418272<br>
 > [ 2283.642384] end_request: I/O error, dev sr0, sector 418280
 
 The Vaio’s DVD drive is connected via the USB bus. This is done so that drive can be completely powered down. The device turned out to be a MATSHITA DVD-RAM drive as shown via the dmesg output below;
 
-> [ 2909.596251] scsi11 : SCSI emulation for USB Mass Storage devices
-> [ 2909.596944] usb-storage: device found at 24
-> [ 2909.596952] usb-storage: waiting for device to settle before scanning
-> [ 2911.901103] usb-storage: device scan complete
-> [ 2911.903506] scsi 11:0:0:0: CD-ROMÂ Â Â Â Â Â Â Â Â Â Â  MATSHITA DVD-RAM UJ-852SÂ  1.31 PQ: 0 ANSI: 0
-> [ 2911.948247] sr1: scsi3-mmc drive: 24x/24x writer dvd-ram cd/rw xa/form2 cdda tray
-> [ 2911.948372] sr 11:0:0:0: Attached scsi CD-ROM sr1
+> [ 2909.596251] scsi11 : SCSI emulation for USB Mass Storage devices<br>
+> [ 2909.596944] usb-storage: device found at 24<br>
+> [ 2909.596952] usb-storage: waiting for device to settle before scanning<br>
+> [ 2911.901103] usb-storage: device scan complete<br>
+> [ 2911.903506] scsi 11:0:0:0: CD-ROMÂ Â Â Â Â Â Â Â Â Â Â  MATSHITA DVD-RAM UJ-852SÂ  1.31 PQ: 0 ANSI: 0<br>
+> [ 2911.948247] sr1: scsi3-mmc drive: 24x/24x writer dvd-ram cd/rw xa/form2 cdda tray<br>
+> [ 2911.948372] sr 11:0:0:0: Attached scsi CD-ROM sr1<br>
 > [ 2911.948460] sr 11:0:0:0: Attached scsi generic sg1 type 5
 
 It took me forever to figure out what was going on. I had seen similar problems on my desktop before when the disk was scratched but these where brand new disks. So I took the disks into work and tested it out on a friends Mac, it played perfectly. There happened to be a Steve Irwin DVD video disk lying around, so I popped it in the Vaio, it also played perfectly! What was going on?
