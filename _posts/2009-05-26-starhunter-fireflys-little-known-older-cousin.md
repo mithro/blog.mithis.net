@@ -24,11 +24,8 @@ comments:
     content: |
       <p>Joss as the creators of Starhunter were probably inspired by Blake&#8217;s 7</p>
 ---
-<!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
-<div style="float: right; padding: 10px;">
-<img alt="Tulip - The ship from Starhunter" class="aligncenter size-full wp-image-103" height="219" src="/assets/images/wp-content/uploads/2009/05/screenshot.png" title="Tulip - The ship from Starhunter" width="300"/>
-<!-- fidelity-allow: BLOCK_HTML pixel-fidelity-tolerance -->
-</div>
+![Tulip - The ship from Starhunter](/assets/images/wp-content/uploads/2009/05/screenshot.png){:title="Tulip - The ship from Starhunter" width="300" height="219" .aligncenter .size-full .wp-image-103}
+{:style="float: right; padding: 10px; margin: 0;"}
 
 I have recently been watching and really enjoying a little known series called [Starhunter](http://en.wikipedia.org/wiki/Starhunter). At first I thought it was an enjoyable rip off of [Firefly](http://en.wikipedia.org/wiki/Firefly_(TV_series)), so i was surprised to find out that it was made first.
 
