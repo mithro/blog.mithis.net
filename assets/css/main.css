@@ -683,14 +683,15 @@ div.entry-content .language-python .highlight .mf {
 div.entry-content .language-python .highlight .nb {
     color: #008000;
 }
-/* Module names being imported (e.g. cStringIO, StringIO) are crimson.
-   Rouge classifies plain identifiers (variables, module names alike) as
-   `.n`. Live's GeSHi only colored module/class references crimson; plain
-   variables there were unwrapped (= default text color). Since Rouge can't
-   tell them apart, leave `.n` at inherit (gray) and only color `.nn` (the
-   Namespace token that Rouge actually does emit, e.g. via `from foo`). */
+/* `.n` (generic Name) - live's GeSHi marked some identifiers (constants
+   like `REG_EXPAND_SZ`, `HKEY_CURRENT_USER`, and parameters like `name`,
+   `path`) with explicit `color: #000` while leaving variables (`con`,
+   `filename`) plain. Since Rouge classes both as `.n`, picking #000 wins
+   on more tokens than the previous `inherit` (which gave #110000 from
+   `.wp_syntax`). The #000 vs #110000 delta is subtle (17 in red channel)
+   so the regress on plain variables is minimal. */
 div.entry-content .language-python .highlight .n {
-    color: inherit;
+    color: #000;
 }
 div.entry-content .language-python .highlight .nn {
     color: #dc143c;
