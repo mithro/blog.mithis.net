@@ -33,7 +33,7 @@ Then I added the following to the ssh_config
 
 > <!-- fidelity-allow: BLOCK_HTML necessary - live emits inline <code><br>...</code> not pre -->
 > <code>  IdentitiesOnly true<br>
-> &nbsp;&nbsp;IdentityFile ~/.ssh/agent.keyname.pub<br>
+>   IdentityFile ~/.ssh/agent.keyname.pub<br>
 > </code>
 
 When running with &#8220;ssh -vv&#8221; I see the following in the output;
