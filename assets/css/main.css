@@ -1282,6 +1282,16 @@ div.comments ol.commentlist li.bypostauthor {
     border: 1px solid #aaa;
 }
 
+/* OpenID-authenticated comment authors get a small icon next to the
+   linked name (from live's wp-openid plugin). Specific comments mark this
+   via `author_class: url openid_link url` in their data YAML. */
+.openid_link {
+    background-image: url('/assets/images/openid.gif');
+    background-position: 3px 50%;
+    background-repeat: no-repeat;
+    padding-left: 21px !important;
+}
+
 div.comments ol.commentlist li p,
 div.formcontainer form#commentform div#comment-notes {
     margin: 0.5em 0;

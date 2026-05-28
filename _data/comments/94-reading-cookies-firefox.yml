@@ -92,6 +92,7 @@
   li_class: comment byuser commentauthor-mithro bypostauthor c-y2010 c-m08 c-d24 c-h01 c8
   author: mithro
   author_url: http://blog.mithis.net/
+  author_class: url openid_link url
   date_text: August 23, 2010 at 3:49 pm
   date_title: '2009-01-20T09:29:49+1000'
   avatar: https://secure.gravatar.com/avatar/06a5d7f1da6673284dbf4cc3219dbf80?s=32&d=mm&r=pg

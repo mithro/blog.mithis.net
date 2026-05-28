@@ -39,7 +39,7 @@ so we pick the mode from whether any item is a real comment.
 	{% for comment in real_comments %}
 		<li id="comment-{{ comment.id }}" class="{{ comment.li_class }}">
 			<div class="comment-meta">
-				<span class="comment-author vcard">{% if comment.avatar %}<img alt="" src="{{ comment.avatar }}" srcset="{{ comment.avatar | replace: 's=32', 's=64' }} 2x" class="photo avatar avatar-32 photo" height="32" width="32" /> {% endif %}<span class="fn n">{% if comment.author_url %}<a href="{{ comment.author_url }}" rel="external nofollow" class="url url">{{ comment.author }}</a>{% else %}{{ comment.author }}{% endif %}</span></span>
+				<span class="comment-author vcard">{% if comment.avatar %}<img alt="" src="{{ comment.avatar }}" srcset="{{ comment.avatar | replace: 's=32', 's=64' }} 2x" class="photo avatar avatar-32 photo" height="32" width="32" /> {% endif %}<span class="fn n">{% if comment.author_url %}<a href="{{ comment.author_url }}" rel="external nofollow" class="{{ comment.author_class | default: 'url url' }}">{{ comment.author }}</a>{% else %}{{ comment.author }}{% endif %}</span></span>
 				<span class="meta-sep">|</span>
 				<span class="comment-datetime"><abbr class="comment-published" title="{{ comment.date_title }}">{{ comment.date_text }}</abbr></span>
 				<span class="meta-sep">|</span>
