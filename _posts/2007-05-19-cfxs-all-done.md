@@ -2,17 +2,17 @@
 author: mithro
 categories:
 - uni
-date: 2007-05-19T16:26:06-0400
+date: 2007-05-19T16:26:06+1000
 excerpt: Recovered from Wayback Machine archive
 layout: post
 permalink: /archives/uni/41-cfxs-all-done
-title: My Honours Project - All done!
+title: My Honours Project &#8211; All done!
 wayback_recovered: true
 wordpress_category: uni
 wordpress_id: 41
 wordpress_url: https://blog.mithis.net/archives/uni/41-cfxs-all-done
 ---
-Well, as of Wednesday I have completed my Honours project. On Wednesday I gave my final presentation for the project and it went really well (at least for me).  It is a great relief to have finally “finished” something which I have been working on for a good 10 months of my life.  I have spent the last couple of days recovering.
+Well, as of Wednesday I have completed my Honours project. On Wednesday I gave my final presentation for the project and it went really well (at least for me).  It is a great relief to have finally “finished” something which I have been working on for a good 10 months of my life.Â  I have spent the last couple of days recovering.
 
 The day was way more stressful then it needed to be. I needed quite a bit of time to setup for my presentation (I need to setup 8 telephones at various locations and get the power supply and such working. However, the room I had been scheduled to give my presentation room which was being used all morning. It then took us ages to find a room which I could use, we ended up using the student study room.
 
