@@ -670,12 +670,11 @@ div.entry-content img {
     max-width: 99%;
 }
 
-/* Inside a wp-caption box the image is the only inline content on its line; a
-   baseline-aligned replaced element leaves the line's descent below it, opening
-   a ~7px gap before the caption text that live does not show. Aligning the
-   image to the line-box bottom removes that descent so the image-to-caption
-   spacing matches live exactly. */
-div.entry-content .wp-caption img {
+/* A baseline-aligned replaced element leaves the line's descent (~7px) below
+   it; live renders every content image without that gap (its image paragraphs
+   are exactly the image height). Aligning content images to the line-box bottom
+   removes the descent so standalone images and wp-caption boxes match live. */
+div.entry-content img {
     vertical-align: bottom;
 }
 
