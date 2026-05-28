@@ -2,7 +2,7 @@
 author: mithro
 categories:
 - pcb
-date: 2007-03-07T14:09:50-0500
+date: 2007-03-07T14:09:50+1000
 excerpt: Recovered from Wayback Machine archive
 layout: post
 permalink: /archives/pcb/23-eagle2geda-symbol-converter

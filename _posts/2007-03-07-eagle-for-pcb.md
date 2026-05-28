@@ -3,7 +3,7 @@ author: mithro
 categories:
 - ideas
 - pcb
-date: 2007-03-07T11:53:32-0500
+date: 2007-03-07T11:53:32+1000
 excerpt: Recovered from Wayback Machine archive
 layout: post
 permalink: /archives/ideas/21-eagle-for-pcb

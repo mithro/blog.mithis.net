@@ -4,7 +4,7 @@ author: mithro
 categories:
 - ideas
 - python
-date: 2007-11-11T00:37:39-0500
+date: 2007-11-11T00:37:39+1000
 excerpt: Recovered from Wayback Machine archive
 layout: post
 permalink: /archives/ideas/64-python-swap-var
