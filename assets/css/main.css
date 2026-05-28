@@ -638,7 +638,8 @@ div.entry-content .language-python .highlight .kn,
 div.entry-content .language-python .highlight .kc,
 div.entry-content .language-python .highlight .kd,
 div.entry-content .language-python .highlight .kp,
-div.entry-content .language-python .highlight .kr {
+div.entry-content .language-python .highlight .kr,
+div.entry-content .language-python .highlight .ow {
     color: #ff7700;
     font-weight: bold;
 }
@@ -646,15 +647,39 @@ div.entry-content .language-python .highlight .s,
 div.entry-content .language-python .highlight .s1,
 div.entry-content .language-python .highlight .s2,
 div.entry-content .language-python .highlight .sa,
-div.entry-content .language-python .highlight .sh,
-div.entry-content .language-python .highlight .se,
+div.entry-content .language-python .highlight .sh {
+    color: #483d8b;
+}
+/* Escape sequences (☺, \t, \n) are dark blue bold on live */
+div.entry-content .language-python .highlight .se {
+    color: #000099;
+    font-weight: bold;
+}
+/* Numbers are orange-red on live, not dark slate blue */
 div.entry-content .language-python .highlight .m,
 div.entry-content .language-python .highlight .mi,
 div.entry-content .language-python .highlight .mf {
-    color: #483d8b;
+    color: #ff4500;
 }
 div.entry-content .language-python .highlight .nb {
     color: #008000;
+}
+/* Module names being imported (e.g. cStringIO, StringIO) are crimson */
+div.entry-content .language-python .highlight .nn,
+div.entry-content .language-python .highlight .n {
+    color: inherit;
+}
+div.entry-content .language-python .highlight .nn {
+    color: #dc143c;
+}
+/* Live's GeSHi colors the = operator and , p punctuation in green/dim;
+   also commas, parens, and dots are colored. Map to Rouge classes. */
+div.entry-content .language-python .highlight .o {
+    color: #66cc66;
+    font-weight: normal;
+}
+div.entry-content .language-python .highlight .p {
+    color: black;
 }
 
 /* Bash WP-Syntax token colors (live's GeSHi observed on power-scripts +
