@@ -42,7 +42,7 @@ layout: default
         {% endfor %}
 
         <div id="nav-below" class="navigation">
-            <div class="nav-previous"></div>
+            <div class="nav-previous">{%- if author_posts.size > 10 -%}<a href="{{ page.url | append: 'page/2' | relative_url }}">&laquo; Older posts</a>{%- endif -%}</div>
             <div class="nav-next"></div>
         </div>
 
