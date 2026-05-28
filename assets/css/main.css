@@ -812,6 +812,12 @@ div.entry-content .language-bash .highlight .s1,
 div.entry-content .language-bash .highlight .s2 {
     color: #ff0000;
 }
+/* Backtick string delimiters (`...`) in bash — live colored them bold
+   black (the backtick itself), not the red of regular strings. */
+div.entry-content .language-bash .highlight .sb {
+    color: #000;
+    font-weight: bold;
+}
 /* Option flags like --rebuild rendered in dark purple by GeSHi */
 div.entry-content .language-bash .highlight .nt {
     color: #660033;
