@@ -515,16 +515,16 @@ div.comments abbr.comment-published {
 
 div#content .page-title {
     font-size: 1.7em;
+    font-weight: 400;
     margin: 0;
     text-align: center;
 }
 
-/* Live pads the bottom of category/tag archive headings by 1em but NOT the
-   author archive heading — scope it so the author page matches live. */
-body.category div#content .page-title,
-body.tag div#content .page-title {
-    padding-bottom: 1em;
-}
+/* Live's `.page-title` on tag/category pages: padding-bottom: 0, font-weight:
+   normal (= 400, not the browser default h2 700). Previously a +1em padding
+   was added under HTML5 doctype to match what we BELIEVED live did; with the
+   doctype now matching live (XHTML Transitional → almost standards), the
+   measured live pb is 0, so the override is dropped. */
 
 /* Content headings - Barthelme exact values */
 div.entry-content h2,
