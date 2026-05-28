@@ -611,6 +611,11 @@ div.entry-content .language-bash.highlighter-rouge {
     border: 1px solid #c0c0c0;
     margin: 0 0 21.6px 0;
     overflow-x: auto;
+    /* Live's `.wp_syntax` sets base text color to #110000 (verified via DOM
+       inheritance probe). Untagged tokens (variables, identifiers Rouge
+       didn't classify) inherit this. Without it, local renders them at
+       #444 (gray) vs live's near-black — visible diff on every code line. */
+    color: #110000;
 }
 div.entry-content .language-python .highlight,
 div.entry-content .language-bash .highlight {
@@ -688,6 +693,14 @@ div.entry-content .language-python .highlight .n {
     color: inherit;
 }
 div.entry-content .language-python .highlight .nn {
+    color: #dc143c;
+}
+/* Live's GeSHi colored module/class identifiers that follow a keyword
+   (`from cStringIO`, `import StringIO`) crimson while leaving variables
+   (`con = ...`) plain. Rouge classifies both as `.n`. Use the adjacent-
+   sibling `.kn + .n` selector to color ONLY names directly following an
+   import keyword — variables aren't preceded by `.kn` so stay gray. */
+div.entry-content .language-python .highlight .kn + .n {
     color: #dc143c;
 }
 /* Function names (def NAME) and called methods are plain black, not bold.
