@@ -755,10 +755,10 @@ div.entry-content .language-python .highlight .nn {
    2. `.n:has(+ .p + .nc)` — name followed by `.` then a Class name
       (e.g. `cookielib.MozillaCookieJar`, `ConfigParser.ConfigParser`)
 
-   The `:has` chain matches ONLY `name.ClassName` (Rouge classifies
-   `ClassName` as `.nc`) — NOT `name.method()` (where method is `.nf`)
-   or `var.method()`. Variables don't get crimson because they aren't
-   preceded by `.kn` AND aren't followed by `.p`+`.nc`. */
+   Tried `.n:has(+ .p + .n)` for `os.path` etc but it caught variable
+   attribute access too (`obj.attr`), net regress on utf-8 post. Plugin-
+   based text-specific overrides handle the known stdlib modules
+   (`pysqlite2`, etc) instead. */
 div.entry-content .language-python .highlight .kn + .n,
 div.entry-content .language-python .highlight .n:has(+ .p + .nc) {
     color: #dc143c;

@@ -33,6 +33,13 @@ PY_TOKEN_OVERRIDES = {
   %r{<span class="n">(pysqlite2|dbapi2)</span>} =>
     '<span class="n" style="color: inherit;">\1</span>',
 
+  # Known stdlib module names that live's GeSHi colored crimson when
+  # used as `module.attribute` (e.g. `os.path.join`, `logging.error`).
+  # Rouge tags them as `.n` and the `.has(+ .p + .nc)` rule misses them
+  # because `.attribute` is `.n` (not `.nc`) — color via plugin instead.
+  %r{<span class="n">(os|logging|_winreg|sys|re|json|urllib|urllib2|urlparse|httplib|sqlite3)</span>} =>
+    '<span class="n" style="color: #dc143c;">\1</span>',
+
   # Known stdlib class names that live's GeSHi colored crimson when used
   # as `module.ClassName` constructor calls. Rouge tags as `.nc` and my
   # default `.nc { color: #000 }` makes them black. List explicit names
