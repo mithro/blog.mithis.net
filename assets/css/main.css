@@ -520,11 +520,11 @@ div#content .page-title {
     text-align: center;
 }
 
-/* Live's `.page-title` on tag/category pages: padding-bottom: 0, font-weight:
-   normal (= 400, not the browser default h2 700). Previously a +1em padding
-   was added under HTML5 doctype to match what we BELIEVED live did; with the
-   doctype now matching live (XHTML Transitional → almost standards), the
-   measured live pb is 0, so the override is dropped. */
+/* Live's `.page-title` is padding-bottom: 0 on tag/category/author pages
+   UNLESS the page happens to contain the fritzbox post (id 1833) — whose
+   embedded <style> block sets `h2 { padding-bottom: 1em }` GLOBALLY.
+   Replicated via `:has(#post-1833)` further below; no override needed here.
+   The font-weight: 400 above overrode the browser-default <h2> bold. */
 
 /* Content headings - Barthelme exact values */
 div.entry-content h2,
@@ -749,30 +749,34 @@ ul.day3-postpre-list {
 
 /* fritzbox post (1833): live's WP page has an inline <style> block setting
    borders/padding/centered h2 on its pre/h2/li elements. Replicated here
-   scoped to body.postid-1833 so the post Markdown can stay raw-HTML-free.
+   without raw HTML.
 
    IMPORTANT: live's inline <style> selectors are UNSCOPED (just `pre`, `h2`,
-   `li`) — so the rules apply to the WHOLE page, including sidebar widget
-   h2 titles and footer li items. We scope to body.postid-1833 (not just
-   .entry-content) so the same global reach is reproduced.
-
-   The "div.entry-content li p { margin-top: 0 }" rule zeroes the gap
-   Kramdown's loose-list <p> wrappers introduce above the lead sentence in
-   the two partial-example list items (live serves the sentence bare). */
-body.postid-1833 pre {
+   `li`) — so the rules apply to the WHOLE page wherever the post renders.
+   We need the same effect both on the post page (body.postid-1833) AND in
+   listing pages where the post DIV is `#post-1833`. The `:is(...)` lets a
+   single rule cover both contexts. */
+/* Live's <style> block applies UNSCOPED. To match, target ALL pre/h2/li on
+   any page that contains the fritzbox post — either via body class
+   (post page) or via :has() (listing pages containing the post DIV). */
+body.postid-1833 pre,
+body:has(#post-1833) pre {
     display: block;
     border: 1px solid black;
     padding: 4px;
     margin: 4px;
 }
-body.postid-1833 h2 {
+body.postid-1833 h2,
+body:has(#post-1833) h2 {
     text-align: center;
     padding-bottom: 1em;
 }
-body.postid-1833 li {
+body.postid-1833 li,
+body:has(#post-1833) li {
     padding-bottom: 0.5em;
 }
-body.postid-1833 div.entry-content li p {
+body.postid-1833 div.entry-content li p,
+body:has(#post-1833) div.entry-content li p {
     margin-top: 0;
 }
 
