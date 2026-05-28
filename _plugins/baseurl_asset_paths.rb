@@ -32,7 +32,13 @@
 # NB: runs only under the Actions-based Pages build; the legacy branch builder
 # runs Jekyll in safe mode and ignores _plugins entirely.
 
-ASSET_ATTR_RE = %r{\b(src|href|srcset)=("|')/assets/}.freeze
+# src/href carry a single URL; srcset carries a comma-separated list of URLs
+# (e.g. "/assets/a.jpg 1024w, /assets/b.jpg 900w"), so anchoring on the
+# attribute name only fixes the FIRST URL and leaves later variants under
+# /assets/ (which 404 under a subpath). Handle src/href with the simple
+# attribute anchor, and rewrite EVERY /assets/ inside a srcset value.
+ASSET_ATTR_RE  = %r{\b(src|href)=("|')/assets/}.freeze
+SRCSET_ATTR_RE = %r{\bsrcset=("|')([^"']*)\1}.freeze
 
 Jekyll::Hooks.register %i[documents pages], :post_render do |item|
   baseurl = item.site.config["baseurl"].to_s
@@ -48,5 +54,13 @@ Jekyll::Hooks.register %i[documents pages], :post_render do |item|
 
   item.output = item.output.gsub(ASSET_ATTR_RE) do
     "#{Regexp.last_match(1)}=#{Regexp.last_match(2)}#{prefix}"
+  end
+
+  # Prefix every variant URL within a srcset value. Only raw "/assets/" paths
+  # match, so already-prefixed paths (e.g. "#{baseurl}/assets/") are untouched.
+  item.output = item.output.gsub(SRCSET_ATTR_RE) do
+    quote = Regexp.last_match(1)
+    value = Regexp.last_match(2).gsub(%r{(^|,\s*)/assets/}) { "#{Regexp.last_match(1)}#{prefix}" }
+    "srcset=#{quote}#{value}#{quote}"
   end
 end
