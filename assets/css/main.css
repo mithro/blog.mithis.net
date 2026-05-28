@@ -55,7 +55,7 @@ div#content .entry-title a,
 div#content .page-title a,
 div#content div.entry-meta a,
 div#content div.entry-content div.page-link a,
-span.tag-links a,
+div#content span.tag-links a,
 div#content div.archive-meta a,
 div.comments form#commentform a {
     text-decoration: none;
