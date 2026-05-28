@@ -595,6 +595,35 @@ ul.day3-postpre-list {
     padding-left: 80px;
 }
 
+/* fritzbox post (1833): live's WP page has an inline <style> block setting
+   borders/padding/centered h2 on its pre/h2/li elements. Replicated here
+   scoped to body.postid-1833 so the post Markdown can stay raw-HTML-free.
+
+   IMPORTANT: live's inline <style> selectors are UNSCOPED (just `pre`, `h2`,
+   `li`) — so the rules apply to the WHOLE page, including sidebar widget
+   h2 titles and footer li items. We scope to body.postid-1833 (not just
+   .entry-content) so the same global reach is reproduced.
+
+   The "div.entry-content li p { margin-top: 0 }" rule zeroes the gap
+   Kramdown's loose-list <p> wrappers introduce above the lead sentence in
+   the two partial-example list items (live serves the sentence bare). */
+body.postid-1833 pre {
+    display: block;
+    border: 1px solid black;
+    padding: 4px;
+    margin: 4px;
+}
+body.postid-1833 h2 {
+    text-align: center;
+    padding-bottom: 1em;
+}
+body.postid-1833 li {
+    padding-bottom: 0.5em;
+}
+body.postid-1833 div.entry-content li p {
+    margin-top: 0;
+}
+
 /* Other code blocks render as plain, undecorated <pre> (no background, no
    border) in courier — verified element-by-element against the live oracle. */
 .highlighter-rouge {

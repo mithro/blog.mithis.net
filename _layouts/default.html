@@ -48,7 +48,7 @@
 {%- endcase -%}
 {%- assign body_search = '' -%}
 {%- if page.url contains '/search' -%}{%- assign body_search = 'search' -%}{%- endif -%}
-<body class="wordpress y{{ body_dt | date: '%Y' }} m{{ body_dt | date: '%m' }} d{{ body_dt | date: '%d' }} h{{ body_dt | date: '%H' }}{% if page.layout %} {{ page.layout }}{% endif %}{% if body_extra != '' %} {{ body_extra }}{% endif %}{% if body_search != '' %} {{ body_search }}{% endif %}">
+<body class="wordpress y{{ body_dt | date: '%Y' }} m{{ body_dt | date: '%m' }} d{{ body_dt | date: '%d' }} h{{ body_dt | date: '%H' }}{% if page.layout %} {{ page.layout }}{% endif %}{% if body_extra != '' %} {{ body_extra }}{% endif %}{% if body_search != '' %} {{ body_search }}{% endif %}{% if page.body_extra_class %} {{ page.body_extra_class }}{% endif %}">
 
 <div id="wrapper">
     
