@@ -711,6 +711,15 @@ div.entry-content img {
     vertical-align: bottom;
 }
 
+/* In a "loose" list (an item contains a block, e.g. an explanation paragraph or
+   code), Kramdown wraps EVERY item's lead line in a <p>; live keeps that lead
+   line as bare text (no <p>, no margin) and only wraps trailing block content.
+   Zero the first <p>'s margin in each list item so the lead line sits like
+   live's bare text (the gap to following blocks comes from their own margins). */
+div.entry-content li > p:first-child {
+    margin: 0;
+}
+
 /* List styles - Barthelme square bullets */
 div.entry-content ul li,
 div.entry-content ul.content-column li ul li,
