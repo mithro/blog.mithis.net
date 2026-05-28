@@ -578,6 +578,22 @@ div.entry-content pre {
     font: 1em/150% "courier new", courier, monospace;
 }
 
+/* Live had no background/border/padding on inline <code> (verified via DOM
+   inspection: e.g. nm-autovpn's `nmcli con up` code → 0px padding). The
+   syntax-highlighting.css include adds `p code { background:#f1f1f1; border;
+   padding:2px 4px; ... }` for GitHub-style badges, but that's not how WP
+   rendered inline code. Zero out for the WP corpus zone. */
+div.entry-content p code,
+div.entry-content li code {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    font-size: inherit;
+}
+
 /* Posts using fenced python/bash blocks (utf-8, reading-cookies,
    firefox3-cookies, power-scripts, fastcomplete) render at 12px/16px via
    live's old WP-Syntax plugin, vs the theme's 1em/150% used by fritzbox
