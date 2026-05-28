@@ -45,7 +45,7 @@ You can find FastComplete at [https://github.com/mithro/rcfiles/blob/master/bin/
 > export PATH=/usr/local/google/users//tansell/tabcache/d7e5fb63454ae33b4a171b6437be904a
 > ```
 >
-> To use fastcomplete all the time add the following as the *LAST* line in your ~/.bashrc file. Fastcomplete will echo some output to stderr so you can see what is happening.
+> To use fastcomplete all the time add the following as the \*LAST\* line in your ~/.bashrc file. Fastcomplete will echo some output to stderr so you can see what is happening.
 >
 > ```bash
 > # Create a cache of the command
