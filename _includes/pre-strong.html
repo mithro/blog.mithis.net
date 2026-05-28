@@ -10,8 +10,16 @@ strong tags in the captured value pass through.
 Params:
   style    optional inline style for the pre
   content  pre-bolded HTML string (literal strong tags are emitted verbatim)
+  inline   if truthy, emit the pre WITHOUT the nomarkdown wrapper so it can
+           sit inside an li or other block-level context where the
+           nomarkdown block marker would otherwise break the surrounding
+           structure. Relies on parse_block_html: true.
 
-Wrapped in nomarkdown because parse_block_html:true would re-parse and wrap
-the pre in a paragraph.
+When NOT inline, wrapped in nomarkdown so Kramdown does not parse-block-html
+the literal pre / and wrap it in a p.
 {%- endcomment -%}
-{::nomarkdown}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content }}</pre>{:/nomarkdown}
+{%- if include.inline -%}<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content }}</pre>{%- else -%}
+{::nomarkdown}
+<pre{% if include.style %} style="{{ include.style }}"{% endif %}>{{ include.content }}</pre>
+{:/nomarkdown}
+{%- endif -%}
