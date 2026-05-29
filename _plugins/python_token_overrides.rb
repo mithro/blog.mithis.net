@@ -24,11 +24,13 @@ PY_TOKEN_OVERRIDES = {
   %r{<span class="se">(\\u)([0-9A-Fa-f]{4})</span>} =>
     '<span class="se">\1</span><span class="s2" style="color: #483d8b;">\2</span>',
 
-  # String affix `r` (raw-string prefix) — live left it plain (no span,
-  # inherits #110000). Rouge wraps as `.sa` and my CSS makes it the
-  # string color #483d8b. Override to inherit so it matches live.
-  %r{<span class="sa">(r|R|b|B|u|U)</span>} =>
-    '<span class="sa" style="color: inherit;">\1</span>',
+  # String affix `r` `b` `u` (raw/bytes/unicode prefix) — live emitted
+  # the prefix as plain PRE text (no span). DOM probe confirmed: live's
+  # `r` parent is the PRE itself, local's is a `<span class="sa">`.
+  # Even with matching color, the extra span boundary on local causes
+  # sub-pixel anti-aliasing drift on the adjacent quote character.
+  # Strip the span entirely — leave the prefix as bare text.
+  %r{<span class="sa">(r|R|b|B|u|U)</span>} => '\1',
 
   # Merge string quote spans into the string content span. Rouge wraps
   # short strings as <sh>'</sh><s>X</s><sh>'</sh> (3 spans). Live had
