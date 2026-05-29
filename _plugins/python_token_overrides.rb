@@ -44,21 +44,24 @@ PY_TOKEN_OVERRIDES = {
   %r{<span class="nf">(open|raw_input)</span>} =>
     '<span class="nf" style="color: #008000;">\1</span>',
 
-  # Comma (.p punctuation) — live colored every `,` light green. Standalone
-  # case: Rouge emits its own .p span.
+  # Comma and semicolon (.p punctuation) — live colored every `,` and `;`
+  # light green. Standalone case: Rouge emits its own .p span.
   %r{<span class="p">,</span>} =>
     '<span class="p" style="color: #66cc66;">,</span>',
+  %r{<span class="p">;</span>} =>
+    '<span class="p" style="color: #66cc66;">;</span>',
 
   # Merged-punctuation case: Rouge collapses adjacent punctuation into a
-  # single `.p` span like `],` `)],` `]],` `])` `]))` etc — the comma
-  # inside loses its green (whole span renders black via `.p`). Live
-  # emitted one span per character so each `,` got green individually.
-  # Strategy: when a multi-char .p span CONTAINS a comma, split the span
-  # into a green-colored `,` and black-colored other-chars.
-  %r{<span class="p">([^<,]*),([^<]*)</span>} =>
+  # single `.p` span like `],` `)],` `]],` `])` `]))` `();` etc — the
+  # comma/semicolon inside loses its green (whole span renders black via
+  # `.p`). Live emitted one span per character so each got green
+  # individually. Split the span around any `,` or `;`. The replacement
+  # is applied repeatedly until no more matches (greedy gsub handles
+  # multiple separators in one span).
+  %r{<span class="p">([^<,;]*)([,;])([^<]*)</span>} =>
     '<span class="p">\1</span>' \
-    '<span class="p" style="color: #66cc66;">,</span>' \
-    '<span class="p">\2</span>',
+    '<span class="p" style="color: #66cc66;">\2</span>' \
+    '<span class="p">\3</span>',
 
   # Arithmetic `%` operator — Rouge tags as `.o` (operator) which my CSS
   # paints green like `=`. Live's GeSHi left arithmetic operators
