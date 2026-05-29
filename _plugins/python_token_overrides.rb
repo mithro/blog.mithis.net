@@ -72,6 +72,14 @@ BASH_TOKEN_OVERRIDES = {
   # `;;` is plain `.p` punctuation but live colored it bold black
   %r{<span class="p">;;</span>} =>
     '<span class="p" style="color: #000; font-weight: bold;">;;</span>',
+
+  # `"$VAR"` (variable inside double-quoted string) — live wrapped the
+  # WHOLE thing in one red `<span>` (string color). Rouge splits it into
+  # 3 spans: s2 opening-quote / nv variable / s2 closing-quote, and my
+  # CSS makes the `.nv` green. Recolor the `.nv` to red when it's
+  # sandwiched between two `.s2"` quotes.
+  %r{(<span class="s2">"</span>)<span class="nv">(\$\w+)</span>(<span class="s2">"</span>)} =>
+    '\1<span class="nv" style="color: #ff0000;">\2</span>\3',
 }.freeze
 
 # `/` chars appear as plain text inside `<code>...</code>` of bash
