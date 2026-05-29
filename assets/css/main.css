@@ -734,7 +734,8 @@ div.entry-content .language-python .highlight .mi,
 div.entry-content .language-python .highlight .mf {
     color: #ff4500;
 }
-div.entry-content .language-python .highlight .nb {
+div.entry-content .language-python .highlight .nb,
+div.entry-content .language-python .highlight .bp {
     color: #008000;
 }
 /* `.n` (generic Name) - live's GeSHi marked some identifiers (constants
