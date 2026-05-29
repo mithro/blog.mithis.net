@@ -1315,7 +1315,7 @@ div.comments ol.commentlist li.bypostauthor {
    linked name (from live's wp-openid plugin). Specific comments mark this
    via `author_class: url openid_link url` in their data YAML. */
 .openid_link {
-    background-image: url('/assets/images/openid.gif');
+    background-image: url('../images/openid.gif');
     background-position: 3px 50%;
     background-repeat: no-repeat;
     padding-left: 21px !important;
