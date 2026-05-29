@@ -24,22 +24,13 @@ body {
     font-size: 100%;
 }
 
-/* Accessibility helper for visually-hidden labels — scoped to
-   .entry-comments (the "Comments Off on TITLE" pattern) only. Live's
-   sidebar Categories widget has the same class on its `<label>` but
-   renders it visibly (no global screen-reader-text rule). Scope to avoid
-   accidentally hiding the sidebar label. */
+/* Live's Barthelme theme renders `.screen-reader-text` VISIBLY as a
+   block-level continuation ("on TITLE" appears under "Comments Off").
+   Verified via DOM probe: live computes display:block, no clip, full
+   120×24 box. No hiding rule — leave inline default and force block so
+   the title wraps to a new line in the entry-meta column. */
 .entry-comments .screen-reader-text {
-    border: 0;
-    clip: rect(1px, 1px, 1px, 1px);
-    clip-path: inset(50%);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-    word-wrap: normal !important;
+    display: block;
 }
 
 /* Links */
