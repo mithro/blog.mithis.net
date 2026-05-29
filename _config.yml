@@ -44,8 +44,10 @@ timezone: Australia/Brisbane
 # Google Analytics
 google_analytics: UA-XXXXXXXX-X  # Replace with actual tracking ID
 
-# Pagination
+# Pagination — WordPress uses /page/2/, /page/3/ etc; default Jekyll
+# would be /page2/. Match live's URL structure exactly.
 paginate: 10
+paginate_path: "/page/:num/"
 
 # Feed configuration
 feed:
