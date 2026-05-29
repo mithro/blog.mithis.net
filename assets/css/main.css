@@ -645,11 +645,18 @@ div.comments ol.commentlist li code {
    firefox3-cookies, power-scripts, fastcomplete) render at 12px/16px via
    live's old WP-Syntax plugin, vs the theme's 1em/150% used by fritzbox
    (16px) and plain <pre> (14.4px). Target .language-python and .language-bash
-   so those match live without touching any other code block. */
+   so those match live without touching any other code block.
+
+   Also override font-family: live's WP-Syntax plugin reset the theme's
+   `"courier new", courier, monospace` to bare `monospace` on its python/bash
+   `<pre>` blocks. The two fall back to different glyph metrics in Chromium
+   (DejaVu Sans Mono vs Courier New), causing sub-pixel anti-aliasing drift
+   on every line of code. Match live's `monospace` here. */
 div.entry-content .language-python pre,
 div.entry-content .language-python pre code,
 div.entry-content .language-bash pre,
 div.entry-content .language-bash pre code {
+    font-family: monospace;
     font-size: 12px;
     line-height: 16px;
 }
@@ -737,6 +744,16 @@ div.entry-content .language-python .highlight .mf {
 div.entry-content .language-python .highlight .nb,
 div.entry-content .language-python .highlight .bp {
     color: #008000;
+}
+/* Rouge's lexer tags literal nbsp characters in source as `.err` (token
+   error). The default Rouge theme then paints `.err` with a pink #e3d2d2
+   background and #a61717 dark-red text — a salmon box visible at the left
+   edge of any line that has a leading nbsp. Live's GeSHi rendered them as
+   plain whitespace, so reset to transparent + inherited color. */
+div.entry-content .language-python .highlight .err,
+div.entry-content .language-bash .highlight .err {
+    background: transparent;
+    color: inherit;
 }
 /* `.n` (generic Name) - live's GeSHi marked some identifiers (constants
    like `REG_EXPAND_SZ`, `HKEY_CURRENT_USER`, and parameters like `name`,
