@@ -42,9 +42,30 @@ PY_TOKEN_OVERRIDES = {
   %r{<span class="nf">(open|raw_input)</span>} =>
     '<span class="nf" style="color: #008000;">\1</span>',
 
-  # Comma (.p punctuation) — live colored light green
+  # Comma (.p punctuation) — live colored every `,` light green. Standalone
+  # case: Rouge emits its own .p span.
   %r{<span class="p">,</span>} =>
     '<span class="p" style="color: #66cc66;">,</span>',
+
+  # Merged-punctuation case: Rouge collapses adjacent punctuation into a
+  # single `.p` span like `],` `)],` `]],` `])` `]))` etc — the comma
+  # inside loses its green (whole span renders black via `.p`). Live
+  # emitted one span per character so each `,` got green individually.
+  # Strategy: when a multi-char .p span CONTAINS a comma, split the span
+  # into a green-colored `,` and black-colored other-chars.
+  %r{<span class="p">([^<,]*),([^<]*)</span>} =>
+    '<span class="p">\1</span>' \
+    '<span class="p" style="color: #66cc66;">,</span>' \
+    '<span class="p">\2</span>',
+
+  # Arithmetic `%` operator — Rouge tags as `.o` (operator) which my CSS
+  # paints green like `=`. Live's GeSHi left arithmetic operators
+  # UNWRAPPED so they inherit `.wp_syntax`'s base #110000 (essentially
+  # black). Override to inherit. (Assignment `=` and comparison `==`
+  # stay green — they appear in their own .o spans and live DID wrap
+  # them green.)
+  %r{<span class="o">(%)</span>} =>
+    '<span class="o" style="color: inherit;">\1</span>',
 
   # Non-stdlib module names AND names not in live's GeSHi stdlib list
   # in `from X import Y` patterns. Live left these plain; my CSS colors
@@ -128,6 +149,39 @@ Jekyll::Hooks.register %i[documents pages], :post_render do |item|
       end
       "#{open_tag}#{new_content}#{close_tag}"
     end
+
+    # Pre-style `.n` spans that the existing CSS would have colored crimson
+    # via complex selectors. These need INLINE style to survive the strip-
+    # plain-.n pass below.
+    #
+    # Pattern 1: `.kn + .n` — name immediately after an import keyword
+    #            (e.g. `from cookielib`, `import StringIO` → cookielib/StringIO).
+    item.output = item.output.gsub(
+      %r{(<span class="kn">(?:from|import)</span>\s+)<span class="n">(\w+)</span>}
+    ) do
+      "#{Regexp.last_match(1)}<span class=\"n\" style=\"color: #dc143c;\">#{Regexp.last_match(2)}</span>"
+    end
+    # Pattern 2: `.n` followed by `.p .` then `.nc` (module.ClassName, e.g.
+    #            `cookielib.MozillaCookieJar`, `ConfigParser.ConfigParser`).
+    #            `.nc` may carry pre-existing inline style from earlier
+    #            overrides, so allow attrs after `class="nc"`.
+    item.output = item.output.gsub(
+      %r{<span class="n">(\w+)</span>(<span class="p">\.</span><span class="nc"[^>]*>)}
+    ) do
+      "<span class=\"n\" style=\"color: #dc143c;\">#{Regexp.last_match(1)}</span>#{Regexp.last_match(2)}"
+    end
+
+    # Strip remaining PLAIN `.n` spans (those with no inline style — Rouge's
+    # generic Name tag on every variable, attribute, parameter). Live's
+    # GeSHi left these UNWRAPPED so the inherited `.wp_syntax` color
+    # (#110000) applied directly. The wrapper spans cause sub-pixel anti-
+    # aliasing drift at every character boundary. Removing them lets
+    # Chromium raster contiguous text runs the same way live does. Pre-
+    # styled `.n` spans (with inline `style="color: ..."`) survive
+    # untouched since their attribute set differs from the bare pattern.
+    item.output = item.output.gsub(
+      %r{<span class="n">([^<]*)</span>}, '\1'
+    )
   end
 
   if item.output.include?("language-bash")
