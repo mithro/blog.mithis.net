@@ -30,6 +30,13 @@ PY_TOKEN_OVERRIDES = {
   %r{<span class="sa">(r|R|b|B|u|U)</span>} =>
     '<span class="sa" style="color: inherit;">\1</span>',
 
+  # Merge string quote spans into the string content span. Rouge wraps
+  # short strings as <sh>'</sh><s>X</s><sh>'</sh> (3 spans). Live had
+  # one span for the whole string. Merging reduces sub-pixel rendering
+  # differences at the span boundaries.
+  %r{<span class="sh">(['"])</span><span class="s">([^<]*)</span><span class="sh">(['"])</span>} =>
+    '<span class="s">\1\2\3</span>',
+
   # Builtins that Rouge wrongly classifies as .nf (Function call)
   # Live colored bold/normal green like other builtins
   %r{<span class="nf">(open|raw_input)</span>} =>
