@@ -17,6 +17,13 @@
 # Scoped to `.language-python` code blocks only.
 
 PY_TOKEN_OVERRIDES = {
+  # Live's GeSHi only highlights the `\u` portion of `\uXXXX` Unicode
+  # escapes (where XXXX is 4 hex digits) — the hex chars stay as string
+  # color. Rouge wraps the whole `☺` in `.se`. Split the span so
+  # only `\u` gets the bold blue, the hex chars get string color.
+  %r{<span class="se">(\\u)([0-9A-Fa-f]{4})</span>} =>
+    '<span class="se">\1</span><span class="s2" style="color: #483d8b;">\2</span>',
+
   # Builtins that Rouge wrongly classifies as .nf (Function call)
   # Live colored bold/normal green like other builtins
   %r{<span class="nf">(open|raw_input)</span>} =>
