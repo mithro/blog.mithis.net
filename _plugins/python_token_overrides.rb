@@ -24,6 +24,12 @@ PY_TOKEN_OVERRIDES = {
   %r{<span class="se">(\\u)([0-9A-Fa-f]{4})</span>} =>
     '<span class="se">\1</span><span class="s2" style="color: #483d8b;">\2</span>',
 
+  # String affix `r` (raw-string prefix) — live left it plain (no span,
+  # inherits #110000). Rouge wraps as `.sa` and my CSS makes it the
+  # string color #483d8b. Override to inherit so it matches live.
+  %r{<span class="sa">(r|R|b|B|u|U)</span>} =>
+    '<span class="sa" style="color: inherit;">\1</span>',
+
   # Builtins that Rouge wrongly classifies as .nf (Function call)
   # Live colored bold/normal green like other builtins
   %r{<span class="nf">(open|raw_input)</span>} =>
