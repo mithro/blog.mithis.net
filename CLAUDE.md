@@ -4,19 +4,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A Jekyll-built **pixel-perfect mirror** of the legacy WordPress blog at https://blog.mithis.net, currently deployed to https://mithro.github.io/blog.mithis.net via GitHub Pages. **Cutover is imminent**: blog.mithis.net will soon point at this site as its custom domain.
+A Jekyll-built **replacement** for the legacy WordPress blog at https://blog.mithis.net, deployed to GitHub Pages at the same custom domain. The custom-domain cutover is committed (`baseurl: ""`, `url: https://blog.mithis.net`, `CNAME` → `blog.mithis.net`). The WordPress source the site was mirrored from is being retired; once DNS points at GitHub Pages, this site IS blog.mithis.net.
 
-The migration phase is complete (175/185 pages literally pixel-perfect, remainder under 0.012%). Day-to-day work is **fidelity maintenance** and **new authoring**: when the deployed site drifts from live, identify the divergence with the diff tools below and fix it; when writing a new post, follow `docs/AUTHORING.md`.
+The migration phase is complete (175/185 pages literally pixel-perfect against the WordPress original, remainder under 0.012%). Day-to-day work is **fidelity maintenance** and **new authoring**: when something is reported broken, identify the divergence vs. the Wayback Machine snapshot or local reference with the diff tools below; when writing a new post, follow `docs/AUTHORING.md`.
 
-### Cutover to blog.mithis.net (when DNS flips)
+### Reverting the cutover (if DNS isn't ready yet)
 
-Three changes — one commit:
+If `blog.mithis.net` DNS still points at the old WordPress host:
 
-1. `_config.yml`: set `baseurl: ""` (drop the `/blog.mithis.net` subpath).
-2. `_config.yml`: set `url: "https://blog.mithis.net"` (drop the github.io staging origin).
-3. Create a `CNAME` file at the repo root containing the single line `blog.mithis.net`.
-
-After deploy, the diff tooling in `tmp/` still works — point `LIVE_BASE` / `DEPLOYED_BASE` at the same custom-domain origin to verify zero regression, or compare against the Wayback machine to validate cutover-day fidelity.
+1. `_config.yml`: `baseurl: "/blog.mithis.net"` and `url: "https://mithro.github.io"`.
+2. Delete `CNAME`.
+3. Push — site goes back to https://mithro.github.io/blog.mithis.net/ staging mode.
 
 ### Core directive (durable, from the user 2026-05-21)
 
@@ -44,13 +42,15 @@ gh run list --limit 1
 
 GitHub Pages must use the **GitHub Actions builder** (not the legacy branch builder) so custom plugins run — see `.github/workflows/jekyll.yml`. The legacy builder would silently skip `_plugins/` and produce a broken build.
 
-## Local serving (`tmp/serve/`)
+## Local serving
 
-`_config.yml` sets `baseurl: /blog.mithis.net`, so internal URLs have a `/blog.mithis.net/...` prefix. The build still emits files to `_site/` (without that prefix). `tmp/serve/blog.mithis.net` is a symlink → `_site/` so `http://127.0.0.1:8731/blog.mithis.net/...` resolves locally to `_site/...`.
+`_config.yml` sets `baseurl: ""` and `url: https://blog.mithis.net`. Internal links are root-relative (`/assets/css/main.css`), so a plain HTTP server on `_site/` works:
 
-Always start the local server from `tmp/serve/` (not `_site/`) so the baseurl prefix works.
+```bash
+cd _site && uv run python -m http.server 8731
+```
 
-Cutover to the `blog.mithis.net` custom domain is a future step: change `_config.yml` `baseurl: ""` and `url:` to the production origin.
+The legacy `tmp/serve/blog.mithis.net` symlink (used during staging when URLs had a `/blog.mithis.net/` prefix) is no longer needed.
 
 ## Pixel-perfect verification workflow
 
