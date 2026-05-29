@@ -663,6 +663,13 @@ div.entry-content .language-bash.highlighter-rouge {
     border: 1px solid #c0c0c0;
     margin: 0 0 21.6px 0;
     overflow-x: auto;
+    /* Live's WP-Syntax stylesheet sets `.wp_syntax { width: 99% }` on the
+       outer wrapper — verified by inspecting the matched CSS rules on
+       blog.mithis.net. The remaining 1% leaves ~14px of right-side gutter
+       between the code block and the entry-content edge. Without this,
+       our wrapper fills 100% of the parent blockquote and the right
+       border sits ~14px further right than live's. */
+    width: 99%;
     /* Live's `.wp_syntax` sets base text color to #110000 (verified via DOM
        inheritance probe). Untagged tokens (variables, identifiers Rouge
        didn't classify) inherit this. Without it, local renders them at
