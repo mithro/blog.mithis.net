@@ -755,15 +755,17 @@ div.entry-content .language-bash .highlight .err {
     background: transparent;
     color: inherit;
 }
-/* `.n` (generic Name) - live's GeSHi marked some identifiers (constants
-   like `REG_EXPAND_SZ`, `HKEY_CURRENT_USER`, and parameters like `name`,
-   `path`) with explicit `color: #000` while leaving variables (`con`,
-   `filename`) plain. Since Rouge classes both as `.n`, picking #000 wins
-   on more tokens than the previous `inherit` (which gave #110000 from
-   `.wp_syntax`). The #000 vs #110000 delta is subtle (17 in red channel)
-   so the regress on plain variables is minimal. */
+/* `.n` (generic Name) - live's GeSHi explicitly marked SOME identifiers
+   (constants like `REG_EXPAND_SZ`, `HKEY_CURRENT_USER`, parameters like
+   `name`, `path`) with `color: #000` while leaving plain variables
+   (`con`, `filename`) UNWRAPPED — meaning those inherit the `.wp_syntax`
+   color `#110000`. Rouge classes both as `.n`, so we have to pick one.
+   Variables vastly outnumber the explicit-#000 tokens, so `inherit` wins
+   on the majority and reduces anti-aliasing drift along every identifier
+   character (the #000-vs-#110000 17-channel red-shift was producing
+   visible sub-pixel diffs at every glyph edge). */
 div.entry-content .language-python .highlight .n {
-    color: #000;
+    color: inherit;
 }
 div.entry-content .language-python .highlight .nn {
     color: #dc143c;
