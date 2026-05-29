@@ -28,9 +28,8 @@ PY_TOKEN_OVERRIDES = {
 
   # Non-stdlib module names in `from X import Y` that live left plain.
   # My CSS colors these crimson via `.kn + .n`. Override back to plain
-  # text (inherits #110000 from .wp_syntax). Currently only `pysqlite2`,
-  # `dbapi2` known.
-  %r{<span class="n">(pysqlite2|dbapi2)</span>} =>
+  # text (inherits #110000 from .wp_syntax).
+  %r{<span class="n">(pysqlite2|dbapi2|win32api)</span>} =>
     '<span class="n" style="color: inherit;">\1</span>',
 
   # Known stdlib module names that live's GeSHi colored crimson when
