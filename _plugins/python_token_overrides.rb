@@ -26,10 +26,11 @@ PY_TOKEN_OVERRIDES = {
   %r{<span class="p">,</span>} =>
     '<span class="p" style="color: #66cc66;">,</span>',
 
-  # Non-stdlib module names in `from X import Y` that live left plain.
-  # My CSS colors these crimson via `.kn + .n`. Override back to plain
-  # text (inherits #110000 from .wp_syntax).
-  %r{<span class="n">(pysqlite2|dbapi2|win32api)</span>} =>
+  # Non-stdlib module names AND names not in live's GeSHi stdlib list
+  # in `from X import Y` patterns. Live left these plain; my CSS colors
+  # crimson via `.kn + .n`. Override back to plain (inherits #110000
+  # from .wp_syntax).
+  %r{<span class="n">(pysqlite2|dbapi2|win32api|ctypes|pythonapi|py_object|c_char_p)</span>} =>
     '<span class="n" style="color: inherit;">\1</span>',
 
   # Known stdlib module names that live's GeSHi colored crimson when
