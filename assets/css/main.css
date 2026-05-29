@@ -672,6 +672,15 @@ div.entry-content .language-bash.highlighter-rouge {
 div.entry-content .language-python .highlight,
 div.entry-content .language-bash .highlight {
     background-color: #eee;
+    /* Per-line zebra striping — live's WP-Syntax does this on `td.code`
+       via a tiled linear-gradient with hard 50% stops. The tile is 1px
+       wide × 32px tall (= 2 × line-height of 16px): top 16px transparent
+       (shows the #eee base), bottom 16px gets a 90%-white overlay (≈ #f0
+       on #eee). Result: alternating #eee / ~#f0 horizontal bands the
+       full width of the code area, with no per-line HTML markup. */
+    background-image: linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.9) 50%);
+    background-size: 1px 32px;
+    background-repeat: repeat;
 }
 div.entry-content .language-python .highlight pre,
 div.entry-content .language-python pre.highlight,
