@@ -347,10 +347,12 @@ body.search div#content div.entry-meta {
 body.home div#content div.entry-meta span.entry-date,
 body.archive div#content div.entry-meta span.entry-date,
 body.search div#content div.entry-meta span.entry-date {
-    /* The 1.1em date abbr makes this line box 1px taller here than on live
-       (same font/line-height — a sub-pixel line-box rounding difference); trim
-       1px off the bottom margin so the meta items below line up with live. */
-    margin-bottom: calc(1.1em - 1px);
+    /* Under FULL standards mode (HTML5 doctype), the 1.1em date abbr made
+       the line-box 1px taller — we trimmed margin-bottom by 1px to compensate.
+       After switching to XHTML Transitional doctype (almost standards mode,
+       commit 26e3074), the line-box matches live exactly, so the trim is no
+       longer needed and was over-correcting by 1px on every meta block. */
+    margin-bottom: 1.1em;
     text-align: right;
 }
 
