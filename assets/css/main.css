@@ -777,19 +777,19 @@ div.entry-content .language-python .highlight .n {
 div.entry-content .language-python .highlight .nn {
     color: #dc143c;
 }
-/* Live's GeSHi colored module/class identifiers crimson — catch two
-   Rouge patterns:
-   1. `.kn + .n` — name DIRECTLY after an import keyword
-      (e.g. `from cStringIO`, `import StringIO` → cStringIO/StringIO)
-   2. `.n:has(+ .p + .nc)` — name followed by `.` then a Class name
-      (e.g. `cookielib.MozillaCookieJar`, `ConfigParser.ConfigParser`)
+/* Live's GeSHi colored module names crimson when they appear directly
+   after an import keyword (`from cStringIO`, `import StringIO`). Rouge
+   tags these as `.kn + .n` so the selector works generically.
 
-   Tried `.n:has(+ .p + .n)` for `os.path` etc but it caught variable
-   attribute access too (`obj.attr`), net regress on utf-8 post. Plugin-
-   based text-specific overrides handle the known stdlib modules
-   (`pysqlite2`, etc) instead. */
-div.entry-content .language-python .highlight .kn + .n,
-div.entry-content .language-python .highlight .n:has(+ .p + .nc) {
+   The companion selector `.n:has(+ .p + .nc)` for `module.ClassName`
+   was REMOVED — Rouge classifies any capitalized identifier as `.nc`,
+   so `obj.MethodName()` (e.g. `key.Close()`) matched too and painted
+   the receiver crimson when live had it plain. The plugin now
+   pre-styles the few real module→Class chains
+   (`ConfigParser.ConfigParser`, `cookielib.MozillaCookieJar`, etc.)
+   explicitly via inline style — see Pattern 2 in
+   python_token_overrides.rb. */
+div.entry-content .language-python .highlight .kn + .n {
     color: #dc143c;
 }
 /* Function names and class references default to plain black in live's

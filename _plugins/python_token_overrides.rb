@@ -161,12 +161,15 @@ Jekyll::Hooks.register %i[documents pages], :post_render do |item|
     ) do
       "#{Regexp.last_match(1)}<span class=\"n\" style=\"color: #dc143c;\">#{Regexp.last_match(2)}</span>"
     end
-    # Pattern 2: `.n` followed by `.p .` then `.nc` (module.ClassName, e.g.
-    #            `cookielib.MozillaCookieJar`, `ConfigParser.ConfigParser`).
-    #            `.nc` may carry pre-existing inline style from earlier
-    #            overrides, so allow attrs after `class="nc"`.
+    # Pattern 2: `.n` followed by `.p .` then `.nc` (module.ClassName).
+    # ONLY for known stdlib module names — Rouge incorrectly tags any
+    # capitalized identifier as `.nc`, so a method call like
+    # `key.Close()` matches `.n + .p + .nc` and would mis-color `key`
+    # crimson if we matched broadly. Live's GeSHi only colored true
+    # module→Class chains (e.g. `ConfigParser.ConfigParser`,
+    # `cookielib.MozillaCookieJar`); object.method() stayed plain.
     item.output = item.output.gsub(
-      %r{<span class="n">(\w+)</span>(<span class="p">\.</span><span class="nc"[^>]*>)}
+      %r{<span class="n">(ConfigParser|StringIO|cookielib|cStringIO|pysqlite2)</span>(<span class="p">\.</span><span class="nc"[^>]*>)}
     ) do
       "<span class=\"n\" style=\"color: #dc143c;\">#{Regexp.last_match(1)}</span>#{Regexp.last_match(2)}"
     end
