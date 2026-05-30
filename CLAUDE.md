@@ -4,23 +4,28 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A Jekyll-built **replacement** for the legacy WordPress blog at https://blog.mithis.net, deployed to GitHub Pages at the same custom domain. The custom-domain cutover is committed (`baseurl: ""`, `url: https://blog.mithis.net`, `CNAME` → `blog.mithis.net`). The WordPress source the site was mirrored from is being retired; once DNS points at GitHub Pages, this site IS blog.mithis.net.
+A Jekyll-built blog at https://blog.mithis.net, replacing the legacy WordPress install of the same domain. As of 2026-05-30 the cutover is **fully live**: DNS resolves to GitHub Pages (185.199.108-111.153), a valid Let's Encrypt cert is issued for `blog.mithis.net`, and `https_enforced` is on. The WordPress source the site was originally mirrored from is retired — blog.mithis.net IS this repo's build.
 
-The migration phase is complete (175/185 pages literally pixel-perfect against the WordPress original, remainder under 0.012%). Day-to-day work is **fidelity maintenance** and **new authoring**: when something is reported broken, identify the divergence vs. the Wayback Machine snapshot or local reference with the diff tools below; when writing a new post, follow `docs/AUTHORING.md`.
+The migration phase is complete (175/185 pages were literally pixel-perfect against the WordPress original, remainder under 0.012%). Day-to-day work is **issue-driven cleanup and new authoring**:
 
-### Reverting the cutover (if DNS isn't ready yet)
+- Open issues are tracked at https://github.com/mithro/blog.mithis.net/issues — they list the residual cleanup work (broken Picasa galleries, dead Twitter widget, contact-page rewrite, mobile polish, etc.).
+- For new posts follow `docs/AUTHORING.md`.
 
-If `blog.mithis.net` DNS still points at the old WordPress host:
+### Reverting the cutover (if DNS / cert ever breaks)
+
+If something forces a fallback to the mithro.github.io staging URL:
 
 1. `_config.yml`: `baseurl: "/blog.mithis.net"` and `url: "https://mithro.github.io"`.
 2. Delete `CNAME`.
 3. Push — site goes back to https://mithro.github.io/blog.mithis.net/ staging mode.
 
-### Core directive (durable, from the user 2026-05-21)
+`_plugins/baseurl_asset_paths.rb` is kept around dormant for exactly this case — it rewrites raw-HTML asset paths in post bodies to include the baseurl prefix when one is set.
 
-> "The github version should be faithful to the current live https://blog.mithis.net — broken stuff and all"
+### Core directive (evolved)
 
-Broken Picasa thumbnails, cached Twitter, Shashin galleries, missing wp-content uploads — all preserved as-is. Don't "fix" them. The site should be visually and functionally indistinguishable from the live blog, including its bugs.
+The original 2026-05-21 directive was: *"The github version should be faithful to the current live https://blog.mithis.net — broken stuff and all"*. That held throughout the migration phase.
+
+As of 2026-05-30 the user has explicitly moved past fidelity: they want broken things FIXED, not preserved. Open issues #9–#25 are the cleanup backlog. **When you see something broken, file or fix it; don't preserve it as a "live-fidelity" artifact.** Visual-design credits (the Barthelme theme designer Scott Allan Wallick) stay; engine credits and dead links go — see [[keep-theme-designer-credit]] in auto-memory.
 
 ## Build, serve, deploy
 
@@ -28,8 +33,8 @@ Broken Picasa thumbnails, cached Twitter, Shashin galleries, missing wp-content 
 # Build (production env so SCSS etc compile right)
 JEKYLL_ENV=production bundle3.3 exec jekyll build
 
-# Local serve — see "Local serving" below; URLs must use the /blog.mithis.net/ baseurl prefix
-uv run python tmp/serve.py    # runs SimpleHTTPServer on :8731 from tmp/serve/
+# Local serve
+cd _site && uv run python -m http.server 8731
 
 # Push to deploy (GitHub Actions builds + publishes)
 git push origin main
@@ -42,62 +47,7 @@ gh run list --limit 1
 
 GitHub Pages must use the **GitHub Actions builder** (not the legacy branch builder) so custom plugins run — see `.github/workflows/jekyll.yml`. The legacy builder would silently skip `_plugins/` and produce a broken build.
 
-## Local serving
-
-`_config.yml` sets `baseurl: ""` and `url: https://blog.mithis.net`. Internal links are root-relative (`/assets/css/main.css`), so a plain HTTP server on `_site/` works:
-
-```bash
-cd _site && uv run python -m http.server 8731
-```
-
-The legacy `tmp/serve/blog.mithis.net` symlink (used during staging when URLs had a `/blog.mithis.net/` prefix) is no longer needed.
-
-## Pixel-perfect verification workflow
-
-The breakthrough tool of the recent fidelity push: **`tmp/diff_mask.py`** — generates a full-page mask image where every pixel that differs between live and local is painted red on white. Red pixels form character-shape clusters, so you can immediately see WHICH glyphs differ instead of guessing at sub-pixel noise. Use it FIRST on any new divergence.
-
-Workflow tools (all in `tmp/`, all use Playwright + numpy/PIL via `uv run --with playwright --with numpy --with pillow python …`):
-
-| Tool | Purpose |
-|---|---|
-| `batch_pixdiff.py` | Sweep all 75 posts: live vs local. Reports per-post diff %. |
-| `listing_diff_all.py` | Same, for all 110 listing/tag/category/author/pagination pages. |
-| `sweep_deployed.py` | live vs DEPLOYED mithro.github.io (use after CI deploy). |
-| `check_each.py` | For one list of pages, dump per-page diff bands as (y₀,y₁,xrange,px_count). |
-| `diff_mask.py` | The red-on-white character-shape mask (the breakthrough viz). |
-| `diff_per_row.py` | Sort rows by diff-pixel count. |
-| `sample_color.py` | Sample exact RGB at given (x,y) — confirms whether a glyph really differs or is just anti-aliasing. |
-| `shot_one.py`, `cmp_dep.py` | Pairwise screenshot helpers. |
-| `crop_box.py`, `upscale4x.py` | Crop a region and zoom 4x for visual diff. |
-
-DOM probes (Playwright + `getComputedStyle`) are how you confirm a CSS/HTML hypothesis. Don't trust your eyes on zoomed PNGs — sample actual pixel colors and computed styles.
-
-The pixel-perfect goal targets the DEPLOYED mithro.github.io site, not just local. After every push, run `sweep_deployed.py` (or a targeted sub-set via `check_each.py`) to confirm the fix landed.
-
-## Plugin architecture (`_plugins/`)
-
-Two custom Jekyll plugins do the heavy lifting:
-
-- **`baseurl_asset_paths.rb`** — rewrites asset paths in the output HTML to include the `/blog.mithis.net/` baseurl prefix for the github.io staging mode.
-
-- **`python_token_overrides.rb`** — Jekyll `post_render` hook that rewrites Rouge-emitted HTML inside `.language-python` / `.language-bash` code blocks to match the live's WP-Syntax (GeSHi) output:
-  - Per-token color overrides (commas → light green `#66cc66`, `%` operator → inherit, etc.)
-  - Span splitting for merged punctuation (`<span class="p">],</span>` → `,` gets its own green span)
-  - Pre-styling for module-name patterns (`from cStringIO import` → cStringIO crimson)
-  - Stripping of plain `.n` (Name) and `.sa` (string affix) spans to match live's unwrapped text
-  - Inserting `\X` escape highlighting inside raw-string `.s` spans
-  - Bash-specific overrides (`/` paths bold-black, `;;` bold-black, `$VAR` in `"…"` red)
-
-The plugin runs after Rouge produces its HTML, so it edits HTML — it does NOT change Rouge's lexer. Patterns and reasoning are documented inline in the file.
-
-## Critical files & invariants
-
-- **`_layouts/default.html` starts with `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" …>`** — XHTML 1.0 Transitional triggers Chromium's *almost-standards mode* which matches the live blog's rendering. Do not change to HTML5 doctype; it breaks pixel parity across all pages.
-- **`assets/css/main.css`** is the main stylesheet. Plain CSS (not SCSS). Many token-color overrides live here scoped to `.language-python .highlight .X` selectors. Notes inside explain WHY each rule exists (with `Live's GeSHi …` references).
-- **`_config.yml`** baseurl / url comments mark the staging-vs-cutover toggle.
-- **Galleries are PINNED** (deterministic) for both the header and sidebar — see commits 341a44c, 757ec74, d174bac. Don't randomize them.
-
-## Fidelity linter (raw HTML rule)
+## Content lint (raw HTML rule)
 
 `scripts/fidelity/lint_content.py` enforces "no hardcoded block HTML in posts". Inline HTML (`<a>`, `<code>`, `<em>`, `<img>`, etc.) is fine. Block HTML (`<div>`, `<object>`, `<table>`, `<p>` etc.) requires an opt-out sentinel:
 
@@ -110,29 +60,75 @@ The plugin runs after Rouge produces its HTML, so it edits HTML — it does NOT 
 
 **Critical:** the sentinel must be on the SAME line as the BLOCK_HTML or the IMMEDIATELY PRECEDING line. Wrapping with `{::nomarkdown}` in between would push the sentinel two lines away → CI fail. (This bit 17 commits silently before being caught.)
 
+Run with: `uv run python -m scripts.fidelity.lint_content _posts --asset-root .`
+
+## Plugin architecture (`_plugins/`)
+
+- **`python_token_overrides.rb`** — Jekyll `post_render` hook that rewrites Rouge-emitted HTML inside `.language-python` / `.language-bash` code blocks to match live's WP-Syntax (GeSHi) output:
+  - Per-token color overrides (commas → light green `#66cc66`, `%` operator → inherit, etc.)
+  - Span splitting for merged punctuation (`<span class="p">],</span>` → `,` gets its own green span)
+  - Pre-styling for module-name patterns (`from cStringIO import` → cStringIO crimson)
+  - Stripping of plain `.n` (Name) and `.sa` (string affix) spans to match live's unwrapped text
+  - Inserting `\X` escape highlighting inside raw-string `.s` spans
+  - Bash-specific overrides (`/` paths bold-black, `;;` bold-black, `$VAR` in `"…"` red)
+
+  The plugin runs after Rouge produces its HTML, so it edits HTML — it does NOT change Rouge's lexer. Patterns and reasoning are documented inline. Since #25, Rouge now wraps each block in a `<table class="rouge-table">` with `.rouge-gutter` (line numbers) and `.rouge-code` columns; the plugin's regex passes still apply because the inner span structure is unchanged.
+
+- **`baseurl_asset_paths.rb`** — dormant post-cutover (only fires when `site.baseurl` is non-empty). Rewrites raw-HTML asset paths in post bodies to prepend the baseurl. Kept for the revert recipe above.
+
+## Code-block line numbers (since #25)
+
+Enabled site-wide via `_config.yml`:
+
+```yaml
+kramdown:
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+      start_line: 1
+```
+
+Rouge emits table mode: `<td class="rouge-gutter">` holds the line numbers, `<td class="rouge-code">` holds the code. CSS for the gutter (`assets/css/main.css`, near the `.language-python.highlighter-rouge` block) sets `user-select: none` so the numbers are excluded from copy-paste. This is a deliberate divergence from live's WP-Syntax rendering.
+
+## Auto-generated sidebar widgets (since #17/#18)
+
+`_includes/sidebar.html` generates the **tags cloud** and **categories dropdown** from data instead of hardcoded HTML:
+
+- **Tags cloud:** iterates `site.pages | where: "layout", "tag"`, looks up `site.tags[tag_name] | size` for the count, scales font-size 8pt→22pt linearly. Picks up all on-disk tag pages.
+- **Categories dropdown:** iterates `site.pages | where: "layout", "category"`, looks up `site.categories[cat_slug] | size`. The onChange handler is `if(this.value && this.value != '-1') { window.location.href = this.value; }` — replaced the prior `if(this.value > 0)` which always evaluated NaN > 0 → false and never navigated.
+
+The hierarchy display (sub-categories indented under parents) was dropped — sub-cats appear flat in their alphabetical position. To restore hierarchy, add a `parent_cat:` field to sub-category page frontmatter and group at render time.
+
+## Critical files & invariants
+
+- **`_layouts/default.html` starts with `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" …>`** — XHTML 1.0 Transitional triggers Chromium's *almost-standards mode* which matches the live blog's rendering. Do not change to HTML5 doctype; it breaks rendering across all pages.
+- **`assets/css/main.css`** is the main stylesheet. Plain CSS (not SCSS). Many token-color overrides live here scoped to `.language-python .highlight .X` selectors. Inline comments explain WHY each rule exists (with `Live's GeSHi …` references).
+- **Galleries are PINNED** (deterministic) for both the header and sidebar — commits 341a44c, 757ec74, d174bac. Don't randomize them (and they're all broken Picasa thumbnails tracked in #10/#11 — to be removed/replaced, not "fixed in place").
+
+## Pixel-diff tools (now mostly historical)
+
+The diff tools in `tmp/` (sweep_deployed.py, batch_pixdiff.py, listing_diff_all.py, diff_mask.py, etc.) were the workhorses of the migration's pixel-perfect push. They compare local/deployed against `https://blog.mithis.net` (the live WordPress).
+
+Post-cutover, the live WordPress is being retired — the diff tools no longer have a separate "live source of truth" to diff against. They remain useful for **regression detection** (build A vs build B of the Jekyll site), but the "match live WordPress pixel-for-pixel" workflow is over.
+
+The breakthrough viz `diff_mask.py` (red pixels on white where builds differ) is still the right tool when a CSS change might have regressed something — diff before/after builds.
+
 ## Git workflow
 
-- `origin` is `git+ssh://github.com/mithro/blog.mithis.net`. Push to it directly (no fork chain).
-- Commit messages should explain WHY (the live-fidelity reason), not just WHAT. Include diff-% before/after when relevant. End with `Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>`.
-- **Always check CI after pushing:** `gh run list --limit 1`. A green CI is necessary, not sufficient — also verify with `sweep_deployed.py` (or by reading mithro.github.io directly) that the change is actually deployed and matches live.
+- `origin` is `git+ssh://github.com/mithro/blog.mithis.net`. Push to it directly.
+- Commit messages should explain WHY. During the cleanup phase, that "why" usually points at a GitHub issue (`Closes #N`). End commit messages with `Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>`.
+- GitHub's auto-close keyword only catches the FIRST `#N` reference in a multi-issue commit like `Closes #14, #15, #16` — close the rest manually with `gh issue close N`.
+- **Always check CI after pushing:** `gh run list --limit 1`. A green CI is necessary, not sufficient — also verify the change is actually live (`curl -s https://blog.mithis.net/<path>` or a Playwright screenshot).
 
 ## Auto-memory location
 
-`/home/tim/.claude/projects/-home-tim-github-mithro-blog-mithis-net/memory/` holds session-spanning notes (current fidelity state, workflow learnings, server-leftover audit, etc.). The `MEMORY.md` index there is the entry point.
+`/home/tim/.claude/projects/-home-tim-github-mithro-blog-mithis-net/memory/` holds session-spanning notes. The `MEMORY.md` index there is the entry point. Key memories: the [[keep-theme-designer-credit]] rule (distinguish engine credits from visual-design credits when cleaning up), the [[check-ci-and-deployment]] reminder.
 
 ## Common pitfalls
 
-- **Wrong server cwd** — starting the local server from `_site/` instead of `tmp/serve/` makes every `/blog.mithis.net/…` URL 404. The pixel diff will hit ~12% (just live's content vs an empty local), looking like a catastrophic regression.
 - **Bare `bundle exec`** — uses the wrong Ruby. Use `bundle3.3 exec`.
-- **Stale screenshots in `tmp/`** — pairwise diff scripts overwrite the same paths. Re-run `shot_one.py` after every build, or you'll be looking at last-build's diff.
-- **Trusting visual judgment of zoomed PNGs** — Chromium renders the same character differently for cross-domain font cascades. Use `sample_color.py` / DOM probes to confirm.
-- **Forgetting the CI check** — commit + push doesn't equal deployed. The user notices when github.io still shows old content while CI is mid-run or failed.
-
-## Personal coding conventions (from the user's global `~/.claude/CLAUDE.md`)
-
-- Always use `uv run` / `uv pip` for Python (never bare `python`/`pip`).
-- Date format: ISO 8601 (`YYYY-MM-DD`) or day-first (`29 May 2026`). Never American month-first.
-- Small, focused commits. No `git push --force` (use `git safe-force-push <branch>` if necessary).
-- Project-local `tmp/` for scratch files. Never `/tmp/`. Clean up tmp files when done.
-- Never redirect stderr to `/dev/null`.
-- Never use `-H` with `ssh-keyscan`.
+- **GitHub auto-close only catches the first issue reference.** "Closes #14, #15, #16" only closes #14 automatically; manually close the rest with `gh issue close`.
+- **`onchange="if(this.value > 0) …"` is broken for URL values** — string > 0 is always NaN > 0 = false. Use explicit string compare against the placeholder option's value.
+- **Stale screenshots in `tmp/`** — diff/screenshot scripts overwrite the same paths. Re-run after every build.
+- **Stderr redirection (`2>/dev/null`) is blocked** by a hook — keep stderr visible.
+- **Inline `python -c "..."` is blocked** by a hook — write to a tmp script file and run that instead.
