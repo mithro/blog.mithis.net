@@ -41,9 +41,6 @@ plugins:
 # Timezone — match live blog.mithis.net WP timezone (+10:00, AEST/AEDT no DST = Brisbane)
 timezone: Australia/Brisbane
 
-# Google Analytics
-google_analytics: UA-XXXXXXXX-X  # Replace with actual tracking ID
-
 # Pagination — WordPress uses /page/2/, /page/3/ etc; default Jekyll
 # would be /page2/. Match live's URL structure exactly.
 paginate: 10
