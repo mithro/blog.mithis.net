@@ -60,40 +60,20 @@ RT <a href="http://twitter.com/XilinxInc">@XilinxInc</a>: $349, Open-Source, FPG
 </li>
 
 <!-- Categories Widget -->
-<!-- NOTE: Category counts below are static integers set to the WP oracle values by the
-     PSC phase. To switch to auto-computed Liquid counts after the corpus is confirmed
-     oracle-complete, replace each static "(N)" with a Liquid size filter, e.g.:
-       ({{ site.posts | where_exp: "p", "p.categories contains 'hardware'" | size }})
-     Deferred in P5 (USER-DECISION C-1) — keep static until the systemic multi-category
-     under-import pass confirms the corpus is oracle-complete. -->
+<!-- Categories: auto-generated from site.pages where layout=category.
+     Each category page (under category/) declares cat_slug + permalink in its
+     frontmatter; site.categories[cat_slug] gives the post count. -->
+{%- assign cat_pages = site.pages | where: "layout", "category" | sort: "title" -%}
 <li id="categories-3" class="widget widget_categories"><h3 class='widgettitle'>Categories</h3>
 <label class="screen-reader-text" for="cat">Categories</label>
-<select name='cat' id='cat' class='postform' onchange="if(this.value > 0) window.location.href=this.value">
+<select name='cat' id='cat' class='postform' onchange="if(this.value &amp;&amp; this.value != '-1') { window.location.href = this.value; }">
     <option value='-1'>Select Category</option>
-    <option class="level-0" value="{{ '/archives/category/diary/' | relative_url }}">Diary&nbsp;&nbsp;(2)</option>
-    <option class="level-0" value="{{ '/archives/category/games/' | relative_url }}">Games&nbsp;&nbsp;(3)</option>
-    <option class="level-0" value="{{ '/archives/category/gaming-miniconf/' | relative_url }}">Gaming Miniconf&nbsp;&nbsp;(7)</option>
-    <option class="level-0" value="{{ '/archives/category/google/' | relative_url }}">Google&nbsp;&nbsp;(7)</option>
-    <option class="level-0" value="{{ '/archives/category/hardware/' | relative_url }}">Hardware&nbsp;&nbsp;(3)</option>
-    <option class="level-0" value="{{ '/archives/category/highlights/' | relative_url }}">Highlights&nbsp;&nbsp;(2)</option>
-    <option class="level-0" value="{{ '/archives/category/ideas/' | relative_url }}">Ideas&nbsp;&nbsp;(9)</option>
-    <option class="level-0" value="{{ '/archives/category/lca/' | relative_url }}">linux.conf.au&nbsp;&nbsp;(12)</option>
-    <option class="level-0" value="{{ '/archives/category/pcb/' | relative_url }}">PCB&nbsp;&nbsp;(5)</option>
-    <option class="level-0" value="{{ '/archives/category/python/' | relative_url }}">Python&nbsp;&nbsp;(6)</option>
-    <option class="level-0" value="{{ '/archives/category/rcs/' | relative_url }}">RCS&nbsp;&nbsp;(3)</option>
-    <option class="level-1" value="{{ '/archives/rcs/darcs/' | relative_url }}">&nbsp;&nbsp;&nbsp;darcs&nbsp;&nbsp;(3)</option>
-    <option class="level-1" value="{{ '/archives/rcs/tailor/' | relative_url }}">&nbsp;&nbsp;&nbsp;Tailor&nbsp;&nbsp;(1)</option>
-    <option class="level-0" value="{{ '/archives/category/scheme/' | relative_url }}">Scheme&nbsp;&nbsp;(1)</option>
-    <option class="level-0" value="{{ '/archives/category/sci-fi/' | relative_url }}">Sci Fi&nbsp;&nbsp;(1)</option>
-    <option class="level-0" value="{{ '/archives/category/summer-of-code/' | relative_url }}">Summer of Code&nbsp;&nbsp;(8)</option>
-    <option class="level-0" value="{{ '/archives/category/sydney/' | relative_url }}">Sydney&nbsp;&nbsp;(1)</option>
-    <option class="level-0" value="{{ '/archives/category/tp/' | relative_url }}">Thousand Parsec&nbsp;&nbsp;(16)</option>
-    <option class="level-0" value="{{ '/archives/category/timvideos-us/' | relative_url }}">TimVideos.us&nbsp;&nbsp;(10)</option>
-    <option class="level-1" value="{{ '/archives/category/timvideos-us/hdmi2usb/' | relative_url }}">&nbsp;&nbsp;&nbsp;HDMI2USB&nbsp;&nbsp;(10)</option>
-    <option class="level-0" value="{{ '/archives/category/ubuntu/' | relative_url }}">Ubuntu&nbsp;&nbsp;(3)</option>
-    <option class="level-0" value="{{ '/archives/category/uncategorized/' | relative_url }}">Uncategorized&nbsp;&nbsp;(10)</option>
-    <option class="level-0" value="{{ '/archives/category/uni/' | relative_url }}">Uni&nbsp;&nbsp;(5)</option>
-    <option class="level-0" value="{{ '/archives/category/useful-bits/' | relative_url }}">Useful Bits&nbsp;&nbsp;(4)</option>
+{%- for cat in cat_pages -%}
+    {%- assign cnt = site.categories[cat.cat_slug] | size -%}
+    {%- if cnt > 0 %}
+    <option class="level-0" value="{{ cat.permalink | relative_url }}">{{ cat.title }}&nbsp;&nbsp;({{ cnt }})</option>
+    {%- endif -%}
+{%- endfor %}
 </select>
 </li>
 
@@ -105,54 +85,28 @@ RT <a href="http://twitter.com/XilinxInc">@XilinxInc</a>: $349, Open-Source, FPG
     </ul>
 </li>
 
-<!-- Tags Cloud Widget -->
+<!-- Tags cloud: auto-generated from site.pages where layout=tag.
+     Each tag page (under archives/tag/) declares tag_name + permalink in its
+     frontmatter; site.tags[tag_name] gives the post count. Font-size scales
+     linearly from 8pt (count=1) to 22pt (count=max). -->
+{%- assign tag_pages = site.pages | where: "layout", "tag" | sort: "title" -%}
+{%- assign max_count = 1 -%}
+{%- for tp in tag_pages -%}
+    {%- assign tc = site.tags[tp.tag_name] | size -%}
+    {%- if tc > max_count -%}{%- assign max_count = tc -%}{%- endif -%}
+{%- endfor -%}
+{%- assign denom = max_count | minus: 1 -%}
+{%- if denom < 1 -%}{%- assign denom = 1 -%}{%- endif -%}
 <li id="tag_cloud-3" class="widget widget_tag_cloud"><h3 class='widgettitle'>Tags</h3>
 <div class="tagcloud">
-<a href="{{ '/archives/tag/code' | relative_url }}" class='tag-link-74 tag-link-position-1' title='1 topic' style='font-size: 8pt;'>code</a>
-<a href="{{ '/archives/tag/cookies' | relative_url }}" class='tag-link-55 tag-link-position-2' title='2 topics' style='font-size: 14.3pt;'>cookies</a>
-<a href="{{ '/archives/tag/cross-compile' | relative_url }}" class='tag-link-76 tag-link-position-3' title='1 topic' style='font-size: 8pt;'>cross compile</a>
-<a href="{{ '/archives/tag/cross-compiling' | relative_url }}" class='tag-link-82 tag-link-position-4' title='1 topic' style='font-size: 8pt;'>cross compiling</a>
-<a href="{{ '/archives/tag/cygwin' | relative_url }}" class='tag-link-78 tag-link-position-5' title='1 topic' style='font-size: 8pt;'>cygwin</a>
-<a href="{{ '/archives/tag/firefly' | relative_url }}" class='tag-link-104 tag-link-position-6' title='1 topic' style='font-size: 8pt;'>firefly</a>
-<a href="{{ '/archives/tag/firefox' | relative_url }}" class='tag-link-42 tag-link-position-7' title='3 topics' style='font-size: 18.5pt;'>firefox</a>
-<a href="{{ '/archives/tag/foss' | relative_url }}" class='tag-link-38 tag-link-position-8' title='2 topics' style='font-size: 14.3pt;'>foss</a>
-<a href="{{ '/archives/tag/freedom' | relative_url }}" class='tag-link-93 tag-link-position-9' title='1 topic' style='font-size: 8pt;'>freedom</a>
-<a href="{{ '/archives/tag/games' | relative_url }}" class='tag-link-346 tag-link-position-10' title='3 topics' style='font-size: 18.5pt;'>Games</a>
-<a href="{{ '/archives/tag/gaming' | relative_url }}" class='tag-link-92 tag-link-position-11' title='1 topic' style='font-size: 8pt;'>gaming</a>
-<a href="{{ '/archives/tag/google' | relative_url }}" class='tag-link-348 tag-link-position-12' title='4 topics' style='font-size: 22pt;'>Google</a>
-<a href="{{ '/archives/tag/gsoc' | relative_url }}" class='tag-link-350 tag-link-position-13' title='2 topics' style='font-size: 14.3pt;'>gsoc</a>
-<a href="{{ '/archives/tag/hal' | relative_url }}" class='tag-link-70 tag-link-position-14' title='1 topic' style='font-size: 8pt;'>hal</a>
-<a href="{{ '/archives/tag/hot-plug' | relative_url }}" class='tag-link-83 tag-link-position-15' title='1 topic' style='font-size: 8pt;'>hot plug</a>
-<a href="{{ '/archives/tag/ksplice' | relative_url }}" class='tag-link-86 tag-link-position-16' title='1 topic' style='font-size: 8pt;'>ksplice</a>
-<a href="{{ '/archives/tag/late' | relative_url }}" class='tag-link-94 tag-link-position-17' title='1 topic' style='font-size: 8pt;'>late</a>
-<a href="{{ '/archives/tag/lca09' | relative_url }}" class='tag-link-100 tag-link-position-18' title='1 topic' style='font-size: 8pt;'>lca09</a>
-<a href="{{ '/archives/tag/lca10' | relative_url }}" class='tag-link-107 tag-link-position-19' title='1 topic' style='font-size: 8pt;'>lca10</a>
-<a href="{{ '/archives/tag/lca2009' | relative_url }}" class='tag-link-99 tag-link-position-20' title='2 topics' style='font-size: 14.3pt;'>lca2009</a>
-<a href="{{ '/archives/tag/lca2010' | relative_url }}" class='tag-link-108 tag-link-position-21' title='1 topic' style='font-size: 8pt;'>lca2010</a>
-<a href="{{ '/archives/tag/lguest' | relative_url }}" class='tag-link-85 tag-link-position-22' title='1 topic' style='font-size: 8pt;'>lguest</a>
-<a href="{{ '/archives/tag/linux' | relative_url }}" class='tag-link-351 tag-link-position-23' title='1 topic' style='font-size: 8pt;'>linux</a>
-<a href="{{ '/archives/tag/linuxconfau' | relative_url }}" class='tag-link-77 tag-link-position-24' title='1 topic' style='font-size: 8pt;'>linux.conf.au</a>
-<a href="{{ '/archives/tag/lca' | relative_url }}" class='tag-link-343 tag-link-position-25' title='1 topic' style='font-size: 8pt;'>linux.conf.au</a>
-<a href="{{ '/archives/tag/mentors-summit' | relative_url }}" class='tag-link-71 tag-link-position-26' title='1 topic' style='font-size: 8pt;'>mentors summit</a>
-<a href="{{ '/archives/tag/mingw32' | relative_url }}" class='tag-link-79 tag-link-position-27' title='1 topic' style='font-size: 8pt;'>mingw32</a>
-<a href="{{ '/archives/tag/new-zealand' | relative_url }}" class='tag-link-73 tag-link-position-28' title='1 topic' style='font-size: 8pt;'>new zealand</a>
-<a href="{{ '/archives/tag/olpc' | relative_url }}" class='tag-link-98 tag-link-position-29' title='1 topic' style='font-size: 8pt;'>olpc</a>
-<a href="{{ '/archives/tag/osdc' | relative_url }}" class='tag-link-91 tag-link-position-30' title='1 topic' style='font-size: 8pt;'>osdc</a>
-<a href="{{ '/archives/tag/ovpc' | relative_url }}" class='tag-link-97 tag-link-position-31' title='1 topic' style='font-size: 8pt;'>ovpc</a>
-<a href="{{ '/archives/tag/paper' | relative_url }}" class='tag-link-95 tag-link-position-32' title='1 topic' style='font-size: 8pt;'>paper</a>
-<a href="{{ '/archives/tag/python' | relative_url }}" class='tag-link-345 tag-link-position-33' title='2 topics' style='font-size: 14.3pt;'>Python</a>
-<a href="{{ '/archives/tag/raptors' | relative_url }}" class='tag-link-88 tag-link-position-34' title='1 topic' style='font-size: 8pt;'>raptors</a>
-<a href="{{ '/archives/tag/scifi' | relative_url }}" class='tag-link-105 tag-link-position-35' title='1 topic' style='font-size: 8pt;'>scifi</a>
-<a href="{{ '/archives/tag/snippet' | relative_url }}" class='tag-link-75 tag-link-position-36' title='1 topic' style='font-size: 8pt;'>snippet</a>
-<a href="{{ '/archives/tag/starhunter' | relative_url }}" class='tag-link-102 tag-link-position-37' title='1 topic' style='font-size: 8pt;'>starhunter</a>
-<a href="{{ '/archives/tag/sydney' | relative_url }}" class='tag-link-349 tag-link-position-38' title='2 topics' style='font-size: 14.3pt;'>Sydney</a>
-<a href="{{ '/archives/tag/thousand-parsec' | relative_url }}" class='tag-link-48 tag-link-position-39' title='3 topics' style='font-size: 18.5pt;'>thousand parsec</a>
-<a href="{{ '/archives/tag/tpserver-cpp' | relative_url }}" class='tag-link-80 tag-link-position-40' title='1 topic' style='font-size: 8pt;'>tpserver-cpp</a>
-<a href="{{ '/archives/tag/ubuntu' | relative_url }}" class='tag-link-347 tag-link-position-41' title='2 topics' style='font-size: 14.3pt;'>Ubuntu</a>
-<a href="{{ '/archives/tag/velociraptor' | relative_url }}" class='tag-link-96 tag-link-position-42' title='1 topic' style='font-size: 8pt;'>velociraptor</a>
-<a href="{{ '/archives/tag/windows' | relative_url }}" class='tag-link-81 tag-link-position-43' title='1 topic' style='font-size: 8pt;'>windows</a>
-<a href="{{ '/archives/tag/worldforge' | relative_url }}" class='tag-link-72 tag-link-position-44' title='1 topic' style='font-size: 8pt;'>worldforge</a>
-<a href="{{ '/archives/tag/youtube' | relative_url }}" class='tag-link-103 tag-link-position-45' title='1 topic' style='font-size: 8pt;'>youtube</a>
+{%- for tp in tag_pages -%}
+    {%- assign cnt = site.tags[tp.tag_name] | size -%}
+    {%- if cnt > 0 -%}
+        {%- assign font_size = cnt | minus: 1 | times: 14 | divided_by: denom | plus: 8 -%}
+        {%- if cnt == 1 -%}{%- assign label = "1 topic" -%}{%- else -%}{%- assign label = cnt | append: " topics" -%}{%- endif %}
+<a href="{{ tp.permalink | relative_url }}" class='tag-link' title='{{ label }}' style='font-size: {{ font_size }}pt;'>{{ tp.tag_name }}</a>
+    {%- endif -%}
+{%- endfor %}
 </div>
 </li>
 
