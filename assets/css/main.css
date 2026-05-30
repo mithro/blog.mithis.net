@@ -612,6 +612,16 @@ div.entry-content pre {
     font: 1em/150% "courier new", courier, monospace;
 }
 
+/* Issue #21: plain <pre> blocks (from bare-pre.html or similar) with very
+   wide content (e.g. single-line error logs > 1400px) push the body's
+   scrollWidth past the viewport, forcing horizontal page scroll. Rouge
+   wrappers (.language-*.highlighter-rouge) already handle this via their
+   own overflow-x rule; this catches the plain-pre case. */
+div.entry-content pre {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
 /* Live had no background/border/padding on inline <code> (verified via DOM
    inspection: e.g. nm-autovpn's `nmcli con up` code → 0px padding). The
    syntax-highlighting.css include adds `p code { background:#f1f1f1; border;
