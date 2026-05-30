@@ -54,15 +54,7 @@ layout: default
                 
                 <span class="entry-rsslink">Follow any responses to this post with its <a href="{{ page.url | append: '/feed' | relative_url }}" title="Comments RSS to {{ page.title | escape }}" rel="alternate" type="application/rss+xml">comments RSS</a> feed.</span>
 
-                {%- if page.comments_closed and page.trackbacks_closed -%}
-                <span class="entry-interact">Both comments and trackbacks are currently closed.</span>
-                {%- elsif page.trackbacks_closed -%}
-                <span class="entry-interact">You can <a href="#respond" title="Post a comment">post a comment</a>, but trackbacks are closed.</span>
-                {%- elsif page.comments_closed -%}
-                <span class="entry-interact">Comments are closed, but you can <a href="{{ page.url | append: '/trackback' | relative_url }}" rel="trackback" title="Trackback URL for your post">trackback</a> from your own site.</span>
-                {%- else -%}
-                <span class="entry-interact">You can <a href="#respond" title="Post a comment">post a comment</a> or <a href="{{ page.url | append: '/trackback' | relative_url }}" rel="trackback" title="Trackback URL for your post">trackback</a> from your blog.</span>
-                {%- endif -%}
+                <span class="entry-interact">Comments are closed for this post.</span>
             </div>
         </div><!-- .post -->
 
