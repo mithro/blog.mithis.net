@@ -19,15 +19,17 @@ However, a couple of the keys I have are auto generated, with the key being load
 
 I ended up using the following script to dump the public keys to files;
 
->     # Dump the public keys
->     for KEY in $(ssh-add -l | sed -e's/[^ ]\+ [^ ]\+ \([^ ]\+\) .*/\1/'); do
->       if echo $KEY | grep -q '^/'; then
->         continue
->       fi
->       export KEY_FILE="$HOME/.ssh/agent.$(echo $KEY | sed -e's/[^A-Za-z0-9]/_/g').pub"
->       echo "Saving $KEY into $KEY_FILE"
->       ssh-add -L | grep $KEY > $KEY_FILE
->     done
+```bash
+# Dump the public keys
+for KEY in $(ssh-add -l | sed -e's/[^ ]\+ [^ ]\+ \([^ ]\+\) .*/\1/'); do
+  if echo $KEY | grep -q '^/'; then
+    continue
+  fi
+  export KEY_FILE="$HOME/.ssh/agent.$(echo $KEY | sed -e's/[^A-Za-z0-9]/_/g').pub"
+  echo "Saving $KEY into $KEY_FILE"
+  ssh-add -L | grep $KEY > $KEY_FILE
+done
+```
 
 Then I added the following to the ssh_config
 
