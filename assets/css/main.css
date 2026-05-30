@@ -712,6 +712,46 @@ div.entry-content .language-bash pre.highlight {
     border: none !important;
 }
 
+/* Issue #25: Rouge line-numbers in table mode.
+   Each code block now contains <table class="rouge-table"><tr>
+     <td class="rouge-gutter gl"><pre class="lineno">1\n2\n3...</pre></td>
+     <td class="rouge-code"><pre>code</pre></td>
+   </tr></table>
+   The zebra gradient on .highlight still tiles vertically behind both
+   columns, so per-row striping is preserved. */
+div.entry-content .language-python .rouge-table,
+div.entry-content .language-bash .rouge-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0;
+    width: 100%;
+}
+div.entry-content .language-python .rouge-table td,
+div.entry-content .language-bash .rouge-table td {
+    border: none;
+    padding: 0;
+    vertical-align: top;
+}
+div.entry-content .language-python .rouge-gutter,
+div.entry-content .language-bash .rouge-gutter {
+    padding: 0 0.6em 0 0.3em;
+    border-right: 1px solid #c0c0c0;
+    text-align: right;
+    width: 1%; /* shrink-wrap to content; the code column takes the rest */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+div.entry-content .language-python .rouge-gutter .lineno,
+div.entry-content .language-bash .rouge-gutter .lineno {
+    color: #999;
+    background: transparent;
+}
+div.entry-content .language-python .rouge-code,
+div.entry-content .language-bash .rouge-code {
+    padding-left: 0.5em;
+}
+
 /* Python WP-Syntax token colors: live's GeSHi emits per-token inline `color:`
    styles that Rouge doesn't match by default. Scoped to .language-python so
    only fenced ```python blocks (utf-8, reading-cookies, firefox3) get these

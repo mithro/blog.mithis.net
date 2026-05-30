@@ -58,6 +58,10 @@ kramdown:
   syntax_highlighter: rouge
   parse_block_html: true
   parse_span_html: true
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+      start_line: 1
 
 # Exclude from processing.
 # NOTE: An explicit exclude: list REPLACES Jekyll's internal defaults entirely
