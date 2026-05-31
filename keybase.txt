@@ -1,0 +1,61 @@
+==================================================================
+https://keybase.io/mithro
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://blog.mithis.net
+  * I am mithro (https://keybase.io/mithro) on keybase.
+  * I have a public key with fingerprint 76DA C924 D054 91E1 0805  2863 156E EC09 090A C729
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "76dac924d05491e108052863156eec09090ac729",
+            "host": "keybase.io",
+            "key_id": "156eec09090ac729",
+            "kid": "0111828f59f665b4e1df400c24f89bcf197b0410e03b832c86a9fa51be8bdc872f710a",
+            "uid": "32ea44b1e1eaa5c08eb2fe95cc11d500",
+            "username": "mithro"
+        },
+        "service": {
+            "hostname": "blog.mithis.net",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1421207959,
+    "expire_in": 157680000,
+    "prev": "47487ee3860396b20387074de895f5f8ef91237c6135f9ab7e387aa5d42ae079",
+    "seqno": 14,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.1
+Comment: https://keybase.io/crypto
+
+yMEbAnicbZK/ixQxFMfHn7ADgitcYSXESlmWJJNMku3EQywtrF2SzMtuuLuZuZnZ
+1eO4ysb/QLFRtLC0sj9FsBD8Aw4ruwOra2x9Wc7OpAh57/O+7wfv67VLWT7eqn+P
+Rvm3Oxe+f76/yh5/On15SFxTHZDZIdmBzRNivYCu7WI9kBlRZWW94aKiUhgGjGoq
+uS4LJksATw1e6xU3ZEKWTZ8iUMbZHqaxQRt+5rFC63/4nY2DMsY010GaUJbSCWBV
+EJR6LoI2zgdmlKOCUaCF0wX3urQmWMkcaFd5rXhQjFqUW23kCg5WCIeVgrXSUw2O
+BzDSe8YqSWkCe+hquwdI78Vh2TXkaELQto4e0gBSH+d+t9sspgmK/bSGAYPbrhka
+3+yiczkMbT9LwcNBm+in4ObnOnMX6woHiRFr6PrY1GTGkPRDTMJMcMapMtJMCDxr
+YwfzmAipSk3xpDywRkmhhFYAhS5pYUrHaaEVVaICbWSQQUMwjBfKl6yQwVinEFXY
+eCW4BUxAUmf7dZNSYp12gZp9XNR2WHVAjr48uJyN8+zqlYtpFbJ8dP3fgqxfZW9/
+np3kx2R8fPsHbG3ffHSy/47cyN5sf/hzyuH5w3u37r7/6J+8PmO/XvwFb9W6dw==
+=UWcG
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/mithro
+
+==================================================================
