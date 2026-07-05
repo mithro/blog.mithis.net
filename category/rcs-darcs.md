@@ -6,7 +6,9 @@ permalink: /archives/rcs/darcs/
 description: '<p><a href="http://darcs.net/">Darcs</a> is revision control system I use to use before converting to <a href="http://git.or.cz/">git</a>.</p>'
 redirect_from:
   - /category/rcs-darcs/
-# /archives/category/rcs-darcs/ intentionally NOT redirected — live returns
-# a 404 there (the only category that does), so let GitHub Pages return 404
-# too rather than generating a live-content redirect that pixel-mismatches.
+  - /archives/category/rcs-darcs/
+# /archives/category/rcs-darcs/ 404'd on live WP (nested category), and the
+# migration preserved that 404 for fidelity. Post-cutover we redirect it
+# instead: the nav + old post bodies link it, and Search Console flags the
+# 404s (GSC cleanup, #26).
 ---
