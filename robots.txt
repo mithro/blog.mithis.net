@@ -4,18 +4,10 @@ layout: none
 User-agent: *
 Allow: /
 
-# Sitemaps
 Sitemap: {{ '/sitemap.xml' | absolute_url }}
-Sitemap: {{ '/feed.xml' | absolute_url }}
 
-# Disallow admin-style paths that don't exist but might be crawled
+# Legacy WordPress paths — nothing is served here anymore; keep crawlers out
 Disallow: /wp-admin/
 Disallow: /wp-includes/
 Disallow: /wp-content/
 Disallow: /admin/
-
-# Allow all public content
-Allow: /category/
-Allow: /tag/
-Allow: /about/
-Allow: /search/
