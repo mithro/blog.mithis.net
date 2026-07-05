@@ -10,6 +10,21 @@
 
 ---
 
+## Execution status (2026-07-05)
+
+Tracking issue: **#26**. Executed (with user-directed scope change — feeds are now *generated*, not just cleaned):
+
+- ✅ Task 0 (issue #26 created; baseline scan ran: 175 distinct / 1202 refs)
+- ✅ Task 1 — plus the larger change the user requested: `_plugins/feed_pages.rb` now generates ALL RSS feeds (per-category + main `/feed/` RSS2 + `/feed.xml` alias) from `_includes/feed-{category,main}.xml`; 25 hand-written XML files deleted (23 category feeds, root `feed.xml`, `comments/feed.xml`); `jekyll-feed` retired (it served Atom where WP subscribers expect RSS2). Verified byte-identical output (modulo one line of trailing whitespace in 4 files + intentional `/feed/` Atom→RSS2). Closes #6.
+- ✅ Task 2 (robots.txt cleaned)
+- ✅ Task 4 — **premise correction:** `category/timvideos-us/hdmi2usb.md` already existed at the nested permalink (the earlier audit only globbed top-level `category/*.md`). What was actually missing: `redirect_from` for the flat `/archives/category/hdmi2usb/` URL (added), `/category/timvideos-us/hdmi2usb/` (added), `parent_cat: timvideos-us` marker (added). rcs-darcs + rcs-tailor redirect normalization from Task 8 Step 8.2 landed in the same commit.
+- ✅ Task 6 Step 6.4 only (`comments/feed.xml` deleted with the feed work). Steps 6.1–6.3 (footer/sidebar/post-layout link removal) still TODO.
+- ✅ CLAUDE.md updated (plugin docs + commit-trailer line, D5).
+
+**Remaining:** Tasks 3, 5, 6 (link removal steps), 7, 8 Step 8.1 (nav), 9, 10, 11 (deploy verify), 12 (GSC console), 13 (conditional).
+
+---
+
 ## Background: what Search Console reported (2026-07-05, msg WNC-20237597)
 
 | Reason | Pages | Diagnosis (verified) |
