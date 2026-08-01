@@ -21,7 +21,7 @@ Tracking issue: **#26**. Executed (with user-directed scope change — feeds are
 - ✅ Task 6 Step 6.4 only (`comments/feed.xml` deleted with the feed work). Steps 6.1–6.3 (footer/sidebar/post-layout link removal) still TODO.
 - ✅ CLAUDE.md updated (plugin docs + commit-trailer line, D5).
 
-**Remaining:** Tasks 3, 5, 6 (link removal steps), 7, 8 Step 8.1 (nav), 9, 10, 11 (deploy verify), 12 (GSC console), 13 (conditional).
+**Remaining:** Tasks 3, 5, 6 (link removal steps), 7, 8 Step 8.1 (nav), 9, 10, 11 (deploy verify), 12 (GSC console), 13 (conditional), 14 (GSC re-pull, #27), 15 (Wayback archival, #28).
 
 ---
 
@@ -690,6 +690,24 @@ curl -s https://blog.mithis.net/ | grep -c "gitweb"                             
 - **`?p=NNN` shortlinks**: GitHub Pages ignores query strings and serves the homepage, whose canonical tag points at `/` — Google folds these correctly. No action possible or needed.
 
 ---
+
+### Task 14: Re-pull latest Search Console data and fix any remaining errors (#27)
+
+Runs AFTER Tasks 3–12 are deployed — the 2026-07-05 coverage zip predates every fix and held only summary counts.
+
+- [ ] **Step 14.1: Export fresh per-reason URL lists** — GSC → Indexing → Pages → open each reason → Export (the bulk zip does NOT contain URLs). Also screenshot/export the Sitemaps report and any Core Web Vitals warnings.
+- [ ] **Step 14.2: Triage the 404 export** against the known inventory: (a) dead WP sitemap XMLs → leave 404; (b) URLs the template fixes addressed → covered by Validate Fix; (c) legacy feed endpoints (`/comments/feed/`, per-post `/feed`) → correct 404s; (d) **anything unexplained → new fix**, filed on #27. If trailing-slash post variants or `/archives/date/*` URLs appear in volume, activate Task 13.
+- [ ] **Step 14.3: Validate Fix on every reason** (only after the Task 3–10 deploy) and Request Indexing for the homepage + top posts.
+- [ ] **Step 14.4: Re-check in 2–3 weeks** — indexed count climbing (baseline: 64), not-indexed shrinking. Record numbers on #27; close when the Website-sourced buckets (404/redirect/5xx/noindex/canonical) are validated clean.
+
+### Task 15: Ensure full Wayback Machine archival (#28)
+
+The 2007 uploads died because the Wayback Machine never captured them (only 404 captures exist). Don't let the Jekyll site share that fate.
+
+- [ ] **Step 15.1: Coverage audit script** (`tmp/`, python via uv): read the 201 URLs from `https://blog.mithis.net/sitemap.xml`, query Wayback CDX (`http://web.archive.org/cdx/search/cdx?url=<url>&limit=1&filter=statuscode:200&from=20260530`) for a post-cutover snapshot of each; report the missing list. Rate-limit ~1 req/s.
+- [ ] **Step 15.2: Trigger captures** for missing URLs via Save Page Now (`https://web.archive.org/save/<url>`; anonymous is heavily rate-limited — an archive.org account + SPN2 API allows batching). Include `/feed/` and `/assets/css/main.css` so replays render.
+- [ ] **Step 15.3: Re-run the audit** until every sitemap URL has a 200 snapshot; record the final coverage number on #28.
+- [ ] **Step 15.4: Recurrence** — re-run the audit after significant content changes (new posts land in the sitemap automatically, so the same script keeps working).
 
 ## Cleanup
 
